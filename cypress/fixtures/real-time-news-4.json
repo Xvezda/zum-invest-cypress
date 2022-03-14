@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74292684",
+            "thumbnail": "https://static.news.zumst.com/images/82/2022/03/10/f619a8376fb64727ba6f92332c5870e1.jpg",
+            "title": "임원 늘린 네이버·카카오…관료화 우려도",
+            "leadText": "네이버 미등기임원 수 2년새 37명 증가카카오, 지난해말 미등기임원 10명 발령 [비즈니스워치] 이혜선 기자 네이버와 카카오의 조직관리 체계 변화가 숫자로 뚜렷하게 나타나고 있다.\t2...",
+            "registerDateTime": "2022-03-10T17:32:02",
+            "mediaName": "비즈니스워치",
+            "landingUrl": "https://news.zum.com/articles/74292684"
+        },
+        {
+            "id": "http://news.zum.com/articles/74291222",
+            "thumbnail": "https://static.news.zumst.com/images/9/2018/09/20/NISI20180920_0000205014_web_20180920164641.jpg",
+            "title": "카카오, 한국거래소 '영문 공시우수법인' 3년 연속 선정",
+            "leadText": "카카오는 한국거래소(KRX)의 2021년 영문 공시우수법인에 선정됐다고 10일 밝혔다.\t이로써 카카오는 유가증권시장 최초로 2019년부터 3년 연속 영문 공시우수법인에 선정됐다.\t카카오는...",
+            "registerDateTime": "2022-03-10T16:40:56",
+            "mediaName": "뉴시스",
+            "landingUrl": "https://news.zum.com/articles/74291222"
+        },
+        {
+            "id": "http://news.zum.com/articles/74291082",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/10/1bf6d74a3ba9489b9d40eb9151716420.jpg",
+            "title": "尹 당선에 네이버·카카오 8%대 급등…카카오, 10만원 회복",
+            "leadText": "제20대 대통령 선거에서 윤석열 국민의힘 후보의 당선이 확정돼 코스피에서 네이버(NAVER)와 카카오의 주가가 8% 이상 급등했다.\t플랫폼 기업에 대한 규제 우려가 일부 완화된 것으로...",
+            "registerDateTime": "2022-03-10T16:35:17",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74291082"
+        }
+    ],
+    "totalCount": 11427
+}

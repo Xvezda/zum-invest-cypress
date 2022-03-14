@@ -1,0 +1,33 @@
+{
+    "items": [
+        {
+            "authorId": 31,
+            "authorName": "밸류체인타임스",
+            "introduction": "기업분석, 금융, 투자, 경제, 비즈니스 인사이트를 통한 올바른 저널리즘 보도를 추구합니다.\n신뢰·혁신·가치·공정성을 토대로 지속 가능한 스마트 프로젝트 저널리즘을 보도합니다.",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/9bfa713d_밸류체인타임스 Logo.png",
+            "isNewbie": false
+        },
+        {
+            "authorId": 26,
+            "authorName": "제시카",
+            "introduction": "세상을 바꾸는 부드러운 힘으로 투자자분들에게 선한 영향력을 끼치고 싶은 제시카입니다. 투자자들이 급변하는 주식시장에서 좋은 인사이트를 얻을 수 있으셨으면 합니다.",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/239f10a9_1.jpg",
+            "isNewbie": false
+        },
+        {
+            "authorId": 16,
+            "authorName": "서정렬",
+            "introduction": "부동산을 이야기 합니다. 그러나 부동산 만을 이야기 하지는 않습니다. 부린이도 이해할 수 있는 삶을 담는 그릇으로서의 부동산에 대해 이야기를 하고자 합니다.",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/e5ca4854_서정렬.jpg",
+            "isNewbie": false
+        },
+        {
+            "authorId": 13,
+            "authorName": "JUTOPIA",
+            "introduction": "인문학을 사랑하고 독서와 투자를 좋아하는 치과의사입니다.  \n주업에 충실하면서 부업으로 투자하는 패시브 자산배분 투자와 경제적 자유를 주제로 다룹니다.",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/d0245b3e_최명진.jpg",
+            "isNewbie": false
+        }
+    ],
+    "totalCount": 18
+}

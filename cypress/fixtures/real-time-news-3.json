@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74303193",
+            "thumbnail": "https://static.news.zumst.com/images/38/2022/03/11/ded3f8f040bf4d2c8cfd32e410b3c8fb.jpg",
+            "title": "카카오, SM엔터 최대 주주 되나…인수액 최대 1조 원 추정",
+            "leadText": "사진 = 카카오 카카오의 SM 엔터테인먼트 지분 인수가 임박한 것으로 전해졌습니다.\t11일 투자은행(IB) 업계에 따르면 카카오는 SM 엔터테인먼트 측과 최대 주주인 이수만 대표 프로...",
+            "registerDateTime": "2022-03-11T10:35:00",
+            "mediaName": "MBN",
+            "landingUrl": "https://news.zum.com/articles/74303193"
+        },
+        {
+            "id": "http://news.zum.com/articles/74299084",
+            "thumbnail": "https://static.news.zumst.com/images/110/2022/03/11/f686be7fe9d8428fb7d75b2e75bcc197.jpg",
+            "title": "[투자노트] 반등 시작한 네이버·카카오, 호시절 되찾을 수 있을까",
+            "leadText": "한동안 울상이었던 NAVER(035420) (네이버)와 카카오(035720) 주주들에게 지난 10일은 모처럼만에 웃는 날이었다.\t전날인 9일 실시된 제 20대 대통령선거에서 윤석열 국민의힘 후보가...",
+            "registerDateTime": "2022-03-11T08:43:29",
+            "mediaName": "조선비즈",
+            "landingUrl": "https://news.zum.com/articles/74299084"
+        },
+        {
+            "id": "http://news.zum.com/articles/74298147",
+            "thumbnail": "https://static.news.zumst.com/images/24/2022/03/11/bb94e4f189a64bf994cdeeb1cd06879c.jpg",
+            "title": "\"네이버·카카오, 조정 끝 반등 모색…다시 관심 필요한 시기\"",
+            "leadText": "20대 대선이 끝나고 플랫폼 산업에 대한 우호적인 환경이 조성될 가능성이 제기되고 있다. 산업 성장, 실적 상승 등 긍정적 여건을 고려하면 주가는 반등을 모색할 것이란 전망이 나온...",
+            "registerDateTime": "2022-03-11T07:38:58",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/74298147"
+        }
+    ],
+    "totalCount": 11427
+}

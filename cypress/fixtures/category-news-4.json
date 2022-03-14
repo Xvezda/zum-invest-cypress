@@ -1,0 +1,60 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74279424",
+            "thumbnail": "https://static.news.zumst.com/images/78/2022/03/10/32458bdb70de491cbc7664af600a8243.jpg",
+            "title": "[특징주] 삼성물산, 지난해 배당금 2배 확대 소식 ‘상승세’",
+            "leadText": "삼성물산은 지난해 배당금을 2배로 확대했다는 소식에 상승세다.\t10일 오전 10시 43분 기준 삼성물산은 전 거래일 종가 대비 6.94%(7500원) 오른 11만5500원에 거래 중이다.\t이는 배...",
+            "registerDateTime": "2022-03-10T10:44:58",
+            "mediaName": "이투데이",
+            "landingUrl": "https://news.zum.com/articles/74279424",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279281",
+            "thumbnail": "https://static.news.zumst.com/images/3/2022/03/10/PCM20210202000054990_P2.jpg",
+            "title": "[윤석열 당선] 허니문 랠리 가능성은…\"원전·건설 수혜\"",
+            "leadText": "대통령 선거가 마무리돼 증권시장에서 대선을 둘러싼 불확실성은 사라지고 기대감이 살아나고 있다.\t역대 대선 이후 증시는 단기적으로 대체로 오르는 경향을 보였으나 대선과 주가, ...",
+            "registerDateTime": "2022-03-10T10:43:45",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/74279281",
+            "category": "국내증시",
+            "subCategory": "국내증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279277",
+            "thumbnail": "https://static.news.zumst.com/images/57/2022/03/10/7332cc62f5b340f7b88319b9b9d4e518.jpg",
+            "title": "하이투자증권, 40억원 규모 ELS 2종 공모",
+            "leadText": "하이투자증권은 오는 17일 오후 4시까지 주가연계증권(ELS) 2종을 총 40억원 규모로 공모한다고 10일 밝혔다.\tHI ELS 2934호는 코스피(KOSPI)200지수, 홍콩항셍지수(HSI), 유로스톡스(E...",
+            "registerDateTime": "2022-03-10T10:43:18",
+            "mediaName": "세계비즈",
+            "landingUrl": "https://news.zum.com/articles/74279277",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279270",
+            "thumbnail": "https://static.news.zumst.com/images/9/2021/07/29/NISI20210729_0000798142_web_20210729134740.jpg",
+            "title": "\"현금 드릴테니 카드 가입하세요\"…금감원, 카드모집인 181명에 과태료 부과",
+            "leadText": "카드사 회원모집인들이 고객유치 과정에서 불법 행위를 저질러 금융당국의 제재를 받았다.\t10일 금융권에 따르면 금융감독원은 지난 3일 신한카드·삼성카드·KB국민카드·현대카드·롯데...",
+            "registerDateTime": "2022-03-10T10:42:43",
+            "mediaName": "뉴시스",
+            "landingUrl": "https://news.zum.com/articles/74279270",
+            "category": "국내증시",
+            "subCategory": "정책"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279253",
+            "thumbnail": "https://static.news.zumst.com/images/9/2022/03/10/NISI20220310_0018576967_web_20220310064310.jpg",
+            "title": "윤석열 당선…날개 단 건설·원전株",
+            "leadText": "제20대 대통령에 윤석열 국민의힘 후보가 당선되면서 건설주와 원전주가 상승 탄력을 받고 있다.\t윤 당선자의 부동산 규제 완화와 원자력발전 재개 공약이 부각된 영향이라고 전문가...",
+            "registerDateTime": "2022-03-10T10:42:25",
+            "mediaName": "뉴시스",
+            "landingUrl": "https://news.zum.com/articles/74279253",
+            "category": "국내증시",
+            "subCategory": "부동산"
+        }
+    ],
+    "totalCount": 631
+}

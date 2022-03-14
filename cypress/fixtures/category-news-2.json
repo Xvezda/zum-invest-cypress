@@ -1,0 +1,60 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74279525",
+            "thumbnail": "https://static.news.zumst.com/images/90/2022/03/10/8f146ffe9ea74cf9aa7315cbf3d7c688.jpg",
+            "title": "신풍제약우 주가 7%↑...거래 재개되자 또 상승, 이유는?",
+            "leadText": "신풍제약우 주가가 상승세다.\t10일 한국거래소에 따르면 오전 10시 46분 기준 신풍제약우는 전일 대비 7.11%(7100원) 상승한 10만7000원에 거래되고 있다.\t신풍제약우 시가총액은 235...",
+            "registerDateTime": "2022-03-10T10:50:47",
+            "mediaName": "아주경제",
+            "landingUrl": "https://news.zum.com/articles/74279525",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279582",
+            "thumbnail": "https://static.news.zumst.com/images/23/2022/03/10/5676c866bb8a4bd7aca0fa129d80dc6f.jpg",
+            "title": "'우크라 침공'에 전국 휘발윳값 ℓ당 1900원 넘겼다",
+            "leadText": "러시아의 우크라이나 침공 사태 여파로 국제유가가 급등하며 국내 주유소 휘발유 가격이 ℓ당 1900원을 넘겼다.\t10일 한국석유공사 유가정보사이트 오피넷에 따르면 이날 오전 10시40...",
+            "registerDateTime": "2022-03-10T10:50:47",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/74279582",
+            "category": "시장지표",
+            "subCategory": "원자재"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279554",
+            "thumbnail": "https://static.news.zumst.com/images/3/2022/03/10/AKR20220310078700003_01_i.jpg",
+            "title": "LIG넥스원, 사우디 투자부와 방산분야 협력 확대 MOU",
+            "leadText": "LIG넥스원은 협약에 따라 사우디 정부가 차세대 사업으로 육성하는 방산 분야의 발전을 위해 MISA, 방위산업청(GAMI), 국영 방산업체(SAMI) 등과 긴밀히 협력할 예정이다.\tMISA는 지...",
+            "registerDateTime": "2022-03-10T10:49:51",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/74279554",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279476",
+            "thumbnail": "https://static.news.zumst.com/images/90/2022/03/10/b61d14ce273947edb9c05a209e0db065.jpg",
+            "title": "제일테크노스 주가 11%↑…지난해 매출액 1793억",
+            "leadText": "제일테크노스 주가가 상승 중이다.\t10일 한국거래소에 따르면 제일테크노스는 이날 오전 10시 48분 기준 전 거래일 대비 690원 (11.20%) 오른 6850원에 거래 중이다.\t지난 2월 제일...",
+            "registerDateTime": "2022-03-10T10:49:15",
+            "mediaName": "아주경제",
+            "landingUrl": "https://news.zum.com/articles/74279476",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279487",
+            "thumbnail": "https://static.news.zumst.com/images/3/2022/03/10/PEP20220309074201009_P2.jpg",
+            "title": "[우크라 침공] \"유가 폭등 충격에 세계 GDP 4% 줄어들 수도\"",
+            "leadText": "러시아의 우크라이나 침공으로 원유에서 밀에 이르기까지 원자재 전반의 가격이 폭등, 세계 국내총생산(GDP)이 최대 4% 감소할 가능성이 있다고 원자재 거래업체 트라피규라가 9일(...",
+            "registerDateTime": "2022-03-10T10:48:44",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/74279487",
+            "category": "시장지표",
+            "subCategory": "원자재"
+        }
+    ],
+    "totalCount": 631
+}

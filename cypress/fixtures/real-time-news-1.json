@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74304729",
+            "thumbnail": "https://static.news.zumst.com/images/116/2022/03/11/9597d644490b4bcab0cd08998003ed96.jpg",
+            "title": "카카오·SM, 이수만 지분 인수설에 '논의 중'",
+            "leadText": "페이지 카카오와 SM엔터테인먼트(SM엔터) 모두 이수만 지분 인수설에 대해 부인했다.\t11일 업계에 따르면 카카오가 이수만 SM엔터 총괄 프로듀서의 지분을 인수한다고 알려졌다.\t이에 ...",
+            "registerDateTime": "2022-03-11T11:56:58",
+            "mediaName": "한국금융신문",
+            "landingUrl": "https://news.zum.com/articles/74304729"
+        },
+        {
+            "id": "http://news.zum.com/articles/74304601",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/11/a4c69d2146964533a0596bc9564d41fe.jpg",
+            "title": "카카오의 SM 인수설 '솔솔'…에스엠·SM C&C 주가↑",
+            "leadText": "카카오의 SM엔터테인먼트 지분 인수가 임박했다는 소식이 알려지자 SM C&C, 에스엠 등의 주가가 급등하고 있다.\t11일 오전 11시13분 SM엔테테인먼트의 자회사인 SM C&C는 전 거래일 대...",
+            "registerDateTime": "2022-03-11T11:51:16",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74304601"
+        },
+        {
+            "id": "http://news.zum.com/articles/74303654",
+            "thumbnail": "https://static.news.zumst.com/images/9/2022/03/10/NISI20220310_0018579102_web_20220310183220.jpg",
+            "title": "尹, 네이버·카카오 조준 온플법 원점에서 손질할까",
+            "leadText": "친기업 성향으로 분류되는 윤석열 국민의힘 후보가 대통령에 당선되면서 문재인 정부에서 추진해온 온라인플랫폼법안(온플법)이 원점에서 재검토될 가능성이 제기된다.\t플랫폼 갑질행...",
+            "registerDateTime": "2022-03-11T11:19:05",
+            "mediaName": "뉴시스",
+            "landingUrl": "https://news.zum.com/articles/74303654"
+        }
+    ],
+    "totalCount": 11427
+}

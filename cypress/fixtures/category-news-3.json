@@ -1,0 +1,60 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74279554",
+            "thumbnail": "https://static.news.zumst.com/images/3/2022/03/10/AKR20220310078700003_01_i.jpg",
+            "title": "LIG넥스원, 사우디 투자부와 방산분야 협력 확대 MOU",
+            "leadText": "LIG넥스원은 협약에 따라 사우디 정부가 차세대 사업으로 육성하는 방산 분야의 발전을 위해 MISA, 방위산업청(GAMI), 국영 방산업체(SAMI) 등과 긴밀히 협력할 예정이다.\tMISA는 지...",
+            "registerDateTime": "2022-03-10T10:49:51",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/74279554",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279476",
+            "thumbnail": "https://static.news.zumst.com/images/90/2022/03/10/b61d14ce273947edb9c05a209e0db065.jpg",
+            "title": "제일테크노스 주가 11%↑…지난해 매출액 1793억",
+            "leadText": "제일테크노스 주가가 상승 중이다.\t10일 한국거래소에 따르면 제일테크노스는 이날 오전 10시 48분 기준 전 거래일 대비 690원 (11.20%) 오른 6850원에 거래 중이다.\t지난 2월 제일...",
+            "registerDateTime": "2022-03-10T10:49:15",
+            "mediaName": "아주경제",
+            "landingUrl": "https://news.zum.com/articles/74279476",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279495",
+            "thumbnail": "https://static.news.zumst.com/images/126/2022/03/10/f79b06de7be74d3dba3ac3dd73d9d936.jpg",
+            "title": "쿠쿠, '재생 원재료' 적용 확대…친환경 경영 박차",
+            "leadText": "쿠쿠가 제품과 내장재에 재생 원재료 적용을 확대하며 친환경 경영에 속도를 낸다.\t쿠쿠는 가전제품에 필수로 들어가는 플라스틱을 재생 가능한 재료 및 재활용 소재로 대체하고, 쿠...",
+            "registerDateTime": "2022-03-10T10:48:38",
+            "mediaName": "아이뉴스24",
+            "landingUrl": "https://news.zum.com/articles/74279495",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279375",
+            "thumbnail": "https://static.news.zumst.com/images/116/2022/03/10/86e31939f32b45ae8ea5c6beb7441e5a.jpg",
+            "title": "DB손보, 사내 혁신조직 '원팀'으로 손보업계 디지털 혁신 선도",
+            "leadText": "DB손해보험(대표 김정남)이 사내 '원팀' 활동을 통해 업계 내 디지털 혁신을 이끌고 있다. DB손해보험은 2018년부터 시행하고 있는 임직원들의 자율적인 혁신활동인 'One Team(이하 원...",
+            "registerDateTime": "2022-03-10T10:48:08",
+            "mediaName": "한국금융신문",
+            "landingUrl": "https://news.zum.com/articles/74279375",
+            "category": "국내증시",
+            "subCategory": "국내종목·산업"
+        },
+        {
+            "id": "http://news.zum.com/articles/74279487",
+            "thumbnail": "https://static.news.zumst.com/images/3/2022/03/10/PEP20220309074201009_P2.jpg",
+            "title": "[우크라 침공] \"유가 폭등 충격에 세계 GDP 4% 줄어들 수도\"",
+            "leadText": "러시아의 우크라이나 침공으로 원유에서 밀에 이르기까지 원자재 전반의 가격이 폭등, 세계 국내총생산(GDP)이 최대 4% 감소할 가능성이 있다고 원자재 거래업체 트라피규라가 9일(...",
+            "registerDateTime": "2022-03-10T10:48:44",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/74279487",
+            "category": "시장지표",
+            "subCategory": "원자재"
+        }
+    ],
+    "totalCount": 633
+}

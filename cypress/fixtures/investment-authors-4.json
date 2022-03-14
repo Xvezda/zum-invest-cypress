@@ -1,0 +1,33 @@
+{
+    "items": [
+        {
+            "authorId": 25,
+            "authorName": "한대훈",
+            "introduction": "주식전략 및 시황 애널리스트다. 지난 2017년 증권사 최초로 비트코인 관련 리포트를 발간하는 등 신기술과 새로운 트렌드에 관심이 많다. 다양한 아이디어와 트렌드를 전달하는 투자자들에게 나침반과 같은 애널리스트가 되길 희망한다.",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/618c5dd5_1.jpg",
+            "isNewbie": false
+        },
+        {
+            "authorId": 33,
+            "authorName": "황금별의 부자노트",
+            "introduction": "다양한 파이프라인을 통한 패시브인컴으로 경제적 자유를 꿈꾸는 40대 평범한 직장인입니다. 저는 다음과 같이 시스템소득을 만들어가고자 노력중입니다. 1. 미국주식 배당주 투자를 통한 '배당소득' 2. 부동산 투자를 통한 '임대소득' 3. 콘텐츠 크리에이터 활동을 통한 '콘텐츠소득' 평범한 직장인이 경제적 자유를 얻어가는 과정을 함께 공유해요!!",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/21dceb2c_필진소개 이미지.jpg",
+            "isNewbie": false
+        },
+        {
+            "authorId": 30,
+            "authorName": "타락천사",
+            "introduction": "암호화폐 투자를 통한 경제적 자유를 추구하고 있는 존버 투자자입니다.\n트레이딩 보다는 비교적 안전하게 미래의 부를 추구할 수 있는 방향을 고민하고 또한 공유하고 있습니다.\n경제적 자유를 함께 달성해 나갔으면 좋겠습니다.",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/e186331f_블로그 로고.png",
+            "isNewbie": false
+        },
+        {
+            "authorId": 27,
+            "authorName": "프루팅",
+            "introduction": "프루팅은, 기관 외국인이 보는 실시간 정보를 한곳에 모아 선별 및 해석해주는 \n국내 유일의 자문 구독형 투자 플랫폼입니다. \n프루팅은 투자업계 전문가들이 핵심 투자/경제 콘텐츠를 선별 및 해석하여 제공함으로서- 독자들의 합리적인 투자 의사결정을 돕는 동시에, 기관 고유자금을 운용하는 프랍트레이더 출신의 대표가 제공하는 자문서비스까지 원스탑으로 제공합니다.",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/d63f5a6f_프루츠컨설팅_채널 이미지.png",
+            "isNewbie": false
+        }
+    ],
+    "totalCount": 18
+}

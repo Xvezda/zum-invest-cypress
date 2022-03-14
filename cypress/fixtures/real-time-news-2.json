@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id": "http://news.zum.com/articles/74303604",
+            "thumbnail": "https://static.news.zumst.com/images/18/2022/03/11/f05af984ed344aeb8a95f1683e88a30d.jpg",
+            "title": "카카오, SM 지분 인수 임박…하이브 이어 업계 2위 넘보나",
+            "leadText": "카카오의 국내 대표 연예기획사 SM엔터테인먼트 지분 인수가 임박한 것으로 전해져, 엔터계 지각변동이 예상된다.\t11일 투자은행(IB) 업계에 따르면 카카오는 SM엔터테인먼트 측과 최...",
+            "registerDateTime": "2022-03-11T11:16:28",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/74303604"
+        },
+        {
+            "id": "http://news.zum.com/articles/74302927",
+            "thumbnail": "https://static.news.zumst.com/images/90/2022/03/11/121fcc493f154545bd74941aaaae0f9f.jpg",
+            "title": "자이언트스텝 주가 5%↑...\"지난해 매출 전년비 64% 증가한 331억\"",
+            "leadText": "자이언트스텝 주가가 상승세다.\t11일 한국거래소에 따르면 오전 10시 51분 기준 자이언트스텝은 전일 대비 5.82%(2600원) 상승한 4만7250원에 거래되고 있다.\t자이언트스텝 시가총액은...",
+            "registerDateTime": "2022-03-11T10:55:49",
+            "mediaName": "아주경제",
+            "landingUrl": "https://news.zum.com/articles/74302927"
+        },
+        {
+            "id": "http://news.zum.com/articles/74302383",
+            "thumbnail": null,
+            "title": "[특징주] 카카오 인수 소식에···SM·SM C&C 급등",
+            "leadText": "카카오가 SM엔터테인먼트 지분 인수에 나선다는 소식에 에스엠(041510) 과 SM C&C(048550) 의 주가가 급등세다.\t11일 오전 10시 33분 기준 에스엠은 전일보다 4.14% 오른 8만500원에...",
+            "registerDateTime": "2022-03-11T10:37:15",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/74302383"
+        }
+    ],
+    "totalCount": 11427
+}

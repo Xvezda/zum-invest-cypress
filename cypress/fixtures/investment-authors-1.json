@@ -1,0 +1,33 @@
+{
+    "items": [
+        {
+            "authorId": 34,
+            "authorName": "줌투자",
+            "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+            "isNewbie": false
+        },
+        {
+            "authorId": 11,
+            "authorName": "The DUDE",
+            "introduction": "금융인. ETF와 지수에 대해 모든 걸 설명하겠습니다. \n“It started out as a product, and it became an industry”\n(일개 상품으로 시작한 ETF는 이내 그 자체로 산업이 되었다)",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/98c54f28_안해성.jpg",
+            "isNewbie": false
+        },
+        {
+            "authorId": 29,
+            "authorName": "벵골호랑이의 해외주식토크",
+            "introduction": "다년간의 해외 주식 실전 투자 경험과 함께 글로벌 경제 시황, 미국을 비롯한 해외 유망 산업 및 기업 분석에 대한 인사이트를 드리는 벵골호랑이 신병호입니다. 국내를 넘어 글로벌 우량 기업의 주주가 되고, 성장 및 가치 투자 등 다양한 주식 투자 전략을 기반으로 저 벵골호랑이와 함께 해외주식투자, 시작해보세요!",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/477c1ad9_20180615_002739.jpg",
+            "isNewbie": false
+        },
+        {
+            "authorId": 15,
+            "authorName": "오몽",
+            "introduction": "합리적 소수의 역발상 투자를 지향합니다. 운용업에서 겪은 다양한 경험을 개인 투자자들과 공유하고 싶습니다. 주가 변동에 일희일비하지 않고 투자한 기업과 자신의 부가 같이 성장하는 건전한 투자 관행이 정착하는데 일조하고자 합니다.",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/00176570_박진석1.jpg",
+            "isNewbie": false
+        }
+    ],
+    "totalCount": 18
+}
