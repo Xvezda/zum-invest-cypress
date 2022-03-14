@@ -31,6 +31,7 @@ describe('국내증시', () => {
     cy.frameLoaded('.map_cont iframe', {
       url: 'https://chart-finance.zum.com/api/chart/treemap/domestic/'
     });
+    cy.wait(5000);  // 툴팁 페이드아웃 대기
 
     cy.iframe('.map_cont iframe')
       .as('mekoChartIframe')
