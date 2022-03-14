@@ -2,6 +2,8 @@ require('cypress-iframe');
 
 describe('국내증시', () => {
   beforeEach(() => {
+    cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
+      .as('common');
     cy.intercept('/api/domestic/home/meko-chart', {fixture: 'meko-chart'})
       .as('mekoChart');
 
