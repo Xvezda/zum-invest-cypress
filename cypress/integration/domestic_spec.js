@@ -46,16 +46,26 @@ describe('국내증시', () => {
       .as('mekoChartIframe')
       .toMatchImageSnapshot();
 
-    const zoomAndMatchImageSnapshot = delta => {
-      cy.get('@mekoChartIframe')
-        .trigger('wheel', 'center', {
-          deltaX: 0, deltaY: -delta, deltaZ: 0, deltaMode: 0
-        })
-        .toMatchImageSnapshot();
-    };
+    const ScrollDirection = Object.freeze({
+      UP: 0,
+      DOWN: 1,
+    });
+    const zoomAndMatchImageSnapshot =
+      (direction=ScrollDirection.DOWN, delta=4) => {
+        const option = Object.assign({
+          deltaX: 0, deltaZ: 0, deltaMode: 0
+        }, {
+          deltaY: direction === ScrollDirection.UP ? delta : -delta,
+        });
+        cy.get('@mekoChartIframe')
+          .trigger('wheel', 'center', option)
+          .toMatchImageSnapshot();
+      };
 
-    zoomAndMatchImageSnapshot(4);
-    zoomAndMatchImageSnapshot(4);
+    zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
+    zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
+    zoomAndMatchImageSnapshot(ScrollDirection.UP);
+    zoomAndMatchImageSnapshot(ScrollDirection.UP);
   });
 
   it('MAP의 종류를 선택할 수 있다.', () => {
