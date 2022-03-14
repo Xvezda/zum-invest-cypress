@@ -17,87 +17,107 @@ describe('국내증시', () => {
       onBeforeLoad(win) {
         // 주기적으로 불러오는 API 요청을 차단
         cy.stub(win, 'setTimeout')
-          .returns(function () {})
-          .log(false);
+          .log(false)
+          .returns(function () {
+            return 0;
+          });
       }
     });
   });
 
-  it('MAP을 상하로 스크롤하여 확대, 축소 할 수 있다.', () => {
-    const ScrollDirection = Object.freeze({
-      UP: 0,
-      DOWN: 1,
-    });
-    const zoomAndMatchImageSnapshot =
-      (direction=ScrollDirection.DOWN, delta=4) => {
-        const option = Object.assign({
-          deltaX: 0, deltaZ: 0, deltaMode: 0
-        }, {
-          deltaY: direction === ScrollDirection.UP ? delta : -delta,
-        });
-        cy.get('@mekoChartIframe')
-          .trigger('wheel', 'center', option);
+  describe('국내증시 MAP', () => {
+    beforeEach(() => {
+      // `cy.viewport`를 사용해서 screenshot 차트 초기화 버그를 해결 가능
+      // https://docs.cypress.io/api/commands/viewport#Arguments
+      cy.viewport('macbook-13');
 
-        return cy.get('@mekoChart')
-          .toMatchImageSnapshot();
+      Cypress.$('#header').hide();  // 차트를 가리지 않도록 제거
+
+      cy.frameLoaded('.map_cont iframe', {
+        url: 'https://chart-finance.zum.com/api/chart/treemap/domestic/'
+      });
+
+      // 툴팁 애니메이션을 기다리지 않고 제거
+      cy.get('.map_cont iframe')
+        .its('0.contentWindow')
+        .then($win => {
+          $win.eval(`
+            document.querySelectorAll('[id^="chart-info-tooltip"]')
+              .forEach(node => node.parentNode.removeChild(node));
+          `);
+        });
+    });
+
+    afterEach(() => {
+      Cypress.$('#header').show();
+    });
+
+    it('MAP을 상하로 스크롤하여 확대, 축소 할 수 있다.', () => {
+      const ScrollDirection = Object.freeze({
+        UP: 0,
+        DOWN: 1,
+      });
+      const zoomAndMatchImageSnapshot =
+        (direction=ScrollDirection.DOWN, delta=4) => {
+          const option = Object.assign({
+            deltaX: 0, deltaZ: 0, deltaMode: 0
+          }, {
+            deltaY: direction === ScrollDirection.UP ? delta : -delta,
+          });
+          cy.get('@mekoChartIframe')
+            .trigger('wheel', 'center', option);
+
+          return cy.get('@mekoChart')
+            .toMatchImageSnapshot();
+        };
+
+      cy.iframe('.map_cont iframe')
+        .as('mekoChartIframe');
+
+      // iframe으로 스냅샷하는경우 올바르게 찍히지 않는 현상이 있어 별도 사용
+      cy.get('.map_cont iframe')
+        .as('mekoChart');
+
+      cy.get('@mekoChart')
+        .toMatchImageSnapshot()
+        .then(() => {
+          return Promise.all([
+            zoomAndMatchImageSnapshot(ScrollDirection.DOWN),
+            zoomAndMatchImageSnapshot(ScrollDirection.UP),
+          ])
+        });
+    });
+
+    it('MAP의 종류를 선택할 수 있다.', () => {
+      const mapTable = {
+        'TOP1000': 'ALL',
+        '코스피': 'KOSPI',
+        '코스닥': 'KOSDAQ'
       };
-
-    // `cy.viewport`를 사용해서 screenshot 차트 초기화 버그를 해결 가능
-    // https://docs.cypress.io/api/commands/viewport#Arguments
-    cy.viewport('macbook-13');
-
-    cy.frameLoaded('.map_cont iframe', {
-      url: 'https://chart-finance.zum.com/api/chart/treemap/domestic/'
+      cy.get('.map_menu_tab').within(() => {
+        cy.get('li:not(:first-child) > a')
+          .each(menu => {
+            const menuText = menu.text();
+            cy.get(`a:contains("${menuText}")`)
+              .click()
+              .url()
+              .should('contain', `category=${mapTable[menuText]}`);
+          });
+        });
     });
 
-    // 툴팁 애니메이션을 기다리지 않고 제거
-    cy.get('.map_cont iframe')
-      .its('0.contentWindow')
-      .then($win => {
-        $win.eval(`
-          document.querySelectorAll('[id^="chart-info-tooltip"]')
-            .forEach(node => node.parentNode.removeChild(node));
-        `);
-      });
-    
-    cy.iframe('.map_cont iframe')
-      .as('mekoChartIframe');
-
-    // iframe으로 스냅샷하는경우 올바르게 찍히지 않는 현상이 있어 별도 사용
-    cy.get('.map_cont iframe')
-      .as('mekoChart');
-
-    Cypress.$('#header').hide();
-    cy.get('@mekoChart')
-      .toMatchImageSnapshot()
-      .then(() => {
-        return Promise.all([
-          zoomAndMatchImageSnapshot(ScrollDirection.DOWN),
-          zoomAndMatchImageSnapshot(ScrollDirection.UP),
-        ])
-      })
-      .then(() => {
-        Cypress.$('#header').show();
-      });
-  });
-
-  it('MAP의 종류를 선택할 수 있다.', () => {
-    const mapTable = {
-      'TOP1000': 'ALL',
-      '코스피': 'KOSPI',
-      '코스닥': 'KOSDAQ'
-    };
-    cy.get('.map_menu_tab').within(() => {
-      cy.get('li:not(:first-child) > a')
+    it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+      cy.get('.map_menu_tab li:not(:first-child) > a')
         .each(menu => {
-          const menuText = menu.text();
-          cy.get(`a:contains("${menuText}")`)
+          cy.wrap(menu)
             .click()
-            .url()
-            .should('contain', `category=${mapTable[menuText]}`);
+            .parent('.active');
+          
+          cy.get('.map_cont iframe')
+            .toMatchImageSnapshot();
         });
-      });
-  });
+    });
+  });  // END: 국내증시 MAP
 
   it('HOT 업종을 화살표를 눌러 좌우로 살펴볼 수 있다.', () => {
     cy.get('.main_news_list + .navi > .next')
