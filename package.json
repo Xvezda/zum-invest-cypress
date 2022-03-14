@@ -4,6 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "open": "cypress open"
+  },
   "devDependencies": {
     "cypress": "^9.5.1",
     "cypress-iframe": "^1.0.1",
