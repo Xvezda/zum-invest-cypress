@@ -31,8 +31,17 @@ describe('국내증시', () => {
     cy.frameLoaded('.map_cont iframe', {
       url: 'https://chart-finance.zum.com/api/chart/treemap/domestic/'
     });
-    cy.wait(5000);  // 툴팁 페이드아웃 대기
 
+    // 툴팁 애니메이션을 기다리지 않고 제거
+    cy.get('.map_cont iframe')
+      .its('0.contentWindow')
+      .then($win => {
+        $win.eval(`
+          document.querySelectorAll('[id^="chart-info-tooltip"]')
+            .forEach(node => node.parentNode.removeChild(node));
+        `);
+      });
+    
     cy.iframe('.map_cont iframe')
       .as('mekoChartIframe')
       .toMatchImageSnapshot();
