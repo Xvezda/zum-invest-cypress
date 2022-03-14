@@ -23,7 +23,25 @@ describe('국내증시', () => {
     });
   });
 
-  it.only('MAP을 상하로 스크롤하여 확대, 축소 할 수 있다.', () => {
+  it('MAP을 상하로 스크롤하여 확대, 축소 할 수 있다.', () => {
+    const ScrollDirection = Object.freeze({
+      UP: 0,
+      DOWN: 1,
+    });
+    const zoomAndMatchImageSnapshot =
+      (direction=ScrollDirection.DOWN, delta=4) => {
+        const option = Object.assign({
+          deltaX: 0, deltaZ: 0, deltaMode: 0
+        }, {
+          deltaY: direction === ScrollDirection.UP ? delta : -delta,
+        });
+        cy.get('@mekoChartIframe')
+          .trigger('wheel', 'center', option);
+
+        return cy.get('@mekoChart')
+          .toMatchImageSnapshot();
+      };
+
     // `cy.viewport`를 사용해서 screenshot 차트 초기화 버그를 해결 가능
     // https://docs.cypress.io/api/commands/viewport#Arguments
     cy.viewport('macbook-13');
@@ -43,29 +61,24 @@ describe('국내증시', () => {
       });
     
     cy.iframe('.map_cont iframe')
-      .as('mekoChartIframe')
-      .toMatchImageSnapshot();
+      .as('mekoChartIframe');
 
-    const ScrollDirection = Object.freeze({
-      UP: 0,
-      DOWN: 1,
-    });
-    const zoomAndMatchImageSnapshot =
-      (direction=ScrollDirection.DOWN, delta=4) => {
-        const option = Object.assign({
-          deltaX: 0, deltaZ: 0, deltaMode: 0
-        }, {
-          deltaY: direction === ScrollDirection.UP ? delta : -delta,
-        });
-        cy.get('@mekoChartIframe')
-          .trigger('wheel', 'center', option)
-          .toMatchImageSnapshot();
-      };
+    // iframe으로 스냅샷하는경우 올바르게 찍히지 않는 현상이 있어 별도 사용
+    cy.get('.map_cont iframe')
+      .as('mekoChart');
 
-    zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
-    zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
-    zoomAndMatchImageSnapshot(ScrollDirection.UP);
-    zoomAndMatchImageSnapshot(ScrollDirection.UP);
+    Cypress.$('#header').hide();
+    cy.get('@mekoChart')
+      .toMatchImageSnapshot()
+      .then(() => {
+        return Promise.all([
+          zoomAndMatchImageSnapshot(ScrollDirection.DOWN),
+          zoomAndMatchImageSnapshot(ScrollDirection.UP),
+        ])
+      })
+      .then(() => {
+        Cypress.$('#header').show();
+      });
   });
 
   it('MAP의 종류를 선택할 수 있다.', () => {
