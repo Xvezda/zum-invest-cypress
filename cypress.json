@@ -1,8 +1,12 @@
 {
     "chromeWebSecurity": false,
+    "retries": {
+        "runMode": 2,
+        "openMode": 1
+    },
     "env": {
         "cypress-plugin-snapshots": {
-            "autoCleanUp": false,
+            "autoCleanUp": true,
             "autopassNewSnapshots": true,
             "diffLines": 3,
             "excludeFields": [], 
