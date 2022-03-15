@@ -143,20 +143,6 @@ describe('국내증시', () => {
         });
     });
 
-    it('전체화면 버튼을 누르면 차트를 페이지 전체 크기로 보여준다.', () => {
-      const matchFullScreenImageSnapshot = () => {
-        return cy.get('.fullScreen')
-          .should('be.visible')
-          .toMatchImageSnapshot();
-      };
-
-      cy.get('.map_cont_wrap button:contains("전체화면")')
-        .click()
-        .then(() => {
-          return matchFullScreenImageSnapshot();
-        });
-
-    });
   });  // END: 국내증시 MAP
 
   it('HOT 업종을 화살표를 눌러 좌우로 살펴볼 수 있다.', () => {
@@ -267,7 +253,7 @@ describe('국내증시', () => {
     beforeEach(hideStickyHeader);
     afterEach(showStickyHeader);
 
-    it.only('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
+    it('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
       triggerDomesticHomeApi();
 
       cy.get('.popularity_event_wrap')
