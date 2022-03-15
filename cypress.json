@@ -21,10 +21,10 @@
                 "thresholdType": "percent" 
             },
             "screenshotConfig": { 
-                "blackout": [".stock_state_chart", ".ticker_bar"],
+                "blackout": [".stock_state_chart", ".ticker_bar", ".il_noti"],
                 "capture": "fullPage",
                 "clip": null,
-                "disableTimersAndAnimations": false,
+                "disableTimersAndAnimations": true,
                 "log": false,
                 "scale": false,
                 "timeout": 30000

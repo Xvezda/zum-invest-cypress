@@ -14,6 +14,10 @@ const getContainer = selector => cy.iframe(selector);
 const hideStickyHeader = () => Cypress.$('#header').hide();
 const showStickyHeader = () => Cypress.$('#header').show();
 
+const triggerDomesticHomeApi = () => {
+  cy.tick(20000);
+};
+
 describe('국내증시', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
@@ -187,7 +191,7 @@ describe('국내증시', () => {
       cy.get(selector).scrollIntoView();
 
       forEachTab(() => {
-        cy.tick(20000);
+        triggerDomesticHomeApi();
 
         cy.get(selector)
           .toMatchImageSnapshot()
@@ -230,6 +234,26 @@ describe('국내증시', () => {
         });
     });
   });  // END: 이번주 투자 캘린더
+
+  describe('오늘의 HOT PICK', () => {
+    beforeEach(hideStickyHeader);
+    afterEach(showStickyHeader);
+
+    it.only('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
+      triggerDomesticHomeApi();
+
+      cy.get('.today_hot_pick')
+        .within(() => {
+          cy.get('ul.menu_tab > li:not(:first-children) > a')
+            .each($menu => {
+              cy.wrap($menu)
+                .click()
+                .parent('.active')
+                .toMatchImageSnapshot();
+            });
+        });
+    });
+  });
 
   // FIXME: 페이지를 +2 오프셋으로 받아오는 문제
   it.skip('스크롤을 하여 실시간 테마 뉴스를 불러온다.', () => {
