@@ -239,16 +239,36 @@ describe('국내증시', () => {
     beforeEach(hideStickyHeader);
     afterEach(showStickyHeader);
 
-    it.only('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
+    it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
       triggerDomesticHomeApi();
 
       cy.get('.today_hot_pick')
         .within(() => {
-          cy.get('ul.menu_tab > li:not(:first-children) > a')
+          cy.get('ul > li:not(:first-children) > a')
+            .first()
             .each($menu => {
               cy.wrap($menu)
                 .click()
                 .parent('.active')
+                .toMatchImageSnapshot();
+            });
+        });
+    });
+  });
+
+  describe('ZUM 인기종목', () => {
+    beforeEach(hideStickyHeader);
+    afterEach(showStickyHeader);
+
+    it.only('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
+      triggerDomesticHomeApi();
+
+      cy.get('.popularity_event_wrap')
+        .within(() => {
+          cy.get('ul > li > a')
+            .each($tab => {
+              return cy.wrap($tab)
+                .trigger('mouseenter', 'center', {force: true})
                 .toMatchImageSnapshot();
             });
         });
