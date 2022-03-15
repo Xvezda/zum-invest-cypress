@@ -1,5 +1,8 @@
 require('cypress-iframe');
 
+/**
+ * 메코차트의 컨테이너가 로드되었는지 확인하는 함수
+ */
 const expectContainerLoaded = (...args) => {
   cy.frameLoaded(...args);
 
@@ -11,9 +14,13 @@ const expectContainerLoaded = (...args) => {
   }
 };
 const getContainer = selector => cy.iframe(selector);
+
 const hideStickyHeader = () => Cypress.$('#header').hide();
 const showStickyHeader = () => Cypress.$('#header').show();
 
+/**
+ * `/api/domestic/home` API 호출이 일어나도록 강제
+ */
 const triggerDomesticHomeApi = () => {
   cy.tick(20000);
 };
