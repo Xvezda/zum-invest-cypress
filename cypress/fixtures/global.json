@@ -1,0 +1,240 @@
+{
+    "ticker": {
+        "domesticIndexItems": [
+            {
+                "id": 1,
+                "name": "코스피",
+                "updateDateTime": "2022-03-15T11:14:59",
+                "price": 2627.19,
+                "priceChange": -18.46,
+                "rateOfChange": -0.7
+            },
+            {
+                "id": 2,
+                "name": "코스피200",
+                "updateDateTime": "2021-08-13T10:35:01",
+                "price": 352.12,
+                "priceChange": -2.49,
+                "rateOfChange": -0.7
+            },
+            {
+                "id": 3,
+                "name": "코스닥",
+                "updateDateTime": "2022-03-15T11:14:59",
+                "price": 871.11,
+                "priceChange": -1.33,
+                "rateOfChange": -0.15
+            }
+        ],
+        "overseasIndexItems": [
+            {
+                "id": 2,
+                "name": "나스닥 종합",
+                "updateDateTime": "2022-03-11T00:00:00",
+                "price": 12843.81,
+                "priceChange": -286.15,
+                "rateOfChange": -2.18
+            },
+            {
+                "id": 1,
+                "name": "다우 산업",
+                "updateDateTime": "2022-03-11T00:00:00",
+                "price": 32944.19,
+                "priceChange": -229.88,
+                "rateOfChange": -0.69
+            },
+            {
+                "id": 11,
+                "name": "닛케이225",
+                "updateDateTime": "2022-03-14T00:00:00",
+                "price": 25307.85,
+                "priceChange": 145.07,
+                "rateOfChange": 0.58
+            },
+            {
+                "id": 10,
+                "name": "상해종합",
+                "updateDateTime": "2022-03-11T00:00:00",
+                "price": 3309.75,
+                "priceChange": 13.66,
+                "rateOfChange": 0.41
+            },
+            {
+                "id": 7,
+                "name": "독일 DAX",
+                "updateDateTime": "2022-03-11T00:00:00",
+                "price": 13628.11,
+                "priceChange": 186.01,
+                "rateOfChange": 1.38
+            }
+        ],
+        "coinItem": {
+            "id": 290,
+            "name": "비트코인",
+            "updateDateTime": "2022-03-15T11:33:58",
+            "price": 48498000,
+            "priceChange": -673000,
+            "rateOfChange": -1.37
+        }
+    },
+    "tradeVolumeRankStock": {
+        "stocks": [
+            {
+                "financeCategory": "ETF_STOCK",
+                "id": "252670",
+                "name": "KODEX 200선물인버스2X",
+                "updateDateTime": "2022-03-15T11:14:59",
+                "symbol": "KOSPI",
+                "currentPrice": 2640,
+                "prevClosingPrice": 2605,
+                "tradeVolume": 83891287,
+                "tradeValue": 221635768175,
+                "marketCap": 2023160500000,
+                "priceChange": 35,
+                "rateOfChange": 1.34,
+                "stockType": "EF"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "093230",
+                "name": "이아이디",
+                "updateDateTime": "2022-03-15T11:14:59",
+                "symbol": "KOSPI",
+                "currentPrice": 190,
+                "prevClosingPrice": 240,
+                "tradeVolume": 63430844,
+                "tradeValue": 12454432341,
+                "marketCap": 177797007045,
+                "priceChange": -50,
+                "rateOfChange": -20.83,
+                "stockType": "ST"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "900110",
+                "name": "이스트아시아홀딩스",
+                "updateDateTime": "2022-03-15T11:15:00",
+                "symbol": "KOSDAQ",
+                "currentPrice": 188,
+                "prevClosingPrice": 166,
+                "tradeVolume": 40730994,
+                "tradeValue": 7757392762,
+                "marketCap": 32220812421,
+                "priceChange": 22,
+                "rateOfChange": 13.25,
+                "stockType": "FS"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "048550",
+                "name": "SM C&C",
+                "updateDateTime": "2022-03-15T11:15:00",
+                "symbol": "KOSDAQ",
+                "currentPrice": 5290,
+                "prevClosingPrice": 4700,
+                "tradeVolume": 39097204,
+                "tradeValue": 205274331880,
+                "marketCap": 511128942000,
+                "priceChange": 590,
+                "rateOfChange": 12.55,
+                "stockType": "ST"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "131400",
+                "name": "이브이첨단소재",
+                "updateDateTime": "2022-03-15T11:15:00",
+                "symbol": "KOSDAQ",
+                "currentPrice": 1940,
+                "prevClosingPrice": 1525,
+                "tradeVolume": 38138591,
+                "tradeValue": 68706177240,
+                "marketCap": 90546896970,
+                "priceChange": 415,
+                "rateOfChange": 27.21,
+                "stockType": "ST"
+            }
+        ],
+        "updateDateTime": "2022-03-15T11:14:59"
+    },
+    "rateOfChangeRankStock": {
+        "stocks": [
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "317240",
+                "name": "TS트릴리온",
+                "updateDateTime": "2022-03-15T11:14:58",
+                "symbol": "KOSDAQ",
+                "currentPrice": 1065,
+                "prevClosingPrice": 820,
+                "tradeVolume": 18120802,
+                "tradeValue": 17483340527,
+                "marketCap": 98703172275,
+                "priceChange": 245,
+                "rateOfChange": 29.88,
+                "stockType": "ST"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "051980",
+                "name": "중앙디앤엠",
+                "updateDateTime": "2022-03-15T11:14:57",
+                "symbol": "KOSDAQ",
+                "currentPrice": 471,
+                "prevClosingPrice": 363,
+                "tradeVolume": 16825729,
+                "tradeValue": 7461706887,
+                "marketCap": 48981969990,
+                "priceChange": 108,
+                "rateOfChange": 29.75,
+                "stockType": "ST"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "219750",
+                "name": "지티지웰니스",
+                "updateDateTime": "2022-03-15T11:11:40",
+                "symbol": "KOSDAQ",
+                "currentPrice": 1230,
+                "prevClosingPrice": 949,
+                "tradeVolume": 1299975,
+                "tradeValue": 1515629060,
+                "marketCap": 23507306130,
+                "priceChange": 281,
+                "rateOfChange": 29.61,
+                "stockType": "ST"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "043710",
+                "name": "서울리거",
+                "updateDateTime": "2022-03-15T11:13:58",
+                "symbol": "KOSDAQ",
+                "currentPrice": 1270,
+                "prevClosingPrice": 980,
+                "tradeVolume": 1698511,
+                "tradeValue": 2133068980,
+                "marketCap": 49671457680,
+                "priceChange": 290,
+                "rateOfChange": 29.59,
+                "stockType": "ST"
+            },
+            {
+                "financeCategory": "DOMESTIC_STOCK",
+                "id": "131400",
+                "name": "이브이첨단소재",
+                "updateDateTime": "2022-03-15T11:15:00",
+                "symbol": "KOSDAQ",
+                "currentPrice": 1940,
+                "prevClosingPrice": 1525,
+                "tradeVolume": 38138591,
+                "tradeValue": 68706177240,
+                "marketCap": 90546896970,
+                "priceChange": 415,
+                "rateOfChange": 27.21,
+                "stockType": "ST"
+            }
+        ],
+        "updateDateTime": "2022-03-15T11:14:58"
+    }
+}
