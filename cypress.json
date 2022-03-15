@@ -21,7 +21,7 @@
                 "thresholdType": "percent" 
             },
             "screenshotConfig": { 
-                "blackout": [],
+                "blackout": [".stock_state_chart", ".ticker_bar"],
                 "capture": "fullPage",
                 "clip": null,
                 "disableTimersAndAnimations": false,
