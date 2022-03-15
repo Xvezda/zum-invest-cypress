@@ -2,6 +2,7 @@ describe('zum 투자 홈', () => {
   const baseUrl = 'https://invest.zum.com';
   beforeEach(() => {
     cy.stubThirdParty();
+    cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
     cy.visit(baseUrl);
   });
@@ -54,7 +55,7 @@ describe('zum 투자 홈', () => {
       '가상화폐': 'https://coin.zum.com',
       '대선 테마주': 'https://daeseon.zum.com/election'
     };
-    cy.get('.gnb_finance ul > li > a')
+    cy.get('.gnb_finance ul > li > a:not(:first-children)')
       .each(menu => {
         const menuText = menu.text();
         clickAndAssertUrl(cy.wrap(menu), urlTable[menuText]);
@@ -71,13 +72,13 @@ describe('zum 투자 홈', () => {
     });
 
     cy.contains('증권 검색').click();
-    cy.intercept('/api/suggest*').as('getSuggest');
+    cy.intercept('/api/suggest*').as('apiSuggest');
 
     cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
       .as('searchInput')
       .type('줌인터넷');
 
-    cy.wait('@getSuggest').then(() => {
+    cy.wait('@apiSuggest').then(() => {
       cy.get('@searchInput').click().type('{enter}');
       cy.url().should('contain', '239340');
     });

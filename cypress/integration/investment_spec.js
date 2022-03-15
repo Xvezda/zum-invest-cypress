@@ -54,7 +54,7 @@ describe('투자노트', () => {
         const url = new URL(req.url);
         const page = parseInt(url.searchParams.get('page'), 10);
         req.reply({fixture: `investment-authors-${page}`});
-      }).as('authors');
+      }).as('apiAuthors');
 
       const [, count, total] = Cypress
         .$('.writers_wrap .count')
@@ -64,19 +64,19 @@ describe('투자노트', () => {
 
       cy.get('.next')
         .click()
-        .wait('@authors')
+        .wait('@apiAuthors')
         .its('request.url')
         .should('contain', 'page=2');
 
       cy.get('.prev')
         .click()
-        .wait('@authors')
+        .wait('@apiAuthors')
         .its('request.url')
         .should('contain', 'page=1');
 
       cy.get('.prev')
         .click()
-        .wait('@authors')
+        .wait('@apiAuthors')
         .its('request.url')
         .should('contain', `page=${total}`);
     });
