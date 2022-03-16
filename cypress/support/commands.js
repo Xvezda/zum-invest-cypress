@@ -54,7 +54,8 @@ Cypress.Commands.add(
   'shouldRequestOnScroll',
   (alias, option = {start: 2, count: 3}) => {
     const getPage = page => {
-      cy.scrollTo('bottom')
+      cy.window()
+        .scrollTo('bottom', {ensureScrollable: false})
         .wait(alias)
         .its('request.url')
         .should('contain', `page=${page}`)
