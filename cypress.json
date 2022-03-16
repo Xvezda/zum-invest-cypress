@@ -2,7 +2,7 @@
     "chromeWebSecurity": false,
     "retries": {
         "runMode": 2,
-        "openMode": 1
+        "openMode": 0
     },
     "env": {
         "cypress-plugin-snapshots": {
