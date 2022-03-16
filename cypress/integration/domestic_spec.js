@@ -15,8 +15,15 @@ const expectContainerLoaded = (...args) => {
 };
 const getContainer = selector => cy.iframe(selector);
 
-const hideStickyHeader = () => Cypress.$('#header').hide();
-const showStickyHeader = () => Cypress.$('#header').show();
+const hideHeaderWhile = callback =>
+  cy.createHidingContext('#header', callback);
+
+const bypassClockOverride = () => {
+  // clock을 기본값으로 돌립니다.
+  // https://docs.cypress.io/api/commands/clock#Behavior
+  cy.clock().invoke('restore');
+  cy.visit('https://invest.zum.com/domestic');
+};
 
 /**
  * `/api/domestic/home` API 호출이 일어나도록 강제
@@ -78,12 +85,6 @@ describe('국내증시', () => {
       );
       getContainer(containerSelector)
         .as('mekoChartContainer');
-
-      hideStickyHeader();
-    });
-
-    afterEach(() => {
-      showStickyHeader();
     });
 
     it('MAP을 상하로 스크롤하여 확대, 축소 할 수 있다.', () => {
@@ -104,14 +105,16 @@ describe('국내증시', () => {
             .toMatchImageSnapshot();
         };
 
-      cy.get(containerSelector)
-        .toMatchImageSnapshot()
-        .then(() => {
-          return Promise.all([
-            zoomAndMatchImageSnapshot(ScrollDirection.DOWN),
-            zoomAndMatchImageSnapshot(ScrollDirection.UP),
-          ])
-        });
+      hideHeaderWhile(() => {
+        cy.get(containerSelector)
+          .toMatchImageSnapshot()
+          .then(() => {
+            return Promise.all([
+              zoomAndMatchImageSnapshot(ScrollDirection.DOWN),
+              zoomAndMatchImageSnapshot(ScrollDirection.UP),
+            ])
+          });
+      });
     });
 
     it('MAP의 종류를 선택할 수 있다.', () => {
@@ -133,15 +136,17 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
-      cy.get('.map_menu_tab li:not(:first-child) > a')
-        .each(menu => {
-          cy.wrap(menu)
-            .click()
-            .parent('.active');
-          
-          cy.get(containerSelector)
-            .toMatchImageSnapshot();
-        });
+      hideHeaderWhile(() => {
+        cy.get('.map_menu_tab li:not(:first-child) > a')
+          .each(menu => {
+            cy.wrap(menu)
+              .click()
+              .parent('.active');
+            
+            cy.get(containerSelector)
+              .toMatchImageSnapshot();
+          });
+      });
     });
 
   });  // END: 국내증시 MAP
@@ -156,7 +161,7 @@ describe('국내증시', () => {
       .should('be.visible');
 
     cy.get('.main_news_list + .navi > .prev')
-      .click();
+      .click({force: true});
 
     cy.get('@newsItems')
       .first()
@@ -164,41 +169,41 @@ describe('국내증시', () => {
   });
 
   describe('실시간 국내 증시', () => {
-    beforeEach(hideStickyHeader);
-    afterEach(showStickyHeader);
-
     const forEachTab = callback =>
-      cy.get('.stock_index_tab > *')
-        .each(tab => {
-          callback(
-            cy.wrap(tab)
-              .trigger('mouseenter')
-          );
+      cy.get('.stock_index_wrap')
+        .as('stockIndexWrap')
+        .scrollIntoView()
+        .find('ul > li > a')
+        .each($tab => {
+          cy.get('@stockIndexWrap')
+            .then($wrap => {
+              callback(
+                cy.wrap($tab)
+                  .trigger('mouseenter', {force: true}),
+                $wrap
+              );
+            });
         });
 
     it('각 지표 탭에 마우스를 올리면 활성화 된다.', () => {
-      forEachTab(subject => subject.should('have.class', 'active'));
+      forEachTab(subject => subject.parent('.active'));
     });
 
     it('각 지표를 올바르게 표시한다.', () => {
-      const selector = '.stock_index_wrap';
-      cy.get(selector).scrollIntoView();
+      forEachTab(
+        (_, $wrap) => {
+          triggerDomesticHomeApi();
 
-      forEachTab(() => {
-        triggerDomesticHomeApi();
-
-        cy.get(selector)
-          .toMatchImageSnapshot()
-      });
+          hideHeaderWhile(() => {
+            cy.wrap($wrap).toMatchImageSnapshot();
+          });
+        });
     });
   });  // END: 실시간 국내 증시
 
   describe('이번주 투자 캘린더', () => {
     beforeEach(() => {
-      // 현재 테스트에서는 clock을 기본값으로 돌립니다.
-      // https://docs.cypress.io/api/commands/clock#Behavior
-      cy.clock().invoke('restore');
-      cy.visit('https://invest.zum.com/domestic');
+      bypassClockOverride();
     });
 
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 된다.', () => {
@@ -230,42 +235,40 @@ describe('국내증시', () => {
   });  // END: 이번주 투자 캘린더
 
   describe('오늘의 HOT PICK', () => {
-    beforeEach(hideStickyHeader);
-    afterEach(showStickyHeader);
-
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
       triggerDomesticHomeApi();
 
-      cy.get('.today_hot_pick')
-        .within(() => {
-          cy.get('ul > li:not(:first-children) > a')
-            .first()
-            .each($menu => {
-              cy.wrap($menu)
-                .click()
-                .parent('.active')
-                .toMatchImageSnapshot();
-            });
-        });
+      hideHeaderWhile(() => {
+        cy.get('.today_hot_pick')
+          .within(() => {
+            cy.get('ul > li:not(:first-children) > a')
+              .first()
+              .each($menu => {
+                  cy.wrap($menu)
+                    .click()
+                    .parent('.active')
+                    .toMatchImageSnapshot();
+              });
+          });
+      });
     });
-  });
+  }); // END: 오늘의 HOT PICK
 
   describe('ZUM 인기종목', () => {
-    beforeEach(hideStickyHeader);
-    afterEach(showStickyHeader);
-
     it('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
       triggerDomesticHomeApi();
 
-      cy.get('.popularity_event_wrap')
-        .within(() => {
-          cy.get('ul > li > a')
-            .each($tab => {
-              return cy.wrap($tab)
-                .trigger('mouseenter', 'center', {force: true})
-                .toMatchImageSnapshot();
-            });
-        });
+      hideHeaderWhile(() => {
+        cy.get('.popularity_event_wrap')
+          .within(() => {
+            cy.get('ul > li > a')
+              .each($tab => {
+                return cy.wrap($tab)
+                  .trigger('mouseenter', {force: true})
+                  .toMatchImageSnapshot();
+              });
+          });
+      });
     });
   });
 
