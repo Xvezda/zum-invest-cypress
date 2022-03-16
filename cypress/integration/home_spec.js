@@ -4,20 +4,28 @@ describe('zum 투자 홈', () => {
     cy.stubThirdParty();
     cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
-    cy.intercept(/\.(jpe?g|png|gif|webp)$/, req => {
-      try {
+    /*
+    cy.intercept(/\.(jpe?g|png|gif|webp)$/,
+      {
+        middleware: true
+      },
+      req => {
         const url = new URL(req.url);
-        const [, w, h] = url.pathname.match(/^\/(\d+)x(\d+)\//);
-        // 사진을 크기에 따라 동일한 플레이스홀더로 치환
-        req.redirect(`https://placekitten.com/g/${w}/${h}`);
-      } catch (e) {
-        req.continue();
+        const pathRegex = /^\/(\d+)x(\d+)\//;
+        if (pathRegex.test(url.pathname)) {
+          const [, w, h] = url.pathname.match(pathRegex);
+          // 사진을 크기에 따라 동일한 플레이스홀더로 치환
+          req.redirect(`https://placekitten.com/g/${w}/${h}`);
+        } else {
+          req.destroy();
+        }
       }
-    }).as('thumbnail');
+    );
+    */
     cy.visit(baseUrl);
   });
 
-  it.only('오늘의 주요 뉴스가 보여진다.', () => {
+  it('오늘의 주요 뉴스가 보여진다.', () => {
     const fixture = 'foobar';
     const origMap = new Map();
     cy.get('.title, .word, .etc, .txt')
@@ -27,11 +35,23 @@ describe('zum 투자 홈', () => {
         $el.text(fixture);
       });
 
-    cy.hideWithinContext('#header', () => {
-        cy.wait('@thumbnail')
+    cy.get('.today_news')
+      .first()
+      .scrollIntoView();
+
+    cy.createHidingContext('#header', () => {
+        cy.get('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
+          .each($img => $img.remove());
+
+        cy.get('.today_news')
+          .first()
+          .toMatchImageSnapshot();
+        /*
+        cy.waitForImage('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
           .get('.today_news')
           .first()
           .toMatchImageSnapshot();
+          */
         
         cy.get('@replacedTargets')
           .each($el => {
