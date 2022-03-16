@@ -81,3 +81,14 @@ Cypress.Commands.add(
       .then($el => cy.wrap($el.show()));
   }
 );
+
+Cypress.Commands.add(
+  'waitForImage',
+  (selector = 'img') => {
+    cy.get(selector, {log: false})
+      .each($img => {
+        cy.wrap($img, {log: false})
+          .its('0.naturalWidth').should('be.greaterThan', 0);
+      });
+  }
+);
