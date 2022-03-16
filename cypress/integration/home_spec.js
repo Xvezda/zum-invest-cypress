@@ -4,7 +4,39 @@ describe('zum 투자 홈', () => {
     cy.stubThirdParty();
     cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
+    cy.intercept(/\.(jpe?g|png|gif|webp)$/, req => {
+      try {
+        const url = new URL(req.url);
+        const [, w, h] = url.pathname.match(/^\/(\d+)x(\d+)\//);
+        // 사진을 크기에 따라 동일한 플레이스홀더로 치환
+        req.redirect(`https://placekitten.com/g/${w}/${h}`);
+      } catch (e) {
+        req.continue();
+      }
+    });
     cy.visit(baseUrl);
+  });
+
+  it.only('오늘의 주요 뉴스가 보여진다.', () => {
+    const fixture = 'foobar';
+    const origMap = new Map();
+    cy.get('.title, .word, .etc, .txt')
+      .as('replacedTargets')
+      .each($el => {
+        origMap.set($el[0], $el.html());
+        $el.text(fixture);
+      });
+
+    cy.hideWithinContext('#header', () => {
+      cy.get('.today_news')
+        .first()
+        .toMatchImageSnapshot();
+      
+      cy.get('@replacedTargets')
+        .each($el => {
+          $el.html(origMap.get($el[0]));
+        });
+    });
   });
 
   it('티커에 마우스를 올리면 멈추고, 올라가있지 않으면 다시 움직인다.', () => {
