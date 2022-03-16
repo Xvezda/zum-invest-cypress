@@ -68,8 +68,9 @@ describe('국내증시', () => {
               .its('0.contentWindow')
               .then(win => {
                 win.eval(`
-                  document.querySelectorAll('[id^="chart-info-tooltip"]')
-                    .forEach(node => node.parentNode.removeChild(node));
+                  const style = document.createElement('style');
+                  style.textContent = '[id^="chart-info-tooltip"] { display: none }';
+                  document.head.appendChild(style);
                 `);
               });
           }
