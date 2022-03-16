@@ -9,6 +9,7 @@
     "open": "cypress open"
   },
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.1.0",
     "cypress": "9.5.2",
     "cypress-iframe": "^1.0.1",
     "cypress-image-snapshot": "^4.0.1",
