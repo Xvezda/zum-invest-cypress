@@ -67,3 +67,16 @@ Cypress.Commands.add(
     getPage(option.start);
   }
 );
+
+Cypress.Commands.add(
+  'hideWithinContext',
+  (selector, callback) => {
+    cy.get(selector)
+      .then($el => cy.wrap($el.hide()))
+      .then($el => {
+        callback($el);
+        return cy.wrap($el);
+      })
+      .then($el => cy.wrap($el.show()));
+  }
+);
