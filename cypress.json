@@ -6,7 +6,7 @@
     },
     "env": {
         "cypress-plugin-snapshots": {
-            "autoCleanUp": true,
+            "autoCleanUp": false,
             "autopassNewSnapshots": true,
             "diffLines": 3,
             "excludeFields": [], 
