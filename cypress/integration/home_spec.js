@@ -13,7 +13,7 @@ describe('zum 투자 홈', () => {
       } catch (e) {
         req.continue();
       }
-    });
+    }).as('thumbnail');
     cy.visit(baseUrl);
   });
 
@@ -28,15 +28,16 @@ describe('zum 투자 홈', () => {
       });
 
     cy.hideWithinContext('#header', () => {
-      cy.get('.today_news')
-        .first()
-        .toMatchImageSnapshot();
-      
-      cy.get('@replacedTargets')
-        .each($el => {
-          $el.html(origMap.get($el[0]));
-        });
-    });
+        cy.wait('@thumbnail')
+          .get('.today_news')
+          .first()
+          .toMatchImageSnapshot();
+        
+        cy.get('@replacedTargets')
+          .each($el => {
+            $el.html(origMap.get($el[0]));
+          });
+      });
   });
 
   it('티커에 마우스를 올리면 멈추고, 올라가있지 않으면 다시 움직인다.', () => {
