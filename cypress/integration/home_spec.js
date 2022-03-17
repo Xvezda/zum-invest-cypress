@@ -2,26 +2,13 @@ describe('zum 투자 홈', () => {
   const baseUrl = 'https://invest.zum.com';
   beforeEach(() => {
     cy.stubThirdParty();
-    cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
-    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
-    /*
-    cy.intercept(/\.(jpe?g|png|gif|webp)$/,
-      {
-        middleware: true
-      },
-      req => {
-        const url = new URL(req.url);
-        const pathRegex = /^\/(\d+)x(\d+)\//;
-        if (pathRegex.test(url.pathname)) {
-          const [, w, h] = url.pathname.match(pathRegex);
-          // 사진을 크기에 따라 동일한 플레이스홀더로 치환
-          req.redirect(`https://placekitten.com/g/${w}/${h}`);
-        } else {
-          req.destroy();
-        }
-      }
-    );
-    */
+    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200}).as('pipPlayer');
+    cy.intercept('/api/home/category-news*', req => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page'), 10);
+      req.reply({fixture: `category-news-${page}`});
+    }).as('categoryNews');
+
     cy.visit(baseUrl);
   });
 
@@ -46,12 +33,6 @@ describe('zum 투자 홈', () => {
         cy.get('.today_news')
           .first()
           .toMatchImageSnapshot();
-        /*
-        cy.waitForImage('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
-          .get('.today_news')
-          .first()
-          .toMatchImageSnapshot();
-          */
         
         cy.get('@replacedTargets')
           .each($el => {
@@ -124,26 +105,31 @@ describe('zum 투자 홈', () => {
       }
     });
 
-    cy.contains('증권 검색').click();
-    cy.intercept('/api/suggest*').as('apiSuggest');
+    cy.contains('증권 검색').click({force: true});
+    cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
+      .as('apiSuggest');
 
     cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
       .as('searchInput')
       .type('줌인터넷');
 
     cy.wait('@apiSuggest').then(() => {
-      cy.get('@searchInput').click().type('{enter}');
-      cy.url().should('contain', '239340');
+      cy.get('.stock_list_wrap .list > *')
+        .its('length')
+        .should('be.greaterThan', 0);
+
+      cy.get('@searchInput')
+        .click({force: true})
+        .type('{enter}', {force: true});
+      
+      cy.url()
+        .should('contain', '239340');
     });
   });
 
   describe('분야별 실시간 뉴스', () => {
     beforeEach(() => {
-      cy.intercept('/api/home/category-news*', req => {
-        const url = new URL(req.url);
-        const page = parseInt(url.searchParams.get('page'), 10);
-        req.reply({fixture: `category-news-${page}`});
-      }).as('categoryNews');
+      cy.contains('분야별 실시간 뉴스').scrollIntoView();
     });
 
     it('카테고리를 변경할 수 있다.', () => {
@@ -159,10 +145,12 @@ describe('zum 투자 홈', () => {
         .each(menu => {
           const menuText = menu.text();
           cy.wrap(menu)
-            .click({force: true})
-            .wait('@categoryNews')
-            .its('request.url')
-            .should('contain', `category=${categoryTable[menuText]}`);
+            .click({force: true});
+
+          cy.get('@categoryNews')
+            .should(({ request }) => {
+              expect(request.url).to.contain(`category=${categoryTable[menuText]}`);
+            });
         });
     });
 

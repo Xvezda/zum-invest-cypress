@@ -36,14 +36,19 @@ const ensureMekoChartLoaded = () => {
   expectContainerLoaded(
     containerSelector,
     {
-      url: 'https://chart-finance.zum.com/api/chart/treemap/domestic/',
+      url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
       onAfterLoad: () => {
+        triggerDomesticHomeApi();
         cy.iframe(containerSelector)
-          .find('#chart-svg [id^="treemap-node"]');
-
-        cy.get(containerSelector)
-          .its('0.contentWindow')
-          .then(injectTooltipHidingStyle);
+          .find('#chart-svg [id^="treemap-node-stock"]')
+          .then(() => {
+            return cy.wait('@apiMekoChart');
+          })
+          .then(() => {
+            return cy.get(containerSelector)
+              .its('0.contentWindow')
+              .then(injectTooltipHidingStyle)
+          });
       }
     }
   );
@@ -63,14 +68,15 @@ const bypassClockOverride = () => {
 /**
  * `/api/domestic/home` API 호출이 일어나도록 강제
  */
-const triggerDomesticHomeApi = () => {
-  cy.tick(20001);
-};
+const triggerDomesticHomeApi = () =>
+  cy.tick(20000)
+    .wait('@apiDomesticHome');
 
 describe('국내증시', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
     cy.clock(now);
+    cy.tick(1000);
   });
 
   afterEach(() => {
@@ -88,7 +94,6 @@ describe('국내증시', () => {
     }).as('apiRealTimeNews');
 
     cy.visit('https://invest.zum.com/domestic');
-    ensureMekoChartLoaded();
   });
 
   describe('국내증시 MAP', () => {
@@ -112,20 +117,21 @@ describe('국내증시', () => {
           };
           cy.get('@mekoChartContainer')
             .find('#chart-svg')
-            .trigger('wheel', 'center', option);
+            .trigger('wheel', 'center', option)
 
           return cy.get(containerSelector)
             .toMatchImageSnapshot();
         };
 
+      ensureMekoChartLoaded();
       hideHeaderWhile(() => {
         cy.get(containerSelector)
           .toMatchImageSnapshot()
           .then(() => {
-            return Promise.all([
-              zoomAndMatchImageSnapshot(ScrollDirection.DOWN),
-              zoomAndMatchImageSnapshot(ScrollDirection.UP),
-            ])
+            return zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
+          })
+          .then(() => {
+            return zoomAndMatchImageSnapshot(ScrollDirection.UP);
           });
       });
     });
@@ -149,14 +155,15 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+      ensureMekoChartLoaded();
+
       hideHeaderWhile(() => {
         cy.get('.map_menu_tab li:not(:first-child) > a')
           .each(menu => {
             cy.wrap(menu)
-              .click()
-              .parent('.active');
+              .click({force: true})
+              .parent('.active')
             
-            ensureMekoChartLoaded();
             cy.get(containerSelector)
               .toMatchImageSnapshot();
           });
@@ -166,6 +173,8 @@ describe('국내증시', () => {
   });  // END: 국내증시 MAP
 
   it('HOT 업종을 화살표를 눌러 좌우로 살펴볼 수 있다.', () => {
+    cy.wait('@apiDomesticCommon');
+
     cy.get('.main_news_list')
       .scrollIntoView();
 
@@ -271,19 +280,20 @@ describe('국내증시', () => {
 
   describe('ZUM 인기종목', () => {
     it('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
-      triggerDomesticHomeApi();
-
-      hideHeaderWhile(() => {
-        cy.get('.popularity_event_wrap')
-          .within(() => {
-            cy.get('ul > li > a')
-              .each($tab => {
-                return cy.wrap($tab)
-                  .trigger('mouseenter', {force: true})
-                  .toMatchImageSnapshot();
+      triggerDomesticHomeApi()
+        .then(() => {
+          hideHeaderWhile(() => {
+            cy.get('.popularity_event_wrap')
+              .within(() => {
+                cy.get('ul > li > a')
+                  .each($tab => {
+                    return cy.wrap($tab)
+                      .trigger('mouseenter', {force: true})
+                      .toMatchImageSnapshot();
+                  });
               });
           });
-      });
+        });
     });
   });
 

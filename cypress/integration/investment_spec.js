@@ -34,7 +34,7 @@ describe('투자노트', () => {
             .each(category => {
               const categoryText = category.text();
               cy.contains(categoryText)
-                .click()
+                .click({force: true})
                 .wait('@posts')
                 .its('request.url')
                 .should('contain', `category=${categoryTable[categoryText]}`);
