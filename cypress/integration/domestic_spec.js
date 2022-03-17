@@ -72,6 +72,7 @@ const triggerDomesticHomeApi = () =>
   cy.tick(20000)
     .wait('@apiDomesticHome');
 
+
 describe('국내증시', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
@@ -94,6 +95,7 @@ describe('국내증시', () => {
     }).as('apiRealTimeNews');
 
     cy.visit('https://invest.zum.com/domestic');
+    ensureMekoChartLoaded();
   });
 
   describe('국내증시 MAP', () => {
@@ -108,31 +110,35 @@ describe('국내증시', () => {
         DOWN: 1,
       };
 
-      const zoomAndMatchImageSnapshot =
-        (direction=ScrollDirection.DOWN, delta=4) => {
-          const option = {
-            force: true,
-            deltaX: 0, deltaZ: 0, deltaMode: 0,
-            deltaY: direction === ScrollDirection.UP ? delta : -delta,
-          };
-          cy.get('@mekoChartContainer')
-            .find('#chart-svg')
-            .trigger('wheel', 'center', option)
-
-          return cy.get(containerSelector)
-            .toMatchImageSnapshot();
+      const zoomAndMatchImageSnapshot = (
+        direction=ScrollDirection.DOWN,
+        delta=4
+      ) => {
+        const option = {
+          force: true,
+          deltaX: 0, deltaZ: 0, deltaMode: 0,
+          deltaY: direction === ScrollDirection.UP ? delta : -delta,
         };
 
-      ensureMekoChartLoaded();
+        const emulateUserScroll = () =>
+          cy.get('@mekoChartContainer')
+            .find('#chart-svg')
+            .trigger('wheel', 'center', option);
+
+        emulateUserScroll()
+          .then(() => {
+            cy.get(containerSelector)
+              .toMatchImageSnapshot();
+          });
+      };
+
+      const doUserZoomIn = () => zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
+      const doUserZoomOut = () => zoomAndMatchImageSnapshot(ScrollDirection.UP);
       hideHeaderWhile(() => {
         cy.get(containerSelector)
           .toMatchImageSnapshot()
-          .then(() => {
-            return zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
-          })
-          .then(() => {
-            return zoomAndMatchImageSnapshot(ScrollDirection.UP);
-          });
+          .then(doUserZoomIn)
+          .then(doUserZoomOut);
       });
     });
 
@@ -155,8 +161,6 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
-      ensureMekoChartLoaded();
-
       hideHeaderWhile(() => {
         cy.get('.map_menu_tab li:not(:first-child) > a')
           .each(menu => {
