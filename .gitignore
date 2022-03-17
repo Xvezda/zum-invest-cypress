@@ -106,3 +106,5 @@ dist
 # Cypress
 cypress/videos
 cypress/screenshots
+*.actual.png
+*.diff.png
