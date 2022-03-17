@@ -21,10 +21,14 @@ const injectTooltipHidingStyle = win => {
 };
 
 const interceptApiRequests = () => {
-  cy.intercept('/api/global', {fixture: 'global'});
-  cy.intercept('/api/domestic/common', {fixture: 'domestic-common'});
-  cy.intercept('/api/domestic/home', {fixture: 'domestic-home'});
-  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'});
+  cy.intercept('/api/global', {fixture: 'global'})
+    .as('apiGlobal');
+  cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
+    .as('apiDomesticCommon');
+  cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
+    .as('apiDomesticHome');
+  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
+    .as('apiMekoChart');
 };
 
 const containerSelector = '.map_cont iframe';
