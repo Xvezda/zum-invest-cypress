@@ -1,15 +1,5 @@
 require('cypress-iframe');
 
-const expectContainerLoaded = (...args) => {
-  cy.frameLoaded(...args);
-
-  const option = args[1];
-  if (option && typeof option === 'object') {
-    if (typeof option.onAfterLoad === 'function') {
-      option.onAfterLoad();
-    }
-  }
-};
 const getContainer = selector => cy.iframe(selector);
 
 const injectTooltipHidingStyle = win => {
@@ -32,6 +22,17 @@ const interceptApiRequests = () => {
 };
 
 const containerSelector = '.map_cont iframe';
+const expectContainerLoaded = (...args) => {
+  cy.frameLoaded(...args);
+
+  const option = args[1];
+  if (option && typeof option === 'object') {
+    if (typeof option.onAfterLoad === 'function') {
+      option.onAfterLoad();
+    }
+  }
+};
+
 const ensureMekoChartLoaded = () => {
   expectContainerLoaded(
     containerSelector,
@@ -60,9 +61,9 @@ const hideHeaderWhile = callback =>
 const bypassClockOverride = () => {
   // clock을 기본값으로 돌립니다.
   // https://docs.cypress.io/api/commands/clock#Behavior
-  cy.clock().invoke('restore');
-  interceptApiRequests();
-  cy.visit('https://invest.zum.com/domestic');
+  return cy.clock()
+    .invoke('restore')
+    .visit('https://invest.zum.com/domestic');
 };
 
 /**
@@ -231,7 +232,8 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     beforeEach(() => {
-      bypassClockOverride();
+      bypassClockOverride()
+        .then(interceptApiRequests);
     });
 
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 된다.', () => {
