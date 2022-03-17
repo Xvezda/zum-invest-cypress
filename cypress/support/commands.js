@@ -67,7 +67,15 @@ Cypress.Commands.add(
   (alias, option = {start: 2, count: 3}) => {
     const getPage = page => {
       cy.window()
-        .scrollTo('bottom', {ensureScrollable: false})
+        .scrollTo('bottomLeft', {
+          duration: 10,
+          ensureScrollable: false,
+        })
+        .get('.site_footer')
+        .scrollIntoView({
+          duration: 10,
+          offset: {top: 100, left: 0}
+        })
         .wait(alias)
         .its('request.url')
         .should('contain', `page=${page}`)
