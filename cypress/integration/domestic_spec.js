@@ -1,8 +1,5 @@
 require('cypress-iframe');
 
-/**
- * 메코차트의 컨테이너가 로드되었는지 확인하는 함수
- */
 const expectContainerLoaded = (...args) => {
   cy.frameLoaded(...args);
 
@@ -15,6 +12,39 @@ const expectContainerLoaded = (...args) => {
 };
 const getContainer = selector => cy.iframe(selector);
 
+const injectTooltipHidingStyle = win => {
+  win.eval(`
+    const style = document.createElement('style');
+    style.textContent = '[id*="chart-info-tooltip"] { display: none !important }';
+    document.head.appendChild(style);
+  `);
+};
+
+const interceptApiRequests = () => {
+  cy.intercept('/api/global', {fixture: 'global'});
+  cy.intercept('/api/domestic/common', {fixture: 'domestic-common'});
+  cy.intercept('/api/domestic/home', {fixture: 'domestic-home'});
+  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'});
+};
+
+const containerSelector = '.map_cont iframe';
+const ensureMekoChartLoaded = () => {
+  expectContainerLoaded(
+    containerSelector,
+    {
+      url: 'https://chart-finance.zum.com/api/chart/treemap/domestic/',
+      onAfterLoad: () => {
+        cy.iframe(containerSelector)
+          .find('#chart-svg [id^="treemap-node"]');
+
+        cy.get(containerSelector)
+          .its('0.contentWindow')
+          .then(injectTooltipHidingStyle);
+      }
+    }
+  );
+};
+
 const hideHeaderWhile = callback =>
   cy.createHidingContext('#header', callback);
 
@@ -22,6 +52,7 @@ const bypassClockOverride = () => {
   // clock을 기본값으로 돌립니다.
   // https://docs.cypress.io/api/commands/clock#Behavior
   cy.clock().invoke('restore');
+  interceptApiRequests();
   cy.visit('https://invest.zum.com/domestic');
 };
 
@@ -29,7 +60,7 @@ const bypassClockOverride = () => {
  * `/api/domestic/home` API 호출이 일어나도록 강제
  */
 const triggerDomesticHomeApi = () => {
-  cy.tick(20000);
+  cy.tick(20001);
 };
 
 describe('국내증시', () => {
@@ -42,15 +73,10 @@ describe('국내증시', () => {
     cy.clock().invoke('restore');
   });
 
-  const containerSelector = '.map_cont iframe';
   beforeEach(() => {
     cy.stubThirdParty();
 
-    cy.intercept('/api/global', {fixture: 'global'});
-    cy.intercept('/api/domestic/common', {fixture: 'domestic-common'});
-    cy.intercept('/api/domestic/home', {fixture: 'domestic-home'});
-    cy.intercept('/api/domestic/home/meko-chart', {fixture: 'meko-chart'});
-
+    interceptApiRequests();
     cy.intercept('/api/domestic/home/real-time-news*', req => {
       const url = new URL(req.url);
       const page = parseInt(url.searchParams.get('page'), 10);
@@ -58,32 +84,11 @@ describe('국내증시', () => {
     }).as('apiRealTimeNews');
 
     cy.visit('https://invest.zum.com/domestic');
-    
-    const injectTooltipHidingStyle = win => {
-      win.eval(`
-        const style = document.createElement('style');
-        style.textContent = '[id^="chart-info-tooltip"] { display: none }';
-        document.head.appendChild(style);
-      `);
-    };
-    expectContainerLoaded(
-      containerSelector,
-      {
-        onAfterLoad: () => {
-          cy.get(containerSelector)
-            .its('0.contentWindow')
-            .then(injectTooltipHidingStyle);
-        }
-      }
-    );
+    ensureMekoChartLoaded();
   });
 
   describe('국내증시 MAP', () => {
     beforeEach(() => {
-      // `cy.viewport`를 사용해서 screenshot 저장시 차트가 초기화되는 버그를 해결 가능
-      // https://docs.cypress.io/api/commands/viewport#Arguments
-      cy.viewport('macbook-13');
-
       getContainer(containerSelector)
         .as('mekoChartContainer');
     });
@@ -93,13 +98,16 @@ describe('국내증시', () => {
         UP: 0,
         DOWN: 1,
       };
+
       const zoomAndMatchImageSnapshot =
         (direction=ScrollDirection.DOWN, delta=4) => {
           const option = {
+            force: true,
             deltaX: 0, deltaZ: 0, deltaMode: 0,
             deltaY: direction === ScrollDirection.UP ? delta : -delta,
           };
           cy.get('@mekoChartContainer')
+            .find('#chart-svg')
             .trigger('wheel', 'center', option);
 
           return cy.get(containerSelector)
@@ -144,6 +152,7 @@ describe('국내증시', () => {
               .click()
               .parent('.active');
             
+            ensureMekoChartLoaded();
             cy.get(containerSelector)
               .toMatchImageSnapshot();
           });
@@ -153,6 +162,9 @@ describe('국내증시', () => {
   });  // END: 국내증시 MAP
 
   it('HOT 업종을 화살표를 눌러 좌우로 살펴볼 수 있다.', () => {
+    cy.get('.main_news_list')
+      .scrollIntoView();
+
     cy.get('.main_news_list + .navi > .next')
       .click({force: true});  // button is being covered by another element: <html lang="ko">...</html>??
 
@@ -178,11 +190,7 @@ describe('국내증시', () => {
         .each($tab => {
           cy.get('@stockIndexWrap')
             .then($wrap => {
-              callback(
-                cy.wrap($tab)
-                  .trigger('mouseenter', {force: true}),
-                $wrap
-              );
+              callback($tab, $wrap);
             });
         });
 
@@ -192,11 +200,13 @@ describe('국내증시', () => {
 
     it('각 지표를 올바르게 표시한다.', () => {
       forEachTab(
-        (_, $wrap) => {
+        ($tab, $wrap) => {
           triggerDomesticHomeApi();
 
           hideHeaderWhile(() => {
+            cy.wrap($tab).trigger('mouseenter', {force: true}),
             cy.wrap($wrap).toMatchImageSnapshot();
+            cy.wrap($tab).trigger('mouseleave', {force: true});
           });
         });
     });
