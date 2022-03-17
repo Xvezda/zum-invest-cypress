@@ -1,11 +1,15 @@
+const interceptApiRequests = () => {
+  cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
+  cy.intercept('/api/overseas/common', {statusCode: 200});
+  cy.intercept('/api/overseas/home/meko-chart', {statusCode: 200});
+  cy.intercept('/api/overseas/home/representative-stock*', {statusCode: 200});
+};
+
 describe('해외증시', () => {
   beforeEach(() => {
     cy.stubThirdParty();
 
-    cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
-    cy.intercept('/api/overseas/common', {statusCode: 200});
-    cy.intercept('/api/overseas/home/meko-chart', {statusCode: 200});
-    cy.intercept('/api/overseas/home/representative-stock*', {statusCode: 200});
+    interceptApiRequests();
     cy.intercept('/api/overseas/home/real-time-news*', req => {
       const url = new URL(req.url);
       const page = parseInt(url.searchParams.get('page'), 10);
