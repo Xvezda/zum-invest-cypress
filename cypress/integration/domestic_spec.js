@@ -42,6 +42,7 @@ describe('국내증시', () => {
     cy.clock().invoke('restore');
   });
 
+  const containerSelector = '.map_cont iframe';
   beforeEach(() => {
     cy.stubThirdParty();
 
@@ -57,32 +58,32 @@ describe('국내증시', () => {
     }).as('apiRealTimeNews');
 
     cy.visit('https://invest.zum.com/domestic');
+    
+    const injectTooltipHidingStyle = win => {
+      win.eval(`
+        const style = document.createElement('style');
+        style.textContent = '[id^="chart-info-tooltip"] { display: none }';
+        document.head.appendChild(style);
+      `);
+    };
+    expectContainerLoaded(
+      containerSelector,
+      {
+        onAfterLoad: () => {
+          cy.get(containerSelector)
+            .its('0.contentWindow')
+            .then(injectTooltipHidingStyle);
+        }
+      }
+    );
   });
 
   describe('국내증시 MAP', () => {
-    const containerSelector = '.map_cont iframe';
     beforeEach(() => {
       // `cy.viewport`를 사용해서 screenshot 저장시 차트가 초기화되는 버그를 해결 가능
       // https://docs.cypress.io/api/commands/viewport#Arguments
       cy.viewport('macbook-13');
 
-      expectContainerLoaded(
-        containerSelector,
-        {
-          onAfterLoad: () => {
-            // 툴팁 애니메이션을 기다리지 않고 제거
-            cy.get(containerSelector)
-              .its('0.contentWindow')
-              .then(win => {
-                win.eval(`
-                  const style = document.createElement('style');
-                  style.textContent = '[id^="chart-info-tooltip"] { display: none }';
-                  document.head.appendChild(style);
-                `);
-              });
-          }
-        }
-      );
       getContainer(containerSelector)
         .as('mekoChartContainer');
     });
