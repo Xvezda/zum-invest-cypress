@@ -44,10 +44,22 @@ Cypress.Commands.add('stubThirdParty', () => {
 
   register(/^https:\/\/((secure)?pubads|stats)\.g\.doubleclick\.net\/.*/);
   register('https://pagead2.googlesyndication.com/**');
-  register('https://display.ad.daum.net/**');
+  register('https://www.googleadservices.com/**');
+  register('https://www.googletagmanager.com/**');
+  register('https://analytics.google.com/**');
+  register('https://t1.daumcdn.net/**');
+  register(/^https:\/\/(bc|display)\.ad\.daum\.net\/.*/);
   register(/https:\/\/(bidder|gum|ssp-sync)\.criteo\.com\/.*/);
   register(/https:\/\/(zumads|plog)\.vrixon\.com\/.*/);
   register('https://aem-ingest.onkakao.net/**');
+  register('https://static.dable.io/**');
+  register('https://wcs.naver.com/**');
+
+  cy.on('uncaught:exception', err => {
+    if (err.message.includes('kakaoPixel is not defined')) {
+      return false;
+    }
+  });
 });
 
 Cypress.Commands.add(
