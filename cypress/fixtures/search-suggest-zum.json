@@ -1,0 +1,15 @@
+{
+    "index": [],
+    "stock": [
+        {
+            "financeCategory": "DOMESTIC_STOCK",
+            "marketName": "코스닥",
+            "id": "239340",
+            "code": "239340",
+            "name": "줌인터넷",
+            "sort": 7174438
+        }
+    ],
+    "coin": [],
+    "market": []
+}
