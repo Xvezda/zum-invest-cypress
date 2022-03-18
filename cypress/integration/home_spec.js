@@ -1,5 +1,5 @@
 describe('zum 투자 홈', () => {
-  const baseUrl = 'https://invest.zum.com';
+  const baseUrl = Cypress.config('baseUrl');
   beforeEach(() => {
     cy.stubThirdParty();
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200}).as('pipPlayer');

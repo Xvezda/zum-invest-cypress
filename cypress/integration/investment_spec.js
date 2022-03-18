@@ -4,12 +4,12 @@ const expectMenuToActivate = menu =>
 describe('투자노트', () => {
   beforeEach(() => {
     cy.stubThirdParty();
-    cy.visit('https://invest.zum.com/investment');
+    cy.visit('/investment');
   });
 
   describe('최신글', () => {
     beforeEach(() => {
-      cy.visit('https://invest.zum.com/investment/recently')
+      cy.visit('/investment/recently')
         .then(() => {
           cy.intercept('/api/investment/posts*', req => {
             const url = new URL(req.url);
