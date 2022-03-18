@@ -107,7 +107,6 @@ describe('국내증시', () => {
 
     it('MAP의 종류를 선택할 수 있다.', () => {
       const mapTable = {
-        'TOP1000': 'ALL',
         '코스피': 'KOSPI',
         '코스닥': 'KOSDAQ'
       };
@@ -124,15 +123,19 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+      const shouldMatchMekoChartSnapshot = () => {
+        cy.get(containerSelector)
+          .toMatchImageSnapshot();
+      };
+
       hideHeaderWhile(() => {
+        shouldMatchMekoChartSnapshot();
         cy.get('.map_menu_tab li:not(:first-child) > a')
           .each($menu => {
             cy.wrap($menu)
               .click({force: true})
               .parent('.active')
-            
-            cy.get(containerSelector)
-              .toMatchImageSnapshot();
+              .then(shouldMatchMekoChartSnapshot);
           });
       });
     });
