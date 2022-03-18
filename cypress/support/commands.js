@@ -53,7 +53,7 @@ Cypress.Commands.add('stubThirdParty', () => {
   register(/https:\/\/(zumads|plog)\.vrixon\.com\/.*/);
   register('https://aem-ingest.onkakao.net/**');
   register('https://static.dable.io/**');
-  register('https://wcs.naver.com/**');
+  register('https://wcs.naver.net/**');
 
   cy.on('uncaught:exception', err => {
     if (err.message.includes('kakaoPixel is not defined')) {
