@@ -6,7 +6,7 @@
     "viewportWidth": 1280,
     "viewportHeight": 800,
     "retries": {
-        "runMode": 9,
+        "runMode": 2,
         "openMode": 0
     },
     "env": {
