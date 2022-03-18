@@ -2,14 +2,18 @@ describe('zum 투자 홈', () => {
   const baseUrl = Cypress.config('baseUrl');
   beforeEach(() => {
     cy.stubThirdParty();
-    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200}).as('pipPlayer');
+    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200})
+      .as('pipPlayer');
+    cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
+      .as('apiSuggest');
     cy.intercept('/api/home/category-news*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `category-news-${page}`});
-    }).as('categoryNews');
+        const url = new URL(req.url);
+        const page = parseInt(url.searchParams.get('page'), 10);
+        req.reply({fixture: `category-news-${page}`});
+      })
+      .as('categoryNews');
 
-    cy.visit(baseUrl);
+    cy.visit('/');
   });
 
   it('오늘의 주요 뉴스가 보여진다.', () => {
@@ -27,18 +31,18 @@ describe('zum 투자 홈', () => {
       .scrollIntoView();
 
     cy.createHidingContext('#header', () => {
-        cy.get('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
-          .each($img => $img.remove());
+      cy.get('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
+        .each($img => $img.remove());
 
-        cy.get('.today_news')
-          .first()
-          .toMatchImageSnapshot();
-        
-        cy.get('@replacedTargets')
-          .each($el => {
-            $el.html(origMap.get($el[0]));
-          });
-      });
+      cy.get('.today_news')
+        .first()
+        .toMatchImageSnapshot();
+      
+      cy.get('@replacedTargets')
+        .each($el => {
+          $el.html(origMap.get($el[0]));
+        });
+    });
   });
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
@@ -51,8 +55,6 @@ describe('zum 투자 홈', () => {
     });
 
     cy.contains('증권 검색').click({force: true});
-    cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
-      .as('apiSuggest');
 
     cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
       .as('searchInput')
