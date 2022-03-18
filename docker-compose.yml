@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  e2e:
+    build: .
+    volumes:
+      - ./package.json:/app/package.json
+      - ./cypress.json:/app/cypress.json
+      - ./cypress:/app/cypress
