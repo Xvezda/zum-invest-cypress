@@ -63,7 +63,7 @@ const bypassClockOverride = () => {
   // https://docs.cypress.io/api/commands/clock#Behavior
   return cy.clock()
     .invoke('restore')
-    .visit('https://invest.zum.com/domestic');
+    .visit('/domestic');
 };
 
 /**
@@ -95,7 +95,7 @@ describe('국내증시', () => {
       req.reply({fixture: `real-time-news-${page-1}`});
     }).as('apiRealTimeNews');
 
-    cy.visit('https://invest.zum.com/domestic');
+    cy.visit('/domestic');
     ensureMekoChartLoaded();
   });
 
