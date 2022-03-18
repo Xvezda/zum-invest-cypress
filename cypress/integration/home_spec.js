@@ -4,6 +4,8 @@ describe('zum 투자 홈', () => {
     cy.stubThirdParty();
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200})
       .as('pipPlayer');
+    cy.intercept('/api/global', {statusCode: 200});
+    cy.intercept('/api/domestic**', {statusCode: 200});
     cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
       .as('apiSuggest');
     cy.intercept('/api/home/category-news*', req => {
