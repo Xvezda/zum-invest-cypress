@@ -41,61 +41,6 @@ describe('zum 투자 홈', () => {
       });
   });
 
-  it('티커에 마우스를 올리면 멈추고, 올라가있지 않으면 다시 움직인다.', () => {
-    const toWait = 500;
-    const getTickerRect = $el => $el.get()[0].getBoundingClientRect();
-    cy.get('.ticker_bar .inner')
-      .trigger('mouseenter')
-      .then($el => {
-        const prevRect = getTickerRect($el);
-
-        cy.wrap(prevRect).as('prevTickerRect');
-        return cy.wrap($el);
-      })
-      .wait(toWait)
-      .then($el => {
-        const rect = getTickerRect($el);
-        cy.get('@prevTickerRect').its('x').should('equal', rect.x);
-        return cy.wrap($el);
-      })
-      .trigger('mouseleave')
-      .wait(toWait)
-      .then($el => {
-        const rect = getTickerRect($el);
-        cy.get('@prevTickerRect').its('x').should('not.equal', rect.x);
-      });
-  });
-
-  it('네비게이션 바의 메뉴를 클릭하면 해당 주소로 라우팅된다.', () => {
-    const clickAndAssertUrl = (target, url) => {
-      if (!url.startsWith(baseUrl)) {
-        // https://docs.cypress.io/guides/references/trade-offs#Multiple-tabs
-        target
-          .should('have.attr', 'target', '_blank')
-          .should('have.attr', 'href').and('contain', url);
-      } else {
-        target
-          .click()
-          .url()
-          .should('contain', url);
-      }
-    };
-
-    const urlTable = {
-      '홈': `${baseUrl}`,
-      '투자노트': `${baseUrl}/investment`,
-      '국내증시': `${baseUrl}/domestic`,
-      '해외증시': `${baseUrl}/global`,
-      '가상화폐': 'https://coin.zum.com',
-      '대선 테마주': 'https://daeseon.zum.com/election'
-    };
-    cy.get('.gnb_finance ul > li > a:not(:first-children)')
-      .each(menu => {
-        const menuText = menu.text();
-        clickAndAssertUrl(cy.wrap(menu), urlTable[menuText]);
-      });
-  });
-
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
     cy.on('uncaught:exception', e => {
