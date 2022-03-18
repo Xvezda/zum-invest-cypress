@@ -105,44 +105,6 @@ describe('국내증시', () => {
         .as('mekoChartContainer');
     });
 
-    it('MAP을 상하로 스크롤하여 확대, 축소 할 수 있다.', () => {
-      const ScrollDirection = {
-        UP: 0,
-        DOWN: 1,
-      };
-
-      const zoomAndMatchImageSnapshot = (
-        direction=ScrollDirection.DOWN,
-        delta=4
-      ) => {
-        const option = {
-          force: true,
-          deltaX: 0, deltaZ: 0, deltaMode: 0,
-          deltaY: direction === ScrollDirection.UP ? delta : -delta,
-        };
-
-        const emulateUserScroll = () =>
-          cy.get('@mekoChartContainer')
-            .find('#chart-svg')
-            .trigger('wheel', 'center', option);
-
-        emulateUserScroll()
-          .then(() => {
-            cy.get(containerSelector)
-              .toMatchImageSnapshot();
-          });
-      };
-
-      const doUserZoomIn = () => zoomAndMatchImageSnapshot(ScrollDirection.DOWN);
-      const doUserZoomOut = () => zoomAndMatchImageSnapshot(ScrollDirection.UP);
-      hideHeaderWhile(() => {
-        cy.get(containerSelector)
-          .toMatchImageSnapshot()
-          .then(doUserZoomIn)
-          .then(doUserZoomOut);
-      });
-    });
-
     it('MAP의 종류를 선택할 수 있다.', () => {
       const mapTable = {
         'TOP1000': 'ALL',
