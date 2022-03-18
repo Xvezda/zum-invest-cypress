@@ -93,7 +93,7 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
-  'createHidingContext',
+  'withHidden',
   (selector, callback) => {
     cy.get(selector)
       .then($el => cy.wrap($el.hide()))
