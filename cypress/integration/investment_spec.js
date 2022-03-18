@@ -1,5 +1,5 @@
 const expectMenuToActivate = menu =>
-  cy.wrap(menu).parent('.active');
+  cy.wrap(menu).closest('.active');
 
 describe('투자노트', () => {
   beforeEach(() => {

@@ -1,110 +1,52 @@
 require('cypress-iframe');
 
-const getContainer = selector => cy.iframe(selector);
-
-const injectTooltipHidingStyle = win => {
-  win.eval(`
-    const style = document.createElement('style');
-    style.textContent = '[id*="chart-info-tooltip"] { display: none !important }';
-    document.head.appendChild(style);
-  `);
-};
-
-const interceptApiRequests = () => {
-  cy.intercept('/api/global', {fixture: 'global'})
-    .as('apiGlobal');
-  cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
-    .as('apiDomesticCommon');
-  cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
-    .as('apiDomesticHome');
-  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
-    .as('apiMekoChart');
-};
-
-const containerSelector = '.map_cont iframe';
-const expectContainerLoaded = (...args) => {
-  cy.frameLoaded(...args);
-
-  const option = args[1];
-  if (option && typeof option === 'object') {
-    if (typeof option.onAfterLoad === 'function') {
-      option.onAfterLoad();
-    }
-  }
-};
-
-const ensureMekoChartLoaded = () => {
-  expectContainerLoaded(
-    containerSelector,
-    {
-      url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
-      onAfterLoad: () => {
-        triggerDomesticHomeApi();
-        cy.iframe(containerSelector)
-          .find('#chart-svg [id^="treemap-node-stock"]')
-          .then(() => {
-            return cy.wait('@apiMekoChart');
-          })
-          .then(() => {
-            return cy.get(containerSelector)
-              .its('0.contentWindow')
-              .then(injectTooltipHidingStyle)
-          });
-      }
-    }
-  );
-};
-
 const hideHeaderWhile = callback =>
-  cy.createHidingContext('#header', callback);
-
-const bypassClockOverride = () => {
-  // clock을 기본값으로 돌립니다.
-  // https://docs.cypress.io/api/commands/clock#Behavior
-  return cy.clock()
-    .invoke('restore')
-    .visit('/domestic');
-};
-
-/**
- * `/api/domestic/home` API 호출이 일어나도록 강제
- */
-const triggerDomesticHomeApi = () =>
-  cy.tick(20000)
-    .wait('@apiDomesticHome');
-
+  cy.withHidden('#header', callback);
 
 describe('국내증시', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
     cy.clock(now);
-    cy.tick(1000);
   });
 
   afterEach(() => {
     cy.clock().invoke('restore');
   });
 
+  const interceptApiRequests = () => {
+    cy.intercept('/api/global', {fixture: 'global'})
+      .as('apiGlobal');
+    cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
+      .as('apiDomesticCommon');
+    cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
+      .as('apiDomesticHome');
+    cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
+      .as('apiMekoChart');
+  };
+
+  /**
+   * `/api/domestic/home` API 호출이 일어나도록 강제
+   */
+  const triggerDomesticHomeApi = () =>
+    cy.tick(20000)
+      .wait('@apiDomesticHome');
+
   beforeEach(() => {
     cy.stubThirdParty();
 
     interceptApiRequests();
     cy.intercept('/api/domestic/home/real-time-news*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `real-time-news-${page-1}`});
-    }).as('apiRealTimeNews');
+        const url = new URL(req.url);
+        const page = parseInt(url.searchParams.get('page'), 10);
+        req.reply({fixture: `real-time-news-${page-1}`});
+      })
+      .as('apiRealTimeNews');
 
     cy.visit('/domestic');
-    ensureMekoChartLoaded();
+    triggerDomesticHomeApi();
   });
 
   describe('국내증시 MAP', () => {
-    beforeEach(() => {
-      getContainer(containerSelector)
-        .as('mekoChartContainer');
-    });
-
     it('MAP의 종류를 선택할 수 있다.', () => {
       const mapTable = {
         '코스피': 'KOSPI',
@@ -123,21 +65,48 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+      const containerSelector = '.map_cont iframe';
+      const shouldContainerLoaded = (...args) => cy.frameLoaded(...args);
+      const shouldMekoChartLoaded = () =>
+        triggerDomesticHomeApi()
+          .then(() =>
+            shouldContainerLoaded(containerSelector, {
+              url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
+            })
+          )
+          .then(() =>
+            cy.iframe(containerSelector)
+              .find('#chart-svg [id^="treemap-node-stock"]')
+          )
+          .then(() => cy.wait('@apiMekoChart'))
+          .then(() => cy.get(containerSelector).its('0.contentWindow'))
+          .then(function injectTooltipHidingStyle(win) {
+            win.eval(`
+              const style = document.createElement('style');
+              style.textContent = '[id*="chart-info-tooltip"] { display: none !important }';
+              document.head.appendChild(style);
+            `);
+          });
+
       const shouldMatchMekoChartSnapshot = () => {
         cy.get(containerSelector)
           .toMatchImageSnapshot();
       };
 
-      hideHeaderWhile(() => {
-        shouldMatchMekoChartSnapshot();
-        cy.get('.map_menu_tab li:not(:first-child) > a')
-          .each($menu => {
-            cy.wrap($menu)
-              .click({force: true})
-              .parent('.active')
-              .then(shouldMatchMekoChartSnapshot);
+      shouldMekoChartLoaded()
+        .then(() => {
+          hideHeaderWhile(() => {
+            shouldMatchMekoChartSnapshot();
+            cy.get('.map_menu_tab li:not(:first-child) > a')
+              .each($menu => {
+                cy.wrap($menu)
+                  .click({force: true})
+                  .parent('.active')
+                  .then(shouldMatchMekoChartSnapshot);
+              });
           });
-      });
+
+        });
     });
 
   });  // END: 국내증시 MAP
@@ -178,7 +147,7 @@ describe('국내증시', () => {
         });
 
     it('각 지표 탭에 마우스를 올리면 활성화 된다.', () => {
-      forEachTab(subject => subject.parent('.active'));
+      forEachTab(subject => subject.closest('.active'));
     });
 
     it('각 지표를 올바르게 표시한다.', () => {
@@ -197,8 +166,9 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     beforeEach(() => {
-      bypassClockOverride()
-        .then(interceptApiRequests);
+      cy.clock()
+        .invoke('restore')
+        .visit('/domestic');
     });
 
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 된다.', () => {
@@ -231,19 +201,18 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
-      triggerDomesticHomeApi();
-
       hideHeaderWhile(() => {
         cy.get('.today_hot_pick')
-          .within(() => {
-            cy.get('ul > li:not(:first-children) > a')
-              .first()
-              .each($menu => {
-                  cy.wrap($menu)
-                    .click()
-                    .parent('.active')
-                    .toMatchImageSnapshot();
-              });
+          .as('todayHotPick')
+          .find('ul > li:not(:first-children) > a')
+          .first()  // NOTE: 마크업이 이중으로 되어있는 문제
+          .each($menu => {
+            cy.wrap($menu)
+              .click()
+              .closest('.active');
+
+            cy.get('@todayHotPick')
+              .toMatchImageSnapshot();
           });
       });
     });
@@ -251,22 +220,20 @@ describe('국내증시', () => {
 
   describe('ZUM 인기종목', () => {
     it('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
-      triggerDomesticHomeApi()
-        .then(() => {
-          hideHeaderWhile(() => {
-            cy.get('.popularity_event_wrap')
-              .within(() => {
-                cy.get('ul > li > a')
-                  .each($tab => {
-                    return cy.wrap($tab)
-                      .trigger('mouseenter', {force: true})
-                      .toMatchImageSnapshot();
-                  });
-              });
-          });
-        });
+      const emulateMouseOverAndMatch = $tab =>
+        cy.wrap($tab)
+          .trigger('mouseenter', {force: true})
+          .get('@popularityEventWrap')
+          .toMatchImageSnapshot();
+        
+      hideHeaderWhile(() => {
+        cy.get('.popularity_event_wrap')
+          .as('popularityEventWrap')
+          .find('ul > li > a')
+          .each(emulateMouseOverAndMatch);
+      });
     });
-  });
+  });  // END: ZUM 인기종목
 
   // FIXME: 페이지를 +2 오프셋으로 받아오는 문제
   it.skip('스크롤을 하여 실시간 테마 뉴스를 불러온다.', () => {
