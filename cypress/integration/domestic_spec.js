@@ -113,8 +113,8 @@ describe('국내증시', () => {
       };
       cy.get('.map_menu_tab').within(() => {
         cy.get('li:not(:first-child) > a')
-          .each(menu => {
-            const menuText = menu.text();
+          .each($menu => {
+            const menuText = $menu.text();
             cy.get(`a:contains("${menuText}")`)
               .click()
               .url()
@@ -126,8 +126,8 @@ describe('국내증시', () => {
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
       hideHeaderWhile(() => {
         cy.get('.map_menu_tab li:not(:first-child) > a')
-          .each(menu => {
-            cy.wrap(menu)
+          .each($menu => {
+            cy.wrap($menu)
               .click({force: true})
               .parent('.active')
             
