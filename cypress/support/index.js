@@ -21,24 +21,5 @@ import './commands'
 
 beforeEach(() => {
   cy.fixCypressSpec();
-  cy.intercept(/https?:\/\/thumb\.zumst\.com\/.*/,
-    {
-      middleware: true
-    },
-    req => {
-      const url = new URL(req.url);
-      const pathRegex = /^\/(\d+)x(\d+)\//;
-      if (pathRegex.test(url.pathname)) {
-        const [, w, h] = url.pathname.match(pathRegex);
-        // 사진을 크기에 따라 동일한 플레이스홀더로 치환
-        if (w !== '0' && h !== '0') {
-          req.redirect(`https://picsum.photos/id/56/${w}/${h}`);
-        } else {
-          req.redirect(`https://picsum.photos/id/56/${w === '0' ? h : w}`);
-        }
-      } else {
-        req.destroy();
-      }
-    }
-  );
+  cy.intercept(/https?:\/\/thumb\.zumst\.com\/.*/, {fixture: '2880-1920-placeholder.jpg'});
 });
