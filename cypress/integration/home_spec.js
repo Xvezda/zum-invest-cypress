@@ -1,5 +1,4 @@
 describe('zum 투자 홈', () => {
-  const baseUrl = Cypress.config('baseUrl');
   beforeEach(() => {
     cy.stubThirdParty();
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200})
@@ -32,7 +31,7 @@ describe('zum 투자 홈', () => {
       .first()
       .scrollIntoView();
 
-    cy.createHidingContext('#header', () => {
+    cy.withHidden('#header', () => {
       cy.get('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
         .each($img => $img.remove());
 
