@@ -134,23 +134,21 @@ describe('zum 투자 홈', () => {
 
     it('카테고리를 변경할 수 있다.', () => {
       const categoryTable = {
-        '전체': 'all',
         '국내증시': 'domestic',
         '해외증시': 'overseas',
         '시장지표': 'market',
         '가상화폐': 'coin',
         'ESG': 'esg',
       };
-      cy.get('.area_real_news ul.menu_tab > li > a')
-        .each(menu => {
-          const menuText = menu.text();
-          cy.wrap(menu)
+      cy.get('.area_real_news ul.menu_tab > li:not(:first-child) > a')
+        .each($menu => {
+          const menuText = $menu.text();
+          cy.wrap($menu)
             .click({force: true});
 
-          cy.get('@categoryNews')
-            .should(({ request }) => {
-              expect(request.url).to.contain(`category=${categoryTable[menuText]}`);
-            });
+          cy.wait('@categoryNews')
+            .its('request.url')
+            .should('contain', `category=${categoryTable[menuText]}`);
         });
     });
 
