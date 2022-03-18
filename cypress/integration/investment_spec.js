@@ -9,15 +9,13 @@ describe('투자노트', () => {
 
   describe('최신글', () => {
     beforeEach(() => {
-      cy.visit('/investment/recently')
-        .then(() => {
-          cy.intercept('/api/investment/posts*', req => {
-            const url = new URL(req.url);
-            const page = parseInt(url.searchParams.get('page'), 10);
-            req.reply({fixture: `investment-authors-${page}`});
-          })
-          .as('posts');
-        });
+      cy.intercept('/api/investment/posts*', req => {
+          const url = new URL(req.url);
+          const page = parseInt(url.searchParams.get('page'), 10);
+          req.reply({fixture: `investment-authors-${page}`});
+        })
+        .as('posts');
+      cy.visit('/investment/recently');
     });
 
     it('최신글에서 카테고리 선택을 할 수 있다.', () => {
