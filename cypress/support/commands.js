@@ -43,7 +43,7 @@ Cypress.Commands.add('stubThirdParty', () => {
   const register = pattern => cy.intercept(pattern, {statusCode: 200});
 
   register(/^https:\/\/((secure)?pubads|stats)\.g\.doubleclick\.net\/.*/);
-  register('https://pagead2.googlesyndication.com/**');
+  register(/^https:\/\/(pagead2|\w+\.safeframe)\.googlesyndication\.com\/.*/);
   register('https://www.googleadservices.com/**');
   register('https://www.googletagmanager.com/**');
   register('https://analytics.google.com/**');
@@ -54,6 +54,9 @@ Cypress.Commands.add('stubThirdParty', () => {
   register('https://aem-ingest.onkakao.net/**');
   register('https://static.dable.io/**');
   register('https://wcs.naver.net/**');
+
+  register('https://estat.zum.com/**');
+  register('https://displayad.zum.com/**');
 
   cy.on('uncaught:exception', err => {
     if (err.message.includes('kakaoPixel is not defined')) {
