@@ -1,5 +1,7 @@
 require('cypress-iframe');
 
+const expectToActivated = $el => $el.closest('.active');
+
 const hideHeaderWhile = callback =>
   cy.withHidden('#header', callback);
 
@@ -101,7 +103,7 @@ describe('국내증시', () => {
               .each($menu => {
                 cy.wrap($menu)
                   .click({force: true})
-                  .parent('.active')
+                  .then(expectToActivated)
                   .then(expectMekoChartSnapshotToMatch);
               });
           });
@@ -133,34 +135,38 @@ describe('국내증시', () => {
   });
 
   describe('실시간 국내 증시', () => {
-    const forEachTab = callback =>
-      cy.get('.stock_index_wrap')
-        .as('stockIndexWrap')
-        .scrollIntoView()
-        .find('ul > li > a')
-        .each($tab => {
-          cy.get('@stockIndexWrap')
-            .then($wrap => {
-              callback($tab, $wrap);
-            });
-        });
+    it('코스피 지수를 보여준다.', () => {
+      hideHeaderWhile(() => {
+        cy.get('.stock_index_wrap')
+          .toMatchImageSnapshot();
+      });
+    });
 
     it('각 지표 탭에 마우스를 올리면 활성화 된다.', () => {
-      forEachTab(subject => subject.closest('.active'));
-    });
-
-    it('각 지표를 올바르게 표시한다.', () => {
-      forEachTab(
-        ($tab, $wrap) => {
-          triggerDomesticHomeApi();
-
-          hideHeaderWhile(() => {
-            cy.wrap($tab).trigger('mouseenter', {force: true}),
-            cy.wrap($wrap).toMatchImageSnapshot();
-            cy.wrap($tab).trigger('mouseleave', {force: true});
+      const forEachTab = callback =>
+        cy.get('.stock_index_wrap')
+          .as('stockIndexWrap')
+          .scrollIntoView()
+          .find('ul > li > a')
+          .each($tab => {
+            cy.get('@stockIndexWrap')
+              .then($wrap => {
+                callback($tab, $wrap);
+              });
           });
-        });
+
+      const withMouseOver = ($el, callback) => {
+        const subject = cy.wrap($el);
+        subject.trigger('mouseenter', {force: true});
+        callback(subject);
+        subject.trigger('mouseleave', {force: true});
+      };
+
+      forEachTab($tab => {
+        withMouseOver($tab, () => expectToActivated($tab));
+      });
     });
+
   });  // END: 실시간 국내 증시
 
   describe('이번주 투자 캘린더', () => {
@@ -208,7 +214,7 @@ describe('국내증시', () => {
           .each($menu => {
             cy.wrap($menu)
               .click()
-              .closest('.active');
+              .then(expectToActivated);
 
             cy.get('@todayHotPick')
               .toMatchImageSnapshot();
@@ -218,19 +224,22 @@ describe('국내증시', () => {
   }); // END: 오늘의 HOT PICK
 
   describe('ZUM 인기종목', () => {
+    it('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
+      hideHeaderWhile(() => {
+        cy.get('.popularity_event_wrap')
+          .toMatchImageSnapshot();
+      });
+    });
+
     it('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
       const emulateMouseOverAndMatch = $tab =>
         cy.wrap($tab)
           .trigger('mouseenter', {force: true})
-          .get('@popularityEventWrap')
-          .toMatchImageSnapshot();
+          .then(expectToActivated);
         
-      hideHeaderWhile(() => {
-        cy.get('.popularity_event_wrap')
-          .as('popularityEventWrap')
-          .find('ul > li > a')
-          .each(emulateMouseOverAndMatch);
-      });
+      cy.get('.popularity_event_wrap')
+        .find('ul > li > a')
+        .each(emulateMouseOverAndMatch);
     });
   });  // END: ZUM 인기종목
 
