@@ -5,6 +5,7 @@ describe('zum 투자 홈', () => {
       .as('pipPlayer');
     cy.intercept('/api/global', {statusCode: 200});
     cy.intercept('/api/domestic**', {statusCode: 200});
+
     cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
       .as('apiSuggest');
     cy.intercept('/api/home/category-news*', req => {
@@ -12,37 +13,29 @@ describe('zum 투자 홈', () => {
         const page = parseInt(url.searchParams.get('page'), 10);
         req.reply({fixture: `category-news-${page}`});
       })
-      .as('categoryNews');
+      .as('apiCategoryNews');
 
-    cy.visit('/');
+    // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
+    cy.intercept('/api/home', {fixture: 'home'})
+      .as('apiHome');
+    cy.visit('/domestic');
+    cy.get('.gnb_finance a:contains("홈")')
+      .click({force: true});
+
+    cy.wait(['@apiHome', '@apiCategoryNews'])
   });
 
   it('오늘의 주요 뉴스가 보여진다.', () => {
-    const fixture = 'foobar';
-    const origMap = new Map();
-    cy.get('.title, .word, .etc, .txt')
-      .as('replacedTargets')
-      .each($el => {
-        origMap.set($el[0], $el.html());
-        $el.text(fixture);
-      });
-
     cy.get('.today_news')
       .first()
       .scrollIntoView();
 
     cy.withHidden('#header', () => {
-      cy.get('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]')
-        .each($img => $img.remove());
+      cy.waitForImage('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]');
 
       cy.get('.today_news')
         .first()
         .toMatchImageSnapshot();
-      
-      cy.get('@replacedTargets')
-        .each($el => {
-          $el.html(origMap.get($el[0]));
-        });
     });
   });
 
@@ -89,14 +82,14 @@ describe('zum 투자 홈', () => {
           cy.wrap($menu)
             .click({force: true});
 
-          cy.wait('@categoryNews')
+          cy.wait('@apiCategoryNews')
             .its('request.url')
             .should('contain', `category=${categoryTable[menuText]}`);
         });
     });
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
-      cy.shouldRequestOnScroll('@categoryNews');
+      cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 
     it('달력을 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
@@ -119,7 +112,7 @@ describe('zum 투자 홈', () => {
       cy.get('.dates > .date-item:not(.empty)')
         .first()  // 1일
         .click({force: true})
-        .wait('@categoryNews')
+        .wait('@apiCategoryNews')
         .its('request.url')
         .should('contain', `date=${firstDateOfThisMonth}`);
 
@@ -129,21 +122,21 @@ describe('zum 투자 홈', () => {
       // 이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다.
       cy.get('.date_nav .btn.pre')
         .click({force: true})
-        .wait('@categoryNews')
+        .wait('@apiCategoryNews')
         .its('request.url')
         .should('contain', `date=${lastDateOfPrevMonth}`)
 
       // 다시 다음 버튼을 눌러 이번달의 1일로 이동
       cy.get('.date_nav .btn.next')
         .click()
-        .wait('@categoryNews')
+        .wait('@apiCategoryNews')
         .its('request.url')
         .should('contain', `date=${firstDateOfThisMonth}`);
 
       // 오늘 버튼을 눌러 오늘 날짜로 복귀
       cy.get('.btn_today')
         .click()
-        .wait('@categoryNews')
+        .wait('@apiCategoryNews')
         .its('request.url')
         .should('contain', `date=${getFormattedDate(new Date())}`);
     });
