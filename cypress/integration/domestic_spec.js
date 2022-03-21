@@ -76,9 +76,6 @@ describe('국내증시', () => {
             })
           )
           .then(() =>
-            cy.wait('@apiMekoChart')
-          )
-          .then(() =>
             cy.iframe(containerSelector)
               .find('#chart-svg [id^="treemap-node-stock"]')
           )
