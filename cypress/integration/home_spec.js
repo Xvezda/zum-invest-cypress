@@ -49,14 +49,22 @@ describe('zum 투자 홈', () => {
     });
   });
 
-  it('사이드바 메뉴가 보여진다.', () => {
-    cy.withHidden('#header, .right_cont .gdn_wrap', () => {
-      cy.get('.right_cont_inner')
-        .then($el => {
-          $el.css('position', 'relative');
-          return cy.wrap($el);
-        })
-        .toMatchImageSnapshot();
+  describe('사이드바', () => {
+    it('메뉴가 보여진다.', () => {
+      cy.withHidden('#header, .right_cont .gdn_wrap', () => {
+        cy.get('.right_cont_inner')
+          .then($el => {
+            $el.css('position', 'relative');
+            return cy.wrap($el);
+          })
+          .toMatchImageSnapshot();
+      });
+    });
+
+    it('아래로 스크롤하면 따라온다.', () => {
+      cy.scrollTo('bottom')
+        .get('.right_cont')
+        .should('have.descendants', '.sticky');
     });
   });
 
