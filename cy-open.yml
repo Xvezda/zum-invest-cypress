@@ -2,7 +2,7 @@ version: '3.9'
 services:
   e2e:
     build: .
-    entrypoint: yarn open
+    entrypoint: npx cypress open
     environment:
       - DISPLAY
     volumes:
