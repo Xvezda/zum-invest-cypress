@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  e2e:
+    build: .
+    entrypoint: yarn open
+    environment:
+      - DISPLAY
+    volumes:
+      - ./package.json:/app/package.json
+      - ./cypress.json:/app/cypress.json
+      - ./cypress:/app/cypress
+      - /tmp/.X11-unix:/tmp/.X11-unix
