@@ -109,7 +109,9 @@ describe('zum 투자 홈', () => {
           date.getFullYear(),
           date.getMonth() + 1,
           date.getDate()
-        ].map(t => String(t).padStart(2, '0')).join('-');
+        ]
+        .map(t => String(t).padStart(2, '0'))
+        .join('-');
 
       // 미니 달력을 연다
       cy.get('.date_select .btn_calendar')
@@ -117,8 +119,7 @@ describe('zum 투자 홈', () => {
       cy.get('.mini-calendar').should('be.visible');
 
       const date = new Date();
-      date.setDate(1);
-      const firstDateOfThisMonth = getFormattedDate(date);
+      const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
       // 현재달의 1일을 누른다.
       cy.get('.dates > .date-item:not(.empty)')
         .first()  // 1일

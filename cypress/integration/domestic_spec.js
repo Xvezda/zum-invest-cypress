@@ -66,11 +66,11 @@ describe('국내증시', () => {
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
       const containerSelector = '.map_cont iframe';
-      const shouldContainerLoaded = (...args) => cy.frameLoaded(...args);
-      const shouldMekoChartLoaded = () =>
-        triggerDomesticHomeApi()
+      const expectContainerLoaded = (...args) => cy.frameLoaded(...args);
+      const expectMekoChartLoaded = () => {
+        return triggerDomesticHomeApi()
           .then(() =>
-            shouldContainerLoaded(containerSelector, {
+            expectContainerLoaded(containerSelector, {
               url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
             })
           )
@@ -87,28 +87,27 @@ describe('국내증시', () => {
               document.head.appendChild(style);
             `);
           });
-
-      const shouldMatchMekoChartSnapshot = () => {
-        cy.get(containerSelector)
-          .toMatchImageSnapshot();
       };
 
-      shouldMekoChartLoaded()
+      const expectMekoChartSnapshotToMatch = () =>
+        cy.get(containerSelector)
+          .toMatchImageSnapshot();
+
+      expectMekoChartLoaded()
         .then(() => {
           hideHeaderWhile(() => {
-            shouldMatchMekoChartSnapshot();
+            expectMekoChartSnapshotToMatch();
             cy.get('.map_menu_tab li:not(:first-child) > a')
               .each($menu => {
                 cy.wrap($menu)
                   .click({force: true})
                   .parent('.active')
-                  .then(shouldMatchMekoChartSnapshot);
+                  .then(expectMekoChartSnapshotToMatch);
               });
           });
-
         });
-    });
 
+    });
   });  // END: 국내증시 MAP
 
   it('HOT 업종을 화살표를 눌러 좌우로 살펴볼 수 있다.', () => {
@@ -118,7 +117,7 @@ describe('국내증시', () => {
       .scrollIntoView();
 
     cy.get('.main_news_list + .navi > .next')
-      .click({force: true});  // button is being covered by another element: <html lang="ko">...</html>??
+      .click({force: true});
 
     cy.get('.main_news_list ul > li')
       .as('newsItems')
