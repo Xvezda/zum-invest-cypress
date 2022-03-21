@@ -7,12 +7,7 @@ const interceptApiRequests = () => {
 
 describe('해외증시', () => {
   beforeEach(() => {
-    cy.on('uncaught:exception', err => {
-      if (err.message.includes(`Cannot read properties of undefined (reading 'dow')`)) {
-        return false;
-      }
-    });
-
+    cy.ignoreKnownError(`Cannot read properties of undefined (reading 'dow')`);
     cy.stubThirdParty();
 
     interceptApiRequests();

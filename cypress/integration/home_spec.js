@@ -48,12 +48,7 @@ describe('zum 투자 홈', () => {
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
-    cy.on('uncaught:exception', e => {
-      // e.message는 Cypress 메시지도 포함하고있어 startsWith 대신 includes를 사용
-      if (e.message.includes('Navigation cancelled from')) {
-        return false;
-      }
-    });
+    cy.ignoreKnownError('Navigation cancelled from');
 
     cy.contains('증권 검색').click({force: true});
 
