@@ -7,4 +7,4 @@ RUN yarn install
 
 COPY ./cypress.json ./cypress.json
 COPY ./cypress ./cypress
-CMD yarn test
+CMD npx cypress run
