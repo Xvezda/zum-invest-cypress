@@ -17,10 +17,11 @@ describe('해외증시', () => {
 
     interceptApiRequests();
     cy.intercept('/api/overseas/home/real-time-news*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `real-time-news-${page}`});
-    }).as('apiRealTimeNews');
+        const url = new URL(req.url);
+        const page = parseInt(url.searchParams.get('page'), 10);
+        req.reply({fixture: `real-time-news-${page}`});
+      })
+      .as('apiRealTimeNews');
     cy.visit('/global');
   });
 

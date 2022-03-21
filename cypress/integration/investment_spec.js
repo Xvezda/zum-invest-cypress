@@ -1,5 +1,5 @@
-const expectMenuToActivate = menu =>
-  cy.wrap(menu).closest('.active');
+const expectMenuToActivate = $menu =>
+  cy.wrap($menu).closest('.active');
 
 describe('투자노트', () => {
   beforeEach(() => {
@@ -29,8 +29,8 @@ describe('투자노트', () => {
       cy.get('.lasted_write_wrap')
         .within(() => {
           cy.get('ul.menu_tab > li:not(:first-child) > a')
-            .each(category => {
-              const categoryText = category.text();
+            .each($category => {
+              const categoryText = $category.text();
               cy.contains(categoryText)
                 .click({force: true})
                 .wait('@posts')
@@ -38,7 +38,7 @@ describe('투자노트', () => {
                 .should('contain', `category=${categoryTable[categoryText]}`);
 
               // 클릭한 카테고리는 활성화가 되어야 한다.
-              expectMenuToActivate(category);
+              expectMenuToActivate($category);
             });
         });
     });
@@ -49,12 +49,13 @@ describe('투자노트', () => {
   it.skip('줌 투자 필진에서 이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
     cy.get('.writers_wrap').within(() => {
       cy.intercept('/api/investment/home/authors*', req => {
-        const url = new URL(req.url);
-        const page = parseInt(url.searchParams.get('page'), 10);
-        req.reply({fixture: `investment-authors-${page}`});
-      }).as('apiAuthors');
+          const url = new URL(req.url);
+          const page = parseInt(url.searchParams.get('page'), 10);
+          req.reply({fixture: `investment-authors-${page}`});
+        })
+        .as('apiAuthors');
 
-      const [, count, total] = Cypress
+      const [, _count, total] = Cypress
         .$('.writers_wrap .count')
         .text()
         .match(/(\d+)[^\d](\d+)/)
