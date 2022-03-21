@@ -22,7 +22,7 @@ describe('zum 투자 홈', () => {
     cy.get('.gnb_finance a:contains("홈")')
       .click({force: true});
 
-    cy.wait(['@apiHome', '@apiCategoryNews'])
+    cy.wait(['@apiHome', '@apiCategoryNews']);
   });
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
@@ -46,6 +46,17 @@ describe('zum 투자 홈', () => {
       
       cy.url()
         .should('contain', '239340');
+    });
+  });
+
+  it('사이드바 메뉴가 보여진다.', () => {
+    cy.withHidden('#header, .right_cont .gdn_wrap', () => {
+      cy.get('.right_cont_inner')
+        .then($el => {
+          $el.css('position', 'relative');
+          return cy.wrap($el);
+        })
+        .toMatchImageSnapshot();
     });
   });
 
@@ -73,7 +84,7 @@ describe('zum 투자 홈', () => {
       });
     });
 
-    it.only('메뉴를 클릭하여 활성화 할 수 있다.', () => {
+    it('메뉴를 클릭하여 활성화 할 수 있다.', () => {
       cy.get('.expert_insight ul.menu_tab > li > a')
         .each($tab => cy.wrap($tab).click().should('activated'));
     });
