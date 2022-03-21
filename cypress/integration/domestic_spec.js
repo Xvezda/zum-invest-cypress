@@ -104,7 +104,7 @@ describe('국내증시', () => {
               .each($menu => {
                 cy.wrap($menu)
                   .click({force: true})
-                  .shouldActivated()
+                  .should('activated')
                   .then(expectMekoChartSnapshotToMatch);
               });
           });
@@ -164,7 +164,7 @@ describe('국내증시', () => {
       };
 
       forEachTab($tab => {
-        withMouseOver($tab, subject => subject.shouldActivated());
+        withMouseOver($tab, subject => subject.should('activated'));
       });
     });
 
@@ -215,7 +215,7 @@ describe('국내증시', () => {
           .each($menu => {
             cy.wrap($menu)
               .click()
-              .shouldActivated();
+              .should('activated');
 
             cy.get('@todayHotPick')
               .toMatchImageSnapshot();
@@ -236,7 +236,7 @@ describe('국내증시', () => {
       const emulateMouseOverAndMatch = $tab =>
         cy.wrap($tab)
           .trigger('mouseenter', {force: true})
-          .shouldActivated();
+          .should('activated');
         
       cy.get('.popularity_event_wrap')
         .find('ul > li > a')

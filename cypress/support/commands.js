@@ -127,14 +127,3 @@ Cypress.Commands.add(
     });
   }
 );
-
-Cypress.Commands.add(
-  'shouldActivated',
-  {
-    prevSubject: 'element',
-  },
-  subject => {
-    subject.closest('.active');
-    return subject;
-  }
-);

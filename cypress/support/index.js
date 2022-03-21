@@ -33,4 +33,10 @@ beforeEach(() => {
       req.reply({fixture: 'fallback.jpg'});
     }
   });
+
+chai.use((chai, utils) => {
+  utils.addMethod(chai.Assertion.prototype, 'activated', function () {
+    const $el = utils.flag(this, 'object');
+    new chai.Assertion($el.closest('.active')).to.be.exist;
+  });
 });
