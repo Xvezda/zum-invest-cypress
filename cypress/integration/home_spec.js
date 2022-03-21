@@ -63,6 +63,23 @@ describe('zum 투자 홈', () => {
     });
   });
 
+
+  describe('투자노트', () => {
+    it('투자노트가 보여진다.', () => {
+      cy.withHidden('#header', () => {
+        cy.waitForImage('.expert_insight img');
+
+        cy.get('.expert_insight')
+          .toMatchImageSnapshot();
+      });
+    });
+
+    it.only('메뉴를 클릭하여 활성화 할 수 있다.', () => {
+      cy.get('.expert_insight ul.menu_tab > li > a')
+        .each($tab => cy.wrap($tab).click().should('activated'));
+    });
+  });  // END: 투자노트
+
   describe('분야별 실시간 뉴스', () => {
     beforeEach(() => {
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
