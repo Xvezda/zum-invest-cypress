@@ -21,7 +21,8 @@ import './commands'
 
 beforeEach(() => {
   cy.fixCypressSpec();
-  cy.intercept(/https?:\/\/thumb\.zumst\.com\/.*/, req => {
+
+  cy.intercept(/^https?:\/\/thumb\.zumst\.com\/.*/, req => {
     const url = new URL(req.url);
     if (url.pathname.startsWith('/378x241')) {
       req.reply({fixture: '378x241.jpg'});
@@ -33,6 +34,10 @@ beforeEach(() => {
       req.reply({fixture: 'fallback.jpg'});
     }
   });
+  cy.intercept(/^https?:\/\/finance\.zumst\.com\/writing\/.+\.(png|jpe?g|gif)$/, {
+    fixture: 'writer.png'
+  });
+});
 
 chai.use((chai, utils) => {
   utils.addMethod(chai.Assertion.prototype, 'activated', function () {
