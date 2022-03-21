@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "cypress run",
+    "test": "./test.sh",
     "open": "./open.sh"
   },
   "devDependencies": {
