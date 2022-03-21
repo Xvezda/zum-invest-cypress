@@ -49,8 +49,8 @@ Cypress.Commands.add('stubThirdParty', () => {
   register('https://analytics.google.com/**');
   register('https://t1.daumcdn.net/**');
   register(/^https:\/\/(bc|display)\.ad\.daum\.net\/.*/);
-  register(/https:\/\/(bidder|gum|ssp-sync)\.criteo\.com\/.*/);
-  register(/https:\/\/(zumads|plog)\.vrixon\.com\/.*/);
+  register(/^https:\/\/(bidder|gum|ssp-sync)\.criteo\.com\/.*/);
+  register(/^https:\/\/(zumads|plog)\.vrixon\.com\/.*/);
   register('https://aem-ingest.onkakao.net/**');
   register('https://static.dable.io/**');
   register('https://wcs.naver.net/**');
