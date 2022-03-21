@@ -111,7 +111,8 @@ Cypress.Commands.add(
     cy.get(selector, {log: false})
       .each($img => {
         cy.wrap($img, {log: false})
-          .its('0.naturalWidth').should('be.greaterThan', 0);
+          .its('0.naturalWidth', {log: false})
+          .should('be.greaterThan', 0);
       });
   }
 );
