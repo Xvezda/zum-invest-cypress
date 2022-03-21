@@ -25,20 +25,6 @@ describe('zum 투자 홈', () => {
     cy.wait(['@apiHome', '@apiCategoryNews'])
   });
 
-  it('오늘의 주요 뉴스가 보여진다.', () => {
-    cy.get('.today_news')
-      .first()
-      .scrollIntoView();
-
-    cy.withHidden('#header', () => {
-      cy.waitForImage('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]');
-
-      cy.get('.today_news')
-        .first()
-        .toMatchImageSnapshot();
-    });
-  });
-
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
     cy.ignoreKnownError('Navigation cancelled from');
@@ -63,6 +49,19 @@ describe('zum 투자 홈', () => {
     });
   });
 
+  it('오늘의 주요 뉴스가 보여진다.', () => {
+    cy.get('.today_news')
+      .first()
+      .scrollIntoView();
+
+    cy.withHidden('#header', () => {
+      cy.waitForImage('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]');
+
+      cy.get('.today_news')
+        .first()
+        .toMatchImageSnapshot();
+    });
+  });
 
   describe('투자노트', () => {
     it('투자노트가 보여진다.', () => {
