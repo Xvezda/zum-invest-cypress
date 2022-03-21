@@ -1,10 +1,5 @@
 require('cypress-iframe');
 
-const expectToActivated = $el => $el.closest('.active');
-
-const hideHeaderWhile = callback =>
-  cy.withHidden('#header', callback);
-
 describe('국내증시', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
@@ -47,6 +42,9 @@ describe('국내증시', () => {
     cy.visit('/domestic');
     triggerDomesticHomeApi();
   });
+
+  const hideHeaderWhile = callback =>
+    cy.withHidden('#header', callback);
 
   describe('국내증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
@@ -103,7 +101,7 @@ describe('국내증시', () => {
               .each($menu => {
                 cy.wrap($menu)
                   .click({force: true})
-                  .then(expectToActivated)
+                  .shouldActivated()
                   .then(expectMekoChartSnapshotToMatch);
               });
           });
@@ -163,7 +161,7 @@ describe('국내증시', () => {
       };
 
       forEachTab($tab => {
-        withMouseOver($tab, () => expectToActivated($tab));
+        withMouseOver($tab, subject => subject.shouldActivated());
       });
     });
 
@@ -214,7 +212,7 @@ describe('국내증시', () => {
           .each($menu => {
             cy.wrap($menu)
               .click()
-              .then(expectToActivated);
+              .shouldActivated();
 
             cy.get('@todayHotPick')
               .toMatchImageSnapshot();
@@ -235,7 +233,7 @@ describe('국내증시', () => {
       const emulateMouseOverAndMatch = $tab =>
         cy.wrap($tab)
           .trigger('mouseenter', {force: true})
-          .then(expectToActivated);
+          .shouldActivated();
         
       cy.get('.popularity_event_wrap')
         .find('ul > li > a')
