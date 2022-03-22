@@ -1,12 +1,12 @@
 version: '3.9'
 services:
   e2e:
-    build: .
-    entrypoint: npx cypress open
+    container_name: e2e
+    image: cypress/included:9.5.2
+    entrypoint: cypress open --project /e2e --config-file /e2e/cypress.json
+    working_dir: /e2e
     environment:
       - DISPLAY
     volumes:
-      - ./package.json:/app/package.json
-      - ./cypress.json:/app/cypress.json
-      - ./cypress:/app/cypress
+      - ./:/e2e
       - /tmp/.X11-unix:/tmp/.X11-unix
