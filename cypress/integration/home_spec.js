@@ -213,6 +213,26 @@ describe('zum 투자 홈', () => {
     });
   });  // END: 투자노트
 
+  describe('실시간 종목 TALK', () => {
+    it('스크롤하여 대화를 볼 수 있다.', () => {
+      cy.get('.real_time_contents_wrap')
+        .within(() => {
+          cy.get('ul > li').first().should('be.visible');
+          cy.get('.content_inner')
+            .scrollTo('bottom');
+          cy.get('ul > li').last().should('be.visible');
+        });
+    });
+
+    it('대화를 클릭하여 종목 상세페이지로 이동할 수 있다. ', () => {
+      cy.get('.real_time_contents_wrap')
+        .contains('세상을 읽고 담는 줌인터넷')
+        .click()
+        .url()
+        .should('contain', '239340');
+    });
+  });
+
   describe('분야별 실시간 뉴스', () => {
     beforeEach(() => {
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
