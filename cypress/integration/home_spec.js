@@ -66,7 +66,97 @@ describe('zum 투자 홈', () => {
         .get('.right_cont')
         .should('have.descendants', '.sticky');
     });
-  });
+
+    describe('주요지표', () => {
+      beforeEach(() => {
+        cy.get('.main_indicator')
+          .as('mainIndicator');
+
+        cy.get('@mainIndicator')
+          .find('iframe')
+          .first()
+          .as('mainIndicatorChart');
+      });
+
+      it('기간을 선택하여 해당하는 차트를 볼 수 있다.', () => {
+        const rangeTable = {
+          '1주일': 'WEEKLY',
+          '1개월': 'MONTHLY',
+          '6개월': 'MONTHLY6',
+          '1년': 'YEARLY'
+        };
+
+        const expectToMatchChart = name => {
+          cy.get('@mainIndicatorChart')
+            .should('have.attr', 'src')
+            .and('contain', rangeTable[name]);
+        };
+
+        cy.get('@mainIndicator')
+          .find(`ul:contains("${Object.keys(rangeTable)[0]}") > li > a`)
+          .each($link => {
+            const linkText = $link.text();
+
+            cy.wrap($link)
+              .click()
+              .should('be.activated')
+              .then(() => expectToMatchChart(linkText));
+          });
+      });
+
+      it.only('지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
+        const indicatorTable = {
+          '나스닥 선물': subject =>
+            subject
+              .should('have.attr', 'src')
+              .and('contain', 'id=16')
+              .and('contain', 'overseas-index'),
+          '국내 USD/KRW': subject =>
+            subject
+              .should('have.attr', 'src')
+              .and('contain', 'id=USD')
+              .and('contain', 'exchange'),
+          'WTI': subject =>
+            subject
+              .should('have.attr', 'src')
+              .and('contain', 'id=6')
+              .and('contain', 'market'),
+          '미국 10년물 국채': subject =>
+            subject
+              .should('have.attr', 'src')
+              .and('contain', 'id=17')
+              .and('contain', 'overseas-index'),
+          '공포지수': subject =>
+            subject
+              .should('have.attr', 'src')
+              .and('contain', 'id=18')
+              .and('contain', 'overseas-index'),
+          '국내 투자예탁금': subject =>
+            subject
+              .should('have.attr', 'src')
+              .and('contain', 'id=5')
+              .and('contain', 'domestic-index'),
+        };
+
+        cy.get('@mainIndicator')
+          .find(`ul:contains("${Object.keys(indicatorTable)[0]}") > li > a`)
+          .each($link => {
+            cy.wrap($link)
+              .click()
+              .should('be.activated')
+              .then(() => {
+                const linkText = $link.find('.name').text();
+
+                const match = indicatorTable[linkText];
+                expect(match).to.be.exist;
+
+                match(cy.get('@mainIndicatorChart'));
+              });
+          });
+      });
+    });  // END: 주요지표
+
+  });  // END: 사이드바
 
   it('오늘의 주요 뉴스가 보여진다.', () => {
     cy.get('.today_news')
