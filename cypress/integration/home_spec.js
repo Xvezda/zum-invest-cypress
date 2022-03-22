@@ -242,6 +242,26 @@ describe('zum 투자 홈', () => {
       cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 
+    it.only('달력을 클릭하여 열고 닫을 수 있다.', () => {
+      cy.get('.mini-calendar')
+        .as('miniCalendar');
+
+      cy.get('.date_select .btn_calendar')
+        .as('miniCalendarButton');
+
+      cy.get('@miniCalendarButton')
+        .click()
+
+      cy.get('@miniCalendar')
+        .should('be.visible');
+
+      cy.get('@miniCalendarButton')
+        .click();
+
+      cy.get('@miniCalendar')
+        .should('not.be.visible');
+    });
+
     it('달력을 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
       const getFormattedDate = date => [
           date.getFullYear(),
@@ -251,14 +271,10 @@ describe('zum 투자 홈', () => {
         .map(t => String(t).padStart(2, '0'))
         .join('-');
 
-      // 미니 달력을 연다
-      cy.get('.date_select .btn_calendar')
-        .click();
-      cy.get('.mini-calendar').should('be.visible');
-
       const date = new Date();
       const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
-      // 현재달의 1일을 누른다.
+      // 달력을 열고 현재달의 1일을 누른다.
+      cy.get('.date_select .btn_calendar').click();
       cy.get('.dates > .date-item:not(.empty)')
         .first()  // 1일
         .click({force: true})
