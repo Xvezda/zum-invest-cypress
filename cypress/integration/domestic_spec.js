@@ -24,10 +24,8 @@ describe('국내증시', () => {
   /**
    * `/api/domestic/home` API 호출이 일어나도록 강제
    */
-  const triggerDomesticHomeApi = () => {
+  const triggerDomesticHomeApi = () =>
     cy.tick(20000);
-    return cy.wait('@apiDomesticHome')
-  }
 
   beforeEach(() => {
     cy.stubThirdParty();
@@ -69,12 +67,9 @@ describe('국내증시', () => {
       const containerSelector = '.map_cont iframe';
       const expectContainerLoaded = (...args) => cy.frameLoaded(...args);
       const expectMekoChartLoaded = () => {
-        return triggerDomesticHomeApi()
-          .then(() =>
-            expectContainerLoaded(containerSelector, {
-              url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
-            })
-          )
+        return expectContainerLoaded(containerSelector, {
+            url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
+          })
           .then(() =>
             cy.iframe(containerSelector)
               .find('#chart-svg [id^="treemap-node-stock"]')
