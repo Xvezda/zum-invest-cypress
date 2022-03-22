@@ -25,7 +25,7 @@ describe('국내증시', () => {
    * `/api/domestic/home` API 호출이 일어나도록 강제
    */
   const triggerDomesticHomeApi = () =>
-    cy.tick(20000);
+    cy.tick(20001);
 
   beforeEach(() => {
     cy.stubThirdParty();
@@ -38,7 +38,11 @@ describe('국내증시', () => {
       })
       .as('apiRealTimeNews');
 
-    cy.visit('/domestic');
+    cy.visit('/domestic', {
+      onBeforeLoad(win) {
+        cy.spy(win, 'postMessage').as('postMessage');
+      }
+    });
     triggerDomesticHomeApi();
   });
 
@@ -64,17 +68,16 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
-      const containerSelector = '.map_cont iframe';
-      const expectContainerLoaded = (...args) => cy.frameLoaded(...args);
       const expectMekoChartLoaded = () => {
-        return expectContainerLoaded(containerSelector, {
-            url: '//chart-finance.zum.com/api/chart/treemap/domestic/',
-          })
-          .then(() =>
-            cy.iframe(containerSelector)
-              .find('#chart-svg [id^="treemap-node-stock"]')
-          )
-          .then(() => cy.get(containerSelector).its('0.contentWindow'))
+        cy.get('.map_cont iframe')
+          .as('mekoChart');
+
+        cy.get('@mekoChart')
+          .its('0.contentDocument.body')
+          .find('#chart-svg [id^="treemap-node-stock"]');
+
+        return cy.get('@mekoChart')
+          .its('0.contentWindow')
           .then(function injectTooltipHidingStyle(win) {
             win.eval(`
               const style = document.createElement('style');
@@ -85,7 +88,7 @@ describe('국내증시', () => {
       };
 
       const expectMekoChartSnapshotToMatch = () =>
-        cy.get(containerSelector)
+        cy.get('@mekoChart')
           .toMatchImageSnapshot();
 
       expectMekoChartLoaded()
@@ -96,7 +99,7 @@ describe('국내증시', () => {
               .each($menu => {
                 cy.wrap($menu)
                   .click({force: true})
-                  .should('activated')
+                  .should('be.activated')
                   .then(expectMekoChartSnapshotToMatch);
               });
           });

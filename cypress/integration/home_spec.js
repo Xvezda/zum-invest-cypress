@@ -242,7 +242,7 @@ describe('zum 투자 홈', () => {
       cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 
-    it.only('달력을 클릭하여 열고 닫을 수 있다.', () => {
+    it('달력을 클릭하여 열고 닫을 수 있다.', () => {
       cy.get('.mini-calendar')
         .as('miniCalendar');
 
