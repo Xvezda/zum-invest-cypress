@@ -2,6 +2,7 @@
     "baseUrl": "https://invest.zum.com",
     "video": false,
     "chromeWebSecurity": false,
+    "numTestsKeptInMemory": 0,
     "defaultCommandTimeout": 10000,
     "viewportWidth": 1280,
     "viewportHeight": 800,
