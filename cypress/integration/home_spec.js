@@ -1,8 +1,7 @@
 describe('zum 투자 홈', () => {
   beforeEach(() => {
     cy.stubThirdParty();
-    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200})
-      .as('pipPlayer');
+
     cy.intercept('/api/global', {statusCode: 200});
     cy.intercept('/api/domestic**', {statusCode: 200});
 
@@ -18,7 +17,12 @@ describe('zum 투자 홈', () => {
     // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
     cy.intercept('/api/home', {fixture: 'home'})
       .as('apiHome');
-    cy.visit('/domestic');
+
+    cy.visit('/domestic', {
+      onBeforeLoad(win) {
+        cy.stub(win, 'postMessage').as('postMessage');
+      }
+    });
     cy.get('.gnb_finance a:contains("홈")')
       .click({force: true});
 
@@ -104,7 +108,7 @@ describe('zum 투자 홈', () => {
           });
       });
 
-      it.only('지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
+      it('지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
         const indicatorTable = {
           '나스닥 선물': subject =>
             subject
@@ -171,6 +175,27 @@ describe('zum 투자 홈', () => {
         .toMatchImageSnapshot();
     });
   });
+
+  describe('증시전망', () => {
+    beforeEach(() => {
+      cy.get('.stock_view')
+        .as('stockView');
+
+      cy.get('@stockView')
+        .find('iframe')
+        .first()
+        .as('zumPlayer');
+    });
+
+    it('목록에서 클릭하면 해당 영상이 재생된다.', () => {
+      cy.get('.thumbnail_list_wrap ul > li:not(.active) > a')
+        .each($link => {
+          cy.wrap($link).click();
+          cy.get('@postMessage')
+            .should('be.calledWithMatch', /settedIdAndPlay/);
+        });
+    });
+  });  // END: 증시전망
 
   describe('투자노트', () => {
     it('투자노트가 보여진다.', () => {
