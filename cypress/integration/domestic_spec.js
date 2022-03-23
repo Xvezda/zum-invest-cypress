@@ -1,4 +1,5 @@
 require('cypress-iframe');
+const { recurse } = require('cypress-recurse');
 
 describe('국내증시', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
@@ -34,6 +35,8 @@ describe('국내증시', () => {
     cy.stubThirdParty();
 
     interceptApiRequests();
+    cy.intercept('https://chart-finance.zum.com/api/chart/treemap/domestic**')
+      .as('mekoChartContainer');
     cy.intercept('/api/domestic/home/real-time-news*', req => {
         const url = new URL(req.url);
         const page = parseInt(url.searchParams.get('page'), 10);
@@ -57,8 +60,8 @@ describe('국내증시', () => {
         '코스피': 'KOSPI',
         '코스닥': 'KOSDAQ'
       };
-      cy.get('.map_menu_tab').within(() => {
-        cy.get('li:not(:first-child) > a')
+      cy.get('.map_title_wrap').within(() => {
+        cy.get('ul > li:not(:first-child) > a')
           .each($menu => {
             const menuText = $menu.text();
             cy.get(`a:contains("${menuText}")`)
@@ -70,18 +73,11 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
-      const expectMekoChartLoaded = () => {
-        cy.get('.map_cont iframe')
-          .as('mekoChart');
+      cy.get('.map_cont iframe')
+        .as('mekoChart');
 
-        triggerMekoChartApi();
-        cy.wait('@apiMekoChart');
-
+      const expectMekoChartLoaded = () =>
         cy.get('@mekoChart')
-          .its('0.contentDocument.body')
-          .find('#chart-svg [id^="treemap-node-stock"]');
-
-        return cy.get('@mekoChart')
           .its('0.contentWindow')
           .then(function injectTooltipHidingStyle(win) {
             win.eval(`
@@ -90,11 +86,24 @@ describe('국내증시', () => {
               document.head.appendChild(style);
             `);
           });
-      };
 
       const expectMekoChartSnapshotToMatch = () =>
         cy.get('@mekoChart')
           .toMatchImageSnapshot();
+
+      cy.wait('@mekoChartContainer');
+      // NOTE: 불안정한 메코차트의 로드 문제 해결
+      // TODO: 근본적인 원인 파악
+      recurse(
+        () => {
+          triggerMekoChartApi();
+          return cy.wait('@apiMekoChart');
+        },
+        () => cy
+          .get('@mekoChart')
+          .its('0.contentDocument.body')
+          .should('have.descendants', '#chart-svg [id^="treemap-node-stock"]'),
+      );
 
       expectMekoChartLoaded()
         .then(() => {
