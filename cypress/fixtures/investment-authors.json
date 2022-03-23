@@ -1,0 +1,393 @@
+{
+    "items": [
+        {
+            "authorId": 34,
+            "authorName": "줌투자",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+            "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
+            "recentTitles": [
+                {
+                    "postId": 480,
+                    "title": "[🔑개장] 철강주의 상승률 상위 점령"
+                },
+                {
+                    "postId": 478,
+                    "title": "[🔒 마감] 빵빵 터지는 신고가🎉"
+                },
+                {
+                    "postId": 476,
+                    "title": "[🔑개장] 물가 대란"
+                }
+            ]
+        },
+        {
+            "authorId": 11,
+            "authorName": "The DUDE",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/98c54f28_안해성.jpg",
+            "introduction": "금융인. ETF와 지수에 대해 모든 걸 설명하겠습니다. \n“It started out as a product, and it became an industry”\n(일개 상품으로 시작한 ETF는 이내 그 자체로 산업이 되었다)",
+            "recentTitles": [
+                {
+                    "postId": 368,
+                    "title": "Constitution DAO #2"
+                },
+                {
+                    "postId": 367,
+                    "title": "Constitution DAO #1"
+                },
+                {
+                    "postId": 293,
+                    "title": "연준의 금리 인상은 어디까지 가능할까? #2"
+                }
+            ]
+        },
+        {
+            "authorId": 29,
+            "authorName": "벵골호랑이의 해외주식토크",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/477c1ad9_20180615_002739.jpg",
+            "introduction": "다년간의 해외 주식 실전 투자 경험과 함께 글로벌 경제 시황, 미국을 비롯한 해외 유망 산업 및 기업 분석에 대한 인사이트를 드리는 벵골호랑이 신병호입니다. 국내를 넘어 글로벌 우량 기업의 주주가 되고, 성장 및 가치 투자 등 다양한 주식 투자 전략을 기반으로 저 벵골호랑이와 함께 해외주식투자, 시작해보세요!",
+            "recentTitles": [
+                {
+                    "postId": 411,
+                    "title": "미국 오일 미드스트림(Mid Stream)의 강자 에너지 트랜스퍼(Energy Transfer; ET US)\r\n: 미국 천연가스 수요 증가와 함께 다시 성장한다! #2"
+                },
+                {
+                    "postId": 410,
+                    "title": "미국 오일 미드스트림(Mid Stream)의 강자 에너지 트랜스퍼(Energy Transfer; ET US)\r\n: 미국 천연가스 수요 증가와 함께 다시 성장한다! #1"
+                },
+                {
+                    "postId": 397,
+                    "title": "시스템 반도체 선도기업 AMD,\r\n인텔을 도전자로 만들어버린 강력한 성장 펀더멘털"
+                }
+            ]
+        },
+        {
+            "authorId": 15,
+            "authorName": "오몽",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/00176570_박진석1.jpg",
+            "introduction": "합리적 소수의 역발상 투자를 지향합니다. 운용업에서 겪은 다양한 경험을 개인 투자자들과 공유하고 싶습니다. 주가 변동에 일희일비하지 않고 투자한 기업과 자신의 부가 같이 성장하는 건전한 투자 관행이 정착하는데 일조하고자 합니다.",
+            "recentTitles": [
+                {
+                    "postId": 408,
+                    "title": "POSCO 플로우 차트\r\n: 주식투자할 때 기업의 사업모델을 이해해야 하는 이유 下 #2"
+                },
+                {
+                    "postId": 406,
+                    "title": "POSCO 플로우 차트\r\n: 주식투자할 때 기업의 사업모델을 이해해야 하는 이유 下 #1"
+                },
+                {
+                    "postId": 362,
+                    "title": "POSCO 플로우 차트\r\n: 주식투자할 때 기업의 사업모델을 이해해야 하는 이유 上 #2"
+                }
+            ]
+        },
+        {
+            "authorId": 7,
+            "authorName": "이철",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/37710337_이철.jpg",
+            "introduction": "중국에서 20년 넘게 거주하며 활동하고 이제 중국 사회, 경제 등 전반에 걸쳐 관찰하고 분석하고 해설하고 있습니다. 거시적 안목에서 중국과 우리를 이해하고자 노력 중입니다.\r\n#북경이박사#",
+            "recentTitles": [
+                {
+                    "postId": 427,
+                    "title": "우크라이나 사태와 중국"
+                },
+                {
+                    "postId": 415,
+                    "title": "2022년 2월 중국 PMI 해설"
+                },
+                {
+                    "postId": 396,
+                    "title": "중국의 반도체 기술 개발, 새로운 단계 돌입"
+                }
+            ]
+        },
+        {
+            "authorId": 12,
+            "authorName": "부로마블",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/588165aa_bp-miller-Sgb3OmpipWY-unsplash.jpg",
+            "introduction": "평범한 직장인이 시작한 자본주의 탐험기\r\n투자 그리고 경제와 관련된 모든 정보를 다루는 공간",
+            "recentTitles": [
+                {
+                    "postId": 454,
+                    "title": "미스터 마켓은 예상대로 가는 것을 싫어한다. (LG에너지솔루션)"
+                },
+                {
+                    "postId": 441,
+                    "title": "세일즈포스닷컴(CRM) 분석"
+                },
+                {
+                    "postId": 426,
+                    "title": "부동산 투자 공식을 찾아보자 (서울 미분양 데이터 중심)"
+                }
+            ]
+        },
+        {
+            "authorId": 24,
+            "authorName": "재무제표 읽는 남자",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/35781d07_2.jpg",
+            "introduction": "재무제표 읽는 남자입니다. 투자하기 위해서, 기업의 정보를 얻기 위해서 반드시 챙겨 봐야 할 재무제표. 읽기만 해도 도움이 되는 재무제표 유용함을 널리 알리고 싶습니다. \n『숫자 울렁증 32세 이승환 씨는 어떻게 재무제표 읽어주는 남자가 됐을까』 이승환 지음 / 흐름출판(2018) 『취준생 재무제표로 취업 뽀개기』 이승환 지음 / \n이은북(2019) 『핫한 그 회사, 진짜 잘 나갈까?』 이승환 지음 / 위클리비즈북스(2020)",
+            "recentTitles": [
+                {
+                    "postId": 434,
+                    "title": "넥슨 김정주 Story #2"
+                },
+                {
+                    "postId": 433,
+                    "title": "넥슨 김정주 Story #1"
+                },
+                {
+                    "postId": 350,
+                    "title": "언제까지 ‘삼성전자’만 바라볼 것인가? #2"
+                }
+            ]
+        },
+        {
+            "authorId": 28,
+            "authorName": "원스",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/916ae9d8_7.jpg",
+            "introduction": "거시(매크로) 경제에 대한 내용을 주로 다루고 있습니다. 많은 의견 부탁드립니다.",
+            "recentTitles": [
+                {
+                    "postId": 470,
+                    "title": "경제사이클과 4국면 시나리오\r\n- 미국증시, 달러환율, 채권금리, 원자재, 부동산 투자 향방"
+                },
+                {
+                    "postId": 464,
+                    "title": "3월 FOMC 리뷰 - 중립금리보다 높은 기준금리, 양적긴축, 회복기 or 위축기"
+                },
+                {
+                    "postId": 424,
+                    "title": "경제 사이클과 미국 기준금리 인상, 미국증시,10년물국채금리, 달러환율의 관계"
+                }
+            ]
+        },
+        {
+            "authorId": 31,
+            "authorName": "밸류체인타임스",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/9bfa713d_밸류체인타임스 Logo.png",
+            "introduction": "기업분석, 금융, 투자, 경제, 비즈니스 인사이트를 통한 올바른 저널리즘 보도를 추구합니다.\n신뢰·혁신·가치·공정성을 토대로 지속 가능한 스마트 프로젝트 저널리즘을 보도합니다.",
+            "recentTitles": [
+                {
+                    "postId": 466,
+                    "title": "스테이블코인: 암호화폐 투자변동성을 완화하기 위해 설계된 코인"
+                },
+                {
+                    "postId": 445,
+                    "title": "2022년 주목할 10가지 해외 메타버스 플랫폼"
+                },
+                {
+                    "postId": 431,
+                    "title": "블록체인 암호화폐와 블록체인의 역사"
+                }
+            ]
+        },
+        {
+            "authorId": 16,
+            "authorName": "서정렬",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/e5ca4854_서정렬.jpg",
+            "introduction": "부동산을 이야기 합니다. 그러나 부동산 만을 이야기 하지는 않습니다. 부린이도 이해할 수 있는 삶을 담는 그릇으로서의 부동산에 대해 이야기를 하고자 합니다.",
+            "recentTitles": [
+                {
+                    "postId": 463,
+                    "title": "‘한강’ 따라 흐른 ‘부동산 민심’, 대통령을 결정하다"
+                },
+                {
+                    "postId": 421,
+                    "title": "마지막 토론도 ‘기승전부동산’, “대장동?!” “이거 보세요?!”"
+                },
+                {
+                    "postId": 387,
+                    "title": "이재명 vs 윤석열, ‘기승전부동산’의 부동산 선거"
+                }
+            ]
+        },
+        {
+            "authorId": 26,
+            "authorName": "제시카",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/239f10a9_1.jpg",
+            "introduction": "세상을 바꾸는 부드러운 힘으로 투자자분들에게 선한 영향력을 끼치고 싶은 제시카입니다. 투자자들이 급변하는 주식시장에서 좋은 인사이트를 얻을 수 있으셨으면 합니다.",
+            "recentTitles": [
+                {
+                    "postId": 325,
+                    "title": "D램 커패시터용 High-K 전구체 소재가 하프늄으로 전환 중"
+                },
+                {
+                    "postId": 291,
+                    "title": "어펌(Affirm)으로 본 국내 BNPL 시장의 가능성"
+                },
+                {
+                    "postId": 270,
+                    "title": "모빌리티 플랫폼으로 변화하는 휴맥스"
+                }
+            ]
+        },
+        {
+            "authorId": 13,
+            "authorName": "JUTOPIA",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/d0245b3e_최명진.jpg",
+            "introduction": "인문학을 사랑하고 독서와 투자를 좋아하는 치과의사입니다.  \n주업에 충실하면서 부업으로 투자하는 패시브 자산배분 투자와 경제적 자유를 주제로 다룹니다.",
+            "recentTitles": [
+                {
+                    "postId": 430,
+                    "title": "2022년에 '버블'이 터지고 경제위기가 올까?"
+                },
+                {
+                    "postId": 392,
+                    "title": "2022년 미국 기준금리 인상기의 투자전략에 대하여 | feat. 코스톨라니 달걀"
+                },
+                {
+                    "postId": 346,
+                    "title": "'코스톨라니의 달걀'로 풀어보는 경제전망과 대응전략"
+                }
+            ]
+        },
+        {
+            "authorId": 33,
+            "authorName": "황금별의 부자노트",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/21dceb2c_필진소개 이미지.jpg",
+            "introduction": "다양한 파이프라인을 통한 패시브인컴으로 경제적 자유를 꿈꾸는 40대 평범한 직장인입니다. 저는 다음과 같이 시스템소득을 만들어가고자 노력중입니다. 1. 미국주식 배당주 투자를 통한 '배당소득' 2. 부동산 투자를 통한 '임대소득' 3. 콘텐츠 크리에이터 활동을 통한 '콘텐츠소득' 평범한 직장인이 경제적 자유를 얻어가는 과정을 함께 공유해요!!",
+            "recentTitles": [
+                {
+                    "postId": 458,
+                    "title": "미국주식 세금 어렵지 않아요!!"
+                },
+                {
+                    "postId": 444,
+                    "title": "세계 최고의 패시브 ETF 비교 SPY vs QQQ"
+                },
+                {
+                    "postId": 440,
+                    "title": "하락장에 강한 8% 고배당+월배당 ETF 'NUSI'"
+                }
+            ]
+        },
+        {
+            "authorId": 25,
+            "authorName": "한대훈",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/618c5dd5_1.jpg",
+            "introduction": "주식전략 및 시황 애널리스트다. 지난 2017년 증권사 최초로 비트코인 관련 리포트를 발간하는 등 신기술과 새로운 트렌드에 관심이 많다. 다양한 아이디어와 트렌드를 전달하는 투자자들에게 나침반과 같은 애널리스트가 되길 희망한다.",
+            "recentTitles": [
+                {
+                    "postId": 479,
+                    "title": "윤석열 정부에서의 가상자산"
+                },
+                {
+                    "postId": 438,
+                    "title": "우크라이나 전쟁과 비트코인"
+                },
+                {
+                    "postId": 393,
+                    "title": "유럽으로 가는 비트코인 ETF"
+                }
+            ]
+        },
+        {
+            "authorId": 27,
+            "authorName": "프루팅",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/d63f5a6f_프루츠컨설팅_채널 이미지.png",
+            "introduction": "프루팅은, 기관 외국인이 보는 실시간 정보를 한곳에 모아 선별 및 해석해주는 \n국내 유일의 자문 구독형 투자 플랫폼입니다. \n프루팅은 투자업계 전문가들이 핵심 투자/경제 콘텐츠를 선별 및 해석하여 제공함으로서- 독자들의 합리적인 투자 의사결정을 돕는 동시에, 기관 고유자금을 운용하는 프랍트레이더 출신의 대표가 제공하는 자문서비스까지 원스탑으로 제공합니다.",
+            "recentTitles": [
+                {
+                    "postId": 455,
+                    "title": "ANOTHER VARIANT (프루츠 이선철)"
+                },
+                {
+                    "postId": 432,
+                    "title": "아이러니, IRONY (프루츠 이선철)"
+                },
+                {
+                    "postId": 389,
+                    "title": "통제를 벗어나는 시장금리 (프루츠 이선철)"
+                }
+            ]
+        },
+        {
+            "authorId": 30,
+            "authorName": "타락천사",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/e186331f_블로그 로고.png",
+            "introduction": "암호화폐 투자를 통한 경제적 자유를 추구하고 있는 존버 투자자입니다.\n트레이딩 보다는 비교적 안전하게 미래의 부를 추구할 수 있는 방향을 고민하고 또한 공유하고 있습니다.\n경제적 자유를 함께 달성해 나갔으면 좋겠습니다.",
+            "recentTitles": [
+                {
+                    "postId": 416,
+                    "title": "나의 암호화폐 투자 이야기 (2018.02.~2022.02./4년)"
+                },
+                {
+                    "postId": 382,
+                    "title": "보스턴 증권형 토큰거래소(BSTX)와 레이븐코인(RVN)"
+                },
+                {
+                    "postId": 285,
+                    "title": "2022년 클레이튼 전망 살펴보기"
+                }
+            ]
+        },
+        {
+            "authorId": 20,
+            "authorName": "김대구",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/0d3d252e_김대구.jpg",
+            "introduction": "대학에서 도시계획과 심리학을 전공했습니다. 한화그룹공채로 입사한 후 지금은 국내 금융사에서 대체 투자심사역으로 일하고 있습니다. 전통 투자시장이 지난 10년간 연평균 6% 성장한 반면, 동기간 대체투자 시장은 연평균 24% 씩 성장했습니다. 이렇게 폭발적 성장을 하고 있는 분야에 올바른 투자 결정을 하는 데 돕고 싶습니다.",
+            "recentTitles": [
+                {
+                    "postId": 450,
+                    "title": "글로벌 부동산 메가 트렌드, 단독주택(Single-Family Rental) 투자"
+                },
+                {
+                    "postId": 365,
+                    "title": "코로나19 이후 상업시설(리테일)은 어느 위치에 있을까?"
+                },
+                {
+                    "postId": 290,
+                    "title": "금융 투자자가 바라보는 에너지 저장 장치(ESS) 사업"
+                }
+            ]
+        },
+        {
+            "authorId": 9,
+            "authorName": "석대건",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/1ba81249_석대건.jpg",
+            "introduction": "기자입니다. ‘우리는 무엇을 위해 일하고 어떻게 성장하며, 왜 살아야 하는가?’에 대한 답을 찾고자 노력합니다. 이를 위해 AI, 클라우드, 데이터 관련 IT 기술, 애자일 방법론 등 생산성과 성장, 그리고 지속가능성에 대해 공부하고 전문가를 만나 글을 씁니다.",
+            "recentTitles": [
+                {
+                    "postId": 102,
+                    "title": "CSR이 ESG와 다를 게 없다고?"
+                },
+                {
+                    "postId": 42,
+                    "title": "빨라진 ESG 타임라인, 어디서부터 따라가야 할까? #1"
+                },
+                {
+                    "postId": 32,
+                    "title": "빨라진 ESG 타임라인, 어디서부터 따라가야 할까? #2"
+                }
+            ]
+        },
+        {
+            "authorId": 39,
+            "authorName": "리치밍",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/d6a6cade_1.jpg",
+            "introduction": "30대초반 서울 내 집마련에 성공한 리치밍입니다. 부동산 시장의 전반적인 흐름 분석과 내 집마련을 위한 정보공유를 통해 사람들에게 도움을 주는 등대 역할을 하고 싶습니다.",
+            "recentTitles": [
+                {
+                    "postId": 465,
+                    "title": "부동산 투자를 위해 매매/전세 가격지수는 반드시 확인할 필요가 있습니다!\r\n(ft. 추세에 대한 본질적인 해석)"
+                }
+            ]
+        },
+        {
+            "authorId": 37,
+            "authorName": "로빈후드",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/85c1c64e_1.jpg",
+            "introduction": "금융권 재직 (현재는 다른 업종 근무) 당시 거시경제(Macro) 분석에 흥미를 느낀 뒤, 하루하루 기록물로 남기고 있습니다.\r\n국내 증시 : 공모주, 혹은 매수 상위 종목 등 분석\r\n해외 증시 : 거시경제 분석",
+            "recentTitles": [
+                {
+                    "postId": 472,
+                    "title": "워런버핏 옥시덴탈 1억 1,830만주 보유 지분 완벽 정리!!"
+                },
+                {
+                    "postId": 457,
+                    "title": "러시아 시가총액 상위 10개 종목 주가 상황"
+                }
+            ]
+        }
+    ],
+    "totalCount": 23
+}

@@ -72,6 +72,13 @@
     "authors": {
         "items": [
             {
+                "authorId": 34,
+                "authorName": "줌투자",
+                "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
+                "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+                "isNewbie": false
+            },
+            {
                 "authorId": 37,
                 "authorName": "로빈후드",
                 "introduction": "금융권 재직 (현재는 다른 업종 근무) 당시 거시경제(Macro) 분석에 흥미를 느낀 뒤, 하루하루 기록물로 남기고 있습니다.\r\n국내 증시 : 공모주, 혹은 매수 상위 종목 등 분석\r\n해외 증시 : 거시경제 분석",
@@ -98,13 +105,6 @@
                 "introduction": "30대초반 서울 내 집마련에 성공한 리치밍입니다. 부동산 시장의 전반적인 흐름 분석과 내 집마련을 위한 정보공유를 통해 사람들에게 도움을 주는 등대 역할을 하고 싶습니다.",
                 "authorThumbnailUrl": "https://finance.zumst.com/writing/d6a6cade_1.jpg",
                 "isNewbie": true
-            },
-            {
-                "authorId": 34,
-                "authorName": "줌투자",
-                "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
-                "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
-                "isNewbie": false
             }
         ],
         "totalCount": 23
