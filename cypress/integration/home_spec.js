@@ -162,19 +162,67 @@ describe('zum 투자 홈', () => {
 
   });  // END: 사이드바
 
-  it('오늘의 주요 뉴스가 보여진다.', () => {
-    cy.get('.today_news')
-      .first()
-      .scrollIntoView();
-
-    cy.withHidden('#header', () => {
-      cy.waitForImage('.today_news [class^="thumb"] img, .today_news img[class^="thumb"]');
-
+  describe('오늘의 주요뉴스', () => {
+    beforeEach(() => {
+      cy.clock();
       cy.get('.today_news')
         .first()
-        .toMatchImageSnapshot();
+        .as('todayNews');
     });
-  });
+
+    it('화살표 버튼을 눌러 투자노트와 공시를 살펴볼 수 있다.', () => {
+      cy.get('.breaking_news')
+        .as('breakingNews');
+
+      cy.get('@breakingNews')
+        .find('.next')
+        .as('nextButton');
+
+      cy.get('@breakingNews')
+        .find('.prev')
+        .as('prevButton');
+
+      const removeCarrageReturn = title => title.replace(/\r/g, '');
+      cy.fixture('home')
+        .then(home => {
+          const notices = [
+            ...home.notices.performanceSummaryNotices,
+            ...home.notices.investmentContentsNotices,
+          ];
+          notices.forEach(({ title }) => {
+            cy.get('@breakingNews')
+              .should('contain', removeCarrageReturn(title));
+
+            cy.get('@nextButton')
+              .click();
+          });
+
+          notices.reverse().forEach(({ title }) => {
+            cy.get('@prevButton')
+              .click();
+
+            cy.get('@breakingNews')
+              .should('contain', removeCarrageReturn(title));
+          });
+        });
+    });
+
+    it('오늘의 주요 뉴스가 보여진다.', () => {
+      cy.get('@todayNews')
+        .scrollIntoView();
+
+      cy.withHidden('#header', () => {
+        cy.get('@todayNews')
+          .within(() => {
+            cy.waitForImage('[class^="thumb"] img, .today_news img[class^="thumb"]');
+
+            cy.root()
+              .first()
+              .toMatchImageSnapshot();
+          });
+      });
+    });
+  });  // END: 오늘의 주요뉴스
 
   describe('증시전망', () => {
     beforeEach(() => {
