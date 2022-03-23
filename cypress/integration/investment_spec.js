@@ -3,7 +3,9 @@ describe('투자노트', () => {
     cy.stubThirdParty();
     cy.intercept('/api/investment', {fixture: 'investment'})
       .as('apiInvestment');
-    cy.intercept('/api/investment/authors*', {fixture: 'investment-authors'})
+    cy.intercept('/api/investment/authors*', req => {
+        req.reply({fixture: 'investment-authors'});
+      })
       .as('apiInvestmentAuthors');
     cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
       .as('apiInvestmentAuthor');
@@ -73,7 +75,7 @@ describe('투자노트', () => {
       cy.visit('/investment/recently');
     });
 
-    it.only('최신글에서 카테고리 선택을 할 수 있다.', () => {
+    it('최신글에서 카테고리 선택을 할 수 있다.', () => {
       const categoryTable = {
         '국내증시': 'domesticStock',
         '해외증시': 'overseasStock',
@@ -118,12 +120,33 @@ describe('투자노트', () => {
         .should('contain', '/investment/author/34');
     });
 
-    it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동할 수 있다.', () => {
+    it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동하고 정렬할 수 있다.', () => {
       cy.contains('줌 투자 필진')
         .click();
       
       cy.url().should('contain', '/investment/author');
       cy.contains('@@줌투자필진@@').should('be.visible');
+
+      const sortables = ['콘텐츠 많은 순', '필진명순', '최근 등록 순'];
+      const clickAndMatchApiRequest = name =>
+        cy.contains(name)
+          .click()
+          .location()
+          .then(loc => {
+            const sortParam = loc.search.match(/sort=[^&]+/)[0];
+            return cy
+              .get('@apiInvestmentAuthors')
+              .its('request.url')
+              .should('contain', sortParam);
+          });
+
+      sortables
+        .map(name => {
+          // 오름차순, 내림차순 각각 테스트
+          return clickAndMatchApiRequest(name)
+            .then(() => clickAndMatchApiRequest(name));
+        })
+        .reduce((acc, p) => acc.then(() => p));
     });
 
     // TODO: 테스트 정렬 (가독성)
