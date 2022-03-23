@@ -204,20 +204,37 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
-      hideHeaderWhile(() => {
-        cy.get('.today_hot_pick')
-          .as('todayHotPick')
-          .find('ul > li:not(:first-children) > a')
-          .first()  // NOTE: 마크업이 이중으로 되어있는 문제
-          .each($menu => {
-            cy.wrap($menu)
-              .click()
-              .should('activated');
+      const menuTable = {
+        '급등주 PICK': 'soaring',
+        '리포트 PICK': 'report',
+        '거래급증': 'transaction-rise',
+        '신규상장주': 'new',
+        '낙폭과대': 'fall',
+        '골든크로스': 'golden-cross',
+      };
+      cy.get('.today_hot_pick')
+        .as('todayHotPick')
+        .find('ul > li > a')
+        .each($menu => {
+          const menuText = $menu.text();
+          cy.wrap($menu)
+            .click()
+            .should('be.activated');
+          
+          cy.get('@apiDomesticHome')
+            .its('response.body')
+            .then(home => {
+              const key = menuTable[menuText];
+              const items = home.todayHotPick[key];
 
-            cy.get('@todayHotPick')
-              .toMatchImageSnapshot();
-          });
-      });
+              items
+                .map(item => item.name)
+                .forEach(name =>
+                  cy.get('@todayHotPick')
+                    .contains(name)
+                    .should('be.visible'));
+            });
+        });
     });
   }); // END: 오늘의 HOT PICK
 
