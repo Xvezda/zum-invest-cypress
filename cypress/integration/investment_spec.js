@@ -38,7 +38,7 @@ describe('투자노트', () => {
       cy.intercept('/api/investment/posts*', req => {
           const url = new URL(req.url);
           const page = parseInt(url.searchParams.get('page'), 10);
-          req.reply({fixture: `investment-authors-${page}`});
+          req.reply({fixture: `investment-home-authors-${page}`});
         })
         .as('posts');
       cy.visit('/investment/recently');
@@ -77,7 +77,7 @@ describe('투자노트', () => {
       cy.intercept('/api/investment/home/authors*', req => {
           const url = new URL(req.url);
           const page = parseInt(url.searchParams.get('page'), 10);
-          req.reply({fixture: `investment-authors-${page}`});
+          req.reply({fixture: `investment-home-authors-${page}`});
         })
         .as('apiAuthors');
 
