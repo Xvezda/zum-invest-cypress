@@ -1,0 +1,95 @@
+{
+    "author": {
+        "authorId": 34,
+        "authorName": "줌투자",
+        "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+        "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
+        "profile": "줌투자 콘텐츠 담당자",
+        "personalChannelLink": "https://zum-invest.tistory.com/"
+    },
+    "recent": {
+        "items": [
+            {
+                "postId": 480,
+                "title": "[🔑개장] 철강주의 상승률 상위 점령",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-23T10:00:24",
+                "postThumbnailUrl": "https://finance.zumst.com/content/383b3438_0323.png",
+                "leadText": "코스피, 0.63% 오른 2727.12 출발 코스닥, 0.51% 오른 929.35 출발 美 증시, 대형 기술주 중심 상승<h2 data-ke-size=\"size26\">📊 코스피 철강금속, 통신업 ▲시총상위주 일제히 상승현대백화점, 지누스 인수에 강세🚀 하이스틸, 화..."
+            },
+            {
+                "postId": 478,
+                "title": "[🔒 마감] 빵빵 터지는 신고가🎉",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-22T16:22:34",
+                "postThumbnailUrl": "https://finance.zumst.com/content/26ca8864_0322.png",
+                "leadText": "\"전국민 항체 양성률 조사\" 진단키트주 🚀 골드만삭스, 가상화폐 옵션거래 시작<p data-ke-size=\"size16\"> <h2 data-ke-size=\"size26\">📊 코스피 2710.00 마감 (+0.89%) 외국인 -1542억 / 기관 +3345억 / 개인..."
+            },
+            {
+                "postId": 476,
+                "title": "[🔑개장] 물가 대란",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-22T10:03:58",
+                "postThumbnailUrl": "https://finance.zumst.com/content/773cdf92_0322.png",
+                "leadText": "코스피, 0.02% 오른 2686.68 출발 코스닥, 0.19% 오른 916.70 출발 美 증시, 파월 공격적 긴축 발언에 하락<h2 data-ke-size=\"size26\">📊 코스피 의료정밀, 운수장비 ▲의약품, 섬유의복 ▼시총상위주 상승 우세JW중외제약, 300억..."
+            },
+            {
+                "postId": 475,
+                "title": "[🔒 마감] 아쉽지만 약보합",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-21T16:30:44",
+                "postThumbnailUrl": "https://finance.zumst.com/content/fbe5af4d_03211.png",
+                "leadText": "울지마 바이오 유럽, 우크라 핵전쟁 가능성 대비<p data-ke-size=\"size16\"> <h2 data-ke-size=\"size26\">📊 코스피 2686.05 마감 (-0.77%) 외국인 -4556억 / 기관 -3504억 / 개인 +7870억화학, 종이목재 ▲의..."
+            },
+            {
+                "postId": 474,
+                "title": "[🔑개장] 용산 대통령 시대",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-21T10:03:58",
+                "postThumbnailUrl": "https://finance.zumst.com/content/e46cfa2d_0321.png",
+                "leadText": "코스피, 0.40% 오른 2717.81 출발 코스닥, 0.42% 오른 926.86 출발 美 증시, 수급 요인으로 상승<h2 data-ke-size=\"size26\">📊 코스피 비금속광물, 종이목재 ▲ 의료정밀, 전기가스 ▼시총상위주 혼조일진디스플, 오버행 우려에 급락\ud83d..."
+            },
+            {
+                "postId": 473,
+                "title": "[🔒 마감] 2700선 회복",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-18T16:38:01",
+                "postThumbnailUrl": "https://finance.zumst.com/content/56114261_0318.png",
+                "leadText": "러시아 ‘디폴트 모면’ 중국 게임 시장 문 열리나<p data-ke-size=\"size16\"> <h2 data-ke-size=\"size26\">📊 코스피 2707.02 마감 (+0.46%) 외국인 +1047억 / 기관 -130억 / 개인 +1358억섬유의복, 운수창고 ..."
+            },
+            {
+                "postId": 469,
+                "title": "[🔑개장] 중고차 시장의 Next Level",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-18T10:02:00",
+                "postThumbnailUrl": "https://finance.zumst.com/content/f317164d_0318.png",
+                "leadText": "코스피, 0.04% 오른 2695.64 출발 코스닥, 0.13% 오른 915.29 출발 美 증시, 선물옵션 만기일 앞두고 상승폭 확대<h2 data-ke-size=\"size26\">📊 코스피 철강금속, 의약품 ▲ 전기가스, 건설 ▼시총상위주 상승 우세케이카, 중고차 시..."
+            },
+            {
+                "postId": 468,
+                "title": "[🔒 마감] 삼성 주총의 나비효과",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-17T16:33:29",
+                "postThumbnailUrl": "https://finance.zumst.com/content/f22d36e2_03177.png",
+                "leadText": "기승전 메타버스 정부, ‘2000억’ 배터리 펀드 조성<p data-ke-size=\"size16\"> <h2 data-ke-size=\"size26\">📊 코스피 2694.51 마감 (+1.33%) 외국인 +3,605억 / 기관 +3,803억 / 개인 -7,180억비금속광..."
+            },
+            {
+                "postId": 462,
+                "title": "[🔑개장] 완벽한 지수, 환율, 수급",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-17T10:10:00",
+                "postThumbnailUrl": "https://finance.zumst.com/content/046057c0_03177.png",
+                "leadText": "코스피, 1.66% 오른 2703.27 출발 코스닥, 1.34% 오른 903.75 출발 예견된 금리 인상에 나스닥 3.8% 급등<h2 data-ke-size=\"size26\">📊 코스피 전기전자, 서비스, 증권 ▲ 전기가스, 건설 ▼시총상위주 일제히 상승SK하이닉스·L..."
+            },
+            {
+                "postId": 461,
+                "title": "[🔒 마감] 오랜만에 양 시장 상승 마감",
+                "subCategory": "국내증시동향",
+                "writeDateTime": "2022-03-16T16:30:00",
+                "postThumbnailUrl": "https://finance.zumst.com/content/5f0d8338_03177.png",
+                "leadText": "코스피 4거래일만에 상승 마감 싸이월드, 예정대로 4월 2일 개장<p data-ke-size=\"size16\"> <h2 data-ke-size=\"size26\">📊 코스피 2659.23 마감 (+1.44%) 외국인 -1,674억 / 기관 +3,614억 / 개인 -1,91..."
+            }
+        ],
+        "totalCount": 75
+    }
+}

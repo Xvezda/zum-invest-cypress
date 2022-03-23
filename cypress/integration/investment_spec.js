@@ -23,6 +23,14 @@ describe('투자노트', () => {
           .toMatchImageSnapshot();
       });
     });
+
+    it('필진 이름을 클릭하면 필진 상세페이지로 이동한다.', () => {
+      cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'});
+      cy.contains('@@줌투자@@')
+        .click()
+        .url()
+        .should('contain', '/investment/author/34');
+    });
   });  // END: 투자노트 TOP6
 
   describe('최신글', () => {
