@@ -6,8 +6,10 @@ describe('투자노트', () => {
     cy.stubThirdParty();
     cy.intercept('/api/investment', {fixture: 'investment'})
       .as('apiInvestment');
-    cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
+    cy.intercept('/api/investment/authors*', {fixture: 'investment-authors'})
       .as('apiInvestmentAuthors');
+    cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
+      .as('apiInvestmentAuthor');
     cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
       .as('apiInvestmentPosts');
 
@@ -42,7 +44,7 @@ describe('투자노트', () => {
       cy.url()
         .should('contain', '/investment/author/34');
       
-      cy.wait('@apiInvestmentAuthors');
+      cy.wait('@apiInvestmentAuthor');
       cy.shouldRequestOnScroll('@apiAuthorsPostsRecent');
     });
 
@@ -118,6 +120,14 @@ describe('투자노트', () => {
 
       cy.url()
         .should('contain', '/investment/author/34');
+    });
+
+    it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동할 수 있다.', () => {
+      cy.contains('줌 투자 필진')
+        .click();
+      
+      cy.url().should('contain', '/investment/author');
+      cy.contains('@@줌투자필진@@').should('be.visible');
     });
 
     // TODO: 테스트 정렬 (가독성)
