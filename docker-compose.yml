@@ -1,8 +1,8 @@
 version: '3.9'
 services:
   e2e:
-    build: .
+    container_name: e2e
+    image: cypress/included:9.5.2
+    working_dir: /e2e
     volumes:
-      - ./package.json:/app/package.json
-      - ./cypress.json:/app/cypress.json
-      - ./cypress:/app/cypress
+      - ./:/e2e
