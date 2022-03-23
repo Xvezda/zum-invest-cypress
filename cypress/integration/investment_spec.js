@@ -4,8 +4,26 @@ const expectMenuToActivate = $menu =>
 describe('투자노트', () => {
   beforeEach(() => {
     cy.stubThirdParty();
-    cy.visit('/investment');
+    cy.intercept('/api/investment', {fixture: 'investment'})
+      .as('apiInvestment');
+
+    cy.visit('/');
+    cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
+    cy.get('.gnb_finance')
+      .find('a:contains("투자노트")')
+      .click();
+
+    cy.wait('@apiInvestment');
   });
+
+  describe('투자노트 TOP6', () => {
+    it('카드형태로 보여준다.', () => {
+      cy.withHidden('#header', () => {
+        cy.get('.invest_note_list')
+          .toMatchImageSnapshot();
+      });
+    });
+  });  // END: 투자노트 TOP6
 
   describe('최신글', () => {
     beforeEach(() => {
