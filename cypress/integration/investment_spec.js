@@ -6,6 +6,10 @@ describe('투자노트', () => {
     cy.stubThirdParty();
     cy.intercept('/api/investment', {fixture: 'investment'})
       .as('apiInvestment');
+    cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
+      .as('apiInvestmentAuthors');
+    cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
+      .as('apiInvestmentPosts');
 
     cy.visit('/');
     cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
@@ -25,11 +29,27 @@ describe('투자노트', () => {
     });
 
     it('필진 이름을 클릭하면 필진 상세페이지로 이동한다.', () => {
-      cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'});
       cy.contains('@@줌투자@@')
-        .click()
-        .url()
+        .click();
+
+      cy.url()
         .should('contain', '/investment/author/34');
+    });
+
+    it('제목 혹은 내용요약을 클릭하면 읽기페이지로 이동한다.', () => {
+      const expectUrlToMatch = () => 
+        cy.url()
+          .should('contain', `/investment/view/480`);
+
+      cy.contains('@@제목@@')
+        .click()
+        .then(expectUrlToMatch);
+
+      cy.go('back');
+
+      cy.contains('@@내용@@')
+        .click()
+        .then(expectUrlToMatch);
     });
   });  // END: 투자노트 TOP6
 

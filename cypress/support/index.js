@@ -36,9 +36,11 @@ beforeEach(() => {
       req.reply({fixture: 'fallback.jpg'});
     }
   });
+
   cy.intercept(/^https?:\/\/finance\.zumst\.com\/writing\/.+\.(png|jpe?g|gif)$/, {
     fixture: 'writer.png'
   });
+  cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
 });
 
 chai.use((chai, utils) => {
