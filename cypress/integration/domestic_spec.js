@@ -26,6 +26,9 @@ describe('국내증시', () => {
    */
   const triggerDomesticHomeApi = () =>
     cy.tick(20001);
+  
+  const triggerMekoChartApi = () =>
+    cy.tick(1000);
 
   beforeEach(() => {
     cy.stubThirdParty();
@@ -43,7 +46,6 @@ describe('국내증시', () => {
         cy.spy(win, 'postMessage').as('postMessage');
       }
     });
-    triggerDomesticHomeApi();
   });
 
   const hideHeaderWhile = callback =>
@@ -72,6 +74,7 @@ describe('국내증시', () => {
         cy.get('.map_cont iframe')
           .as('mekoChart');
 
+        triggerMekoChartApi();
         cy.wait('@apiMekoChart');
 
         cy.get('@mekoChart')
@@ -134,6 +137,7 @@ describe('국내증시', () => {
 
   describe('실시간 국내 증시', () => {
     it('코스피 지수를 보여준다.', () => {
+      triggerDomesticHomeApi();
       hideHeaderWhile(() => {
         cy.get('.stock_index_wrap')
           .toMatchImageSnapshot();
@@ -242,6 +246,7 @@ describe('국내증시', () => {
 
   describe('ZUM 인기종목', () => {
     it('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
+      triggerDomesticHomeApi();
       hideHeaderWhile(() => {
         cy.get('.popularity_event_wrap')
           .toMatchImageSnapshot();
