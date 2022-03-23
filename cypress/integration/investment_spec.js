@@ -1,6 +1,3 @@
-const expectMenuToActivate = $menu =>
-  cy.wrap($menu).closest('.active');
-
 describe('투자노트', () => {
   beforeEach(() => {
     cy.stubThirdParty();
@@ -76,7 +73,7 @@ describe('투자노트', () => {
       cy.visit('/investment/recently');
     });
 
-    it('최신글에서 카테고리 선택을 할 수 있다.', () => {
+    it.only('최신글에서 카테고리 선택을 할 수 있다.', () => {
       const categoryTable = {
         '국내증시': 'domesticStock',
         '해외증시': 'overseasStock',
@@ -95,8 +92,7 @@ describe('투자노트', () => {
                 .its('request.url')
                 .should('contain', `category=${categoryTable[categoryText]}`);
 
-              // 클릭한 카테고리는 활성화가 되어야 한다.
-              expectMenuToActivate($category);
+              cy.wrap($category).should('be.activated');
             });
         });
     });
