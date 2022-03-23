@@ -208,6 +208,7 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
+      triggerDomesticHomeApi();
       cy.wait('@apiDomesticHome');
 
       const menuTable = {
