@@ -11,6 +11,13 @@ describe('투자노트', () => {
     cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
       .as('apiInvestmentPosts');
 
+    cy.intercept('/api/investment/authors/*/posts/recent**', req => {
+        const url = new URL(req.url);
+        const page = parseInt(url.searchParams.get('page')) - 1;
+        req.reply({fixture: `investment-authors-posts-recent-${page}`});
+      })
+      .as('apiAuthorsPostsRecent');
+
     cy.visit('/');
     cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
     cy.get('.gnb_finance')
@@ -28,18 +35,21 @@ describe('투자노트', () => {
       });
     });
 
-    it('필진 이름을 클릭하면 필진 상세페이지로 이동한다.', () => {
+    it('필진 이름을 클릭하면 필진 상세페이지로 이동하고 스크롤을 내려 최신글을 확인 가능하다.', () => {
       cy.contains('@@줌투자@@')
         .click();
 
       cy.url()
         .should('contain', '/investment/author/34');
+      
+      cy.wait('@apiInvestmentAuthors');
+      cy.shouldRequestOnScroll('@apiAuthorsPostsRecent');
     });
 
     it('제목 혹은 내용요약을 클릭하면 읽기페이지로 이동한다.', () => {
       const expectUrlToMatch = () => 
         cy.url()
-          .should('contain', `/investment/view/480`);
+          .should('contain', '/investment/view/480');
 
       cy.contains('@@제목@@')
         .click()
