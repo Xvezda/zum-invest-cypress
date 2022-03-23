@@ -100,42 +100,63 @@ describe('투자노트', () => {
     });
   });  // END: 최신글
 
-  // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
-  // TODO: 테스트 정렬 (가독성)
-  it.skip('줌 투자 필진에서 이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
-    cy.get('.writers_wrap').within(() => {
-      cy.intercept('/api/investment/home/authors*', req => {
-          const url = new URL(req.url);
-          const page = parseInt(url.searchParams.get('page'), 10);
-          req.reply({fixture: `investment-home-authors-${page}`});
-        })
-        .as('apiAuthors');
-
-      const [, _count, total] = Cypress
-        .$('.writers_wrap .count')
-        .text()
-        .match(/(\d+)[^\d](\d+)/)
-        .map(d => parseInt(d, 10));
-
-      cy.get('.next')
-        .click()
-        .wait('@apiAuthors')
-        .its('request.url')
-        .should('contain', 'page=2');
-
-      cy.get('.prev')
-        .click()
-        .wait('@apiAuthors')
-        .its('request.url')
-        .should('contain', 'page=1');
-
-      cy.get('.prev')
-        .click()
-        .wait('@apiAuthors')
-        .its('request.url')
-        .should('contain', `page=${total}`);
+  describe('줌 투자 필진', () => {
+    beforeEach(() => {
+      cy.get('.writers_wrap').as('writersWrap');
     });
-  });
+
+    it('필진이 카드형태로 보여진다.', () => {
+      cy.withHidden('#header', () => {
+        cy.get('@writersWrap').toMatchImageSnapshot();
+      });
+    });
+
+    it('필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
+      cy.get('@writersWrap')
+        .contains('줌투자')
+        .click();
+
+      cy.url()
+        .should('contain', '/investment/author/34');
+    });
+
+    // TODO: 테스트 정렬 (가독성)
+    // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
+    it.skip('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
+      cy.get('@writersWrap').within(() => {
+        cy.intercept('/api/investment/home/authors*', req => {
+            const url = new URL(req.url);
+            const page = parseInt(url.searchParams.get('page'), 10);
+            req.reply({fixture: `investment-home-authors-${page}`});
+          })
+          .as('apiAuthors');
+
+        const [, _count, total] = Cypress
+          .$('.writers_wrap .count')
+          .text()
+          .match(/(\d+)[^\d](\d+)/)
+          .map(d => parseInt(d, 10));
+
+        cy.get('.next')
+          .click()
+          .wait('@apiAuthors')
+          .its('request.url')
+          .should('contain', 'page=2');
+
+        cy.get('.prev')
+          .click()
+          .wait('@apiAuthors')
+          .its('request.url')
+          .should('contain', 'page=1');
+
+        cy.get('.prev')
+          .click()
+          .wait('@apiAuthors')
+          .its('request.url')
+          .should('contain', `page=${total}`);
+      });
+    });
+  });  // END: 줌 투자 필진
 
 });  // END: 투자노트
 
