@@ -178,36 +178,21 @@ describe('국내증시', () => {
   });  // END: 실시간 국내 증시
 
   describe('이번주 투자 캘린더', () => {
-    beforeEach(() => {
+    it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 된다.', () => {
       cy.clock()
         .invoke('restore')
-        .visit('/domestic');
-    });
+        .reload(true);
 
-    it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 된다.', () => {
       cy.get('.investment_calendar')
         .scrollIntoView()
         .within(() => {
-          cy.get('ul.investment_calendar_tab > li > a')
-            .as('investCalendarMenus');
+          cy.get('.investment_calendar_tab a')
+            .each($day => {
+              const date = $day.find('.date').text();
 
-          // 마지막 날짜를 클릭
-          cy.get('@investCalendarMenus')
-            .last()
-            .click();
-
-          cy.get('.investment_calendar_scroll ul > li')
-            .last()
-            .should('be.visible');
-
-          // 다시 첫번째 날짜를 클릭
-          cy.get('@investCalendarMenus')
-            .first()
-            .click();
-
-          cy.get('.investment_calendar_scroll ul > li')
-            .first()
-            .should('be.visible');
+              cy.wrap($day).click();
+              cy.get(`[data-offset$="${date}"]`).should('be.visible');
+            });
         });
     });
   });  // END: 이번주 투자 캘린더
