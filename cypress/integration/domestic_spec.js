@@ -187,12 +187,24 @@ describe('국내증시', () => {
         .scrollIntoView()
         .within(() => {
           cy.get('.investment_calendar_tab a')
+            .as('dayTabs');
+
+          cy.get('@dayTabs')
             .each($day => {
               const date = $day.find('.date').text();
 
               cy.wrap($day).click();
               cy.get(`[data-offset$="${date}"]`).should('be.visible');
             });
+
+          cy.get('@dayTabs')
+            .first()
+            .click();
+          
+          cy.get('.investment_calendar_list .first a')
+            .first()
+            .click()
+            .should('have.ancestors', '.open');
         });
     });
   });  // END: 이번주 투자 캘린더
