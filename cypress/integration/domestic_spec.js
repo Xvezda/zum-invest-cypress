@@ -35,8 +35,6 @@ describe('국내증시', () => {
     cy.stubThirdParty();
 
     interceptApiRequests();
-    cy.intercept('https://chart-finance.zum.com/api/chart/treemap/domestic**')
-      .as('mekoChartContainer');
     cy.intercept('/api/domestic/home/real-time-news*', req => {
         const url = new URL(req.url);
         const page = parseInt(url.searchParams.get('page'), 10);
@@ -91,7 +89,6 @@ describe('국내증시', () => {
         cy.get('@mekoChart')
           .toMatchImageSnapshot();
 
-      cy.wait('@mekoChartContainer');
       // NOTE: 불안정한 메코차트의 로드 문제 해결
       // TODO: 근본적인 원인 파악
       recurse(
