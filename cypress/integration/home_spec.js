@@ -222,6 +222,30 @@ describe('zum 투자 홈', () => {
           });
       });
     });
+
+    it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있다.', () => {
+      cy.intercept('/article/info/**', {statusCode: 200});
+      cy.intercept('/api/news/detail/*', {statusCode: 200});
+      cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(title|items)'\)/);
+
+      cy.fixture('home')
+        .its('mainNews')
+        .as('mainNews');
+
+      const clickNewsAndMatchUrl = news => {
+        cy.contains(news.title).click();
+        cy.url().should('contain', news.id);
+        cy.go('back');
+      };
+
+      cy.get('@mainNews')
+        .its('templatedNews.items')
+        .each(clickNewsAndMatchUrl);
+
+      cy.get('@mainNews')
+        .its('subNewsItems.0')  // 첫번째 뉴스만 확인
+        .then(clickNewsAndMatchUrl);
+    });
   });  // END: 오늘의 주요뉴스
 
   describe('증시전망', () => {
