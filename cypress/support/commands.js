@@ -55,7 +55,7 @@ Cypress.Commands.add('stubThirdParty', () => {
   register('https://static.dable.io/**');
   register('https://wcs.naver.net/**');
 
-  register('https://estat.zum.com/**');
+  register('https://estat.zum.com/at.gif*');
   register('https://displayad.zum.com/**');
 
   cy.on('uncaught:exception', err => {
@@ -67,8 +67,17 @@ Cypress.Commands.add('stubThirdParty', () => {
 
 Cypress.Commands.add(
   'shouldRequestOnScroll',
-  (alias, option = {start: 2, count: 3}) => {
+  (
+    alias,
+    option = {
+      start: 2,
+      count: 3,
+      preHook: () => {},
+      postHook: () => {},
+    }
+  ) => {
     const getPage = page => {
+      option.preHook();
       cy.window()
         .scrollTo('bottomLeft', {
           duration: 10,
@@ -82,6 +91,7 @@ Cypress.Commands.add(
         .wait(alias)
         .its('request.url')
         .should('contain', `page=${page}`)
+        .then(option.postHook)
         .then(() => {
           if (page <= option.count) {
             getPage(page + 1);
