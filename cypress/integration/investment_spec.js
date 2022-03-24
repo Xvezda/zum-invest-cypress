@@ -125,22 +125,20 @@ describe('투자노트', () => {
         .click();
       
       cy.url().should('contain', '/investment/author');
+      cy.wait('@apiInvestmentAuthors');
       cy.contains('@@줌투자필진@@').should('be.visible');
 
-      const sortables = ['콘텐츠 많은 순', '필진명순', '최근 등록 순'];
       const clickAndMatchApiRequest = name =>
         cy.contains(name)
           .click()
-          .location()
-          .then(loc => {
-            const sortParam = loc.search.match(/sort=[^&]+/)[0];
-            return cy
-              .get('@apiInvestmentAuthors')
-              .its('request.url')
-              .should('contain', sortParam);
+          .wait('@apiInvestmentAuthors')
+          .its('request.url')
+          .then(url => {
+            const sortParam = url.match(/sort=[^&]+/)[0];
+            cy.location().its('search').should('include', sortParam);
           });
 
-      sortables
+      ['콘텐츠 많은 순', '필진명순', '최근 등록 순']
         .map(name => {
           // 오름차순, 내림차순 각각 테스트
           return clickAndMatchApiRequest(name)
