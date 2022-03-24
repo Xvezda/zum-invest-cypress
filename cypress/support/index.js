@@ -37,6 +37,17 @@ beforeEach(() => {
     }
   });
 
+  cy.intercept('https://pip-thumb.zumst.com/api/v1/**', req => {
+    const url = new URL(req.url);
+    const width = url.searchParams.get('w');
+    const height = url.searchParams.get('h');
+    if (width === '880' && height === '495') {
+      req.reply({fixture: '880x495.jpg'});
+    } else {
+      req.reply({fixture: '640x360.jpg'});
+    }
+  });
+
   cy.intercept(/^https?:\/\/finance\.zumst\.com\/writing\/.+\.(png|jpe?g|gif)$/, {
     fixture: 'writer.png'
   });
