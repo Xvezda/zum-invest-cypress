@@ -29,7 +29,7 @@ describe('국내증시', () => {
     cy.tick(20001);
   
   const triggerMekoChartApi = () =>
-    cy.tick(1000);
+    cy.tick(5000);
 
   beforeEach(() => {
     cy.stubThirdParty();
@@ -97,12 +97,12 @@ describe('국내증시', () => {
       recurse(
         () => {
           triggerMekoChartApi();
-          return cy.wait('@apiMekoChart');
+          cy.wait('@apiMekoChart');
+          return cy
+            .get('@mekoChart')
+            .its('0.contentDocument.body');
         },
-        () => cy
-          .get('@mekoChart')
-          .its('0.contentDocument.body')
-          .should('have.descendants', '#chart-svg [id^="treemap-node-stock"]'),
+        $body => expect($body).to.have.descendants('[id^="treemap-node-stock"]')
       );
 
       expectMekoChartLoaded()
