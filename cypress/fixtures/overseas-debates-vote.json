@@ -1,0 +1,43 @@
+{
+    "id": 36,
+    "theme": "해외 증시",
+    "title": "우크라이나 사태, 증시 방향은?",
+    "firstOpinion": "하락 추세",
+    "secondOpinion": "안정화",
+    "content": "러시아의 우크라이나 원자력 발전소 공격 소식에 미국뿐만 아니라 유럽, 아시아 등 전 세계 금융 얼어 붙었습니다. 특히, 러시아가 전세계 원유 수출량의 11%를 차지하면서, 원유 수급이 문제가 생기고 있는데요. 향후, 우크라이나 사태에 따른 금융시장의 방향성을 어떻게 보시나요?",
+    "agreeCount": 3,
+    "disagreeCount": 1,
+    "numberOfParticipants": 4,
+    "agreePercent": 75,
+    "disagreePercent": 25,
+    "startedDateTime": "2022-03-07T00:00:00",
+    "endedDateTime": "2022-03-31T23:59:59",
+    "createdDateTime": "2022-03-07T08:31:12",
+    "popularityEnabledDateTime": "2022-03-07T08:33:41",
+    "articles": [
+        {
+            "id": "http://news.zum.com/articles/74198853",
+            "title": "[주간증시전망] 우크라이나 우려는 여전… 인플레 대응전략 나서야",
+            "leadText": "이번 주(7~11일) 국내 증시는 우크라이나 사태 소식에 따라 변동성 장세가 이어질 것으로 예상된다.\t높은 국제유가 등으로 촉발된 인플레이션은 미국 연방준비제도(연준·Fed)의 긴축 ...",
+            "registerDateTime": "2022-03-07T00:10:00",
+            "mediaName": "아주경제",
+            "landingUrl": "https://news.zum.com/articles/74198853"
+        },
+        {
+            "id": "http://news.zum.com/articles/74179830",
+            "title": "우크라이나 전쟁 장기화되면 국내 증시 추세적 상승에 부정적",
+            "leadText": "인플레이션 압력이 완화되지 않으면 국내 증시의 추세적 상승이 어려울 수 있다는 분석이 나왔다.\t러시아와 우크라이나의 전쟁이 장기화될 경우 국제유가 등 원자재 가격 상승세가 이...",
+            "registerDateTime": "2022-03-05T14:52:06",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/74179830"
+        },
+        {
+            "id": "http://news.zum.com/articles/74174078",
+            "title": "[유럽증시] 우크라이나 침공 우려 속 3% 이상 급락",
+            "leadText": "유럽 주요국 증시는 4일(현지시간) 급락 마감했다.\t범유럽지수인 STOXX 600 지수는 전 거래일 대비 15.58포인트(3.56%) 하락한 421.78에 마감했고, 독일 프랑크푸르트 증시의 DAX지수는...",
+            "registerDateTime": "2022-03-05T02:30:52",
+            "mediaName": "뉴스핌",
+            "landingUrl": "https://news.zum.com/articles/74174078"
+        }
+    ]
+}
