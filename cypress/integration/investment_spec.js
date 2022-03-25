@@ -1,23 +1,7 @@
 describe('투자노트', () => {
   beforeEach(() => {
     cy.stubThirdParty();
-    cy.intercept('/api/investment', {fixture: 'investment'})
-      .as('apiInvestment');
-    cy.intercept('/api/investment/authors*', req => {
-        req.reply({fixture: 'investment-authors'});
-      })
-      .as('apiInvestmentAuthors');
-    cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
-      .as('apiInvestmentAuthor');
-    cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
-      .as('apiInvestmentPosts');
-
-    cy.intercept('/api/investment/authors/*/posts/recent**', req => {
-        const url = new URL(req.url);
-        const page = parseInt(url.searchParams.get('page')) - 1;
-        req.reply({fixture: `investment-authors-posts-recent-${page}`});
-      })
-      .as('apiAuthorsPostsRecent');
+    cy.stubInvestApi();
 
     cy.visit('/');
     cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
@@ -66,13 +50,6 @@ describe('투자노트', () => {
 
   describe('최신글', () => {
     beforeEach(() => {
-      cy.intercept('/api/investment/posts*', req => {
-          const url = new URL(req.url);
-          const page = parseInt(url.searchParams.get('page'), 10);
-          req.reply({fixture: `investment-home-authors-${page}`});
-        })
-        .as('posts');
-
       cy.contains('최신글').click();
       cy.wait('@posts');
     });
@@ -153,13 +130,6 @@ describe('투자노트', () => {
     // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
     it.skip('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
       cy.get('@writersWrap').within(() => {
-        cy.intercept('/api/investment/home/authors*', req => {
-            const url = new URL(req.url);
-            const page = parseInt(url.searchParams.get('page'), 10);
-            req.reply({fixture: `investment-home-authors-${page}`});
-          })
-          .as('apiAuthors');
-
         const [, _count, total] = Cypress
           .$('.writers_wrap .count')
           .text()

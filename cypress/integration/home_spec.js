@@ -3,43 +3,26 @@ const { recurse } = require("cypress-recurse");
 describe('zum 투자 홈', () => {
   const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
+    // TODO: 원인조사
+    cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
+
     cy.stubThirdParty();
-
-    cy.intercept('/api/global', {statusCode: 200});
-    cy.intercept('/api/domestic**', {statusCode: 200});
-
-    cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
-      .as('apiSuggest');
-    cy.intercept('/api/home/category-news*', req => {
-        const url = new URL(req.url);
-        const page = parseInt(url.searchParams.get('page'), 10);
-        req.reply({fixture: `category-news-${page}`});
-      })
-      .as('apiCategoryNews');
-
-    // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
-    cy.fixture('home')
-      .then(home => {
-        const [firstItem,] = home.realtimeComments.items;
-        firstItem.content = '세상을 읽고 담는 줌인터넷';
-        firstItem.stockCode = '239340';
-        firstItem.stockName = '줌인터넷';
-
-        cy.intercept('/api/home', home)
-          .as('apiHome');
-      });
+    cy.stubInvestApi();
 
     cy.clock(now);
-    cy.visit('/domestic', {
+    const route = '/investment';
+    cy.visit(route, {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
     });
     cy.tick(1000);
     cy.get('.gnb_finance a:contains("홈")')
-      .click({force: true});
+      .click();
 
     cy.wait(['@apiHome', '@apiCategoryNews']);
+    cy.url().should('not.contain', route);
+    cy.tick(1000);
   });
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
@@ -237,9 +220,6 @@ describe('zum 투자 홈', () => {
     });
 
     it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있다.', () => {
-      cy.intercept('/article/info/**', {statusCode: 200});
-      cy.intercept('/api/news/detail/*', {fixture: 'news-detail'});
-
       cy.fixture('home')
         .its('mainNews')
         .as('mainNews');
