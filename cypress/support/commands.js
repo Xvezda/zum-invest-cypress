@@ -38,6 +38,85 @@ Cypress.Commands.add('fixCypressSpec', function () {
   };
 });
 
+Cypress.Commands.add('stubInvestApi', () => {
+  cy.intercept('/api/global', {fixture: 'global'})
+    .as('apiGlobal');
+
+  cy.intercept('/api/investment', {fixture: 'investment'})
+    .as('apiInvestment');
+  cy.intercept('/api/investment/authors*', req => {
+      req.reply({fixture: 'investment-authors'});
+    })
+    .as('apiInvestmentAuthors');
+  cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
+    .as('apiInvestmentAuthor');
+  cy.intercept('/api/investment/posts*', req => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page'), 10);
+      req.reply({fixture: `investment-home-authors-${page}`});
+    })
+    .as('posts');
+  cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
+    .as('apiInvestmentPosts');
+  cy.intercept('/api/investment/home/authors*', req => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page'), 10);
+      req.reply({fixture: `investment-home-authors-${page}`});
+    })
+    .as('apiAuthors');
+
+  cy.intercept('/api/investment/authors/*/posts/recent**', req => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page'), 10);
+      req.reply({fixture: `investment-authors-posts-recent-${page}`});
+    })
+    .as('apiAuthorsPostsRecent');
+
+  cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
+    .as('apiDomesticCommon');
+  cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
+    .as('apiDomesticHome');
+  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
+    .as('apiMekoChart');
+
+  cy.intercept('/api/*/home/real-time-news*', req => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page'), 10);
+      req.reply({fixture: `real-time-news-${page}`});
+    })
+    .as('apiRealTimeNews');
+
+
+  cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
+    .as('apiSuggest');
+  cy.intercept('/api/home/category-news*', req => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page'), 10);
+      req.reply({fixture: `category-news-${page}`});
+    })
+    .as('apiCategoryNews');
+
+  // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
+  cy.fixture('home')
+    .then(home => {
+      const [firstItem,] = home.realtimeComments.items;
+      firstItem.content = '세상을 읽고 담는 줌인터넷';
+      firstItem.stockCode = '239340';
+      firstItem.stockName = '줌인터넷';
+
+      cy.intercept('/api/home', home)
+        .as('apiHome');
+    });
+
+  cy.intercept('/article/info/**', {statusCode: 200});
+  cy.intercept('/api/news/detail/*', {fixture: 'news-detail'});
+
+  cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
+  cy.intercept('/api/overseas/common', {statusCode: 200});
+  cy.intercept('/api/overseas/home/meko-chart', {statusCode: 200});
+  cy.intercept('/api/overseas/home/representative-stock*', {statusCode: 200});
+});
+
 Cypress.Commands.add('stubThirdParty', () => {
   // 테스트 속도 개선을 위해 외부에서 불러오는 자원을 stub 처리
   const register = pattern => cy.intercept(pattern, {statusCode: 200});

@@ -11,17 +11,6 @@ describe('국내증시', () => {
     cy.clock().invoke('restore');
   });
 
-  const interceptApiRequests = () => {
-    cy.intercept('/api/global', {fixture: 'global'})
-      .as('apiGlobal');
-    cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
-      .as('apiDomesticCommon');
-    cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
-      .as('apiDomesticHome');
-    cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
-      .as('apiMekoChart');
-  };
-
   /**
    * `/api/domestic/home` API 호출이 일어나도록 강제
    */
@@ -33,14 +22,7 @@ describe('국내증시', () => {
 
   beforeEach(() => {
     cy.stubThirdParty();
-
-    interceptApiRequests();
-    cy.intercept('/api/domestic/home/real-time-news*', req => {
-        const url = new URL(req.url);
-        const page = parseInt(url.searchParams.get('page'), 10);
-        req.reply({fixture: `real-time-news-${page-1}`});
-      })
-      .as('apiRealTimeNews');
+    cy.stubInvestApi();
 
     cy.visit('/domestic', {
       onBeforeLoad(win) {
