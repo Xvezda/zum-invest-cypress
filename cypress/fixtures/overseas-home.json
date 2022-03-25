@@ -1,0 +1,734 @@
+{
+    "liveNews": [
+        {
+            "id": "http://news.zum.com/articles/74582307",
+            "title": "[올댓차이나] 中 증시, 미중대립 우려에 혼조 개장...창업판 0.74%↓"
+        },
+        {
+            "id": "http://news.zum.com/articles/74576092",
+            "title": "[외환브리핑]유가하락+위험선호…환율, 1210원대 하락 전환 예상"
+        },
+        {
+            "id": "http://news.zum.com/articles/74574809",
+            "title": "실업청구 50여년만 최저에 나스닥 1.93%↑ [데일리 국제금융시장]"
+        },
+        {
+            "id": "http://news.zum.com/articles/74574086",
+            "title": "[유럽증시] 나토·G7·EU 정상회의 주시 속 보합권"
+        },
+        {
+            "id": "http://news.zum.com/articles/74568065",
+            "title": "[유럽개장]장 초반 주요 증시 상승세…英 0.22%↑"
+        }
+    ],
+    "mainNews": {
+        "nasdaq": [
+            {
+                "stockCode": "AAPL",
+                "stockName": "애플",
+                "articleId": "https://news.zum.com/articles/74575692",
+                "articleTitle": "뉴욕증시, 애플·테슬라 등 기술주 중심에 상승…나스닥 1.93%↑"
+            },
+            {
+                "stockCode": "MSFT",
+                "stockName": "마이크로소프트",
+                "articleId": "https://news.zum.com/articles/74012358",
+                "articleTitle": "뉴욕증시, 러의 우크라 침공 속 반등…기술주 엔비디아·마이크로소프트↑"
+            },
+            {
+                "stockCode": "AMZN",
+                "stockName": "아마존",
+                "articleId": "https://news.zum.com/articles/74538021",
+                "articleTitle": "'아마존 매트리스 1위' 지누스 품은 현대百, 퀀텀점프 할까?"
+            },
+            {
+                "stockCode": "TSLA",
+                "stockName": "테슬라",
+                "articleId": "https://news.zum.com/articles/74578389",
+                "articleTitle": "\"테슬라·비야디 다 담았다\"…한국투신운용 ETF 전략 눈길"
+            },
+            {
+                "stockCode": "GOOG",
+                "stockName": "구글C",
+                "articleId": null,
+                "articleTitle": null
+            },
+            {
+                "stockCode": "GOOGL",
+                "stockName": "구글",
+                "articleId": "https://news.zum.com/articles/74550290",
+                "articleTitle": "싸이월드, 구글 이어 애플 앱 마켓 승인…4월 2일 출시"
+            },
+            {
+                "stockCode": "NVDA",
+                "stockName": "엔비디아",
+                "articleId": "https://news.zum.com/articles/74583556",
+                "articleTitle": "'엔비디아·인텔' 협력에 떨고 있는 삼성전자...이대로 '6만전자'?"
+            },
+            {
+                "stockCode": "FB",
+                "stockName": "메타플랫폼스(페이스북)",
+                "articleId": "https://news.mtn.co.kr/news-detail/2022022408492185480",
+                "articleTitle": "[기획특집] 주가 악화일로 걷는 '메타 플랫폼스' 지금 매수 적기일까?"
+            },
+            {
+                "stockCode": "ASML",
+                "stockName": "ASML 홀딩",
+                "articleId": null,
+                "articleTitle": null
+            },
+            {
+                "stockCode": "AVGO",
+                "stockName": "아바고 테크놀로지스",
+                "articleId": "https://news.zum.com/articles/74353298",
+                "articleTitle": "[해외주식 포커스] 이익 급증·배당 기대에 美 브로드컴 '주목'"
+            }
+        ],
+        "dow": [
+            {
+                "stockCode": "AAPL",
+                "stockName": "애플",
+                "articleId": "https://news.zum.com/articles/74575692",
+                "articleTitle": "뉴욕증시, 애플·테슬라 등 기술주 중심에 상승…나스닥 1.93%↑"
+            },
+            {
+                "stockCode": "MSFT",
+                "stockName": "마이크로소프트",
+                "articleId": "https://news.zum.com/articles/74012358",
+                "articleTitle": "뉴욕증시, 러의 우크라 침공 속 반등…기술주 엔비디아·마이크로소프트↑"
+            },
+            {
+                "stockCode": "UNH",
+                "stockName": "유나이티드헬스그룹",
+                "articleId": "http://www.infostockdaily.co.kr/news/articleView.html?idxno=165159",
+                "articleTitle": "유나이티드헬스그룹(UNH), 헬스케어 솔루션 '옵텀' 성장성 불 붙나"
+            },
+            {
+                "stockCode": "JNJ",
+                "stockName": "존슨앤드존슨",
+                "articleId": "https://news.zum.com/articles/69055994",
+                "articleTitle": "“백신 위탁생산 ‘점프’… 다음은 한국판 존슨앤드존슨으로”"
+            },
+            {
+                "stockCode": "JPM",
+                "stockName": "제이피모간 체이스",
+                "articleId": "http://www.infostockdaily.co.kr/news/articleView.html?idxno=164067",
+                "articleTitle": "[미주탐구] 美금리 인상한다는데 제이피모간체이스(JPM) 살까 말까 ..."
+            },
+            {
+                "stockCode": "WMT",
+                "stockName": "월마트",
+                "articleId": "https://news.zum.com/articles/74412947",
+                "articleTitle": "월마트, 4월 말까지 5만명 채용…인력난 속 확보전쟁 한창"
+            },
+            {
+                "stockCode": "PG",
+                "stockName": "프록터 앤드 갬블",
+                "articleId": "http://www.sisabiz.com/article/71124",
+                "articleTitle": "홈플러스 신임 대표이사, 김상현 전 프록터앤드갬블(P&G) 아세안 총괄..."
+            },
+            {
+                "stockCode": "V",
+                "stockName": "비자카드",
+                "articleId": "https://news.zum.com/articles/74215716",
+                "articleTitle": "비자·마스터카드 영업 중단…러, 中유니온페이에 손 내밀어"
+            },
+            {
+                "stockCode": "HD",
+                "stockName": "홈디포",
+                "articleId": "https://news.zum.com/articles/72139216",
+                "articleTitle": "[클릭! 해외증시 이 종목] 주택 개조 수요에 홈디포 3분기 매출 '쑥'"
+            },
+            {
+                "stockCode": "CVX",
+                "stockName": "셰브론",
+                "articleId": "https://news.zum.com/articles/74246694",
+                "articleTitle": "원유선물 시장이 보내는 경고장…\"엑손모빌 셰브론 추격매수 조심\""
+            }
+        ]
+    },
+    "countryIndexOfMainIndex": [
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "6",
+            "name": "프랑스 CAC 40",
+            "updateDateTime": "2022-03-24T17:29:00",
+            "priceChange": -17.6,
+            "rateOfChange": -0.27,
+            "currentPrice": 6563.83,
+            "yearlyTop": 7384.86,
+            "yearlyBottom": 4512.57
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "7",
+            "name": "독일 DAX",
+            "updateDateTime": "2022-03-24T17:55:00",
+            "priceChange": -9.86,
+            "rateOfChange": -0.07,
+            "currentPrice": 14273.79,
+            "yearlyTop": 16290.19,
+            "yearlyBottom": 11450.08
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "8",
+            "name": "유로 STOXX",
+            "updateDateTime": "2022-03-24T17:29:00",
+            "priceChange": -1.23,
+            "rateOfChange": -0.03,
+            "currentPrice": 3867.99,
+            "yearlyTop": 4415.23,
+            "yearlyBottom": 2920.87
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "19",
+            "name": "영국 FTSE",
+            "updateDateTime": "2022-03-24T16:29:00",
+            "priceChange": 20.83,
+            "rateOfChange": 0.28,
+            "currentPrice": 7481.46,
+            "yearlyTop": 7687.3,
+            "yearlyBottom": 6263.6
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "5",
+            "name": "브라질",
+            "updateDateTime": "2022-03-24T17:17:00",
+            "priceChange": 1595.57,
+            "rateOfChange": 1.36,
+            "currentPrice": 119052.91,
+            "yearlyTop": 131190.3,
+            "yearlyBottom": 100075
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "1",
+            "name": "다우 산업",
+            "updateDateTime": "2022-03-24T16:57:00",
+            "priceChange": 349.44,
+            "rateOfChange": 1.02,
+            "currentPrice": 34707.94,
+            "yearlyTop": 36952.65,
+            "yearlyBottom": 26143.77
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "2",
+            "name": "나스닥 종합",
+            "updateDateTime": "2022-03-24T17:16:00",
+            "priceChange": 269.23,
+            "rateOfChange": 1.93,
+            "currentPrice": 14191.84,
+            "yearlyTop": 16212.23,
+            "yearlyBottom": 10519.49
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "3",
+            "name": "S&P 500",
+            "updateDateTime": "2022-03-24T16:57:00",
+            "priceChange": 63.92,
+            "rateOfChange": 1.43,
+            "currentPrice": 4520.16,
+            "yearlyTop": 4818.62,
+            "yearlyBottom": 3209.45
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "10",
+            "name": "상해종합",
+            "updateDateTime": "2022-03-25T14:57:00",
+            "priceChange": -36.42,
+            "rateOfChange": -1.12,
+            "currentPrice": 3213.84,
+            "yearlyTop": 3731.69,
+            "yearlyBottom": 3023.3
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "11",
+            "name": "닛케이225",
+            "updateDateTime": "2022-03-25T14:59:00",
+            "priceChange": 37.97,
+            "rateOfChange": 0.14,
+            "currentPrice": 28148.36,
+            "yearlyTop": 30795.78,
+            "yearlyBottom": 22594.79
+        }
+    ],
+    "indicatorOfMainIndex": [
+        {
+            "financeCategory": "METAL",
+            "id": "13",
+            "name": "국제금",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": 14.02,
+            "rateOfChange": 0.72,
+            "currentPrice": 1955.53,
+            "yearlyTop": 1989.47,
+            "yearlyBottom": 1684.37
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "16",
+            "name": "나스닥 선물",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": 21.5,
+            "rateOfChange": 0.15,
+            "currentPrice": 14785.25,
+            "yearlyTop": 16767.5,
+            "yearlyBottom": 10656.5
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "17",
+            "name": "미국 10년물 국채",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": 0.02,
+            "rateOfChange": 0.86,
+            "currentPrice": 2.34,
+            "yearlyTop": 2.39,
+            "yearlyBottom": 0.61
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "18",
+            "name": "공포지수",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": -1.9,
+            "rateOfChange": -8.06,
+            "currentPrice": 21.67,
+            "yearlyTop": 41.16,
+            "yearlyBottom": 14.1
+        },
+        {
+            "financeCategory": "OVERSEAS_INDEX",
+            "id": "4",
+            "name": "필라델피아 반도체",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": 172.39,
+            "rateOfChange": 5.13,
+            "currentPrice": 3532.72,
+            "yearlyTop": 4068.15,
+            "yearlyBottom": 2102.16
+        },
+        {
+            "financeCategory": "OIL",
+            "id": "6",
+            "name": "WTI",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": -0.09,
+            "rateOfChange": -0.08,
+            "currentPrice": 112.25,
+            "yearlyTop": 76.98,
+            "yearlyBottom": 61.74
+        },
+        {
+            "financeCategory": "OIL",
+            "id": "7",
+            "name": "브렌트",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": -0.03,
+            "rateOfChange": -0.03,
+            "currentPrice": 119,
+            "yearlyTop": 77.84,
+            "yearlyBottom": 35.74
+        },
+        {
+            "financeCategory": "OIL",
+            "id": "8",
+            "name": "천연가스",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": 0.02,
+            "rateOfChange": 0.43,
+            "currentPrice": 5.42,
+            "yearlyTop": 4.73,
+            "yearlyBottom": 3.84
+        },
+        {
+            "financeCategory": "METAL",
+            "id": "9",
+            "name": "은",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": -0.08,
+            "rateOfChange": -0.31,
+            "currentPrice": 25.84,
+            "yearlyTop": 30.35,
+            "yearlyBottom": 22.98
+        },
+        {
+            "financeCategory": "EXCHANGE_RATE",
+            "id": "USD",
+            "name": "미국 달러",
+            "updateDateTime": "2022-03-25T16:30:00",
+            "priceChange": -4,
+            "rateOfChange": -0.33,
+            "currentPrice": 1220.5,
+            "yearlyTop": 1246,
+            "yearlyBottom": 1107
+        }
+    ],
+    "recentInvestmentContents": [
+        {
+            "postId": 482,
+            "title": "우크라이나 전쟁 후의 세계 – 탈중국화 또는 경제 분리 #2",
+            "subCategory": "해외경제",
+            "writeDateTime": "2022-03-25T00:00:00",
+            "authorId": 7,
+            "authorName": "이철",
+            "leadText": "* 이 글은 ‘우크라이나 전쟁 후의 세계 – 탈중국화 또는 경제 분리 #1’에서 이어지는 글입니다. Summary- 미국의 경제 제재 효과를 둘러싼 Robin Brooks의 의문- 러시아의 중국 의존도가 높아지면서 러시아 경제는 침체 이상으로 이어지고 있음- 이러한 현...",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/37710337_이철.jpg",
+            "isOriginal": true
+        },
+        {
+            "postId": 481,
+            "title": "우크라이나 전쟁 후의 세계 – 탈중국화 또는 경제 분리 #1",
+            "subCategory": "해외경제",
+            "writeDateTime": "2022-03-24T00:00:00",
+            "authorId": 7,
+            "authorName": "이철",
+            "leadText": "Summary- 최근 러시아의 붕괴를 예견해 중국에서 논란이 된 후웨이의 글- 후웨이의 주장에는 중국이 러시아와 같은 상황에 처할 것이라는 불안감이 존재- 우크라이나 전쟁의 맥락을 중립적으로 파악하는 데 도움이 될 파이낸셜 타임즈 리샤오의 글- 리샤오는 이번 전쟁은 러...",
+            "authorThumbnailUrl": "http://finance.zumst.com/writing/37710337_이철.jpg",
+            "isOriginal": true
+        },
+        {
+            "postId": 483,
+            "title": "나스닥이 하락해서 저가매수일거라 생각했는데, 환율이",
+            "subCategory": "해외증시동향",
+            "writeDateTime": "2022-03-24T00:00:00",
+            "authorId": 33,
+            "authorName": "황금별의 부자노트",
+            "leadText": "미국주식 크리에이터 황금별의 환전 꿀팁!! ‘경제는 환율’이다 라는 말을 들어보셨을 겁니다. 그만큼 한 국가의 경제에 있어 환율이 차지하는 영향력은 매우 크다고 할 수 있습니다. 전문가들의 의견을 종합해보면, 환율예측은 주가예측보다도 훨씬 어렵고 고난이도라고 하는대요....",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/21dceb2c_필진소개 이미지.jpg",
+            "isOriginal": false
+        },
+        {
+            "postId": 472,
+            "title": "워런버핏 옥시덴탈 1억 1,830만주 보유 지분 완벽 정리!!",
+            "subCategory": "해외종목분석",
+            "writeDateTime": "2022-03-22T00:00:00",
+            "authorId": 37,
+            "authorName": "로빈후드",
+            "leadText": "안녕하세요.로빈후드입니다.일전에 워런버핏이 운용하는 버크셔해서웨이의 옥시덴탈 지분 추가 매수 공시에 대한 분석글을 올린적이 있는데요.그 이후, 약 2,700만주의 옥시덴탈 주식을 추가로 매수하면서 해당 종목 지분 12.7%를 차지할 정도로 덩치가 커졌네요.아래의 이미지...",
+            "authorThumbnailUrl": "https://finance.zumst.com/writing/85c1c64e_1.jpg",
+            "isOriginal": false
+        }
+    ],
+    "representativeStock": [
+        {
+            "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "FB",
+                "name": "메타플랫폼스(페이스북)",
+                "updateDateTime": "2022-02-08T06:42:37",
+                "symbol": "NASDAQ",
+                "currentPrice": 219.57,
+                "priceChange": 6.11,
+                "rateOfChange": 2.86,
+                "preClosingPrice": 213.46,
+                "highPrice": 220.67,
+                "lowPrice": 214.84
+            },
+            "article": {
+                "id": "https://news.mtn.co.kr/news-detail/2022022408492185480",
+                "thumbnail": null,
+                "title": "[기획특집] 주가 악화일로 걷는 '메타 플랫폼스' 지금 매수 적기일까?",
+                "leadText": "리서치센터 선임연구원 Q.\t연초 주가 악화일로 걷는 '메타 플랫폼스' 투자 적기일까?\tQ. 애플· 구글의 개인정보보호 정책, 장기적 호재인 이유는?\t- 애플· 구글의 개인정보보호 정책 ...",
+                "registerDateTime": "2022-02-24T09:28:48",
+                "mediaName": "머니투데이방송",
+                "landingUrl": null,
+                "category": "해외증시",
+                "subCategory": null
+            }
+        },
+        {
+            "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "AAPL",
+                "name": "애플",
+                "updateDateTime": "2022-02-01T06:40:08",
+                "symbol": "NASDAQ",
+                "currentPrice": 174.07,
+                "priceChange": 3.86,
+                "rateOfChange": 2.27,
+                "preClosingPrice": 170.21,
+                "highPrice": 174.14,
+                "lowPrice": 170.21
+            },
+            "article": {
+                "id": "http://news.zum.com/articles/74575692",
+                "thumbnail": "https://static.news.zumst.com/images/91/2022/03/25/f937e98803694471976e7ee776cb301f.jpg",
+                "title": "뉴욕증시, 애플·테슬라 등 기술주 중심에 상승…나스닥 1.93%↑",
+                "leadText": "다우 1.02%·S&P 500 1.43% 각각 상승 24일(현지시간) 뉴욕증시는 전날 급등세를 보인 유가가 하락하며 경기 낙관론에 상승했다.\t반도체 관련주 등 기술주의 오름세에 나스닥지수가 2...",
+                "registerDateTime": "2022-03-25T07:30:56",
+                "mediaName": "더팩트",
+                "landingUrl": "https://news.zum.com/articles/74575692",
+                "category": "해외증시",
+                "subCategory": null
+            }
+        },
+        {
+            "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "AMZN",
+                "name": "아마존",
+                "updateDateTime": "2022-02-09T06:41:10",
+                "symbol": "NASDAQ",
+                "currentPrice": 3272.99,
+                "priceChange": 4.8301,
+                "rateOfChange": 0.15,
+                "preClosingPrice": 3268.16,
+                "highPrice": 3282.37,
+                "lowPrice": 3201
+            },
+            "article": {
+                "id": "http://news.zum.com/articles/74538021",
+                "thumbnail": "https://static.news.zumst.com/images/11/2022/03/23/aa8da85f2a4c4d4ab1cca560fc1bc3c4.jpg",
+                "title": "'아마존 매트리스 1위' 지누스 품은 현대百, 퀀텀점프 할까?",
+                "leadText": "[증권가 \"현대백화점, 신성장동력 확보\"…지누스 주가는 주춤]\t현대백화점이 가구·매트리스 업체 지누스를 인수하자 증권가에서는 현대백화점이 신성장동력을 확보했다는 분석이 나왔다...",
+                "registerDateTime": "2022-03-23T16:24:16",
+                "mediaName": "머니투데이",
+                "landingUrl": "https://news.zum.com/articles/74538021",
+                "category": "해외증시",
+                "subCategory": "유통업"
+            }
+        },
+        {
+            "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "NFLX",
+                "name": "넷플릭스",
+                "updateDateTime": "2022-02-09T06:45:10",
+                "symbol": "NASDAQ",
+                "currentPrice": 375.71,
+                "priceChange": 1.22,
+                "rateOfChange": 0.33,
+                "preClosingPrice": 374.49,
+                "highPrice": 379.76,
+                "lowPrice": 368.9
+            },
+            "article": {
+                "id": "http://news.zum.com/articles/74567577",
+                "thumbnail": "https://static.news.zumst.com/images/122/2022/03/24/fb4ec753fe3a41c5bb7cd7888ac9046f.jpg",
+                "title": "넷플·디플·애플 공습에...업계 \"토종 OTT 진흥책 조속 이행해야\"",
+                "leadText": "넷플릭스, 디즈니플러스, 애플TV 플러스 등 글로벌 동영상서비스(OTT) 확산으로 미디어 생태계 지각변동이 일어나는 가운데, 토종 OTT 경쟁력 확보를 위해선 '탈규제' 방향의 적극적...",
+                "registerDateTime": "2022-03-24T17:30:15",
+                "mediaName": "테크M",
+                "landingUrl": "https://news.zum.com/articles/74567577",
+                "category": "해외증시",
+                "subCategory": null
+            }
+        },
+        {
+            "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "GOOGL",
+                "name": "구글",
+                "updateDateTime": "2022-02-05T06:42:40",
+                "symbol": "NASDAQ",
+                "currentPrice": 2831.44,
+                "priceChange": 65.9299,
+                "rateOfChange": 2.38,
+                "preClosingPrice": 2765.51,
+                "highPrice": 2832.375,
+                "lowPrice": 2755.01
+            },
+            "article": {
+                "id": "http://news.zum.com/articles/74550290",
+                "thumbnail": "https://static.news.zumst.com/images/78/2022/03/24/585eec10f81f43ec9c7b1909e6489a93.jpg",
+                "title": "싸이월드, 구글 이어 애플 앱 마켓 승인…4월 2일 출시",
+                "leadText": "싸이월드제트가 재출시를 준비 중인 싸이월드에 대해 애플리케이션(앱)마켓 구글플레이에 이어 애플 앱스토어에서도 앱 심사 승인을 받았다고 24일 밝혔다.\t싸이월드제트는 구글플레이...",
+                "registerDateTime": "2022-03-24T09:51:07",
+                "mediaName": "이투데이",
+                "landingUrl": "https://news.zum.com/articles/74550290",
+                "category": "해외증시",
+                "subCategory": null
+            }
+        }
+    ],
+    "representativeNews": [
+        {
+            "id": "http://news.zum.com/articles/74590171",
+            "thumbnail": "https://static.news.zumst.com/images/18/2022/03/25/15932e7ca7094f9382c49875f8756796.jpg",
+            "title": "\"블랙리스트 올랐다\"…중국 최대 소셜미디어 '웨이보' 미국서 상장 폐...",
+            "leadText": "중국 최대 소셜미디어 웨이보가 미국 증시에서 퇴출 가능성이 있는 중국 기업 명단에 오른 것으로 확인됐다.\t23일(현지시간) 미국 증권거래위원회(SEC)에 따르면 웨이보가 '외국기업...",
+            "registerDateTime": "2022-03-25T16:27:16",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/74590171",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74589859",
+            "thumbnail": "https://static.news.zumst.com/images/1/2022/03/25/adf342b4ebd5418e824448460ffdf118.jpg",
+            "title": "엔화가 왜 이럴까? 위기 속 ‘안전자산’ 급락 이유는",
+            "leadText": "'안전자산' 대표격인 일본 엔화의 가치가 지정학적 위기 국면에서 급락하는 이례적 현상이 나타나고 있다. 미국과 일본의 통화정책 차별화, 높은 에너지 의존도에 따른 경제적 충격 ...",
+            "registerDateTime": "2022-03-25T16:14:00",
+            "mediaName": "경향신문",
+            "landingUrl": "https://news.zum.com/articles/74589859",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74585996",
+            "thumbnail": "https://static.news.zumst.com/images/78/2022/03/25/d35f99a3818c4dacb2425c78e22289fa.jpg",
+            "title": "[이슈크래커] 널뛰는 원자재 가격ㆍ불안한 환율…대응책은 성장주?",
+            "leadText": "코스피는 연초부터 악재에 부딪혔다.\t미국 연방준비제도(Fedㆍ연준)가 조기 긴축을 예고하면서다. 엎친 데 덮친 격으로, 러시아의 우크라이나 침공이 현실화하면서 금융시장은 또 한 ...",
+            "registerDateTime": "2022-03-25T14:00:09",
+            "mediaName": "이투데이",
+            "landingUrl": "https://news.zum.com/articles/74585996",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74583556",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/25/0d16b05b651f438cbb5c9828402a20cf.jpg",
+            "title": "'엔비디아·인텔' 협력에 떨고 있는 삼성전자...이대로 '6만전자'?",
+            "leadText": "엔비디아가 인텔과 협력할 수 있다는 소식에 미국 반도체주가 들썩였다.\t반면 삼성전자는 긴장하는 모양새다.\t세계 1위 파운드리 기업 TSMC를 추격하는 입장인 가운데 후발주자까지 ...",
+            "registerDateTime": "2022-03-25T12:02:25",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74583556",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74582366",
+            "thumbnail": "https://static.news.zumst.com/images/111/2022/03/25/08619313cd1246d58c5cc17c4488dc52.png",
+            "title": "유안타證, 내달 4일까지 파생결합증권 6종 공모···250억 규모",
+            "leadText": "유안타증권(003470) 이 내달 4일까지 조기 상환형 ELS(주가연계증권) 등 파생결합증권 6종을 총 250억 원 규모로 공모한다고 25일 밝혔다.\tELS 제4927호는 만기가 3년, 조기 상환주기...",
+            "registerDateTime": "2022-03-25T11:20:32",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/74582366",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74582307",
+            "thumbnail": "https://static.news.zumst.com/images/9/2021/01/04/NISI20210104_0017030844_web_20210104192337.jpg",
+            "title": "[올댓차이나] 中 증시, 미중대립 우려에 혼조 개장...창업판 0.74%↓",
+            "leadText": "중국 증시는 25일 우크라이나 사태와 미중대립 우려 속에 경기부양 기대가 교차하면서 혼조세로 출발했다.\t상하이 종합지수는 이날 전일 대비 3.11 포인트, 0.09% 밀려난 3247.16으로...",
+            "registerDateTime": "2022-03-25T11:19:22",
+            "mediaName": "뉴시스",
+            "landingUrl": "https://news.zum.com/articles/74582307",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74582255",
+            "thumbnail": "https://static.news.zumst.com/images/52/2022/03/25/7bc210f80d2c4b9bbc813b4774ec4156.jpg",
+            "title": "KB증권, 미국 나스닥 전광판에 한글광고 게시",
+            "leadText": "KB증권은 미국 뉴욕 타임스퀘어광장의 나스닥 본사 전광판에 보다 나은 세상을 이끌겠다는 메시지의 한글 광고를 게시했다고 25일 밝혔다.\tKB증권은 나스닥 본사 전광판에 '보다 나은...",
+            "registerDateTime": "2022-03-25T11:16:38",
+            "mediaName": "뉴스핌",
+            "landingUrl": "https://news.zum.com/articles/74582255",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74582023",
+            "thumbnail": "https://static.news.zumst.com/images/57/2022/03/25/2e4e3256fc654300ac87c53516efaab6.jpg",
+            "title": "KB증권, 美나스닥 전광판에 한글 광고 게시",
+            "leadText": "KB증권은 미국 뉴욕 타임스퀘어광장의 나스닥 본사 전광판에 보다 나은 세상을 이끌겠다는 메시지의 한글 광고를 게시했다고 25일 밝혔다.\tKB증권은 나스닥 본사 전광판에 '보다 나은...",
+            "registerDateTime": "2022-03-25T11:11:47",
+            "mediaName": "세계비즈",
+            "landingUrl": "https://news.zum.com/articles/74582023",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74581021",
+            "thumbnail": "https://static.news.zumst.com/images/56/2022/03/25/f9603e88a8af41b78a62fb07f2944ecc.jpg",
+            "title": "뉴욕증시 상승 마감… 경기 낙관론 확산",
+            "leadText": "경기 낙관론 속에 기술주 반등 등에 힘입어 뉴욕증시가 상승 마감했다.\t24일(현지시간) 뉴욕증권거래소(NYSE)에서 다우존스30산업평균지수는 전장보다 349.44포인트(1.02%) 오른 3만470...",
+            "registerDateTime": "2022-03-25T10:48:56",
+            "mediaName": "세계일보",
+            "landingUrl": "https://news.zum.com/articles/74581021",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        },
+        {
+            "id": "http://news.zum.com/articles/74579721",
+            "thumbnail": "https://static.news.zumst.com/images/9/2022/03/25/NISI20220325_0000959339_web_20220325101546.jpg",
+            "title": "KB증권, 美나스닥 전광판에 한글 광고 게시",
+            "leadText": "25일 미국 뉴욕 타임스퀘어광장 나스닥 본사 전광판에 KB증권의 한글 광고가 게시돼 있다. *재판매 및 DB 금지\tKB증권은 미국 뉴욕 타임스퀘어광장의 나스닥 본사 전광판에 보다 나은...",
+            "registerDateTime": "2022-03-25T10:18:32",
+            "mediaName": "뉴시스",
+            "landingUrl": "https://news.zum.com/articles/74579721",
+            "category": "해외증시",
+            "subCategory": "해외증시"
+        }
+    ],
+    "realTimeNews": {
+        "items": [
+            {
+                "id": "http://news.zum.com/articles/74590171",
+                "thumbnail": "https://static.news.zumst.com/images/18/2022/03/25/15932e7ca7094f9382c49875f8756796.jpg",
+                "title": "\"블랙리스트 올랐다\"…중국 최대 소셜미디어 '웨이보' 미국서 상장 폐...",
+                "leadText": "중국 최대 소셜미디어 웨이보가 미국 증시에서 퇴출 가능성이 있는 중국 기업 명단에 오른 것으로 확인됐다.\t23일(현지시간) 미국 증권거래위원회(SEC)에 따르면 웨이보가 '외국기업...",
+                "registerDateTime": "2022-03-25T16:27:16",
+                "mediaName": "매일경제",
+                "landingUrl": "https://news.zum.com/articles/74590171"
+            },
+            {
+                "id": "http://news.zum.com/articles/74589859",
+                "thumbnail": "https://static.news.zumst.com/images/1/2022/03/25/adf342b4ebd5418e824448460ffdf118.jpg",
+                "title": "엔화가 왜 이럴까? 위기 속 ‘안전자산’ 급락 이유는",
+                "leadText": "'안전자산' 대표격인 일본 엔화의 가치가 지정학적 위기 국면에서 급락하는 이례적 현상이 나타나고 있다. 미국과 일본의 통화정책 차별화, 높은 에너지 의존도에 따른 경제적 충격 ...",
+                "registerDateTime": "2022-03-25T16:14:00",
+                "mediaName": "경향신문",
+                "landingUrl": "https://news.zum.com/articles/74589859"
+            },
+            {
+                "id": "http://news.zum.com/articles/74585996",
+                "thumbnail": "https://static.news.zumst.com/images/78/2022/03/25/d35f99a3818c4dacb2425c78e22289fa.jpg",
+                "title": "[이슈크래커] 널뛰는 원자재 가격ㆍ불안한 환율…대응책은 성장주?",
+                "leadText": "코스피는 연초부터 악재에 부딪혔다.\t미국 연방준비제도(Fedㆍ연준)가 조기 긴축을 예고하면서다. 엎친 데 덮친 격으로, 러시아의 우크라이나 침공이 현실화하면서 금융시장은 또 한 ...",
+                "registerDateTime": "2022-03-25T14:00:09",
+                "mediaName": "이투데이",
+                "landingUrl": "https://news.zum.com/articles/74585996"
+            },
+            {
+                "id": "http://news.zum.com/articles/74583556",
+                "thumbnail": "https://static.news.zumst.com/images/11/2022/03/25/0d16b05b651f438cbb5c9828402a20cf.jpg",
+                "title": "'엔비디아·인텔' 협력에 떨고 있는 삼성전자...이대로 '6만전자'?",
+                "leadText": "엔비디아가 인텔과 협력할 수 있다는 소식에 미국 반도체주가 들썩였다.\t반면 삼성전자는 긴장하는 모양새다.\t세계 1위 파운드리 기업 TSMC를 추격하는 입장인 가운데 후발주자까지 ...",
+                "registerDateTime": "2022-03-25T12:02:25",
+                "mediaName": "머니투데이",
+                "landingUrl": "https://news.zum.com/articles/74583556"
+            },
+            {
+                "id": "http://news.zum.com/articles/74582366",
+                "thumbnail": "https://static.news.zumst.com/images/111/2022/03/25/08619313cd1246d58c5cc17c4488dc52.png",
+                "title": "유안타證, 내달 4일까지 파생결합증권 6종 공모···250억 규모",
+                "leadText": "유안타증권(003470) 이 내달 4일까지 조기 상환형 ELS(주가연계증권) 등 파생결합증권 6종을 총 250억 원 규모로 공모한다고 25일 밝혔다.\tELS 제4927호는 만기가 3년, 조기 상환주기...",
+                "registerDateTime": "2022-03-25T11:20:32",
+                "mediaName": "서울경제",
+                "landingUrl": "https://news.zum.com/articles/74582366"
+            }
+        ],
+        "totalCount": 120
+    },
+    "debateItems": [
+        {
+            "id": 36,
+            "theme": "해외 증시",
+            "title": "우크라이나 사태, 증시 방향은?",
+            "firstOpinion": "하락 추세",
+            "secondOpinion": "안정화",
+            "content": "러시아의 우크라이나 원자력 발전소 공격 소식에 미국뿐만 아니라 유럽, 아시아 등 전 세계 금융 얼어 붙었습니다. 특히, 러시아가 전세계 원유 수출량의 11%를 차지하면서, 원유 수급이 문제가 생기고 있는데요. 향후, 우크라이나 사태에 따른 금융시장의 방향성을 어떻게 보시나요?",
+            "agreeCount": 4,
+            "disagreeCount": 1,
+            "numberOfParticipants": 5,
+            "agreePercent": 80,
+            "disagreePercent": 20,
+            "startedDateTime": "2022-03-07T00:00:00",
+            "endedDateTime": "2022-03-31T23:59:59",
+            "createdDateTime": "2022-03-07T08:31:12",
+            "popularityEnabledDateTime": "2022-03-07T08:33:41",
+            "articles": null
+        }
+    ]
+}
