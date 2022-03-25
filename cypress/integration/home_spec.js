@@ -1,4 +1,7 @@
+const { recurse } = require("cypress-recurse");
+
 describe('zum 투자 홈', () => {
+  const now = new Date(2022, 3, 15, 10, 50, 0);
   beforeEach(() => {
     cy.stubThirdParty();
 
@@ -15,14 +18,24 @@ describe('zum 투자 홈', () => {
       .as('apiCategoryNews');
 
     // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
-    cy.intercept('/api/home', {fixture: 'home'})
-      .as('apiHome');
+    cy.fixture('home')
+      .then(home => {
+        const [firstItem,] = home.realtimeComments.items;
+        firstItem.content = '세상을 읽고 담는 줌인터넷';
+        firstItem.stockCode = '239340';
+        firstItem.stockName = '줌인터넷';
 
+        cy.intercept('/api/home', home)
+          .as('apiHome');
+      });
+
+    cy.clock(now);
     cy.visit('/domestic', {
       onBeforeLoad(win) {
-        cy.stub(win, 'postMessage').as('postMessage');
+        cy.spy(win, 'postMessage').as('postMessage');
       }
     });
+    cy.tick(1000);
     cy.get('.gnb_finance a:contains("홈")')
       .click({force: true});
 
@@ -39,6 +52,7 @@ describe('zum 투자 홈', () => {
       .as('searchInput')
       .type('줌인터넷');
 
+    cy.tick(1000);
     cy.wait('@apiSuggest').then(() => {
       cy.get('.stock_list_wrap .list > *')
         .its('length')
@@ -164,7 +178,6 @@ describe('zum 투자 홈', () => {
 
   describe('오늘의 주요뉴스', () => {
     beforeEach(() => {
-      cy.clock();
       cy.get('.today_news')
         .first()
         .as('todayNews');
@@ -225,8 +238,7 @@ describe('zum 투자 홈', () => {
 
     it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있다.', () => {
       cy.intercept('/article/info/**', {statusCode: 200});
-      cy.intercept('/api/news/detail/*', {statusCode: 200});
-      cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(title|items)'\)/);
+      cy.intercept('/api/news/detail/*', {fixture: 'news-detail'});
 
       cy.fixture('home')
         .its('mainNews')
@@ -250,21 +262,33 @@ describe('zum 투자 홈', () => {
 
   describe('증시전망', () => {
     beforeEach(() => {
+      cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
+
       cy.get('.stock_view')
+        .scrollIntoView()
         .as('stockView');
 
-      cy.get('@stockView')
-        .find('iframe')
-        .first()
-        .as('zumPlayer');
+      recurse(
+        () => cy
+          .tick(10000)
+          .get('@stockView'),
+        $el => expect($el).to.have.descendants('#zum-player iframe'),
+      );
     });
 
-    it('목록에서 클릭하면 해당 영상이 재생된다.', () => {
+    it.only('목록에서 클릭하면 해당 영상이 재생된다.', () => {
       cy.get('.thumbnail_list_wrap ul > li:not(.active) > a')
         .each($link => {
           cy.wrap($link).click();
-          cy.get('@postMessage')
-            .should('be.calledWithMatch', /settedIdAndPlay/);
+          recurse(
+            () => cy.get('@postMessage'),
+            message =>
+              expect(message).to.be.calledWithMatch(/settedIdAndPlay/),
+            {
+              delay: 1000,
+              timeout: 20000,
+            }
+          );
         });
     });
   });  // END: 증시전망
@@ -331,7 +355,9 @@ describe('zum 투자 홈', () => {
     });
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
-      cy.shouldRequestOnScroll('@apiCategoryNews');
+      cy.shouldRequestOnScroll('@apiCategoryNews', {
+        afterEachScroll: () => cy.tick(1000),
+      });
     });
 
     it('달력을 클릭하여 열고 닫을 수 있다.', () => {
@@ -363,7 +389,7 @@ describe('zum 투자 홈', () => {
         .map(t => String(t).padStart(2, '0'))
         .join('-');
 
-      const date = new Date();
+      const date = new Date(now);
       const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
       // 달력을 열고 현재달의 1일을 누른다.
       cy.get('.date_select .btn_calendar').click();
@@ -396,7 +422,7 @@ describe('zum 투자 홈', () => {
         .click()
         .wait('@apiCategoryNews')
         .its('request.url')
-        .should('contain', `date=${getFormattedDate(new Date())}`);
+        .should('contain', `date=${getFormattedDate(new Date(now))}`);
     });
 
   });  // END: 분야별 실시간 뉴스

@@ -72,7 +72,9 @@ describe('투자노트', () => {
           req.reply({fixture: `investment-home-authors-${page}`});
         })
         .as('posts');
-      cy.visit('/investment/recently');
+
+      cy.contains('최신글').click();
+      cy.wait('@posts');
     });
 
     it('최신글에서 카테고리 선택을 할 수 있다.', () => {
