@@ -69,22 +69,22 @@ Cypress.Commands.add(
   'shouldRequestOnScroll',
   (
     alias,
-    option,
+    options,
   ) => {
     const defaultOptions = {
       start: 2,
       count: 3,
-      preHook: () => {},
-      postHook: () => {},
+      beforeEachScroll: () => {},
+      afterEachScroll: () => {},
     };
 
     const combinedOptions = {
       ...defaultOptions,
-      ...option,
+      ...options,
     };
 
     const getPage = page => {
-      combinedOptions.preHook();
+      combinedOptions.beforeEachScroll();
       cy.window()
         .scrollTo('bottomLeft', {
           duration: 10,
@@ -95,17 +95,17 @@ Cypress.Commands.add(
           duration: 10,
           offset: {top: 100, left: 0}
         })
+        .then(combinedOptions.afterEachScroll)
         .wait(alias)
         .its('request.url')
         .should('contain', `page=${page}`)
-        .then(combinedOptions.postHook)
         .then(() => {
-          if (page <= option.count) {
+          if (page <= combinedOptions.count) {
             getPage(page + 1);
           }
         });
     };
-    getPage(option.start);
+    getPage(combinedOptions.start);
   }
 );
 
