@@ -24,11 +24,15 @@ describe('국내증시', () => {
     cy.stubThirdParty();
     cy.stubInvestApi();
 
-    cy.visit('/domestic', {
+    cy.visit('/', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
     });
+
+    cy.get('.gnb_finance a:contains("국내증시")')
+      .click();
+    cy.wait('@apiDomesticHome');
   });
 
   const hideHeaderWhile = callback =>
