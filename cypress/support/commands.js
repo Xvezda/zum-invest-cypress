@@ -150,7 +150,7 @@ Cypress.Commands.add(
   ) => {
     const defaultOptions = {
       start: 2,
-      count: 3,
+      count: 2,
       beforeEachScroll: () => {},
       afterEachScroll: () => {},
     };
@@ -163,17 +163,11 @@ Cypress.Commands.add(
     const getPage = page => {
       combinedOptions.beforeEachScroll();
       cy.window()
-        .scrollTo('bottomLeft', {
-          duration: 10,
-          ensureScrollable: false,
+        .scrollTo('bottom')
+        .then(() => {
+          combinedOptions.afterEachScroll();
+          return cy.wait(alias);
         })
-        .get('.site_footer')
-        .scrollIntoView({
-          duration: 10,
-          offset: {top: 100, left: 0}
-        })
-        .then(combinedOptions.afterEachScroll)
-        .wait(alias)
         .its('request.url')
         .should('contain', `page=${page}`)
         .then(() => {
