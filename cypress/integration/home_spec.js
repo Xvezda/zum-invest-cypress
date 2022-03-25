@@ -5,6 +5,7 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
+    cy.ignoreKnownError("Cannot read properties of undefined (reading 'length')");
 
     cy.stubThirdParty();
     cy.stubInvestApi();
@@ -21,8 +22,8 @@ describe('zum 투자 홈', () => {
       .click();
 
     cy.wait(['@apiHome', '@apiCategoryNews']);
-    cy.url().should('not.contain', route);
     cy.tick(1000);
+    cy.url().should('not.contain', route);
   });
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
@@ -330,7 +331,7 @@ describe('zum 투자 홈', () => {
         });
     });
 
-    it.only('스크롤을 내리면 다음 페이지를 불러온다.', () => {
+    it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
       cy.clock().invoke('restore');
       cy.shouldRequestOnScroll('@apiCategoryNews');
     });
