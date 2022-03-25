@@ -1,10 +1,12 @@
 describe('투자노트', () => {
   beforeEach(() => {
+    // TODO: 원인조사
+    cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
+
     cy.stubThirdParty();
     cy.stubInvestApi();
 
     cy.visit('/');
-    cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
     cy.get('.gnb_finance')
       .find('a:contains("투자노트")')
       .click();
