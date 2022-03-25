@@ -55,7 +55,7 @@ describe('zum 투자 홈', () => {
       cy.withHidden('#header, .right_cont .gdn_wrap', () => {
         cy.get('.right_cont_inner')
           .then($el => {
-            $el.css('position', 'relative');
+            $el.css('position', 'relative !important');
             return cy.wrap($el);
           })
           .toMatchImageSnapshot();
@@ -242,8 +242,6 @@ describe('zum 투자 홈', () => {
 
   describe('증시전망', () => {
     beforeEach(() => {
-      cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
-
       cy.get('.stock_view')
         .scrollIntoView()
         .as('stockView');
@@ -256,7 +254,7 @@ describe('zum 투자 홈', () => {
       );
     });
 
-    it.only('목록에서 클릭하면 해당 영상이 재생된다.', () => {
+    it('목록에서 클릭하면 해당 영상이 재생된다.', () => {
       cy.get('.thumbnail_list_wrap ul > li:not(.active) > a')
         .each($link => {
           cy.wrap($link).click();
@@ -275,6 +273,7 @@ describe('zum 투자 홈', () => {
 
   describe('투자노트', () => {
     it('투자노트가 보여진다.', () => {
+      cy.get('.expert_insight').scrollIntoView();
       cy.withHidden('#header', () => {
         cy.waitForImage('.expert_insight img');
 
@@ -310,11 +309,8 @@ describe('zum 투자 홈', () => {
   });
 
   describe('분야별 실시간 뉴스', () => {
-    beforeEach(() => {
-      cy.contains('분야별 실시간 뉴스').scrollIntoView();
-    });
-
     it('카테고리를 변경할 수 있다.', () => {
+      cy.contains('분야별 실시간 뉴스').scrollIntoView();
       const categoryTable = {
         '국내증시': 'domestic',
         '해외증시': 'overseas',
@@ -334,10 +330,9 @@ describe('zum 투자 홈', () => {
         });
     });
 
-    it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
-      cy.shouldRequestOnScroll('@apiCategoryNews', {
-        afterEachScroll: () => cy.tick(1000),
-      });
+    it.only('스크롤을 내리면 다음 페이지를 불러온다.', () => {
+      cy.clock().invoke('restore');
+      cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 
     it('달력을 클릭하여 열고 닫을 수 있다.', () => {

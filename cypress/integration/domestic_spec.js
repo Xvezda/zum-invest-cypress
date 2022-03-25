@@ -193,9 +193,6 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
-      triggerDomesticHomeApi();
-      cy.wait('@apiDomesticHome');
-
       const menuTable = {
         '급등주 PICK': 'soaring',
         '리포트 PICK': 'report',
@@ -204,6 +201,15 @@ describe('국내증시', () => {
         '낙폭과대': 'fall',
         '골든크로스': 'golden-cross',
       };
+      recurse(
+          () =>
+            triggerDomesticHomeApi()
+              .wait('@apiDomesticHome'),
+          ({ response }) => expect(response).to.have.property('body'),
+        )
+        .its('response.body')
+        .as('domesticHomeResponse');
+
       cy.get('.today_hot_pick')
         .as('todayHotPick')
         .find('ul > li > a')
@@ -213,8 +219,7 @@ describe('국내증시', () => {
             .click()
             .should('be.activated');
           
-          cy.get('@apiDomesticHome')
-            .its('response.body')
+          cy.get('@domesticHomeResponse')
             .then(home => {
               const key = menuTable[menuText];
               const items = home.todayHotPick[key];
