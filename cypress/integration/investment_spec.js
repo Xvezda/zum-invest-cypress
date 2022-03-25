@@ -6,6 +6,8 @@ describe('투자노트', () => {
     cy.stubThirdParty();
     cy.stubInvestApi();
 
+    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
+
     cy.visit('/');
     cy.get('.gnb_finance')
       .find('a:contains("투자노트")')
@@ -83,16 +85,17 @@ describe('투자노트', () => {
 
   describe('줌 투자 필진', () => {
     beforeEach(() => {
-      cy.get('.writers_wrap').as('writersWrap');
+      cy.waitForImage('.writers_wrap img');
+
+      cy.get('.writers_wrap')
+        .as('writersWrap');
     });
 
-    it('필진이 카드형태로 보여진다.', () => {
+    it('필진이 카드형태로 보여지고, 필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
       cy.withHidden('#header', () => {
         cy.get('@writersWrap').toMatchImageSnapshot();
       });
-    });
 
-    it('필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
       cy.get('@writersWrap')
         .contains('줌투자')
         .click();
