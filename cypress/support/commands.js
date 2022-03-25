@@ -218,3 +218,6 @@ Cypress.Commands.add(
     });
   }
 );
+
+Cypress.Commands.add('login', () => cy.setCookie('_ZIL', '1').reload());
+Cypress.Commands.add('logout', () => cy.clearCookie('_ZIL').reload());
