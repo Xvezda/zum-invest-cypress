@@ -136,19 +136,6 @@ Cypress.Commands.add('stubInvestApi', () => {
     .as('apiOverseasCommon');
 });
 
-Cypress.Commands.add('stubThirdParty', () => {
-  // 테스트 속도 개선을 위해 외부에서 불러오는 자원을 stub 처리
-  const register = (pattern, code=200) => cy.intercept(pattern, {statusCode: code});
-
-  register('https://zvod.zumst.com/zumvrix/zvod/**', 206);
-
-  cy.on('uncaught:exception', err => {
-    if (err.message.includes('kakaoPixel is not defined')) {
-      return false;
-    }
-  });
-});
-
 Cypress.Commands.add(
   'shouldRequestOnScroll',
   (

@@ -7,7 +7,6 @@ describe('zum 투자 홈', () => {
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
     cy.ignoreKnownError("Cannot read properties of undefined (reading 'length')");
 
-    cy.stubThirdParty();
     cy.stubInvestApi();
 
     cy.clock(now);
