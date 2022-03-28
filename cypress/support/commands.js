@@ -125,19 +125,6 @@ Cypress.Commands.add('stubThirdParty', () => {
   // 테스트 속도 개선을 위해 외부에서 불러오는 자원을 stub 처리
   const register = (pattern, code=200) => cy.intercept(pattern, {statusCode: code});
 
-  register(/^https:\/\/((secure)?pubads|stats)\.g\.doubleclick\.net\/.*/);
-  register(/^https:\/\/(pagead2|\w+\.safeframe)\.googlesyndication\.com\/.*/);
-  register('https://www.googleadservices.com/**');
-  register('https://www.googletagmanager.com/**');
-  register('https://analytics.google.com/**');
-  register(/^https:\/\/(bidder|gum|ssp-sync)\.criteo\.com\/.*/);
-  register(/^https:\/\/(zumads|plog|gp)\.vrixon\.com\/.*/);
-  register('https://aem-ingest.onkakao.net/**');
-  register(/^https:\/\/(static|images)\.dable\.io\/.*/);
-  register('https://wcs.naver.net/**');
-
-  register('https://estat.zum.com/at.gif*');
-  register('https://displayad.zum.com/**');
   register('https://zvod.zumst.com/zumvrix/zvod/**', 206);
 
   cy.on('uncaught:exception', err => {
