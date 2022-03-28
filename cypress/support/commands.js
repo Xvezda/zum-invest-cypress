@@ -113,8 +113,21 @@ Cypress.Commands.add('stubInvestApi', () => {
 
   cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
     .as('apiDebateHome');
-  cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
-    .as('apiOverseasHome');
+
+  cy.fixture('overseas-home')
+    .then(home => {
+      const [firstContent,] = home.recentInvestmentContents;
+      firstContent.authorId = 123;
+      firstContent.postId = 42;
+      firstContent.authorName = '@@투자노트_작성자@@';
+      firstContent.title = '@@투자노트_제목@@';
+      firstContent.leadText = '@@투자노트_내용@@';
+      firstContent.subCategory = '@@투자노트_카테고리@@';
+
+      cy.intercept('/api/overseas/home', home)
+        .as('apiOverseasHome');
+    });
+
   cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
     .as('apiOverseasMekoChart');
   cy.intercept('/api/overseas/home/representative-stock*', req => {
