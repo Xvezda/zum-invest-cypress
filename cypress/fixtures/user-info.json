@@ -1,0 +1,10 @@
+{
+    "authType": "ZUM",
+    "memberType": "simple",
+    "id": "dev",
+    "name": "개발자",
+    "userName": "dev",
+    "anonymous": false,
+    "authenticated": true,
+    "level": "0"
+}
