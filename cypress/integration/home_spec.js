@@ -84,7 +84,7 @@ describe('zum 투자 홈', () => {
           .as('mainIndicatorChart');
       });
 
-      it('기간을 선택하여 해당하는 차트를 볼 수 있다.', () => {
+      it('기간과 지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
         const rangeTable = {
           '1주일': 'WEEKLY',
           '1개월': 'MONTHLY',
@@ -108,9 +108,7 @@ describe('zum 투자 홈', () => {
               .should('be.activated')
               .then(() => expectToMatchChart(linkText));
           });
-      });
 
-      it('지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
         const indicatorTable = {
           '나스닥 선물': subject =>
             subject
