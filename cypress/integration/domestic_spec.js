@@ -257,3 +257,58 @@ describe('국내증시', () => {
     cy.shouldRequestOnScroll('@apiRealTimeNews');
   });
 });  // END: 국내증시
+
+describe('국내증시 종목', () => {
+  it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
+    cy.visit('/domestic/item/239340');
+    cy.fixture('interest').then(interest => {
+      cy.intercept(/\/api\/interest(\/delete)?/, req => {
+          req.reply(201, {
+            ...interest,
+            items: interest.items
+              .filter((_, i) => {
+                if (req.method !== 'POST' && i === 0 || req.url.endsWith('delete')) {
+                  return false;
+                }
+                return true;
+              }),
+          });
+        })
+        .as('apiInterest');
+    });
+
+    cy.login();
+    cy.wait('@apiMemberLogin')
+      .wait('@apiInterest');
+
+    cy.get('.stock_board')
+      .within(() => {
+        cy.get('.like')
+          .as('likeButton');
+
+        cy.get('@likeButton')
+          .should('not.have.class', 'activation')
+          .click({force: true});
+
+        cy.wait('@apiInterest')
+          .its('request')
+          .should(request => {
+            expect(request.method).to.equal('POST');
+            expect(request.body).to.deep.equal({id: '239340'});
+          });
+
+        cy.get('@likeButton')
+          .should('have.class', 'activation');
+
+        cy.get('@likeButton')
+          .click({force: true});
+        
+        cy.wait('@apiInterest')
+          .its('request.url')
+          .should('contain', 'delete');  // NOTE: RESTful?
+        
+        cy.get('@likeButton')
+          .should('not.have.class', 'activation');
+      });
+  });
+});
