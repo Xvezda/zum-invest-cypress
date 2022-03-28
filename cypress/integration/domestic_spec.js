@@ -79,7 +79,11 @@ describe('국내증시', () => {
             .get('@mekoChart')
             .its('0.contentDocument.body');
         },
-        $body => expect($body).to.have.descendants('[id^="treemap-node-stock"]')
+        $body => expect($body).to.have.descendants('[id^="treemap-node-stock"]'),
+        {
+          delay: 1000,
+          log: false,
+        }
       );
 
       expectMekoChartLoaded()
