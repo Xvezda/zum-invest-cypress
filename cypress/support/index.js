@@ -56,6 +56,21 @@ beforeEach(() => {
 
   cy.intercept('https://zvod.zumst.com/zumvrix/zvod/**', {statusCode: 206});
 
+  cy.intercept('https://cmnt.zum.com/member/login', {fixture: 'member-login'})
+    .as('apiMemberLogin');
+  cy.fixture('user-info')
+    .then(userInfo => {
+      cy.intercept('https://userapi.zum.com/getUserInfo*', req => {
+        req.reply({
+          headers: {
+            'Content-Type': 'application/javascript',
+          },
+          statusCode: 200,
+          body: `${req.query.callback}(${JSON.stringify(userInfo)})`,
+        });
+      });
+    });
+
   cy.on('uncaught:exception', err => {
     if (err.message.includes('kakaoPixel is not defined')) {
       return false;
