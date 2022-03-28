@@ -182,7 +182,8 @@ describe('국내증시', () => {
           
           cy.get('.investment_calendar_list .first a')
             .first()
-            .click({force: true})
+            .should('be.visible')
+            .click()
             .should('have.class', 'open');
         });
     });
