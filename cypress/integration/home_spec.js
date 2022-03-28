@@ -52,8 +52,9 @@ describe('zum 투자 홈', () => {
   });
 
   describe('사이드바', () => {
-    it('메뉴가 보여진다.', () => {
-      cy.withHidden('#header, .right_cont .gdn_wrap', () => {
+    it.only('메뉴가 보여진다.', () => {
+      cy.tick(600000)
+        .withHidden('#header, .right_cont .interested_items, .right_cont .gdn_wrap', () => {
         cy.get('.right_cont_inner')
           .then($el => {
             $el.css('position', 'relative !important');
@@ -259,6 +260,15 @@ describe('zum 투자 홈', () => {
     });
 
     it('목록에서 클릭하면 해당 영상이 재생된다.', () => {
+      recurse(
+        () => cy.get('@postMessage'),
+        message =>
+          expect(message).to.be.calledWithMatch(/resize/),
+        {
+          delay: 1000,
+          timeout: 20000,
+        }
+      );
       cy.get('.thumbnail_list_wrap ul > li:not(.active) > a')
         .each($link => {
           cy.wrap($link).click();

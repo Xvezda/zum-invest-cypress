@@ -111,7 +111,8 @@ Cypress.Commands.add('stubInvestApi', () => {
   cy.intercept('/article/info/**', {statusCode: 200});
   cy.intercept('/api/news/detail/*', {fixture: 'news-detail'});
 
-  cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
+  cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
+    .as('apiDebateHome');
   cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
     .as('apiOverseasHome');
   cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
@@ -158,7 +159,9 @@ Cypress.Commands.add(
         .scrollTo('bottom')
         .then(() => {
           combinedOptions.afterEachScroll();
-          return cy.wait(alias);
+          return cy
+            .wait(100)
+            .wait(alias);
         })
         .its('request.url')
         .should('contain', `page=${page}`)
@@ -210,5 +213,5 @@ Cypress.Commands.add(
   }
 );
 
-Cypress.Commands.add('login', () => cy.setCookie('_ZIL', '1').reload());
-Cypress.Commands.add('logout', () => cy.clearCookie('_ZIL').reload());
+Cypress.Commands.add('login', () => cy.setCookie('_ZIL', '1').reload(true));
+Cypress.Commands.add('logout', () => cy.clearCookie('_ZIL').reload(true));
