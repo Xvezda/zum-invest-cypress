@@ -37,7 +37,7 @@ describe('해외증시', () => {
   });
 
   describe('해외 주요지수', () => {
-    it('주요국 지수 현황과 주요 지표 현황을 눌러 활성화 할 수 있고 해당 내용을 보여준다.', () => {
+    it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', () => {
       cy.fixture('overseas-home')
         .then(home => {
           cy.get('.major_index')
@@ -61,6 +61,23 @@ describe('해외증시', () => {
           cy.wrap(mainCountryNames)
             .each(name => cy.get('@majorIndex').should('contain', name));
         });
+
+      cy.get('@majorIndex')
+        .contains('나스닥 종합')
+        .click()
+        .url()
+        .should('contain', '/global/index/2')
+        .go('back');
+
+      cy.get('@majorIndex')
+        .contains('주요 지표 현황')
+        .click();
+
+      cy.get('@majorIndex')
+        .contains('나스닥 선물')
+        .click()
+        .url()
+        .should('contain', '/global/index/16');
     });
   });  // END: 해외 주요지수
 
