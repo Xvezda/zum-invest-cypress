@@ -17,7 +17,7 @@ describe('국내증시', () => {
     cy.stubThirdParty();
     cy.stubInvestApi();
 
-    cy.visit('/', {
+    cy.visit('/investment', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
