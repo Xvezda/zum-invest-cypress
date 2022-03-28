@@ -52,7 +52,7 @@ describe('zum 투자 홈', () => {
   });
 
   describe('사이드바', () => {
-    it.only('메뉴가 보여진다.', () => {
+    it('메뉴가 보여진다.', () => {
       cy.tick(600000)
         .withHidden('#header, .right_cont .interested_items, .right_cont .gdn_wrap', () => {
         cy.get('.right_cont_inner')
