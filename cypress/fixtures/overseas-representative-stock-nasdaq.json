@@ -1,0 +1,2654 @@
+[
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AAPL",
+            "name": "애플",
+            "updateDateTime": "2022-02-01T06:40:08",
+            "symbol": "NASDAQ",
+            "currentPrice": 174.72,
+            "priceChange": 0.65,
+            "rateOfChange": 0.37,
+            "preClosingPrice": 174.07,
+            "highPrice": 175.28,
+            "lowPrice": 172.75
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74602612",
+            "thumbnail": "https://static.news.zumst.com/images/122/2022/03/27/a5bc0c90347440518d4679184d69d276.jpeg",
+            "title": "[글로벌] \"매월 바꿔쓰는 아이폰\"...애플, 기기 구독 서비스 추진?",
+            "leadText": "애플이 하드웨어 구독 서비스를 검토 중입니다.\t지난 24일(현지시간) 블룸버그는 애플이 아이클라우드, 애플 뮤직처럼 월 구독료를 지불하고 애플 기기를 사용할 수 있는 구독 서비스...",
+            "registerDateTime": "2022-03-27T07:10:00",
+            "mediaName": "테크M",
+            "landingUrl": "https://news.zum.com/articles/74602612",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ABNB",
+            "name": "에어비앤비",
+            "updateDateTime": "2022-03-03T06:40:33",
+            "symbol": "NASDAQ",
+            "currentPrice": 167.22,
+            "priceChange": -3.61,
+            "rateOfChange": -2.11,
+            "preClosingPrice": 170.83,
+            "highPrice": 170.61,
+            "lowPrice": 164.134
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74295822",
+            "thumbnail": "https://static.news.zumst.com/images/19/2022/03/10/050fd6e234844040822ea68c0712dda0.jpg",
+            "title": "공유경제株, 리오프닝 타고 날까…우버·리프트·에어비앤비 봄바람 ‘솔솔’",
+            "leadText": "코로나19는 공유경제 기업에 대형 악재였다.\t재택근무, 원격 수업을 하는 사람이 늘고 야외 활동을 최대한 줄여야 하는 상황이 찾아오자 승차 공유 서비스 수요는 급감했다.\t해외여행...",
+            "registerDateTime": "2022-03-10T22:03:10",
+            "mediaName": "매경이코노미",
+            "landingUrl": "https://news.zum.com/articles/74295822",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ADBE",
+            "name": "어도비",
+            "updateDateTime": "2022-03-10T06:40:32",
+            "symbol": "NASDAQ",
+            "currentPrice": 431.62,
+            "priceChange": -0.52,
+            "rateOfChange": -0.12,
+            "preClosingPrice": 432.14,
+            "highPrice": 438.62,
+            "lowPrice": 426
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73171553",
+            "thumbnail": "https://static.news.zumst.com/images/111/2022/01/13/119f3f928e444a8a9a13a90ffe21430e.jpg",
+            "title": "[글로벌핫스톡]어도비시스템즈, 포토숍 등 캐시카우 든든···NFT사업도 기대",
+            "leadText": "어도비시스템즈는 포토숍으로 잘 알려진 기업용 소프트웨어 기업이다.\t지난해 4분기 어도비시스템즈의 매출액은 전년 동기 대비 20% 증가했고 조정 주당순이익(EPS)은 14% 증가해 시...",
+            "registerDateTime": "2022-01-13T14:40:28",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/73171553",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ADI",
+            "name": "아날로그 디바이스",
+            "updateDateTime": "2022-02-24T06:40:41",
+            "symbol": "NASDAQ",
+            "currentPrice": 165.63,
+            "priceChange": 0.67,
+            "rateOfChange": 0.41,
+            "preClosingPrice": 164.96,
+            "highPrice": 165.92,
+            "lowPrice": 162.86
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/72821308",
+            "thumbnail": "https://static.news.zumst.com/images/111/2021/12/27/527966605d4c4b5293a25406b63fec32.jpg",
+            "title": "품귀 덕본 ‘아날로그칩 강자’···텍사스 인스트루먼트, 시총 200조원 돌파",
+            "leadText": "애플 아이폰부터 포드의 픽업트럭 F-150까지 아날로그 칩을 구하지 못해 생산 차질을 빚는 상황이 내년에도 이어질 것으로 예상되면서 아날로그 칩 강자인 텍사스인스트루먼트(TI)의...",
+            "registerDateTime": "2021-12-27T17:26:16",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/72821308",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ADP",
+            "name": "오토매틱 데이터 프로세싱",
+            "updateDateTime": "2022-02-10T06:40:44",
+            "symbol": "NASDAQ",
+            "currentPrice": 219.04,
+            "priceChange": 2.09,
+            "rateOfChange": 0.96,
+            "preClosingPrice": 216.95,
+            "highPrice": 219.07,
+            "lowPrice": 216.53
+        },
+        "article": {
+            "id": "http://www.econonews.co.kr/news/articleView.html?idxno=111052",
+            "thumbnail": null,
+            "title": "2월 미국 오토매틱 데이터 프로세싱(ADP) 민간고용 18만3000명↑...\"비...",
+            "leadText": "미국에서 2월 민간 부문 고용자 수가 예상 이상으로 늘어난 것으로 나타났다.\tAP 통신 등에 따르면 기업 대상 서비스 오토매틱 데이터 프로세싱(ADP)은 4일 내놓은 2월 민간고용 보고...",
+            "registerDateTime": "2020-03-05T21:09:00",
+            "mediaName": "이코노뉴스",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ADSK",
+            "name": "오토데스크",
+            "updateDateTime": "2021-12-08T06:40:39",
+            "symbol": "NASDAQ",
+            "currentPrice": 212.14,
+            "priceChange": -0.91,
+            "rateOfChange": -0.43,
+            "preClosingPrice": 213.05,
+            "highPrice": 214.74,
+            "lowPrice": 207.76
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/72114127",
+            "thumbnail": "https://static.news.zumst.com/images/18/2021/12/02/aeb9ae480edc420db23e87b604587c79.jpg",
+            "title": "\"오토데스크 설계플랫폼서 테슬라·현대차·폭스바겐…미래 혁신기술 그...",
+            "leadText": "◆ 다시보는 세계지식포럼 / 조 스파이커 재단 부이사장 ◆ \"환경 또는 사회적 이익을 위하는 비영리 단체, 스타트업 및 기업가에게는 오토데스크가 재단을 통해 소프트웨어를 기부하고...",
+            "registerDateTime": "2021-11-22T17:05:11",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/72114127",
+            "category": "해외증시",
+            "subCategory": "운수장비"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AEP",
+            "name": "아메리칸 일렉트로닉 파워",
+            "updateDateTime": "2022-03-22T06:40:27",
+            "symbol": "NASDAQ",
+            "currentPrice": 96.84,
+            "priceChange": 0.4,
+            "rateOfChange": 0.41,
+            "preClosingPrice": 96.44,
+            "highPrice": 97.39,
+            "lowPrice": 96.35
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ALGN",
+            "name": "얼라인테크놀로지",
+            "updateDateTime": "2022-03-02T06:40:45",
+            "symbol": "NASDAQ",
+            "currentPrice": 430.44,
+            "priceChange": -5.82,
+            "rateOfChange": -1.33,
+            "preClosingPrice": 436.26,
+            "highPrice": 439.99,
+            "lowPrice": 418.67
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/66400245",
+            "thumbnail": null,
+            "title": "中 투명치아교정 시장 1위 엔젤얼라인 홍콩 상장 예정…레이 JV 주목",
+            "leadText": "최근 중국 투명치아교정 시장 1위 업체 엔젤얼라인은 홍콩증시 상장을 위한 기업공개(IPO) 신청서를 제출하면서 레이에 대한 관심이 높아지고 있다.\t25일 금융투자업계에 따르면 엔...",
+            "registerDateTime": "2021-02-25T09:21:34",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/66400245",
+            "category": "해외증시",
+            "subCategory": "헬스케어 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AMAT",
+            "name": "어플라이드 머티어리얼즈",
+            "updateDateTime": "2022-03-02T06:40:47",
+            "symbol": "NASDAQ",
+            "currentPrice": 137.06,
+            "priceChange": -1.53,
+            "rateOfChange": -1.1,
+            "preClosingPrice": 138.59,
+            "highPrice": 138.99,
+            "lowPrice": 134.8
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/71921656",
+            "thumbnail": "https://static.news.zumst.com/images/111/2021/11/12/1f30f79f4bc048238379bb721d4909e3.jpeg",
+            "title": "어플라이드 머티어리얼즈 코리아, ‘위드하모니 오케스트라 프로그램’ ...",
+            "leadText": "어플라이드 머티어리얼즈 코리아는 초록우산어린이재단과 업무협약(MOU)을 맺고 '위드하모니 오케스트라 프로그램'을 3년 연속 진행한다고 12일 밝혔다.\t이 프로그램은 경기 화성시 ...",
+            "registerDateTime": "2021-11-12T18:39:19",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/71921656",
+            "category": "해외증시",
+            "subCategory": "기술 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AMD",
+            "name": "어브밴스트 마이크로 디바이시스",
+            "updateDateTime": "2022-02-24T06:40:56",
+            "symbol": "NASDAQ",
+            "currentPrice": 119.67,
+            "priceChange": -0.86,
+            "rateOfChange": -0.71,
+            "preClosingPrice": 120.53,
+            "highPrice": 121.4,
+            "lowPrice": 117.25
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AMGN",
+            "name": "암젠",
+            "updateDateTime": "2022-02-23T06:40:53",
+            "symbol": "NASDAQ",
+            "currentPrice": 238.79,
+            "priceChange": 1.92,
+            "rateOfChange": 0.81,
+            "preClosingPrice": 236.87,
+            "highPrice": 239.49,
+            "lowPrice": 236.21
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74366310",
+            "thumbnail": "https://static.news.zumst.com/images/30/2022/03/15/a935256bdbc048368ab93ef1fe561019.jpg",
+            "title": "암젠코리아, 난치병 환아 돕는 '블루 위시 캠페인' 진행",
+            "leadText": "암젠코리아(대표 노상경)는 메이크어위시 코리아(이사장 박상일)와 지난 10일 국내 난치병 환아의 소원을 이뤄주는 '블루 위시 캠페인(Blue Wish Campaign)' 업무협약을 체결했다고 1...",
+            "registerDateTime": "2022-03-15T11:34:14",
+            "mediaName": "라포르시안",
+            "landingUrl": "https://news.zum.com/articles/74366310",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AMZN",
+            "name": "아마존",
+            "updateDateTime": "2022-02-09T06:41:10",
+            "symbol": "NASDAQ",
+            "currentPrice": 3295.47,
+            "priceChange": 22.48,
+            "rateOfChange": 0.69,
+            "preClosingPrice": 3272.99,
+            "highPrice": 3307.3701,
+            "lowPrice": 3245
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74538021",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/23/aa8da85f2a4c4d4ab1cca560fc1bc3c4.jpg",
+            "title": "'아마존 매트리스 1위' 지누스 품은 현대百, 퀀텀점프 할까?",
+            "leadText": "[증권가 \"현대백화점, 신성장동력 확보\"…지누스 주가는 주춤]\t현대백화점이 가구·매트리스 업체 지누스를 인수하자 증권가에서는 현대백화점이 신성장동력을 확보했다는 분석이 나왔다...",
+            "registerDateTime": "2022-03-23T16:24:16",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74538021",
+            "category": "해외증시",
+            "subCategory": "유통업"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ANSS",
+            "name": "앤시스",
+            "updateDateTime": "2022-02-26T06:41:19",
+            "symbol": "NASDAQ",
+            "currentPrice": 308.97,
+            "priceChange": -1.99,
+            "rateOfChange": -0.64,
+            "preClosingPrice": 310.96,
+            "highPrice": 312.18,
+            "lowPrice": 305.22
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/71980191",
+            "thumbnail": "https://static.news.zumst.com/images/37/2021/11/16/a5ed88853d654646981737e214e257d2.jpg",
+            "title": "삼성전자·앤시스, 3nm 공정 설계 시뮬레이션 인증 획득",
+            "leadText": "삼성전자와 파운드리 초미세공정을 협업 중인 글로벌 설계 시뮬레이션기업 앤시스가 3nm(나노미터, 10억분의 1m) 공정 설계 관련 인증을 획득했다.\t실제 제작에 앞서 안정성 여부 등...",
+            "registerDateTime": "2021-11-16T11:19:12",
+            "mediaName": "헤럴드경제",
+            "landingUrl": "https://news.zum.com/articles/71980191",
+            "category": "해외증시",
+            "subCategory": "전기·전자"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ASML",
+            "name": "ASML 홀딩",
+            "updateDateTime": "2022-02-12T06:40:58",
+            "symbol": "NASDAQ",
+            "currentPrice": 687.36,
+            "priceChange": -3.18,
+            "rateOfChange": -0.46,
+            "preClosingPrice": 690.54,
+            "highPrice": 690.75,
+            "lowPrice": 672.3
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ATVI",
+            "name": "액티비전 블리자드",
+            "updateDateTime": "2022-03-24T06:41:12",
+            "symbol": "NASDAQ",
+            "currentPrice": 79.6,
+            "priceChange": -0.02,
+            "rateOfChange": -0.03,
+            "preClosingPrice": 79.62,
+            "highPrice": 79.97,
+            "lowPrice": 79.5
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73557667",
+            "thumbnail": "https://static.news.zumst.com/images/59/2022/02/04/3d2306102811426fb31388b6adbd8070.jpg",
+            "title": "액티비전 블리자드, 2021년 영업익 3조9140억...전년比 19.2%↑",
+            "leadText": "액티비전블리자드가 2021년 연매출 88억300만 달러(약 10조 5천724억 원), 영업이익 32억5천900만 달러(약 3조 9천140억 원)를 기록했다고 3일(현지시간) 밝혔다.\t매출은 전년대비 9%...",
+            "registerDateTime": "2022-02-04T09:07:43",
+            "mediaName": "지디넷코리아",
+            "landingUrl": "https://news.zum.com/articles/73557667",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AVGO",
+            "name": "아바고 테크놀로지스",
+            "updateDateTime": "2022-03-16T06:41:15",
+            "symbol": "NASDAQ",
+            "currentPrice": 628.87,
+            "priceChange": 2.44,
+            "rateOfChange": 0.39,
+            "preClosingPrice": 626.43,
+            "highPrice": 630.41,
+            "lowPrice": 620.07
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/74353298",
+            "thumbnail": "https://static.news.zumst.com/images/18/1429/28/67/1429286712e142c6bd5d84f26590e926.jpg",
+            "title": "[해외주식 포커스] 이익 급증·배당 기대에 美 브로드컴 '주목'",
+            "leadText": "미국 반도체 기업 브로드컴이 뉴욕 증시에서 주목받고 있다.\t지난 11일(현지시간) 나스닥에 상장된 브로드컴은 전 거래일보다 1.68% 하락한 577.85달러에 거래를 마쳤다.\t지난 1개월...",
+            "registerDateTime": "2022-03-14T17:36:08",
+            "mediaName": "매일경제",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "AZN",
+            "name": null,
+            "updateDateTime": "2022-03-04T06:41:10",
+            "symbol": "NASDAQ",
+            "currentPrice": 65.13,
+            "priceChange": -0.89,
+            "rateOfChange": -1.35,
+            "preClosingPrice": 66.02,
+            "highPrice": 65.74,
+            "lowPrice": 64.86
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "BIDU",
+            "name": "바이두",
+            "updateDateTime": "2021-11-27T20:28:06",
+            "symbol": "NASDAQ",
+            "currentPrice": 146.54,
+            "priceChange": -4.07,
+            "rateOfChange": -2.7,
+            "preClosingPrice": 150.61,
+            "highPrice": 147.96,
+            "lowPrice": 142.81
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74456250",
+            "thumbnail": "https://static.news.zumst.com/images/24/2022/03/19/43069431c63d4546998cba20470be9b8.jpg",
+            "title": "알리바바·바이두, 뉴욕증시서 퇴출 피한 배경은?",
+            "leadText": "중국 ADR(미 주식예탁증서)의 미 제재 리스트 포함 여부는 기업 지배구조상 정부 영향권 유무에 대한 상세 보고서 제출 등이 갈랐다는 분석이 나왔다.\t미 증시에서 퇴출되더라도 홍콩...",
+            "registerDateTime": "2022-03-19T14:21:01",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/74456250",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "BIIB",
+            "name": "바이오젠",
+            "updateDateTime": "2022-02-09T06:41:38",
+            "symbol": "NASDAQ",
+            "currentPrice": 210.97,
+            "priceChange": -2.04,
+            "rateOfChange": -0.96,
+            "preClosingPrice": 213.01,
+            "highPrice": 214.12,
+            "lowPrice": 209.41
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74564138",
+            "thumbnail": null,
+            "title": "한국바이오젠, 송정섭·부삼열 각자 대표 선임",
+            "leadText": "한국바이오젠은 경영 효율성 제고와 연구개발(R&D) 역량을 강화하기 위해 송정섭 부삼열 각자 대표이사를 선임했다고 24일 공시했다.",
+            "registerDateTime": "2022-03-24T15:48:08",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/74564138",
+            "category": "해외증시",
+            "subCategory": "화학"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "BKNG",
+            "name": "부킹 홀딩스",
+            "updateDateTime": "2022-03-01T06:40:59",
+            "symbol": "NASDAQ",
+            "currentPrice": 2247.9299,
+            "priceChange": -14.0601,
+            "rateOfChange": -0.62,
+            "preClosingPrice": 2261.99,
+            "highPrice": 2298.0801,
+            "lowPrice": 2226.1799
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74312341",
+            "thumbnail": null,
+            "title": "알파벳·아마존 다음은 부킹홀딩스?",
+            "leadText": "알파벳에 이어 아마존이 액면분할을 결정하며 뉴욕증시에서 같은 결정을 내릴 다음 타자가 누가 될지 주목받고 있다.\t11일 미국 투자 매체 배런스에 따르면 최근 뱅크오브아메리카(BoA...",
+            "registerDateTime": "2022-03-11T17:29:56",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/74312341",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CDNS",
+            "name": "케이던스 디자인 시스템즈",
+            "updateDateTime": "2022-03-25T06:41:32",
+            "symbol": "NASDAQ",
+            "currentPrice": 158.84,
+            "priceChange": -3.28,
+            "rateOfChange": -2.02,
+            "preClosingPrice": 162.12,
+            "highPrice": 163.24,
+            "lowPrice": 157.33
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/65796376",
+            "thumbnail": null,
+            "title": "케이던스디자인시스템즈, 직원 건강·안전이 최우선 순위",
+            "leadText": "◆ 대한민국 일하기 좋은 100대 기업 / 7년 연속 대상 / World's Best / Asia's Best ◆\t케이던스디자인시스템즈는 코로나19로 인한 글로벌 팬데믹 상황에서 직원들의 건강과 안전을 ...",
+            "registerDateTime": "2021-01-28T04:01:05",
+            "mediaName": "매일경제",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CEG",
+            "name": null,
+            "updateDateTime": "2022-03-02T06:41:25",
+            "symbol": "NASDAQ",
+            "currentPrice": 53.8,
+            "priceChange": 1.39,
+            "rateOfChange": 2.65,
+            "preClosingPrice": 52.41,
+            "highPrice": 53.82,
+            "lowPrice": 52.03
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CHTR",
+            "name": "차터 커뮤니케이션즈",
+            "updateDateTime": "2022-03-22T06:41:19",
+            "symbol": "NASDAQ",
+            "currentPrice": 558.26,
+            "priceChange": -1.06,
+            "rateOfChange": -0.19,
+            "preClosingPrice": 559.32,
+            "highPrice": 564.05,
+            "lowPrice": 544.59
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CMCSA",
+            "name": "컴캐스트",
+            "updateDateTime": "2022-02-08T06:41:28",
+            "symbol": "NASDAQ",
+            "currentPrice": 47.13,
+            "priceChange": 0.33,
+            "rateOfChange": 0.71,
+            "preClosingPrice": 46.8,
+            "highPrice": 47.37,
+            "lowPrice": 46.85
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/63898789",
+            "thumbnail": "https://static.news.zumst.com/images/3/2020/11/04/PYH2018022802570034000_P2.jpg",
+            "title": "월마트-컴캐스트 스마트 TV 개발·유통 협력 논의",
+            "leadText": "NBC유니버설의 모회사인 컴캐스트와 미국 대형 유통업체 월마트가 스마트TV를 개발·유통하는 협력 방안을 논의하고 있다고 월스트리트저널(WSJ)이 소식통을 인용해 3일(현지시간) 보...",
+            "registerDateTime": "2020-11-04T11:01:06",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/63898789",
+            "category": "해외증시",
+            "subCategory": "커뮤니케이션 서비스 필수 소비재"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "COST",
+            "name": "코스트코",
+            "updateDateTime": "2022-03-15T06:41:40",
+            "symbol": "NASDAQ",
+            "currentPrice": 555.71,
+            "priceChange": -2.4,
+            "rateOfChange": -0.43,
+            "preClosingPrice": 558.11,
+            "highPrice": 560.43,
+            "lowPrice": 550.23
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73542568",
+            "thumbnail": "https://static.news.zumst.com/images/18/2022/02/03/4f7aaced9d4e41b4b7a08f4de040d3ea.jpg",
+            "title": "코로나가 불러온 회원제 마트 붐… 코스트코 뜨고 월마트 진 이유",
+            "leadText": "#한국과 달리 따뜻한 공기가 감돌던 지난해 12월의 평일 오전. 미국 뉴저지주 테터보로에 위치한 코스트코 주차장에는 빈자리를 찾지 못해 비상등을 켜고 대기 중인 차량들이 줄을 이...",
+            "registerDateTime": "2022-02-03T13:47:01",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/73542568",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CPRT",
+            "name": "코파트",
+            "updateDateTime": "2022-03-09T06:41:43",
+            "symbol": "NASDAQ",
+            "currentPrice": 126.23,
+            "priceChange": -0.41,
+            "rateOfChange": -0.32,
+            "preClosingPrice": 126.64,
+            "highPrice": 127.43,
+            "lowPrice": 124.45
+        },
+        "article": {
+            "id": "http://www.it-b.co.kr/news/articleView.html?idxno=58218",
+            "thumbnail": null,
+            "title": "픽코파트너스, 독서실 일일권 기능 추가",
+            "leadText": "스터디카페·독서실 키오스크 브랜드 픽코파트너스(Pickko Partners)는 독서실의 매출을 극대화하기 위한 방안으로 독서실 일일권 기능을 추가 탑재했으며, 이 외에도 유인 독서실에 ...",
+            "registerDateTime": "2022-03-25T10:06:53",
+            "mediaName": "아이티비즈",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CRWD",
+            "name": "크라우드스트라이크",
+            "updateDateTime": "2022-03-22T06:41:31",
+            "symbol": "NASDAQ",
+            "currentPrice": 221.95,
+            "priceChange": -1.45,
+            "rateOfChange": -0.65,
+            "preClosingPrice": 223.4,
+            "highPrice": 225.75,
+            "lowPrice": 216.7
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/70664677",
+            "thumbnail": "https://static.news.zumst.com/images/23/2021/09/11/090b8de4922140f69bb3316b3ca57c7b.jpg",
+            "title": "크라우드스트라이크, 美기업 사이버보안투자 수혜 기대",
+            "leadText": "미국 내 기업들의 사이버보완투자로 회사의 매출 성장률이 두드러질 것이란 전망이 나온다.\t11일 크라우드스트라이크의 주가를 보면 이달 들어 281달러에서 262달러로 약 6.7% 하락했...",
+            "registerDateTime": "2021-09-11T14:35:00",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/70664677",
+            "category": "해외증시",
+            "subCategory": "기술 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CSCO",
+            "name": "시스코 시스템즈",
+            "updateDateTime": "2022-02-25T06:41:50",
+            "symbol": "NASDAQ",
+            "currentPrice": 54.97,
+            "priceChange": 0.47,
+            "rateOfChange": 0.86,
+            "preClosingPrice": 54.5,
+            "highPrice": 55.18,
+            "lowPrice": 54.4
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73843449",
+            "thumbnail": "https://static.news.zumst.com/images/122/2022/02/17/4fc575cfd51c49079ad89cc8fe47c390.jpg",
+            "title": "시스코-람다256, 하이브리드 블록체인 플랫폼 '루오나' 선보인다",
+            "leadText": "시스코시스템즈는 지난해 12월 람다256과 하이브리드 블록체인 플랫폼 사업을 위한 업무협약을 체결하고 블록체인 통합 플랫폼 공동 개발 및 신규 사업을 추진해나갈 계획이라고 17일...",
+            "registerDateTime": "2022-02-17T11:49:55",
+            "mediaName": "테크M",
+            "landingUrl": "https://news.zum.com/articles/73843449",
+            "category": "해외증시",
+            "subCategory": "N"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CSX",
+            "name": "CSX",
+            "updateDateTime": "2022-03-26T06:41:59",
+            "symbol": "NASDAQ",
+            "currentPrice": 36.92,
+            "priceChange": 0.24,
+            "rateOfChange": 0.65,
+            "preClosingPrice": 36.68,
+            "highPrice": 36.94,
+            "lowPrice": 36.45
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/73766036",
+            "thumbnail": null,
+            "title": "[NNA] 캄보디아 부동산개발 JS랜드, CSX 그로스보드 상장",
+            "leadText": "캄보디아 부동산개발회사 JS랜드가 10일, 캄보디아증권거래소(CSX) 그로스보드(신흥시장)에 상장했다.\tCSX는 JS랜드가 신규주식공개(IPO)를 통해 490억리엘(약 14억엔)의 자금을 조...",
+            "registerDateTime": "2022-02-14T15:18:00",
+            "mediaName": "아주경제",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CTAS",
+            "name": "신타스",
+            "updateDateTime": "2022-03-26T06:42:02",
+            "symbol": "NASDAQ",
+            "currentPrice": 413.32,
+            "priceChange": 2.91,
+            "rateOfChange": 0.71,
+            "preClosingPrice": 410.41,
+            "highPrice": 413.75,
+            "lowPrice": 406.9
+        },
+        "article": {
+            "id": "http://www.infostockdaily.co.kr/news/articleView.html?idxno=162483",
+            "thumbnail": null,
+            "title": "신타스(CTAS.O), 리오프닝 수혜 기대...'안정적인 실적주'",
+            "leadText": "신타스(CTAS.O)가 경제활동 정상화와 고객사 아웃소싱 확대 등에 힘입어 호실적을 발표했다.\t신타스는 100만개에 달하는 기업을 대상으로 임직원 유니폼 렌털·시설관리서비스 등을 ...",
+            "registerDateTime": "2021-12-27T16:45:43",
+            "mediaName": "인포스탁데일리",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "CTSH",
+            "name": "카그너젼트",
+            "updateDateTime": "2022-02-24T06:41:58",
+            "symbol": "NASDAQ",
+            "currentPrice": 91.51,
+            "priceChange": 0.32,
+            "rateOfChange": 0.35,
+            "preClosingPrice": 91.19,
+            "highPrice": 91.61,
+            "lowPrice": 90.04
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "DDOG",
+            "name": "데이터도그",
+            "updateDateTime": "2022-03-03T06:41:47",
+            "symbol": "NASDAQ",
+            "currentPrice": 146.84,
+            "priceChange": -5.37,
+            "rateOfChange": -3.53,
+            "preClosingPrice": 152.21,
+            "highPrice": 153.196,
+            "lowPrice": 142.03
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "DLTR",
+            "name": "달러 트리",
+            "updateDateTime": "2021-11-27T20:28:53",
+            "symbol": "NASDAQ",
+            "currentPrice": 156.41,
+            "priceChange": -0.44,
+            "rateOfChange": -0.28,
+            "preClosingPrice": 156.85,
+            "highPrice": 158,
+            "lowPrice": 155.73
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74515235",
+            "thumbnail": "https://static.news.zumst.com/images/18/2022/03/22/ae20aea80ff04414a994bf0cc3ef3e47.jpg",
+            "title": "고물가에 '1달러숍' 북새통…초저가상품 유통株 '웃음꽃'",
+            "leadText": "◆ 서학개미 투자 길잡이 ◆\t미국 인플레이션이 좀처럼 진정되지 않고 있는 가운데 저렴한 제품을 판매하는 유통기업들의 주식이 뉴욕 증시에서 주목받고 있다.\t뉴욕 증시에 상장된 달...",
+            "registerDateTime": "2022-03-22T17:37:21",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/74515235",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "DOCU",
+            "name": "도큐사인",
+            "updateDateTime": "2021-12-09T06:41:48",
+            "symbol": "NASDAQ",
+            "currentPrice": 100.45,
+            "priceChange": -4.1,
+            "rateOfChange": -3.92,
+            "preClosingPrice": 104.55,
+            "highPrice": 104.46,
+            "lowPrice": 98.37
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/72406997",
+            "thumbnail": "https://static.news.zumst.com/images/23/2021/12/07/4b78f8f0c027463685edebbcada3b24e.png",
+            "title": "[클릭 e종목]\"도큐사인, 수요 둔화 예상보다 뚜렷...당분간 주가 변동...",
+            "leadText": "하나금융투자는 7일 도큐사인에 대해 수요 둔화가 예상보다 뚜렷하다며 당분간 변동성이 확대되는 주가 흐름을 전망했다.\t김재임 하나금융투자 연구원은 \" 3분기(10월 결산) 실적 발표...",
+            "registerDateTime": "2021-12-07T07:42:21",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/72406997",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "DXCM",
+            "name": "덱스콤",
+            "updateDateTime": "2022-02-17T06:42:18",
+            "symbol": "NASDAQ",
+            "currentPrice": 480.97,
+            "priceChange": 12.58,
+            "rateOfChange": 2.69,
+            "preClosingPrice": 468.39,
+            "highPrice": 486.66,
+            "lowPrice": 475.73
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74020329",
+            "thumbnail": "https://static.news.zumst.com/images/24/2022/02/25/3289d2a3db0d4306ad8cdeba032c8c01.jpg",
+            "title": "휴온스, 덱스콤G6 1형 당뇨 환자들과 소통 강화",
+            "leadText": "휴온스(243070)는 지난 23일 1형 당뇨병 환우회 김미영 대표를 비롯해 환자 13명이 화상으로 참여한 가운데 연속혈당측정기(CGMS) '덱스콤G6 FGI(Focus Group Interview)'를 가졌다고 ...",
+            "registerDateTime": "2022-02-25T13:16:09",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/74020329",
+            "category": "해외증시",
+            "subCategory": "제약"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "EA",
+            "name": "일렉트로닉 아츠",
+            "updateDateTime": "2022-02-11T06:42:04",
+            "symbol": "NASDAQ",
+            "currentPrice": 127.32,
+            "priceChange": 1.75,
+            "rateOfChange": 1.39,
+            "preClosingPrice": 125.57,
+            "highPrice": 127.51,
+            "lowPrice": 125.3
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/63491835",
+            "thumbnail": "https://static.news.zumst.com/images/37/2020/10/18/b064e49e3ca041d682edfd3406064b99.jpg",
+            "title": "美 게임주 일렉트로닉아츠, PS5 흥행수혜 기대감 UP",
+            "leadText": "스포츠 시뮬레이션 장르로 유명한 게임 개발사 일렉트로닉아츠(EA)가 PS5 출시로 인한 사용자 증가로 인한 수혜를 볼 것이란 전망이 나온다.\t정용제 미래에셋대우 연구원은 17일 EA ...",
+            "registerDateTime": "2020-10-18T19:18:43",
+            "mediaName": "헤럴드경제",
+            "landingUrl": "https://news.zum.com/articles/63491835",
+            "category": "해외증시",
+            "subCategory": "커뮤니케이션 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "EBAY",
+            "name": "이베이",
+            "updateDateTime": "2022-03-03T06:42:03",
+            "symbol": "NASDAQ",
+            "currentPrice": 57.42,
+            "priceChange": 0.19,
+            "rateOfChange": 0.33,
+            "preClosingPrice": 57.23,
+            "highPrice": 58.05,
+            "lowPrice": 56.95
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74402890",
+            "thumbnail": "https://static.news.zumst.com/images/126/2022/03/16/5e3920957b374668a560a46e24d7ef50.jpg",
+            "title": "롯데쇼핑, 디지털혁신센터장에 이베이 출신 현은석 부사장 영입",
+            "leadText": "롯데쇼핑의 외부 인재 수혈 행보가 계속되고 있다.\t이번에는 이커머스 경쟁력 강화의 일환으로 이베이코리아 최고기술책임자(CTO) 출신 인사를 디지털 혁신센터장으로 영입했다.\t16일...",
+            "registerDateTime": "2022-03-16T17:51:43",
+            "mediaName": "아이뉴스24",
+            "landingUrl": "https://news.zum.com/articles/74402890",
+            "category": "해외증시",
+            "subCategory": "유통업"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "EXC",
+            "name": "엑셀론",
+            "updateDateTime": "2022-03-03T06:42:05",
+            "symbol": "NASDAQ",
+            "currentPrice": 45.51,
+            "priceChange": 1.04,
+            "rateOfChange": 2.34,
+            "preClosingPrice": 44.47,
+            "highPrice": 45.55,
+            "lowPrice": 44.42
+        },
+        "article": {
+            "id": "http://www.g-enews.com/ko-kr/news/article/news_all/202203181720044002e8b8a793f7_1/article.html",
+            "thumbnail": null,
+            "title": "캐나다 동부 아이다호 금광 소송 재점화…환경단체, 엑셀론의 킬고어 ...",
+            "leadText": "승인한 미국 산림청을 상대로 소송을 제기했다.\t캐나다 광산회사 엑셀론 리소시스는 킬고어 북쪽 국유림 1만6700에이커 지역에 금광을 건설할 계획이었으나 아이다호 자연보호연맹과...",
+            "registerDateTime": "2022-03-18T17:25:24",
+            "mediaName": "글로벌이코노믹",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "FAST",
+            "name": "패스널",
+            "updateDateTime": "2022-03-03T06:42:07",
+            "symbol": "NASDAQ",
+            "currentPrice": 57.58,
+            "priceChange": 0.23,
+            "rateOfChange": 0.4,
+            "preClosingPrice": 57.35,
+            "highPrice": 57.73,
+            "lowPrice": 57.05
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/31803085",
+            "thumbnail": null,
+            "title": "[뉴욕 Up&Down]세이지 37.3%↑, 패스널 3.5%↓",
+            "leadText": "밝히면서 21.8% 급등했다.\t◇ AMC 엔터테인먼트는 유럽 극장 체인인 오데온&UCI를 12억1000만달러에 인수한다는 소식에 7.31% 상승했다.\t◇ 패스널은 2분기 실적이 기대에 못 미치면서 3....",
+            "registerDateTime": "2016-07-13T05:53:26",
+            "mediaName": "머니투데이",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "FB",
+            "name": "메타플랫폼스(페이스북)",
+            "updateDateTime": "2022-02-08T06:42:37",
+            "symbol": "NASDAQ",
+            "currentPrice": 221.82,
+            "priceChange": 2.25,
+            "rateOfChange": 1.02,
+            "preClosingPrice": 219.57,
+            "highPrice": 225.5,
+            "lowPrice": 218.89
+        },
+        "article": {
+            "id": "https://news.mtn.co.kr/news-detail/2022022408492185480",
+            "thumbnail": null,
+            "title": "[기획특집] 주가 악화일로 걷는 '메타 플랫폼스' 지금 매수 적기일까?",
+            "leadText": "리서치센터 선임연구원 Q.\t연초 주가 악화일로 걷는 '메타 플랫폼스' 투자 적기일까?\tQ. 애플· 구글의 개인정보보호 정책, 장기적 호재인 이유는?\t- 애플· 구글의 개인정보보호 정책 ...",
+            "registerDateTime": "2022-02-24T09:28:48",
+            "mediaName": "머니투데이방송",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "FISV",
+            "name": "파이서브",
+            "updateDateTime": "2022-03-01T06:42:01",
+            "symbol": "NASDAQ",
+            "currentPrice": 100.51,
+            "priceChange": 1.81,
+            "rateOfChange": 1.83,
+            "preClosingPrice": 98.7,
+            "highPrice": 100.56,
+            "lowPrice": 98.7
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74345796",
+            "thumbnail": "https://static.news.zumst.com/images/12/2022/03/14/8b120cd257e0410b8a9538bde47dd465.jpg",
+            "title": "파이서브코리아 새 대표에 박미령 선임…금융권에 이어 밴사도 '여풍(女風)'",
+            "leadText": "은행·보험·카드사에 이르기까지 금융권을 중심으로 '여풍(女風)'이 거센 가운데 금융사 후방 산업까지 확대하고 있다. 수평적 문화가 강조되면서 여성 리더들의 소통 능력이 주목받은...",
+            "registerDateTime": "2022-03-14T14:04:00",
+            "mediaName": "전자신문",
+            "landingUrl": "https://news.zum.com/articles/74345796",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "FTNT",
+            "name": "포티넷",
+            "updateDateTime": "2022-03-03T06:42:14",
+            "symbol": "NASDAQ",
+            "currentPrice": 332.73,
+            "priceChange": -2.98,
+            "rateOfChange": -0.89,
+            "preClosingPrice": 335.71,
+            "highPrice": 336.15,
+            "lowPrice": 322.03
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "GILD",
+            "name": "길리어드 사이언시스",
+            "updateDateTime": "2022-03-01T06:42:06",
+            "symbol": "NASDAQ",
+            "currentPrice": 58.91,
+            "priceChange": -0.23,
+            "rateOfChange": -0.39,
+            "preClosingPrice": 59.14,
+            "highPrice": 59.44,
+            "lowPrice": 58.8
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "GOOG",
+            "name": "구글C",
+            "updateDateTime": "2022-02-10T06:42:30",
+            "symbol": "NASDAQ",
+            "currentPrice": 2830.4299,
+            "priceChange": 4.1899,
+            "rateOfChange": 0.15,
+            "preClosingPrice": 2826.24,
+            "highPrice": 2839.1899,
+            "lowPrice": 2793.99
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "GOOGL",
+            "name": "구글",
+            "updateDateTime": "2022-02-05T06:42:40",
+            "symbol": "NASDAQ",
+            "currentPrice": 2833.46,
+            "priceChange": 2.02,
+            "rateOfChange": 0.07,
+            "preClosingPrice": 2831.4399,
+            "highPrice": 2840.7,
+            "lowPrice": 2794.75
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74550290",
+            "thumbnail": "https://static.news.zumst.com/images/78/2022/03/24/585eec10f81f43ec9c7b1909e6489a93.jpg",
+            "title": "싸이월드, 구글 이어 애플 앱 마켓 승인…4월 2일 출시",
+            "leadText": "싸이월드제트가 재출시를 준비 중인 싸이월드에 대해 애플리케이션(앱)마켓 구글플레이에 이어 애플 앱스토어에서도 앱 심사 승인을 받았다고 24일 밝혔다.\t싸이월드제트는 구글플레이...",
+            "registerDateTime": "2022-03-24T09:51:07",
+            "mediaName": "이투데이",
+            "landingUrl": "https://news.zum.com/articles/74550290",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "HON",
+            "name": "허니웰",
+            "updateDateTime": "2022-02-16T06:42:28",
+            "symbol": "NASDAQ",
+            "currentPrice": 197.79,
+            "priceChange": 3.1,
+            "rateOfChange": 1.59,
+            "preClosingPrice": 194.69,
+            "highPrice": 198.36,
+            "lowPrice": 195.32
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/68473310",
+            "thumbnail": "https://static.news.zumst.com/images/18/2021/05/31/6a86432a19fa442ea3331e7109e212f2.jpg",
+            "title": "美 인프라법안 합의 앞두고…월가 \"지멘스·허니웰 주목\"",
+            "leadText": "미국 조 바이든 정부와 연방 의회가 인프라스트럭처 지원 규모를 두고 오는 7일(현지시간) 이후 협상 윤곽을 마련할 것으로 보이는 가운데 뉴욕 증시에서는 엔지니어링 관련 주식을 ...",
+            "registerDateTime": "2021-05-31T17:29:17",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/68473310",
+            "category": "해외증시",
+            "subCategory": "산업"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "IDXX",
+            "name": "아이덱스 레버러토리",
+            "updateDateTime": "2022-02-23T06:42:45",
+            "symbol": "NASDAQ",
+            "currentPrice": 538.93,
+            "priceChange": -1.46,
+            "rateOfChange": -0.27,
+            "preClosingPrice": 540.39,
+            "highPrice": 546.53,
+            "lowPrice": 528.87
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ILMN",
+            "name": "일루미나",
+            "updateDateTime": "2022-02-23T06:42:48",
+            "symbol": "NASDAQ",
+            "currentPrice": 341.72,
+            "priceChange": -1.33,
+            "rateOfChange": -0.39,
+            "preClosingPrice": 343.05,
+            "highPrice": 345.81,
+            "lowPrice": 334.29
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/69882397",
+            "thumbnail": "https://static.news.zumst.com/images/52/2021/08/04/a0f6eea2150844dbabd22a42f6c6b551.jpg",
+            "title": "캔서롭, 일루미나와 임상유전체 체외진단분야 포괄적 우선업무협약 체결",
+            "leadText": "정밀의료 및 분자진단 전문기업 캔서롭은 세계 최대 유전체 분석 장비 및 분석 기술을 보유한 일루미나(Illumina)와 바이오헬스 영역의 임상유전체 체외진단 분야에서 전방위적인 우...",
+            "registerDateTime": "2021-08-04T11:19:43",
+            "mediaName": "뉴스핌",
+            "landingUrl": "https://news.zum.com/articles/69882397",
+            "category": "해외증시",
+            "subCategory": "전문기술 헬스케어 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "INTC",
+            "name": "인텔",
+            "updateDateTime": "2022-02-10T06:42:50",
+            "symbol": "NASDAQ",
+            "currentPrice": 51.83,
+            "priceChange": 0.21,
+            "rateOfChange": 0.41,
+            "preClosingPrice": 51.62,
+            "highPrice": 51.98,
+            "lowPrice": 50.45
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74610967",
+            "thumbnail": null,
+            "title": "인텔, 유럽에 110조 투자···삼성·TSMC는 美공장 건설",
+            "leadText": "한국·미국·일본·대만 등 주요 반도체 기업들이 자국 내 또는 상대방 국가에 대한 투자를 본격화하고 있다. 인텔은 지난해 3월 칩 위탁 생산(파운드리) 사업을 재개하면서 애리조나주에...",
+            "registerDateTime": "2022-03-27T18:09:35",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/74610967",
+            "category": "해외증시",
+            "subCategory": "전기·전자"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "INTU",
+            "name": "인튜이트",
+            "updateDateTime": "2022-03-08T06:42:18",
+            "symbol": "NASDAQ",
+            "currentPrice": 459.35,
+            "priceChange": -6.28,
+            "rateOfChange": -1.35,
+            "preClosingPrice": 465.63,
+            "highPrice": 469.04,
+            "lowPrice": 452.82
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/68500950",
+            "thumbnail": "https://static.news.zumst.com/images/18/2021/06/01/85570a184ba04708930d137785e9f607.jpg",
+            "title": "[클릭! 해외증시 이 종목] 美 핀테크기업 인튜이트 올해 주가 18% '쑥'",
+            "leadText": "미국의 금융 핀테크 종합 서비스 업체 인튜이트 주가가 상승세를 이어가고 있다.\t지난달 28일 인튜이트 주가는 전 거래일 대비 1.62% 오른 439.09달러에 장을 마감했다.\t연초 대비 18.1...",
+            "registerDateTime": "2021-06-01T17:04:28",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/68500950",
+            "category": "해외증시",
+            "subCategory": "기술 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ISRG",
+            "name": "인튜이티브 서지컬",
+            "updateDateTime": "2022-03-15T06:43:06",
+            "symbol": "NASDAQ",
+            "currentPrice": 286.87,
+            "priceChange": 5.79,
+            "rateOfChange": 2.06,
+            "preClosingPrice": 281.08,
+            "highPrice": 286.94,
+            "lowPrice": 282.28
+        },
+        "article": {
+            "id": "http://www.infostockdaily.co.kr/news/articleView.html?idxno=164966",
+            "thumbnail": null,
+            "title": "분기실적 최대치 기록한 인튜이티브서지컬(ISRG), 주가 하락 의미는",
+            "leadText": "만드는 미국 기업 인튜이티브 서지컬이 지난해 4분기 쾌조의 실적을 발표했다.\t매출과 주당순이익 모두 애널리스트 전망치에 비해 높았다.\t다만 지난해 말부터 시작된 주가 하락세가 ...",
+            "registerDateTime": "2022-01-21T17:17:00",
+            "mediaName": "인포스탁데일리",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "JD",
+            "name": "징동닷컴",
+            "updateDateTime": "2022-03-12T06:42:59",
+            "symbol": "NASDAQ",
+            "currentPrice": 59.92,
+            "priceChange": -1.6,
+            "rateOfChange": -2.6,
+            "preClosingPrice": 61.52,
+            "highPrice": 60.545,
+            "lowPrice": 58.09
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73569464",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/02/04/c79493b1dd2147ec9563c92061be56fa.jpg",
+            "title": "中 테크기업 기부 줄잇는다…징동닷컴, 2조7400억원 기부",
+            "leadText": "중국 2위 온라인 쇼핑몰인 징동닷컴 대주주가 2조7400억원을 사회에 기부한다고 밝혔다.\t중국에서는 정부가 '공동 부유' 정책을 발표한 후 기업들의 참여를 독려하면서 텐센트, 알리...",
+            "registerDateTime": "2022-02-04T16:18:58",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/73569464",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "KDP",
+            "name": "큐리그 닥터 페퍼",
+            "updateDateTime": "2022-03-01T06:42:39",
+            "symbol": "NASDAQ",
+            "currentPrice": 37.58,
+            "priceChange": 0.32,
+            "rateOfChange": 0.86,
+            "preClosingPrice": 37.26,
+            "highPrice": 37.63,
+            "lowPrice": 37.15
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/42955774",
+            "thumbnail": null,
+            "title": "새해벽두부터 M&A 광풍…큐리그, 닥터페퍼 20조원에 인수",
+            "leadText": "전해졌다.\t미국 커피 브랜드 큐리그 그린 마운틴이 닥터페퍼&스내플을 인수하며 미국 음료 시장에 지각변동을 일으킨 것이다.\t큐리그는 이날 미국 3대 음료업체인 닥터페퍼를 187억 ...",
+            "registerDateTime": "2018-01-30T10:25:28",
+            "mediaName": "이투데이",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "KHC",
+            "name": "크래프트 하인즈",
+            "updateDateTime": "2022-02-23T06:43:10",
+            "symbol": "NASDAQ",
+            "currentPrice": 39.29,
+            "priceChange": 0.66,
+            "rateOfChange": 1.71,
+            "preClosingPrice": 38.63,
+            "highPrice": 39.36,
+            "lowPrice": 38.6
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/63664648",
+            "thumbnail": "https://static.news.zumst.com/images/111/2020/10/26/3c8e234620654d8aa9814dd9a13d819c.jpg",
+            "title": "크래프트하인즈, 미국 판매 1위 견과류 브랜드 플랜터스 코스트코 런칭해",
+            "leadText": "크래프트 하인즈 코리아 (대표 장석)는 100년 전통의 미국 판매 1위 견과류 브랜드인 '플랜터스' 피넛을 코스트코에 런칭한다고 26일 밝혔다.\t까다로운 원료 선택기준으로 엄선된100%...",
+            "registerDateTime": "2020-10-26T07:00:00",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/63664648",
+            "category": "해외증시",
+            "subCategory": "필수 소비재"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "KLAC",
+            "name": "KLA",
+            "updateDateTime": "2022-02-10T06:43:10",
+            "symbol": "NASDAQ",
+            "currentPrice": 366.44,
+            "priceChange": 0.55,
+            "rateOfChange": 0.15,
+            "preClosingPrice": 365.89,
+            "highPrice": 368.88,
+            "lowPrice": 359.37
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/71145473",
+            "thumbnail": "https://static.news.zumst.com/images/111/2021/10/07/deb145cd14ca4b84b22e4b5c9674fe7f.jpg",
+            "title": "KLA, 롤린 코처 한국 지사장 신규 선임",
+            "leadText": "KLA는 신임 한국 지사장으로 롤린 코처를 선임했다고 밝혔다.\t롤린 코처 지사장은 앞으로 KLA의 한국 내 사업 확장 및 대고객 영업 및 지원 확대, 그리고 환경·사회·지배구조(ESG) 강...",
+            "registerDateTime": "2021-10-07T15:43:51",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/71145473",
+            "category": "해외증시",
+            "subCategory": "기술 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "LCID",
+            "name": "루시드 그룹",
+            "updateDateTime": "2022-03-03T06:42:58",
+            "symbol": "NASDAQ",
+            "currentPrice": 25.16,
+            "priceChange": -1.09,
+            "rateOfChange": -4.15,
+            "preClosingPrice": 26.25,
+            "highPrice": 26.06,
+            "lowPrice": 24.52
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74319897",
+            "thumbnail": "https://static.news.zumst.com/images/24/2022/03/12/29eb5c16e09e404cb8984f190c0a1669.jpg",
+            "title": "루시드그룹, 상품성은 검증됐는데…대량 생산 관문 넘어야",
+            "leadText": "한국투자증권은 12일 루시드 그룹(루시드)에 대해 대량 생산 관문을 넘어야 한다고 분석했다.\t루시드는 지난 2007년에 설립된 전기차 스타트업이다.\t설립 초기에는 전기차 배터리와 ...",
+            "registerDateTime": "2022-03-12T15:36:59",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/74319897",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "LRCX",
+            "name": "램리서치",
+            "updateDateTime": "2022-02-10T06:43:17",
+            "symbol": "NASDAQ",
+            "currentPrice": 554.82,
+            "priceChange": -1.4,
+            "rateOfChange": -0.25,
+            "preClosingPrice": 556.22,
+            "highPrice": 556.93,
+            "lowPrice": 545.17
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73701301",
+            "thumbnail": "https://static.news.zumst.com/images/111/2022/02/10/63a60b7c6cb947d9a09c494c8e7a2030.jpg",
+            "title": "美 램리서치, 韓서 3나노 식각장비 생산···삼성전자에 공급",
+            "leadText": "세계적인 반도체 장비 기업 램리서치가 국내 생산 거점에서 차세대 식각 장비를 생산한다.\t삼성전자가 올 상반기 양산 예정인 최첨단 3나노미터(㎚·10억분의 1m) 공정용 식각 장비를...",
+            "registerDateTime": "2022-02-10T17:58:37",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/73701301",
+            "category": "해외증시",
+            "subCategory": "전기·전자"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "LULU",
+            "name": "룰루레몬",
+            "updateDateTime": "2021-12-15T06:43:28",
+            "symbol": "NASDAQ",
+            "currentPrice": 321.14,
+            "priceChange": 3.4,
+            "rateOfChange": 1.07,
+            "preClosingPrice": 317.74,
+            "highPrice": 321.84,
+            "lowPrice": 316.01
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74031041",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/02/25/f1f0f986406e4e7ab8e01acd7f5b1d4a.jpg",
+            "title": "5년간 5배 오른 룰루레몬 닮은꼴?…시간외서 20% 폭발한 주식",
+            "leadText": "[편집자주] '오미주'는 '오늘 주목되는 미국 주식'의 줄인 말입니다.\t주가에 영향을 미칠 만한 이벤트가 있었거나 애널리스트들의 언급이 많았던 주식을 뉴욕 증시 개장 전에 소개합니...",
+            "registerDateTime": "2022-02-25T22:31:00",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74031041",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MAR",
+            "name": "매리어트 인터내셔널",
+            "updateDateTime": "2022-03-25T06:43:32",
+            "symbol": "NASDAQ",
+            "currentPrice": 171.52,
+            "priceChange": -0.46,
+            "rateOfChange": -0.27,
+            "preClosingPrice": 171.98,
+            "highPrice": 173.69,
+            "lowPrice": 170.75
+        },
+        "article": {
+            "id": "http://www.daejeontoday.com/news/articleView.html?idxno=543396",
+            "thumbnail": null,
+            "title": "우송정보대학 글로벌호텔외식과, 매리어트 인터내셔널 코리아와 주문...",
+            "leadText": "우송정보대학(총장 정상직) 글로벌호텔외식과는 3월 27일 가족기업 Marriott International Korea와 EOD(주문식교육과정 운영 협약)을 체결했다.\t이날 EOD를 체결한 우송정보대학 글...",
+            "registerDateTime": "2019-03-27T16:15:49",
+            "mediaName": "대전투데이",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MCHP",
+            "name": "마이크로칩 테크놀로지",
+            "updateDateTime": "2022-02-10T06:43:28",
+            "symbol": "NASDAQ",
+            "currentPrice": 77.16,
+            "priceChange": -0.52,
+            "rateOfChange": -0.67,
+            "preClosingPrice": 77.68,
+            "highPrice": 77.64,
+            "lowPrice": 76.02
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/63541146",
+            "thumbnail": "https://static.news.zumst.com/images/78/2020/10/20/311973c7c9c44f22950d5c8f72a71135.JPG",
+            "title": "코아시아, 美 마이크로칩테크놀로지와 친환경 자동차 LED 솔루션 공동 개발",
+            "leadText": "코아시아가 미국 마이크로칩테크놀로지(이하 마이크로칩)와 협업해 글로벌 친환경 자동차(전기차, 수소연료전지차) LED 시장에 진출한다고 20일 밝혔다.\t코아시아는 미국 마이크로칩...",
+            "registerDateTime": "2020-10-20T14:29:16",
+            "mediaName": "이투데이",
+            "landingUrl": "https://news.zum.com/articles/63541146",
+            "category": "해외증시",
+            "subCategory": "IT부품 기술 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MDLZ",
+            "name": "몬덜리즈 인터내셔널",
+            "updateDateTime": "2022-02-10T06:43:30",
+            "symbol": "NASDAQ",
+            "currentPrice": 61.52,
+            "priceChange": 0.67,
+            "rateOfChange": 1.1,
+            "preClosingPrice": 60.85,
+            "highPrice": 61.79,
+            "lowPrice": 60.96
+        },
+        "article": {
+            "id": "http://www.infostockdaily.co.kr/news/articleView.html?idxno=125875",
+            "thumbnail": null,
+            "title": "몬덜리즈 인터내셔널, 코로나19에 '오레오 쿠키' 반짝 효과",
+            "leadText": "쿠키를 이끌고 있는 몬덜리즈 인터내셔널이 4분기 외형 성장에 성공했다.\t코로나19에 따른 가정 소비 증가가 실적에 기여한 것으로 보인다.\t2021년연도에도 관련 여파가 이어지는 만...",
+            "registerDateTime": "2021-02-04T08:53:05",
+            "mediaName": "인포스탁데일리",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MELI",
+            "name": "메르카도 리브르",
+            "updateDateTime": "2022-02-25T06:43:36",
+            "symbol": "NASDAQ",
+            "currentPrice": 1166.33,
+            "priceChange": -70.11,
+            "rateOfChange": -5.67,
+            "preClosingPrice": 1236.4399,
+            "highPrice": 1234.99,
+            "lowPrice": 1150.7
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MNST",
+            "name": "몬스터 베버리지",
+            "updateDateTime": "2022-03-03T06:43:17",
+            "symbol": "NASDAQ",
+            "currentPrice": 78.7,
+            "priceChange": 0.14,
+            "rateOfChange": 0.18,
+            "preClosingPrice": 78.56,
+            "highPrice": 79.27,
+            "lowPrice": 78.06
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/64699162",
+            "thumbnail": "https://static.news.zumst.com/images/18/2020/12/08/86b746d032cd45fb8cfd7611f0c2ad68.jpg",
+            "title": "[클릭! 해외증시 이 종목] 음료업체 `몬스터 베버리지` 두달새 11% 상승",
+            "leadText": "미국 나스닥시장 상장사 몬스터 베버리지가 전 세계적으로 성장하는 에너지 드링크 시장 강자로서 자리매김하면서 관심을 끌고 있다. 7일(현지시간) 미국 나스닥 증권거래소에 따르면...",
+            "registerDateTime": "2020-12-08T17:14:00",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/64699162",
+            "category": "해외증시",
+            "subCategory": "필수 소비재"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MRNA",
+            "name": "모더나 테라퓨틱스",
+            "updateDateTime": "2022-03-12T06:43:44",
+            "symbol": "NASDAQ",
+            "currentPrice": 165.92,
+            "priceChange": -13.76,
+            "rateOfChange": -7.66,
+            "preClosingPrice": 179.68,
+            "highPrice": 179.19,
+            "lowPrice": 163.031
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/68606103",
+            "thumbnail": "https://static.news.zumst.com/images/24/2021/06/07/992db8df09c34352a0c32618b339c7a4.jpg",
+            "title": "[단독]'모더나 창립자' 로버트 랭거 “모더나 광범위한 파이프라인 보유...",
+            "leadText": "\"모더나는 mRNA 바이오 의약품과 백신 등 광범위한 파이프라인과 뛰어난 전달 기술을 보유하고 있다. 놀라운 미래가 있다고 생각한다.\" 코로나19 mRNA 백신 개발사인 모더나 테라퓨틱...",
+            "registerDateTime": "2021-06-07T06:05:13",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/68606103",
+            "category": "해외증시",
+            "subCategory": "헬스케어 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MRVL",
+            "name": "마벨 테크놀로지 그룹",
+            "updateDateTime": "2022-03-15T06:43:52",
+            "symbol": "NASDAQ",
+            "currentPrice": 74.37,
+            "priceChange": 0.61,
+            "rateOfChange": 0.83,
+            "preClosingPrice": 73.76,
+            "highPrice": 74.86,
+            "lowPrice": 73.01
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/63784850",
+            "thumbnail": "https://static.news.zumst.com/images/111/2020/10/29/b6f9ec2836574b60a15d07048cfc6cbe.jpg",
+            "title": "미 반도체 업체 마벨 100억달러에 인파이 인수",
+            "leadText": "미국 반도체 기업 마벨테크놀로지그룹이 네트워크 반도체 기업 인파이를 100억달러(약 11조3200억원)에 인수하는 계약을 곧 체결할 것이란 전망이 나왔다.\t28일(현지시간) 월스트리트...",
+            "registerDateTime": "2020-10-29T20:12:02",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/63784850",
+            "category": "해외증시",
+            "subCategory": "기술 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MSFT",
+            "name": "마이크로소프트",
+            "updateDateTime": "2022-01-28T06:43:55",
+            "symbol": "NASDAQ",
+            "currentPrice": 303.68,
+            "priceChange": -0.42,
+            "rateOfChange": -0.14,
+            "preClosingPrice": 304.1,
+            "highPrice": 305.5,
+            "lowPrice": 299.29
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74012358",
+            "thumbnail": "https://static.news.zumst.com/images/116/2022/02/25/43fde5429ecf45f1a2891dd8328dd3f3.jpg",
+            "title": "뉴욕증시, 러의 우크라 침공 속 반등…기술주 엔비디아·마이크로소프트↑",
+            "leadText": "러시아의 우크라이나 침공으로 하락 출발한 뉴욕증시는 저가 매수세 유입으로 반등했다.\t24일(현지시간) 뉴욕증권거래소(NYSE)에 따르면, 다우존스30 산업평균지수는 전 거래일 대비 0....",
+            "registerDateTime": "2022-02-25T08:24:13",
+            "mediaName": "한국금융신문",
+            "landingUrl": "https://news.zum.com/articles/74012358",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MTCH",
+            "name": "매치 그룹",
+            "updateDateTime": "2022-03-01T06:43:20",
+            "symbol": "NASDAQ",
+            "currentPrice": 106.73,
+            "priceChange": -0.33,
+            "rateOfChange": -0.31,
+            "preClosingPrice": 107.06,
+            "highPrice": 107.13,
+            "lowPrice": 104.5
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/72219194",
+            "thumbnail": "https://static.news.zumst.com/images/24/2021/11/27/c6d8cdf512954e3c987b6921d61898b0.jpg",
+            "title": "소개팅도 메타버스로 하는 시대? 美 매치그룹 뜬다",
+            "leadText": "데이팅 앱인 '틴더'를 운영하는 매치 그룹(MTCH.US)이 3분기 안정적인 실적을 냈다.\t나스닥 시장에 상장된 매치그룹은 글로벌 1위 데이팅 앱 '틴더'를 운영하고 있다. MZ세대들 사이...",
+            "registerDateTime": "2021-11-27T09:10:00",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/72219194",
+            "category": "해외증시",
+            "subCategory": "커뮤니케이션 서비스"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "MU",
+            "name": "마이크론 테크놀로지",
+            "updateDateTime": "2022-01-11T06:43:26",
+            "symbol": "NASDAQ",
+            "currentPrice": 78.1,
+            "priceChange": -0.11,
+            "rateOfChange": -0.14,
+            "preClosingPrice": 78.21,
+            "highPrice": 78.3,
+            "lowPrice": 75.13
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74413563",
+            "thumbnail": "https://static.news.zumst.com/images/111/2022/03/17/74b03101a5d04832bc138f8c28ec3392.jpg",
+            "title": "“하반기 D램값 오른다” 번스타인 호평에 마이크론 8.97% ↑···美 반도...",
+            "leadText": "미국의 자산관리사 번스타인이 글로벌 메모리반도체 기업인 마이크론 테크놀로지 등 주요 반도체주에 대한 긍정적 투자의견을 내면서 마이크론의 주가가 8.97% 급등해 마감됐다.\t16일...",
+            "registerDateTime": "2022-03-17T10:29:16",
+            "mediaName": "서울경제",
+            "landingUrl": "https://news.zum.com/articles/74413563",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "NFLX",
+            "name": "넷플릭스",
+            "updateDateTime": "2022-02-09T06:45:10",
+            "symbol": "NASDAQ",
+            "currentPrice": 373.85,
+            "priceChange": -1.86,
+            "rateOfChange": -0.5,
+            "preClosingPrice": 375.71,
+            "highPrice": 377.64,
+            "lowPrice": 366.43
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74567577",
+            "thumbnail": "https://static.news.zumst.com/images/122/2022/03/24/fb4ec753fe3a41c5bb7cd7888ac9046f.jpg",
+            "title": "넷플·디플·애플 공습에...업계 \"토종 OTT 진흥책 조속 이행해야\"",
+            "leadText": "넷플릭스, 디즈니플러스, 애플TV 플러스 등 글로벌 동영상서비스(OTT) 확산으로 미디어 생태계 지각변동이 일어나는 가운데, 토종 OTT 경쟁력 확보를 위해선 '탈규제' 방향의 적극적...",
+            "registerDateTime": "2022-03-24T17:30:15",
+            "mediaName": "테크M",
+            "landingUrl": "https://news.zum.com/articles/74567577",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "NTES",
+            "name": "넷이즈",
+            "updateDateTime": "2021-11-27T20:30:49",
+            "symbol": "NASDAQ",
+            "currentPrice": 93.66,
+            "priceChange": 1.5,
+            "rateOfChange": 1.63,
+            "preClosingPrice": 92.16,
+            "highPrice": 93.8,
+            "lowPrice": 90.27
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74093258",
+            "thumbnail": "https://static.news.zumst.com/images/23/2022/03/01/676abed2ae4543189710f8e0b15f7be7.png",
+            "title": "\"넷이즈, 게임 사업 경쟁력 강화로 실적 상승 전망\"",
+            "leadText": "넷이즈가 올해 게임 사업 부문의 해외 시장 확대를 기반으로 양호한 실적을 기록할 것이란 전망이 나온다.\t1일 넷이즈에 따르면 지난달 4분기 매출액으로 243억7000만위안을 기록해 ...",
+            "registerDateTime": "2022-03-01T23:31:10",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/74093258",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "NVDA",
+            "name": "엔비디아",
+            "updateDateTime": "2021-11-27T20:30:52",
+            "symbol": "NASDAQ",
+            "currentPrice": 276.92,
+            "priceChange": -4.58,
+            "rateOfChange": -1.63,
+            "preClosingPrice": 281.5,
+            "highPrice": 283.58,
+            "lowPrice": 272.71
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74583556",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/25/0d16b05b651f438cbb5c9828402a20cf.jpg",
+            "title": "'엔비디아·인텔' 협력에 떨고 있는 삼성전자...이대로 '6만전자'?",
+            "leadText": "엔비디아가 인텔과 협력할 수 있다는 소식에 미국 반도체주가 들썩였다.\t반면 삼성전자는 긴장하는 모양새다.\t세계 1위 파운드리 기업 TSMC를 추격하는 입장인 가운데 후발주자까지 ...",
+            "registerDateTime": "2022-03-25T12:02:25",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74583556",
+            "category": "해외증시",
+            "subCategory": "전기·전자"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "NXPI",
+            "name": "NXP반도체",
+            "updateDateTime": "2022-03-01T06:43:34",
+            "symbol": "NASDAQ",
+            "currentPrice": 190.46,
+            "priceChange": -0.62,
+            "rateOfChange": -0.32,
+            "preClosingPrice": 191.08,
+            "highPrice": 191.84,
+            "lowPrice": 186.4
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73099678",
+            "thumbnail": "https://static.news.zumst.com/images/59/2022/01/10/32ebdfd0d50043cb81b71b091cafa7ae.png",
+            "title": "인피니언? NXP?…삼성전자 인수설 나오는 이유",
+            "leadText": "삼성전자가 대형 인수·합병(M&A)에 나설 것으로 보인다.\t독일 반도체 회사 인피니언테크놀로지스나 네덜란드 반도체 회사 NXP반도체 등이 M&A 후보로 떠올랐다.\t삼성전자가 비메모리...",
+            "registerDateTime": "2022-01-10T16:46:24",
+            "mediaName": "지디넷코리아",
+            "landingUrl": "https://news.zum.com/articles/73099678",
+            "category": "해외증시",
+            "subCategory": "전기·전자"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ODFL",
+            "name": null,
+            "updateDateTime": "2022-03-01T06:43:37",
+            "symbol": "NASDAQ",
+            "currentPrice": 313.76,
+            "priceChange": -2.91,
+            "rateOfChange": -0.92,
+            "preClosingPrice": 316.67,
+            "highPrice": 318.13,
+            "lowPrice": 305.21
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "OKTA",
+            "name": "옥타",
+            "updateDateTime": "2022-03-12T06:44:11",
+            "symbol": "NASDAQ",
+            "currentPrice": 138.11,
+            "priceChange": -6.39,
+            "rateOfChange": -4.42,
+            "preClosingPrice": 144.5,
+            "highPrice": 144.99,
+            "lowPrice": 135.46
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74313229",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/11/1e3eb5e8608342988707cd9486129bc3.jpg",
+            "title": "옥타솔루션, \"특금법 업권 맞춤형 AML..토스·빗썸도 고객\"",
+            "leadText": "[2022 이노베이션컴퍼니 '혁신금융대상'] AML(자금세탁방지)은 불법 자금이 테러 및 범죄 단체 등으로 흐르는 걸 막기 위한 조치다.\tRBA(자금세탁위험평가)는 자금 세탁 등의 위험을...",
+            "registerDateTime": "2022-03-11T18:17:36",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74313229",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ORLY",
+            "name": "오릴리 오토모티브",
+            "updateDateTime": "2022-03-03T06:43:47",
+            "symbol": "NASDAQ",
+            "currentPrice": 703.36,
+            "priceChange": 3.12,
+            "rateOfChange": 0.45,
+            "preClosingPrice": 700.24,
+            "highPrice": 704.25,
+            "lowPrice": 694.39
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "PANW",
+            "name": "팔로 알토 네트웍스",
+            "updateDateTime": "2022-02-26T06:44:38",
+            "symbol": "NASDAQ",
+            "currentPrice": 622.4,
+            "priceChange": 0.2401,
+            "rateOfChange": 0.04,
+            "preClosingPrice": 622.16,
+            "highPrice": 624.45,
+            "lowPrice": 603.21
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "PAYX",
+            "name": "Paychex Inc",
+            "updateDateTime": "2021-12-25T06:44:16",
+            "symbol": "NASDAQ",
+            "currentPrice": 128.71,
+            "priceChange": 0.97,
+            "rateOfChange": 0.76,
+            "preClosingPrice": 127.74,
+            "highPrice": 128.95,
+            "lowPrice": 126.72
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "PCAR",
+            "name": "파카 그룹",
+            "updateDateTime": "2022-02-26T06:44:43",
+            "symbol": "NASDAQ",
+            "currentPrice": 88.97,
+            "priceChange": 0.02,
+            "rateOfChange": 0.02,
+            "preClosingPrice": 88.95,
+            "highPrice": 89.54,
+            "lowPrice": 88.21
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "PDD",
+            "name": "핀뚜어뚜어",
+            "updateDateTime": "2021-11-27T20:31:04",
+            "symbol": "NASDAQ",
+            "currentPrice": 44.24,
+            "priceChange": -0.7,
+            "rateOfChange": -1.56,
+            "preClosingPrice": 44.94,
+            "highPrice": 44.79,
+            "lowPrice": 41.94
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/66897024",
+            "thumbnail": null,
+            "title": "中핀뚜어뚜어, 연간 이용자 7억8천800만명…알리바바 추월",
+            "leadText": "중국 후발 e커머스 업체 핀뚜어뚜어가 연간 이용자수에서 알리바바를 제치고 중국 e커머스 왕좌를 차지했다.\t테크크런치 등의 주요외신들에 따르면 핀뚜어뚜어는 2020년 한해 이용자수...",
+            "registerDateTime": "2021-03-19T15:31:05",
+            "mediaName": "아이뉴스24",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "PEP",
+            "name": "펩시코",
+            "updateDateTime": "2022-02-12T06:44:03",
+            "symbol": "NASDAQ",
+            "currentPrice": 165.24,
+            "priceChange": 0.77,
+            "rateOfChange": 0.47,
+            "preClosingPrice": 164.47,
+            "highPrice": 165.9,
+            "lowPrice": 164.43
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73978018",
+            "thumbnail": "https://static.news.zumst.com/images/18/5985/60/77/5985607753b64a1ea4c40faacf1690aa.jpg",
+            "title": "우크라 불똥 튈라…시름 깊어진 맥도널드·펩시",
+            "leadText": "러시아의 우크라이나 무단 진입 결정을 둘러싸고 미국·유럽과 러시아 간 갈등의 골이 깊어지자 뉴욕 증시에서는 관련 부문 희비가 엇갈리는 분위기다.\t2차 세계대전 이후 역사를 볼 ...",
+            "registerDateTime": "2022-02-23T17:45:21",
+            "mediaName": "매일경제",
+            "landingUrl": "https://news.zum.com/articles/73978018",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "PYPL",
+            "name": "페이팔",
+            "updateDateTime": "2022-02-09T06:45:48",
+            "symbol": "NASDAQ",
+            "currentPrice": 113.76,
+            "priceChange": -2.29,
+            "rateOfChange": -1.97,
+            "preClosingPrice": 116.05,
+            "highPrice": 116.19,
+            "lowPrice": 112.09
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74195888",
+            "thumbnail": null,
+            "title": "비자·마스터카드·페이팔도 \"러 영업 중단\"",
+            "leadText": "무디스, 러 신용등급 4단계 강등 세계 양대 신용카드 업체인 비자카드와 마스터카드가 5일(현지시간) 러시아 영업 중단을 선언했다.\t폭스비즈니스에 따르면 비자는 이날 러시아내 모...",
+            "registerDateTime": "2022-03-06T17:58:50",
+            "mediaName": "파이낸셜뉴스",
+            "landingUrl": "https://news.zum.com/articles/74195888",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "QCOM",
+            "name": "퀄컴",
+            "updateDateTime": "2022-02-08T06:45:31",
+            "symbol": "NASDAQ",
+            "currentPrice": 157.97,
+            "priceChange": -0.49,
+            "rateOfChange": -0.31,
+            "preClosingPrice": 158.46,
+            "highPrice": 158.46,
+            "lowPrice": 155.18
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74553093",
+            "thumbnail": null,
+            "title": "[특징주]코아시아옵틱스, 퀄컴 1억달러 규모 메타버스 펀드 조성 소식...",
+            "leadText": "미국 통신칩 업체 퀄컴이 최대 1억달러(약 1214억원) 규모의 스냅드래곤 메타버스 펀드(Snapdragon Metaverse Fund)를 출자한다는 소식에 코아시아옵틱스가 강세다.\t앞서 카메라모듈 ...",
+            "registerDateTime": "2022-03-24T10:44:27",
+            "mediaName": "파이낸셜뉴스",
+            "landingUrl": "https://news.zum.com/articles/74553093",
+            "category": "해외증시",
+            "subCategory": "의료·정밀기기 IT부품"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "REGN",
+            "name": "리제네론",
+            "updateDateTime": "2022-02-09T06:45:53",
+            "symbol": "NASDAQ",
+            "currentPrice": 680.03,
+            "priceChange": 0.27,
+            "rateOfChange": 0.04,
+            "preClosingPrice": 679.76,
+            "highPrice": 685.01,
+            "lowPrice": 676.14
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/72395350",
+            "thumbnail": "https://static.news.zumst.com/images/24/2021/12/06/7246ddfbd74c42309afa52ef2bdf7821.jpg",
+            "title": "‘리제네론 칵테일 항체는 오미크론 대응력 감소?’ 셀트리온 칵테일 항체는?",
+            "leadText": "셀트리온이 개발을 추진중인 흡입형 칵테일 항체 치료제가 '오미크론'에 효과를 보일 수 있을지 관심이 커지고 있다.\t변이 대응력이 뛰어나다고 알려진 칵테일 항체가 오히려 오미크...",
+            "registerDateTime": "2021-12-06T14:54:57",
+            "mediaName": "이데일리",
+            "landingUrl": "https://news.zum.com/articles/72395350",
+            "category": "해외증시",
+            "subCategory": "의약품"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ROST",
+            "name": "로즈 스토어",
+            "updateDateTime": "2021-12-14T06:44:00",
+            "symbol": "NASDAQ",
+            "currentPrice": 90.22,
+            "priceChange": -0.2,
+            "rateOfChange": -0.22,
+            "preClosingPrice": 90.42,
+            "highPrice": 91.54,
+            "lowPrice": 88.63
+        },
+        "article": {
+            "id": "http://www.fashionn.com/board/read_new.php?table=1006&number=40142&page=1&sel=&search=&sel_cat=",
+            "thumbnail": null,
+            "title": "구찌, 파인애플과 로즈 모티브의 파인애플 컬렉션과 팝업스토어 오픈",
+            "leadText": "Pineapple) 레디-투-웨어(ready-to-wear) 남성복 컬렉션과 패션 액세서리를 선보이며, 새로운 팝업 스토어를 오픈한다.\t구찌 파인애플 컬렉션은 장난스러운 에너지가 느껴지면서도 세...",
+            "registerDateTime": "2022-02-16T10:20:16",
+            "mediaName": "패션엔",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "SBUX",
+            "name": "스타벅스",
+            "updateDateTime": "2022-02-05T06:44:45",
+            "symbol": "NASDAQ",
+            "currentPrice": 87.45,
+            "priceChange": 0.33,
+            "rateOfChange": 0.38,
+            "preClosingPrice": 87.12,
+            "highPrice": 87.67,
+            "lowPrice": 86.22
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74554555",
+            "thumbnail": "https://static.news.zumst.com/images/52/2022/03/24/31ec9fd1ee594dd08da81bab8bd0e7c6.jpg",
+            "title": "SKT-서울시-스타벅스 다회용컵 반납사업, 반납률 47%→70% '쑥'",
+            "leadText": "SK텔레콤이 서울시, 행복커넥트 등과 함께 서울시내 커피 매장에서 시범 운영 중인 다회용 컵 반납률이 시행 4달만에 80%에 육박하는 등 빠르게 정착되고 있다. SK텔레콤은 서울시와 ...",
+            "registerDateTime": "2022-03-24T11:15:00",
+            "mediaName": "뉴스핌",
+            "landingUrl": "https://news.zum.com/articles/74554555",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "SGEN",
+            "name": "시애틀 제네틱스",
+            "updateDateTime": "2022-02-12T06:44:22",
+            "symbol": "NASDAQ",
+            "currentPrice": 138.33,
+            "priceChange": -2.94,
+            "rateOfChange": -2.08,
+            "preClosingPrice": 141.27,
+            "highPrice": 142.55,
+            "lowPrice": 136.93
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/62799091",
+            "thumbnail": null,
+            "title": "MSD, 시애틀제네틱스에 4조9000억 배팅…새로운 ADC 치료제 확보",
+            "leadText": "다국적제약사 머크앤컴퍼니(MSD)가 새로운 항체약물결합체 치료제 확보를 위해 미국 시애틀제네틱스에와42억달러 규모 공동 협력 계약을 체결했다.\t컴퍼니(MSD)가 항체약물결합체(ADC...",
+            "registerDateTime": "2020-09-15T16:39:33",
+            "mediaName": "뉴스1",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "SIRI",
+            "name": "시리우스 XM 홀딩스",
+            "updateDateTime": "2022-02-04T06:44:59",
+            "symbol": "NASDAQ",
+            "currentPrice": 6.56,
+            "priceChange": 0.06,
+            "rateOfChange": 0.92,
+            "preClosingPrice": 6.5,
+            "highPrice": 6.59,
+            "lowPrice": 6.48
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "SNPS",
+            "name": "시높시스",
+            "updateDateTime": "2022-02-23T06:44:45",
+            "symbol": "NASDAQ",
+            "currentPrice": 318.91,
+            "priceChange": -6.65,
+            "rateOfChange": -2.04,
+            "preClosingPrice": 325.56,
+            "highPrice": 326,
+            "lowPrice": 314.79
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/74582067",
+            "thumbnail": null,
+            "title": "호광컴퍼니, ‘연극 시놉시스 트리트먼트 공모전’ 개최",
+            "leadText": "호광컴퍼니가 연극계의 미래를 함께 이끌어갈 열정있는 창작자 발굴을 위해 '연극 시놉시스 트리트먼트 공모전'을 개최한다고 밝혔습니다.\t공모전 포스터 호광컴퍼니는 신선한 장르의...",
+            "registerDateTime": "2022-03-25T10:37:00",
+            "mediaName": "MBN",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "SPLK",
+            "name": "스플렁크",
+            "updateDateTime": "2021-12-08T06:44:41",
+            "symbol": "NASDAQ",
+            "currentPrice": 142.51,
+            "priceChange": -0.47,
+            "rateOfChange": -0.33,
+            "preClosingPrice": 142.98,
+            "highPrice": 144.2,
+            "lowPrice": 139.7
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/74568857",
+            "thumbnail": null,
+            "title": "편해야 똑똑할 수 있다, 스플렁크가 전하는 ‘위협 인텔리전스’ 해법",
+            "leadText": "공격의 증가도 빼놓을 수 없다.\t한국IDG가 주최한 퓨처 오브 시큐리티 2022에서 스플렁크의 신성균 이사는 오늘날 기업 고객들이 보안 프랙티스에 결정적인 위협 인텔리전스를 활용함...",
+            "registerDateTime": "2022-03-24T17:34:03",
+            "mediaName": "ITWorld",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "SWKS",
+            "name": "스카이웍스 솔루션",
+            "updateDateTime": "2022-02-10T06:44:52",
+            "symbol": "NASDAQ",
+            "currentPrice": 138,
+            "priceChange": -0.43,
+            "rateOfChange": -0.31,
+            "preClosingPrice": 138.43,
+            "highPrice": 139.02,
+            "lowPrice": 135.91
+        },
+        "article": {
+            "id": "http://www.it-b.co.kr/news/articleView.html?idxno=57349",
+            "thumbnail": null,
+            "title": "마우저, 스카이웍스솔루션 다중 대역 RF IoT 프런트 엔드 모듈 공급",
+            "leadText": "마우저일렉트로닉스는 스카이웍스솔루션의 SKY68031-11 다중 대역 RF IoT 프런트 엔드 모듈을 공급한다고 21일 밝혔다.\t이 로우 프로파일 모듈은 1~6RB 범위의 LTE를 지원하는데 최적...",
+            "registerDateTime": "2022-02-21T16:58:00",
+            "mediaName": "아이티비즈",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "TEAM",
+            "name": "아틀라시안",
+            "updateDateTime": "2022-02-02T06:44:59",
+            "symbol": "NASDAQ",
+            "currentPrice": 284.21,
+            "priceChange": -9.92,
+            "rateOfChange": -3.37,
+            "preClosingPrice": 294.13,
+            "highPrice": 294.73,
+            "lowPrice": 274.8
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73865221",
+            "thumbnail": "https://static.news.zumst.com/images/78/2022/02/18/0415a21e9bb44205ace4bdd96ee9b225.jpg",
+            "title": "폴라리스오피스, AI 전문 솔루션 기업 올거나이즈와 협약… 아틀라시안...",
+            "leadText": "폴라리스오피스는 지식 관리 솔루션 컨플루언스(Confluence)에 인공지능(AI) 서비스를 연동하기 위해 자연어 이해 AI 솔루션 전문기업 올거나이즈와 전략적 업무협약을 체결했다고 18...",
+            "registerDateTime": "2022-02-18T09:17:28",
+            "mediaName": "이투데이",
+            "landingUrl": "https://news.zum.com/articles/73865221",
+            "category": "해외증시",
+            "subCategory": "소프트웨어"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "TMUS",
+            "name": "미국 티모바일",
+            "updateDateTime": "2022-02-16T06:44:32",
+            "symbol": "NASDAQ",
+            "currentPrice": 124.29,
+            "priceChange": -1.4,
+            "rateOfChange": -1.11,
+            "preClosingPrice": 125.69,
+            "highPrice": 126.23,
+            "lowPrice": 123.14
+        },
+        "article": {
+            "id": "http://www.boannews.com/media/view.asp?idx=99956&mkind=1",
+            "thumbnail": null,
+            "title": "미국 대형 통신사 티모바일, 이제 고객 정보 유출이 연례행사",
+            "leadText": "미국의 대형 통신사 티모바일(T-Mobile)에서 정보 유출 사고가 발생했다.\t아직 수사가 진행되고 있는데 현재까지는 약 4800만 티모바일 고객들이 이 사건의 영향을 받은 것으로 보인다...",
+            "registerDateTime": "2021-08-19T16:31:00",
+            "mediaName": "보안뉴스",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "TSLA",
+            "name": "테슬라",
+            "updateDateTime": "2022-02-10T06:45:00",
+            "symbol": "NASDAQ",
+            "currentPrice": 1010.64,
+            "priceChange": -3.28,
+            "rateOfChange": -0.32,
+            "preClosingPrice": 1013.92,
+            "highPrice": 1021.8,
+            "lowPrice": 997.32
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74594637",
+            "thumbnail": "https://static.news.zumst.com/images/11/2022/03/25/bf9e7911b9ee467bb33167629e8485e3.jpg",
+            "title": "천슬라 된 테슬라, 목표주가 다 왔다…서학개미는 매도 중[오미주]",
+            "leadText": "[편집자주] '오미주'는 '오늘 주목되는 미국 주식'의 줄인 말입니다.\t주가에 영향을 미칠 만한 이벤트가 있었거나 애널리스트들의 언급이 많았던 주식을 뉴욕 증시 개장 전에 소개합니...",
+            "registerDateTime": "2022-03-25T21:31:00",
+            "mediaName": "머니투데이",
+            "landingUrl": "https://news.zum.com/articles/74594637",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "TXN",
+            "name": "텍사스 인스트루먼트",
+            "updateDateTime": "2022-02-09T06:46:33",
+            "symbol": "NASDAQ",
+            "currentPrice": 184.9,
+            "priceChange": 0.69,
+            "rateOfChange": 0.37,
+            "preClosingPrice": 184.21,
+            "highPrice": 186.2,
+            "lowPrice": 183.2
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/73519871",
+            "thumbnail": "https://static.news.zumst.com/images/23/2022/02/02/44181fd1e93b4a22841d8cf8fc45a1fb.png",
+            "title": "\"텍사스 인스트루먼트, 탄탄한 전방 수요부터 배당 매력까지\"",
+            "leadText": "텍사스 인스트루먼트(TI)가 올해 생산능력 확대로 양호한 실적을 내놓을 것이란 의견이 나온다.\t2일 텍사스 인스트루먼트의 주가는 전일보다 1% 오른 181.29달러로 장을 마감했다.\t지난...",
+            "registerDateTime": "2022-02-02T08:00:40",
+            "mediaName": "아시아경제",
+            "landingUrl": "https://news.zum.com/articles/73519871",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "VRSK",
+            "name": "베리스크 애널리틱스",
+            "updateDateTime": "2022-02-25T06:45:16",
+            "symbol": "NASDAQ",
+            "currentPrice": 208,
+            "priceChange": -0.24,
+            "rateOfChange": -0.12,
+            "preClosingPrice": 208.24,
+            "highPrice": 209.06,
+            "lowPrice": 205.4
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/41241173",
+            "thumbnail": null,
+            "title": "베리스크 애널리틱스, 탄탄한 3분기 실적에 주가 오름세",
+            "leadText": "가 탄탄한 3분기 실적을 자랑했다.\t1일(이하 현지시간) 위클리헤럴드는 베리스크애널리틱스3분기 주당순이익(EPS)은 전년 동기와 동일한 0.84달러를 나타냈다고 전했다.\t월가 평균 예...",
+            "registerDateTime": "2017-11-02T16:14:28",
+            "mediaName": "파이낸셜뉴스",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "VRSN",
+            "name": "베리사인",
+            "updateDateTime": "2022-02-24T06:45:28",
+            "symbol": "NASDAQ",
+            "currentPrice": 215.75,
+            "priceChange": 0.64,
+            "rateOfChange": 0.3,
+            "preClosingPrice": 215.11,
+            "highPrice": 216.54,
+            "lowPrice": 211.57
+        },
+        "article": {
+            "id": "https://news.zum.com/articles/74421923",
+            "thumbnail": null,
+            "title": "'컴백' 베리베리, 화려한 네온 사인 속 불완전한 일곱 청춘",
+            "leadText": "그룹 베리베리가 강렬하고 눈부신 아우라를 담은 타이틀 포스터로 본격적인 컴백 예열에 돌입했다.\t베리베리는 17일 공식 SNS 계정을 통해 새 디지털 싱글 'VERIVERY SERIES O [ROUND 0...",
+            "registerDateTime": "2022-03-17T14:32:00",
+            "mediaName": "OSEN",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "VRTX",
+            "name": "버텍스 제약",
+            "updateDateTime": "2022-02-12T06:44:55",
+            "symbol": "NASDAQ",
+            "currentPrice": 253.95,
+            "priceChange": 2.25,
+            "rateOfChange": 0.89,
+            "preClosingPrice": 251.7,
+            "highPrice": 254.15,
+            "lowPrice": 250.49
+        },
+        "article": {
+            "id": "http://www.infostockdaily.co.kr/news/articleView.html?idxno=131708",
+            "thumbnail": null,
+            "title": "[미주탐구] 낭포성 섬유증 치료제 꽉 잡은 제약사 버텍스, 이젠 다른...",
+            "leadText": "낭포성 섬유증이라는 선천적 질병 치료제를 개발해서 상용화한 기업으로, 낭포성 섬유증은 백인들에게 주로 발견되는 유전성 질병으로 알려져 있습니다.\t버텍스는 낭포성 섬유증 약품...",
+            "registerDateTime": "2021-03-25T15:05:54",
+            "mediaName": "인포스탁데일리",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "WBA",
+            "name": "월그린스부츠 얼라이언스",
+            "updateDateTime": "2022-01-11T06:44:53",
+            "symbol": "NASDAQ",
+            "currentPrice": 47.12,
+            "priceChange": 0.1,
+            "rateOfChange": 0.21,
+            "preClosingPrice": 47.02,
+            "highPrice": 47.78,
+            "lowPrice": 46.91
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/65787166",
+            "thumbnail": "https://static.news.zumst.com/images/3/2021/01/27/AKR20210127134300009_01_i.jpg",
+            "title": "미 약국체인 월그린스 CEO에 스타벅스 출신 흑인 여성 내정",
+            "leadText": "미국의 약국체인인 '월그린스 부츠 얼라이언스'(월그린스)가 신임 최고경영자(CEO)로 흑인 여성인 스타벅스의 로잘린드 브루어(58) 최고운영책임자(COO)를 내정했다.\t26일(현지시간)...",
+            "registerDateTime": "2021-01-27T16:11:32",
+            "mediaName": "연합뉴스",
+            "landingUrl": "https://news.zum.com/articles/65787166",
+            "category": "해외증시",
+            "subCategory": "헬스케어 서비스 임의 소비재"
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "WDAY",
+            "name": "워크데이",
+            "updateDateTime": "2022-03-04T06:45:23",
+            "symbol": "NASDAQ",
+            "currentPrice": 238.09,
+            "priceChange": -3.14,
+            "rateOfChange": -1.3,
+            "preClosingPrice": 241.23,
+            "highPrice": 244,
+            "lowPrice": 234.8
+        },
+        "article": {
+            "id": "http://news.zum.com/articles/74129384",
+            "thumbnail": "https://static.news.zumst.com/images/131/2022/03/03/ef0dac02a3b9439a83a1521a2acbfcef.jpg",
+            "title": "워크데이, 2022 회계년도 4분기 연간 실적 공개… '총매출 13억 8000만...",
+            "leadText": "워크데이의 총 매출은 13억 8000만 달러로 2021 회계년도 4분기 대비 21.6% 증가했다.\t구독 매출은 12억 3천만 달러로 전년 동기 대비 22.2% 증가했다.\t비일반회계기준(non-GAAP)에 따...",
+            "registerDateTime": "2022-03-03T10:40:01",
+            "mediaName": "CBC뉴스",
+            "landingUrl": "https://news.zum.com/articles/74129384",
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "XEL",
+            "name": "엑셀 에너지",
+            "updateDateTime": "2022-03-01T06:45:03",
+            "symbol": "NASDAQ",
+            "currentPrice": 70.7,
+            "priceChange": 0.82,
+            "rateOfChange": 1.17,
+            "preClosingPrice": 69.88,
+            "highPrice": 70.84,
+            "lowPrice": 69.86
+        },
+        "article": {
+            "id": "http://kpenews.com/View.aspx?No=2101847",
+            "thumbnail": null,
+            "title": "\"친환경 에너지로 성장 엑셀 꾹\"..현대오일뱅크, 블루수소 생산 확대...",
+            "leadText": "현대오일뱅크는 친환경 에너지와 화학 분야 특허 보유사인 덴마크 할도톱소와 협약을 맺고 탄소중립 연료 '이퓨얼'에 대한 연구개발에 나섰다고 4일 밝혔다.\t이퓨얼은 물을 전기 분해...",
+            "registerDateTime": "2021-11-04T16:32:58",
+            "mediaName": "한국정경신문",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ZM",
+            "name": "줌 비디오 커뮤니케이션",
+            "updateDateTime": "2022-03-15T06:45:34",
+            "symbol": "NASDAQ",
+            "currentPrice": 113.93,
+            "priceChange": -3.82,
+            "rateOfChange": -3.24,
+            "preClosingPrice": 117.75,
+            "highPrice": 117.58,
+            "lowPrice": 112.45
+        },
+        "article": {
+            "id": "http://www.newswire.co.kr/newsRead.php?no=937867",
+            "thumbnail": null,
+            "title": "줌, 독일 연방정보기술보안청 비디오 커뮤니케이션 고객사로 처음으로 C...",
+            "leadText": "연방정보기술보안청(BSI)이 발급하는 Common Criteria Evaluation Assurance Level 2 (v3.1 rev. 5) 인증을 획득한 첫 비디오 커뮤니케이션 고객사로 선정됐다고 밝혔다.\tCommon Crite...",
+            "registerDateTime": "2022-01-11T08:53:11",
+            "mediaName": "코리아뉴스와이어",
+            "landingUrl": null,
+            "category": "해외증시",
+            "subCategory": null
+        }
+    },
+    {
+        "stock": {
+            "financeCategory": "OVERSEAS_STOCK",
+            "id": "ZS",
+            "name": "지스케일러",
+            "updateDateTime": "2022-03-15T06:45:36",
+            "symbol": "NASDAQ",
+            "currentPrice": 230.32,
+            "priceChange": -5.47,
+            "rateOfChange": -2.32,
+            "preClosingPrice": 235.79,
+            "highPrice": 237.62,
+            "lowPrice": 224.61
+        },
+        "article": {
+            "id": null,
+            "thumbnail": null,
+            "title": null,
+            "leadText": null,
+            "registerDateTime": null,
+            "mediaName": null,
+            "landingUrl": null,
+            "category": null,
+            "subCategory": null
+        }
+    }
+]
