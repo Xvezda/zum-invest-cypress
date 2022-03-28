@@ -144,6 +144,41 @@ describe('해외증시', () => {
       );
   });
 
+  describe('해외 투자노트', () => {
+    it('해외 투자노트 타이틀을 클릭하면 투자노트 목록의 해외증시 탭으로 이동한다.', () => {
+      cy.get('.expert_insight')
+        .contains('해외 투자노트')
+        .click()
+        .url()
+        .should('contain', '/investment/recently')
+        .and('contain', 'category=overseasStock');
+    });
+
+    it('클릭할 경우, 이름 또는 프로필은 필진페이지, 카테고리는 카테고리 상세, 제목은 게시글 보기로 이동한다.', () => {
+      cy.wrap([
+          {
+            target: '@@투자노트_작성자@@',
+            url: '/investment/author/123',
+          },
+          {
+            target: '@@투자노트_카테고리@@',
+            url: `subCategory=${encodeURIComponent(`@@투자노트_카테고리@@`)}`,
+          },
+          {
+            target: '@@투자노트_제목@@',
+            url: '/investment/view/42',
+          },
+        ])
+        .each(({ target, url }) => {
+          cy.contains(target)
+            .click()
+            .url()
+            .should('contain', url)
+            .go('back');
+        });
+    });
+  });  // END: 해외 투자노트
+
   it('스크롤을 하여 해외 실시간 뉴스를 불러온다.', () => {
     cy.clock().invoke('restore');
     cy.shouldRequestOnScroll('@apiRealTimeNews');
