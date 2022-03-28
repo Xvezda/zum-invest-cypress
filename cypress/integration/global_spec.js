@@ -4,7 +4,7 @@ describe('해외증시', () => {
     cy.stubThirdParty();
     cy.stubInvestApi();
 
-    cy.visit('/', {
+    cy.visit('/investment', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
@@ -12,6 +12,7 @@ describe('해외증시', () => {
 
     cy.get('.gnb_finance a:contains("해외증시")')
       .click();
+
     cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
   });
 
