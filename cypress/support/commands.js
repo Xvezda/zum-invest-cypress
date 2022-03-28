@@ -117,7 +117,21 @@ Cypress.Commands.add('stubInvestApi', () => {
     .as('apiOverseasHome');
   cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
     .as('apiOverseasMekoChart');
-  cy.intercept('/api/overseas/home/representative-stock*', {statusCode: 200});
+  cy.intercept('/api/overseas/home/representative-stock*', req => {
+      const url = new URL(req.url);
+      switch (url.searchParams.get('category')) {
+        case 'DOW':
+          req.reply({fixture: 'overseas-representative-stock-dow'});
+          break;
+        case 'NASDAQ':
+          req.reply({fixture: 'overseas-representative-stock-nasdaq'});
+          break;
+        default:
+          req.destroy();
+          break;
+      }
+    })
+    .as('apiOverseasRepresentativeStock');
   cy.intercept('/api/overseas/common', {fixture: 'overseas-common'})
     .as('apiOverseasCommon');
 });
