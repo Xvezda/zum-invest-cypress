@@ -2,18 +2,11 @@ require('cypress-iframe');
 const { recurse } = require('cypress-recurse');
 
 describe('국내증시', () => {
-  const now = new Date(2022, 3, 15, 10, 50, 0);
+  const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     cy.clock(now);
   });
 
-  afterEach(() => {
-    cy.clock().invoke('restore');
-  });
-
-  /**
-   * `/api/domestic/home` API 호출이 일어나도록 강제
-   */
   const triggerDomesticHomeApi = () =>
     cy.tick(20001);
   
@@ -32,6 +25,7 @@ describe('국내증시', () => {
 
     cy.get('.gnb_finance a:contains("국내증시")')
       .click();
+
     cy.wait('@apiDomesticHome');
   });
 
@@ -129,7 +123,6 @@ describe('국내증시', () => {
 
   describe('실시간 국내 증시', () => {
     it('코스피 지수를 보여준다.', () => {
-      triggerDomesticHomeApi();
       hideHeaderWhile(() => {
         cy.get('.stock_index_wrap')
           .toMatchImageSnapshot();
@@ -165,10 +158,6 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 된다.', () => {
-      cy.clock()
-        .invoke('restore')
-        .reload(true);
-
       cy.get('.investment_calendar')
         .scrollIntoView()
         .within(() => {
@@ -189,8 +178,8 @@ describe('국내증시', () => {
           
           cy.get('.investment_calendar_list .first a')
             .first()
-            .click()
-            .should('have.ancestors', '.open');
+            .click({force: true})
+            .should('have.class', 'open');
         });
     });
   });  // END: 이번주 투자 캘린더
@@ -241,7 +230,6 @@ describe('국내증시', () => {
 
   describe('ZUM 인기종목', () => {
     it('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
-      triggerDomesticHomeApi();
       hideHeaderWhile(() => {
         cy.get('.popularity_event_wrap')
           .toMatchImageSnapshot();
