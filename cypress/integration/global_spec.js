@@ -3,6 +3,7 @@ describe('해외증시', () => {
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
     cy.stubThirdParty();
     cy.stubInvestApi();
+    cy.clock();
 
     cy.visit('/investment', {
       onBeforeLoad(win) {
@@ -13,6 +14,7 @@ describe('해외증시', () => {
     cy.get('.gnb_finance a:contains("해외증시")')
       .click();
 
+    cy.tick(1000);
     cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
   });
 
@@ -80,6 +82,14 @@ describe('해외증시', () => {
         .should('contain', '/global/index/16');
     });
   });  // END: 해외 주요지수
+
+  describe('해외 대표 종목', () => {
+    it('차트와 뉴스, 종목 리스트를 보여준다.', () => {
+      cy.withHidden('#header', () => {
+        cy.get('.representative_index').toMatchImageSnapshot();
+      });
+    });
+  });  // END: 해외 대표 종목
 
   it('로그인하고 투표를 눌러 투표할 수 있다.', () => {
     cy.intercept('/api/overseas/debates/*/vote', {fixture: 'overseas-debates-vote'})
