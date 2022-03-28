@@ -121,6 +121,7 @@ describe('해외증시', () => {
   });
 
   it('스크롤을 하여 해외 실시간 뉴스를 불러온다.', () => {
+    cy.clock().invoke('restore');
     cy.shouldRequestOnScroll('@apiRealTimeNews');
   });
 });  // END: 해외증시
