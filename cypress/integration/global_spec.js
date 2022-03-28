@@ -1,7 +1,6 @@
 describe('해외증시', () => {
   beforeEach(() => {
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
-    cy.stubThirdParty();
     cy.stubInvestApi();
     cy.clock();
 

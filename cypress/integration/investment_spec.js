@@ -3,7 +3,6 @@ describe('투자노트', () => {
     // TODO: 원인조사
     cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
 
-    cy.stubThirdParty();
     cy.stubInvestApi();
 
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});

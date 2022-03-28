@@ -14,7 +14,6 @@ describe('국내증시', () => {
     cy.tick(5000);
 
   beforeEach(() => {
-    cy.stubThirdParty();
     cy.stubInvestApi();
 
     cy.visit('/investment', {

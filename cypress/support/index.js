@@ -53,6 +53,14 @@ beforeEach(() => {
   });
   cy.intercept('https://static.news.zumst.com/images/**', {fixture: '640x360.jpg'});
   cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
+
+  cy.intercept('https://zvod.zumst.com/zumvrix/zvod/**', {statusCode: 206});
+
+  cy.on('uncaught:exception', err => {
+    if (err.message.includes('kakaoPixel is not defined')) {
+      return false;
+    }
+  });
 });
 
 chai.use((chai, utils) => {
