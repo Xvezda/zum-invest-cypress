@@ -51,6 +51,7 @@ beforeEach(() => {
   cy.intercept(/^https?:\/\/finance\.zumst\.com\/writing\/.+\.(png|jpe?g|gif)$/, {
     fixture: 'writer.png'
   });
+  cy.intercept('https://static.news.zumst.com/images/**', {fixture: '640x360.jpg'});
   cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
 });
 

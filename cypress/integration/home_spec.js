@@ -57,7 +57,10 @@ describe('zum 투자 홈', () => {
         cy.get('.right_cont_inner')
           .then($el => {
             $el.css('position', 'relative !important');
-            return cy.wrap($el);
+            return cy
+              .waitForImage('.right_cont_inner .thumb img')
+              .end()
+              .wrap($el);
           })
           .toMatchImageSnapshot();
       });
