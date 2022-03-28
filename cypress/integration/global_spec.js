@@ -17,25 +17,44 @@ describe('해외증시', () => {
     cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
   });
 
-  it('다우산업 화살표를 클릭해 주요뉴스를 살펴볼 수 있다.', () => {
-    cy.get('.main_news_list')
-      .scrollIntoView();
+  describe('해외증시 MAP', () => {
+    it('MAP의 종류를 선택할 수 있다.', () => {
+      const mapTable = {
+        '다우산업 30': 'dow',
+        '나스닥 100': 'nasdaq'
+      };
+      cy.get('.map_title_wrap').within(() => {
+        cy.get('ul > li:not(:first-child) > a')
+          .each($menu => {
+            const menuText = $menu.text();
+            cy.get(`a:contains("${menuText}")`)
+              .click()
+              .url()
+              .should('contain', `category=${mapTable[menuText]}`);
+          });
+        });
+    });
 
-    cy.get('.main_news_list + .navi > .next')
-      .click();
+    it('다우산업 화살표를 클릭해 주요뉴스를 살펴볼 수 있다.', () => {
+      cy.get('.main_news_list')
+        .scrollIntoView();
 
-    cy.get('.main_news_list ul > li')
-      .as('newsItems')
-      .last()
-      .should('be.visible');
+      cy.get('.main_news_list + .navi > .next')
+        .click();
 
-    cy.get('.main_news_list + .navi > .prev')
-      .click();
+      cy.get('.main_news_list ul > li')
+        .as('newsItems')
+        .last()
+        .should('be.visible');
 
-    cy.get('@newsItems')
-      .first()
-      .should('be.visible');
-  });
+      cy.get('.main_news_list + .navi > .prev')
+        .click();
+
+      cy.get('@newsItems')
+        .first()
+        .should('be.visible');
+    });
+  });  // END: 해외증시 MAP
 
   describe('해외 주요지수', () => {
     it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', () => {
