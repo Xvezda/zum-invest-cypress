@@ -112,9 +112,13 @@ Cypress.Commands.add('stubInvestApi', () => {
   cy.intercept('/api/news/detail/*', {fixture: 'news-detail'});
 
   cy.intercept('/api/discussion/debate-home/**', {statusCode: 200});
-  cy.intercept('/api/overseas/common', {statusCode: 200});
-  cy.intercept('/api/overseas/home/meko-chart', {statusCode: 200});
+  cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
+    .as('apiOverseasHome');
+  cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
+    .as('apiOverseasMekoChart');
   cy.intercept('/api/overseas/home/representative-stock*', {statusCode: 200});
+  cy.intercept('/api/overseas/common', {fixture: 'overseas-common'})
+    .as('apiOverseasCommon');
 });
 
 Cypress.Commands.add('stubThirdParty', () => {
