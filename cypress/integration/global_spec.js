@@ -1,4 +1,4 @@
-describe('해외증시', () => {
+dstockMainNewsWrapescribe('해외증시', () => {
   const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
@@ -15,7 +15,10 @@ describe('해외증시', () => {
       .click();
 
     cy.tick(1000);
-    cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
+    cy.wait(['@apiOverseasHome', '@apiOverseasCommon'])
+      // FIXME: Bad code!
+      .its('0.response.body')
+      .as('overseasHomeResponse');
   });
 
   describe('해외증시 MAP', () => {
@@ -157,6 +160,48 @@ describe('해외증시', () => {
             .get('a:contains("@@대표종목_뉴스b@@")')
             .should('have.attr', 'href')
             .and('equal', 'https://amazon.com/');
+        });
+    });
+
+    it('해외증시 주요뉴스를 화살표 버튼을 눌러 살펴볼 수 있다.', () => {
+      cy.get('.stock_main_news_wrap')
+        .as('stockMainNewsWrap');
+
+      cy.get('@stockMainNewsWrap')
+        .find('.next')
+        .as('nextButton');
+
+      cy.get('@stockMainNewsWrap')
+        .find('.prev')
+        .as('prevButton');
+      
+      const newsPerPage = 3;
+      function groupBy(n) {
+        return function groupByInner(arr, acc) {
+          if (typeof acc === 'undefined') acc = [];
+          if (arr.length <= 0) return acc;
+          return groupByInner(arr.slice(n), acc.concat([arr.slice(0, n)]));
+        };
+      }
+      const groupByThree = groupBy(newsPerPage);
+
+      cy.get('@overseasHomeResponse')
+        .its('representativeNews')
+        .then(groupByThree)
+        .each(group => {
+          group.forEach(news => {
+            cy.get('@stockMainNewsWrap')
+              .should('contain', news.title)
+              .and('contain', news.mediaName);
+          });
+          cy.get('@nextButton').click();
+        });
+
+      cy.get('@stockMainNewsWrap')
+        .find('.count')
+        .then($el => {
+          const [count, total] = $el.text().split('/').map(t => t.trim());
+          expect(count).to.equal(total);
         });
     });
   });  // END: 해외 대표 종목
