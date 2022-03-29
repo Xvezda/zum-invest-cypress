@@ -351,7 +351,7 @@ describe('zum 투자 홈', () => {
       cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 
-    it('달력을 클릭하여 열고 닫을 수 있다.', () => {
+    it('달력을 여닫을 수 있고 일자를 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
       cy.get('.mini-calendar')
         .as('miniCalendar');
 
@@ -369,9 +369,7 @@ describe('zum 투자 홈', () => {
 
       cy.get('@miniCalendar')
         .should('not.be.visible');
-    });
 
-    it('달력을 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
       const getFormattedDate = date => [
           date.getFullYear(),
           date.getMonth() + 1,
