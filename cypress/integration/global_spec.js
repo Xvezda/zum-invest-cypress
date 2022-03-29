@@ -289,7 +289,6 @@ describe('해외증시', () => {
 
   describe('해외 실시간 뉴스', () => {
     it('카테고리를 변경할 수 있다.', () => {
-      cy.contains('해외 실시간 뉴스').scrollIntoView();
       const categoryTable = {
         '해외 증시': 'MARKET',
         '해외 종목': 'STOCK',
