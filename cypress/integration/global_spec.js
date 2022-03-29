@@ -1,7 +1,10 @@
 describe('해외증시', () => {
   const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
+    // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
+    cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
+
     cy.stubInvestApi();
     cy.clock(now);
 
@@ -11,7 +14,8 @@ describe('해외증시', () => {
       }
     });
 
-    cy.get('.gnb_finance a:contains("해외증시")')
+    cy.get('.gnb_finance a')
+      .filter(':contains("해외증시")')
       .click();
 
     cy.tick(1000);
@@ -41,18 +45,27 @@ describe('해외증시', () => {
 
     it('다우산업 화살표를 클릭해 주요뉴스를 살펴볼 수 있다.', () => {
       cy.get('.main_news_list')
+        .as('mainNewsList')
         .scrollIntoView();
 
-      cy.get('.main_news_list + .navi > .next')
-        .click();
+      cy.get('@mainNewsList')
+        .nextAll('.navi')
+        .first()
+        .as('navigation');
 
-      cy.get('.main_news_list ul > li')
+      cy.get('@navigation')
+        .find('.next')
+        .click({force: true});
+
+      cy.get('@mainNewsList')
+        .find('ul > li')
         .as('newsItems')
         .last()
         .should('be.visible');
 
-      cy.get('.main_news_list + .navi > .prev')
-        .click();
+      cy.get('@navigation')
+        .find('.prev')
+        .click({force: true});
 
       cy.get('@newsItems')
         .first()

@@ -106,17 +106,26 @@ describe('국내증시', () => {
     cy.wait('@apiDomesticCommon');
 
     cy.get('.main_news_list')
+      .as('mainNewsList')
       .scrollIntoView();
 
-    cy.get('.main_news_list + .navi > .next')
+    cy.get('@mainNewsList')
+      .nextAll('.navi')
+      .first()
+      .as('navigation');
+
+    cy.get('@navigation')
+      .find('.next')
       .click({force: true});
 
-    cy.get('.main_news_list ul > li')
+    cy.get('@mainNewsList')
+      .find('ul > li')
       .as('newsItems')
       .last()
       .should('be.visible');
 
-    cy.get('.main_news_list + .navi > .prev')
+    cy.get('@navigation')
+      .find('.prev')
       .click({force: true});
 
     cy.get('@newsItems')
@@ -219,15 +228,13 @@ describe('국내증시', () => {
           cy.get('@domesticHomeResponse')
             .then(home => {
               const key = menuTable[menuText];
-              const items = home.todayHotPick[key];
-
-              items
-                .map(item => item.name)
-                .forEach(name =>
-                  cy.get('@todayHotPick')
-                    .contains(name)
-                    .should('be.visible'));
-            });
+              return home.todayHotPick[key].map(({ name }) => name);
+            })
+            .each(name =>
+              cy.get('@todayHotPick')
+                .contains(name)
+                .should('be.visible')
+            );
         });
     });
   }); // END: 오늘의 HOT PICK

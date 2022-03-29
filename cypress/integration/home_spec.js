@@ -5,7 +5,7 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
-    cy.ignoreKnownError("Cannot read properties of undefined (reading 'length')");
+    cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
 
     cy.stubInvestApi();
 
@@ -16,7 +16,8 @@ describe('zum 투자 홈', () => {
       }
     });
     cy.tick(1000);
-    cy.get('.gnb_finance a:contains("홈")')
+    cy.get('.gnb_finance a')
+      .filter(':contains("홈")')
       .click();
 
     cy.wait(['@apiHome', '@apiCategoryNews']);
@@ -36,8 +37,8 @@ describe('zum 투자 홈', () => {
     cy.tick(1000);
     cy.wait('@apiSuggest').then(() => {
       cy.get('.stock_list_wrap .list > *')
-        .its('length')
-        .should('be.greaterThan', 0);
+        .first()
+        .should('contain', '줌인터넷');
 
       cy.get('@searchInput')
         .click({force: true})
@@ -96,7 +97,9 @@ describe('zum 투자 홈', () => {
         };
 
         cy.get('@mainIndicator')
-          .find(`ul:contains("${Object.keys(rangeTable)[0]}") > li > a`)
+          .find('ul')
+          .filter(`:contains("${Object.keys(rangeTable)[0]}")`)
+          .find('li > a')
           .each($link => {
             const linkText = $link.text();
 
@@ -140,7 +143,9 @@ describe('zum 투자 홈', () => {
         };
 
         cy.get('@mainIndicator')
-          .find(`ul:contains("${Object.keys(indicatorTable)[0]}") > li > a`)
+          .find('ul')
+          .filter(`:contains("${Object.keys(indicatorTable)[0]}")`)
+          .find('li > a')
           .each($link => {
             cy.wrap($link)
               .click()
@@ -301,10 +306,12 @@ describe('zum 투자 홈', () => {
     it('스크롤하여 대화를 볼 수 있다.', () => {
       cy.get('.real_time_contents_wrap')
         .within(() => {
-          cy.get('ul > li').first().should('be.visible');
+          cy.get('ul > li').as('listItems');
+
+          cy.get('@listItems').first().should('be.visible');
           cy.get('.content_inner')
             .scrollTo('bottom');
-          cy.get('ul > li').last().should('be.visible');
+          cy.get('@listItems').last().should('be.visible');
         });
     });
 
@@ -387,7 +394,8 @@ describe('zum 투자 홈', () => {
       };
 
       clickAndMatchUrlToDate(
-        cy.get('.dates > .date-item:not(.empty)')
+        cy.get('.dates > .date-item')
+          .not('.empty')
           .first(),  // 1일
         firstDateOfThisMonth,
       );

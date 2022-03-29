@@ -9,7 +9,8 @@ describe('투자노트', () => {
 
     cy.visit('/');
     cy.get('.gnb_finance')
-      .find('a:contains("투자노트")')
+      .find('a')
+      .filter(':contains("투자노트")')
       .click();
 
     cy.wait('@apiInvestment');

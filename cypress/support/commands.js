@@ -278,17 +278,19 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'ignoreKnownError',
   message => {
-    cy.on('uncaught:exception', err => {
-      if (message instanceof RegExp) {
-        if (message.test(err.message)) {
-          return false;
-        }
-      } else {
-        if (err.message.includes(message)) {
-          return false;
+    return cy
+      .on('uncaught:exception', err => {
+        if (message instanceof RegExp) {
+          if (message.test(err.message)) {
+            return false;
+          }
+        } else {
+          if (err.message.includes(message)) {
+            return false;
+          }
         }
       }
-    });
+    );
   }
 );
 

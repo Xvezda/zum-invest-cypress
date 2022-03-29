@@ -72,16 +72,16 @@ beforeEach(() => {
         });
       });
     });
+});
 
-  cy.on('uncaught:exception', err => {
-    const messages = [
-      'kakaoPixel is not defined',
-      'Request failed with status code 400',
-    ];
-    if (messages.some(message => err.message.includes(message))) {
-      return false;
-    }
-  });
+Cypress.on('uncaught:exception', err => {
+  const messages = [
+    'kakaoPixel is not defined',
+    'Request failed with status code 400',
+  ];
+  if (messages.some(message => err.message.includes(message))) {
+    return false;
+  }
 });
 
 chai.use((chai, utils) => {
