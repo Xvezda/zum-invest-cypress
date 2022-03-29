@@ -1,8 +1,9 @@
 describe('해외증시', () => {
+  const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
     cy.stubInvestApi();
-    cy.clock();
+    cy.clock(now);
 
     cy.visit('/investment', {
       onBeforeLoad(win) {
@@ -179,8 +180,100 @@ describe('해외증시', () => {
     });
   });  // END: 해외 투자노트
 
-  it('스크롤을 하여 해외 실시간 뉴스를 불러온다.', () => {
-    cy.clock().invoke('restore');
-    cy.shouldRequestOnScroll('@apiRealTimeNews');
-  });
+  describe('해외 실시간 뉴스', () => {
+    it('카테고리를 변경할 수 있다.', () => {
+      cy.contains('해외 실시간 뉴스').scrollIntoView();
+      const categoryTable = {
+        '해외 증시': 'MARKET',
+        '해외 종목': 'STOCK',
+      };
+      cy.get('.area_real_news ul.menu_tab > li:not(:first-child) > a')
+        .each($menu => {
+          const menuText = $menu.text();
+          cy.wrap($menu)
+            .click({force: true});
+
+          cy.wait('@apiRealTimeNews')
+            .its('request.url')
+            .should('contain', `category=${categoryTable[menuText]}`);
+        });
+    });
+
+    it('스크롤을 하여 다음 해외 실시간 뉴스를 불러온다.', () => {
+      cy.clock().invoke('restore');
+      cy.shouldRequestOnScroll('@apiRealTimeNews');
+    });
+
+    it('달력을 클릭하여 열고 닫을 수 있다.', () => {
+      cy.get('.mini-calendar')
+        .as('miniCalendar');
+
+      cy.get('.date_select .btn_calendar')
+        .as('miniCalendarButton');
+
+      cy.get('@miniCalendarButton')
+        .click()
+
+      cy.get('@miniCalendar')
+        .should('be.visible');
+
+      cy.get('@miniCalendarButton')
+        .click();
+
+      cy.get('@miniCalendar')
+        .should('not.be.visible');
+    });
+
+    it('달력을 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
+      const getFormattedDate = date => [
+          date.getFullYear(),
+          date.getMonth() + 1,
+          date.getDate()
+        ]
+        .map(t => String(t).padStart(2, '0'))
+        .join('-');
+
+      const date = new Date(now);
+      const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
+      // 달력을 열고 현재달의 1일을 누른다.
+      cy.get('.date_select .btn_calendar').click();
+
+      const clickAndMatchUrlToDate = (subject, date) => {
+        return subject
+          .click({force: true})
+          .wait('@apiRealTimeNews')
+          .its('request.url')
+          .should('contain', `date=${date}`);
+      };
+
+      clickAndMatchUrlToDate(
+        cy.get('.dates > .date-item:not(.empty)')
+          .first(),  // 1일
+        firstDateOfThisMonth,
+      );
+
+      // dayValue에 0이 제공되면 날짜는 이전 달의 마지막 날로 설정됩니다.
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate#description
+      const lastDateOfPrevMonth = getFormattedDate(new Date(date.setDate(0)));
+      // 이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다.
+      clickAndMatchUrlToDate(
+        cy.get('.date_nav .btn.pre'),
+        lastDateOfPrevMonth,
+      );
+
+      // 다시 다음 버튼을 눌러 이번달의 1일로 이동
+      clickAndMatchUrlToDate(
+        cy.get('.date_nav .btn.next'),
+        firstDateOfThisMonth,
+      );
+
+      // 오늘 버튼을 눌러 오늘 날짜로 복귀
+      clickAndMatchUrlToDate(
+        cy.get('.btn_today'),
+        getFormattedDate(new Date(now)),
+      );
+    });
+
+  });  // END: 해외 실시간 뉴스
+
 });  // END: 해외증시
