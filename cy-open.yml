@@ -2,7 +2,7 @@ version: '3.9'
 services:
   e2e:
     container_name: e2e
-    image: cypress/included:9.5.2
+    image: cypress/included:9.5.3
     entrypoint: cypress open --project /e2e --config-file /e2e/cypress.json
     working_dir: /e2e
     environment:
