@@ -72,7 +72,11 @@ beforeEach(() => {
     });
 
   cy.on('uncaught:exception', err => {
-    if (err.message.includes('kakaoPixel is not defined')) {
+    const messages = [
+      'kakaoPixel is not defined',
+      'Request failed with status code 400',
+    ];
+    if (messages.some(message => err.message.includes(message))) {
       return false;
     }
   });
