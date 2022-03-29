@@ -127,7 +127,7 @@ describe('해외증시', () => {
               const buttonText = $button.text();
               const period = periodTable[buttonText];
 
-              cy.wrap($button).click();
+              cy.wrap($button).click().should('be.activated');
               cy.get('.chart iframe')
                 .as('chartIframe')
                 .should('have.attr', 'src')
@@ -136,6 +136,7 @@ describe('해외증시', () => {
           
           cy.contains('애플')
             .click()
+            .should('be.activated')
             .end()
             .get('@chartIframe')
             .should('have.attr', 'src')
@@ -147,6 +148,7 @@ describe('해외증시', () => {
 
           cy.contains('아마존')
             .click()
+            .should('be.activated')
             .end()
             .get('@chartIframe')
             .should('have.attr', 'src')
