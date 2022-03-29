@@ -161,6 +161,7 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 되고, 항목을 클릭하면 자세한 내용을 여닫을 수 있다.', () => {
+      cy.clock().invoke('restore');
       cy.get('.investment_calendar')
         .scrollIntoView()
         .within(() => {
