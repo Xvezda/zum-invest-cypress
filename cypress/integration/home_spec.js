@@ -1,7 +1,7 @@
 const { recurse } = require("cypress-recurse");
 
 describe('zum 투자 홈', () => {
-  const now = new Date(2022, 3, 15, 10, 50, 0);
+  const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
