@@ -377,36 +377,41 @@ describe('zum 투자 홈', () => {
       const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
       // 달력을 열고 현재달의 1일을 누른다.
       cy.get('.date_select .btn_calendar').click();
-      cy.get('.dates > .date-item:not(.empty)')
-        .first()  // 1일
-        .click({force: true})
-        .wait('@apiCategoryNews')
-        .its('request.url')
-        .should('contain', `date=${firstDateOfThisMonth}`);
+
+      const clickAndMatchUrlToDate = (subject, date) => {
+        return subject
+          .click({force: true})
+          .wait('@apiCategoryNews')
+          .its('request.url')
+          .should('contain', `date=${date}`);
+      };
+
+      clickAndMatchUrlToDate(
+        cy.get('.dates > .date-item:not(.empty)')
+          .first(),  // 1일
+        firstDateOfThisMonth,
+      );
 
       // dayValue에 0이 제공되면 날짜는 이전 달의 마지막 날로 설정됩니다.
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate#description
       const lastDateOfPrevMonth = getFormattedDate(new Date(date.setDate(0)));
       // 이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다.
-      cy.get('.date_nav .btn.pre')
-        .click({force: true})
-        .wait('@apiCategoryNews')
-        .its('request.url')
-        .should('contain', `date=${lastDateOfPrevMonth}`)
+      clickAndMatchUrlToDate(
+        cy.get('.date_nav .btn.pre'),
+        lastDateOfPrevMonth,
+      );
 
       // 다시 다음 버튼을 눌러 이번달의 1일로 이동
-      cy.get('.date_nav .btn.next')
-        .click()
-        .wait('@apiCategoryNews')
-        .its('request.url')
-        .should('contain', `date=${firstDateOfThisMonth}`);
+      clickAndMatchUrlToDate(
+        cy.get('.date_nav .btn.next'),
+        firstDateOfThisMonth,
+      );
 
       // 오늘 버튼을 눌러 오늘 날짜로 복귀
-      cy.get('.btn_today')
-        .click()
-        .wait('@apiCategoryNews')
-        .its('request.url')
-        .should('contain', `date=${getFormattedDate(new Date(now))}`);
+      clickAndMatchUrlToDate(
+        cy.get('.btn_today'),
+        getFormattedDate(new Date(now)),
+      );
     });
 
   });  // END: 분야별 실시간 뉴스
