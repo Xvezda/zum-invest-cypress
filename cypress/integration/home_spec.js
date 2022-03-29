@@ -10,8 +10,7 @@ describe('zum 투자 홈', () => {
     cy.stubInvestApi();
 
     cy.clock(now);
-    const route = '/investment';
-    cy.visit(route, {
+    cy.visit('/investment', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
@@ -22,7 +21,6 @@ describe('zum 투자 홈', () => {
 
     cy.wait(['@apiHome', '@apiCategoryNews']);
     cy.tick(1000);
-    cy.url().should('not.contain', route);
   });
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
