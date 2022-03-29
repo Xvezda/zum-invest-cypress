@@ -74,11 +74,13 @@ beforeEach(() => {
     });
 });
 
+const messages = [
+  'kakaoPixel is not defined',
+  'Request failed with status code 400',
+  // 외부 스크립트 차단으로 인한 deepdive.zum.com 스크립트 오류
+  "Cannot read properties of null (reading 'getAttribute')",
+];
 Cypress.on('uncaught:exception', err => {
-  const messages = [
-    'kakaoPixel is not defined',
-    'Request failed with status code 400',
-  ];
   if (messages.some(message => err.message.includes(message))) {
     return false;
   }
