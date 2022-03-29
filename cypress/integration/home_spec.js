@@ -4,7 +4,6 @@ describe('zum 투자 홈', () => {
   const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     // TODO: 원인조사
-    cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
 
     cy.stubInvestApi();
