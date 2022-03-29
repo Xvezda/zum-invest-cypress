@@ -1,4 +1,4 @@
-dstockMainNewsWrapescribe('해외증시', () => {
+describe('해외증시', () => {
   const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
