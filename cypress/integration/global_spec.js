@@ -104,13 +104,57 @@ describe('해외증시', () => {
 
   describe('해외 대표 종목', () => {
     it('차트와 뉴스, 종목 리스트를 보여준다.', () => {
-      // DOW와 NASDAQ 요청
+      // DOW와 NASDAQ 요청 대기
       cy.wait('@apiOverseasRepresentativeStock');
       cy.wait('@apiOverseasRepresentativeStock');
 
       cy.withHidden('#header', () => {
         cy.get('.representative_index').toMatchImageSnapshot();
       });
+    });
+
+    it('기간 버튼을 눌러 차트를 바꾸고 리스트를 클릭하여 뉴스를 바꿀 수 있다.', () => {
+      const periodTable = {
+        '1주': 'WEEKLY',
+        '3개월': 'MONTHLY3',
+        '6개월': 'MONTHLY6',
+        '1년': 'YEARLY',
+      };
+      cy.get('.representative_index')
+        .within(() => {
+          cy.get('.chart_tab a')
+            .each($button => {
+              const buttonText = $button.text();
+              const period = periodTable[buttonText];
+
+              cy.wrap($button).click();
+              cy.get('.chart iframe')
+                .should('have.attr', 'src')
+                .and('contain', `period=${period}`);
+            });
+          
+          cy.contains('애플')
+            .click()
+            .end()
+            .get('.chart iframe')
+            .should('have.attr', 'src')
+            .and('contain', 'AAPL')
+            .end()
+            .get('a:contains("@@대표종목_뉴스a@@")')
+            .should('have.attr', 'href')
+            .and('equal', 'https://apple.com/');
+
+          cy.contains('아마존')
+            .click()
+            .end()
+            .get('.chart iframe')
+            .should('have.attr', 'src')
+            .and('contain', 'AMZN')
+            .end()
+            .get('a:contains("@@대표종목_뉴스b@@")')
+            .should('have.attr', 'href')
+            .and('equal', 'https://amazon.com/');
+        });
     });
   });  // END: 해외 대표 종목
 
