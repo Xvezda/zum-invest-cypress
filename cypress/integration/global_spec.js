@@ -129,6 +129,7 @@ describe('해외증시', () => {
 
               cy.wrap($button).click();
               cy.get('.chart iframe')
+                .as('chartIframe')
                 .should('have.attr', 'src')
                 .and('contain', `period=${period}`);
             });
@@ -136,7 +137,7 @@ describe('해외증시', () => {
           cy.contains('애플')
             .click()
             .end()
-            .get('.chart iframe')
+            .get('@chartIframe')
             .should('have.attr', 'src')
             .and('contain', 'AAPL')
             .end()
@@ -147,7 +148,7 @@ describe('해외증시', () => {
           cy.contains('아마존')
             .click()
             .end()
-            .get('.chart iframe')
+            .get('@chartIframe')
             .should('have.attr', 'src')
             .and('contain', 'AMZN')
             .end()
