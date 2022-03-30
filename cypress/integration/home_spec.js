@@ -88,82 +88,62 @@ describe('zum 투자 홈', () => {
       });
 
       it('기간과 지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
-        const rangeTable = {
-          '1주일': 'WEEKLY',
-          '1개월': 'MONTHLY',
-          '6개월': 'MONTHLY6',
-          '1년': 'YEARLY'
-        };
-
-        const expectToMatchChart = name => {
-          cy.get('@mainIndicatorChart')
-            .should('have.attr', 'src')
-            .and('contain', rangeTable[name]);
-        };
+        cy.get('@mainIndicator')
+          .find('ul')
+          .filter(`:contains("1주일")`)
+          .find('li > a')
+          .clickEachWithTable({
+              '1주일': 'WEEKLY',
+              '1개월': 'MONTHLY',
+              '6개월': 'MONTHLY6',
+              '1년': 'YEARLY'
+            },
+            period => cy
+              .get('@mainIndicatorChart')
+              .should('have.attr', 'src')
+              .and('contain', period),
+          );
 
         cy.get('@mainIndicator')
           .find('ul')
-          .filter(`:contains("${Object.keys(rangeTable)[0]}")`)
+          .filter(`:contains("나스닥 선물")`)
           .find('li > a')
-          .each($link => {
-            const linkText = $link.text();
-
-            cy.wrap($link)
-              .click()
-              .should('be.activated')
-              .then(() => expectToMatchChart(linkText));
-          });
-
-        const indicatorTable = {
-          '나스닥 선물': subject =>
-            subject
-              .should('have.attr', 'src')
-              .and('contain', 'id=16')
-              .and('contain', 'overseas-index'),
-          '국내 USD/KRW': subject =>
-            subject
-              .should('have.attr', 'src')
-              .and('contain', 'id=USD')
-              .and('contain', 'exchange'),
-          'WTI': subject =>
-            subject
-              .should('have.attr', 'src')
-              .and('contain', 'id=6')
-              .and('contain', 'market'),
-          '미국 10년물 국채': subject =>
-            subject
-              .should('have.attr', 'src')
-              .and('contain', 'id=17')
-              .and('contain', 'overseas-index'),
-          '공포지수': subject =>
-            subject
-              .should('have.attr', 'src')
-              .and('contain', 'id=18')
-              .and('contain', 'overseas-index'),
-          '국내 투자예탁금': subject =>
-            subject
-              .should('have.attr', 'src')
-              .and('contain', 'id=5')
-              .and('contain', 'domestic-index'),
-        };
-
-        cy.get('@mainIndicator')
-          .find('ul')
-          .filter(`:contains("${Object.keys(indicatorTable)[0]}")`)
-          .find('li > a')
-          .each($link => {
-            cy.wrap($link)
-              .click()
-              .should('be.activated')
-              .then(() => {
-                const linkText = $link.find('.name').text();
-
-                const match = indicatorTable[linkText];
-                expect(match).to.be.exist;
-
-                match(cy.get('@mainIndicatorChart'));
-              });
-          });
+          .clickEachWithTable(
+            {
+              '나스닥 선물': subject =>
+                subject
+                  .should('have.attr', 'src')
+                  .and('contain', 'id=16')
+                  .and('contain', 'overseas-index'),
+              '국내 USD/KRW': subject =>
+                subject
+                  .should('have.attr', 'src')
+                  .and('contain', 'id=USD')
+                  .and('contain', 'exchange'),
+              'WTI': subject =>
+                subject
+                  .should('have.attr', 'src')
+                  .and('contain', 'id=6')
+                  .and('contain', 'market'),
+              '미국 10년물 국채': subject =>
+                subject
+                  .should('have.attr', 'src')
+                  .and('contain', 'id=17')
+                  .and('contain', 'overseas-index'),
+              '공포지수': subject =>
+                subject
+                  .should('have.attr', 'src')
+                  .and('contain', 'id=18')
+                  .and('contain', 'overseas-index'),
+              '국내 투자예탁금': subject =>
+                subject
+                  .should('have.attr', 'src')
+                  .and('contain', 'id=5')
+                  .and('contain', 'domestic-index'),
+            },
+            match => match(cy.get('@mainIndicatorChart')),
+            $link => $link.find('.name').text(),
+          )
       });
     });  // END: 주요지표
 
@@ -400,23 +380,20 @@ describe('zum 투자 홈', () => {
 
     it('카테고리를 변경할 수 있다.', () => {
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
-      const categoryTable = {
-        '국내증시': 'domestic',
-        '해외증시': 'overseas',
-        '시장지표': 'market',
-        '가상화폐': 'coin',
-        'ESG': 'esg',
-      };
       cy.get('.area_real_news ul.menu_tab > li:not(:first-child) > a')
-        .each($menu => {
-          const menuText = $menu.text();
-          cy.wrap($menu)
-            .click({force: true});
-
-          cy.wait('@apiCategoryNews')
+        .clickEachWithTable(
+          {
+            '국내증시': 'domestic',
+            '해외증시': 'overseas',
+            '시장지표': 'market',
+            '가상화폐': 'coin',
+            'ESG': 'esg',
+          },
+          id => cy
+            .wait('@apiCategoryNews')
             .its('request.url')
-            .should('contain', `category=${categoryTable[menuText]}`);
-        });
+            .should('contain', `category=${id}`),
+        );
     });
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {

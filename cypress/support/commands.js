@@ -212,6 +212,28 @@ Cypress.Commands.add(
   }
 );
 
+Cypress.Commands.add(
+  'clickEachWithTable',
+  {
+    prevSubject: 'element',
+  },
+  (subject, table, predicate, selector) => {
+    return cy
+      .wrap(subject)
+      .each($menu => {
+        const menuText = typeof selector === 'function' ?
+          selector($menu) :
+          $menu.text();
+
+        return cy
+          .wrap($menu)
+          .click({force: true})
+          .should('be.activated')
+          .then(() => predicate(table[menuText]));
+      });
+  }
+);
+
 Cypress.Commands.add('login', () => 
   cy.setCookie('_ZIL', '1')  // 로그인 & 로그아웃 표시 버튼
     .setCookie('ZSID', '11111111-2222-3333-4444-555555555555')  // 회원관련 API 요청
