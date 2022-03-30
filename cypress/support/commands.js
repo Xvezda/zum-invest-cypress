@@ -52,24 +52,18 @@ Cypress.Commands.add('stubInvestApi', () => {
   cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
     .as('apiInvestmentAuthor');
   cy.intercept('/api/investment/posts*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `investment-home-authors-${page}`});
+      req.reply({fixture: `investment-home-authors-${req.query.page}`});
     })
     .as('posts');
   cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
     .as('apiInvestmentPosts');
   cy.intercept('/api/investment/home/authors*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `investment-home-authors-${page}`});
+      req.reply({fixture: `investment-home-authors-${req.query.page}`});
     })
     .as('apiAuthors');
 
   cy.intercept('/api/investment/authors/*/posts/recent**', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `investment-authors-posts-recent-${page}`});
+      req.reply({fixture: `investment-authors-posts-recent-${req.query.page}`});
     })
     .as('apiAuthorsPostsRecent');
 
@@ -81,9 +75,7 @@ Cypress.Commands.add('stubInvestApi', () => {
     .as('apiMekoChart');
 
   cy.intercept('/api/*/home/real-time-news*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `real-time-news-${page}`});
+      req.reply({fixture: `real-time-news-${req.query.page}`});
     })
     .as('apiRealTimeNews');
 
@@ -91,9 +83,7 @@ Cypress.Commands.add('stubInvestApi', () => {
   cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
     .as('apiSuggest');
   cy.intercept('/api/home/category-news*', req => {
-      const url = new URL(req.url);
-      const page = parseInt(url.searchParams.get('page'), 10);
-      req.reply({fixture: `category-news-${page}`});
+      req.reply({fixture: `category-news-${req.query.page}`});
     })
     .as('apiCategoryNews');
 
@@ -204,8 +194,7 @@ Cypress.Commands.add('stubInvestApi', () => {
   cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
     .as('apiOverseasMekoChart');
   cy.intercept('/api/overseas/home/representative-stock*', req => {
-      const url = new URL(req.url);
-      switch (url.searchParams.get('category')) {
+      switch (req.query.category) {
         case 'DOW':
           req.reply({fixture: 'overseas-representative-stock-dow'});
           break;
