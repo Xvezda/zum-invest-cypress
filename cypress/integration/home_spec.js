@@ -5,9 +5,10 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
-
     cy.stubInvestApi();
+  });
 
+  const visit = () => {
     cy.clock(now);
     cy.visit('/investment', {
       onBeforeLoad(win) {
@@ -22,9 +23,10 @@ describe('zum 투자 홈', () => {
     cy.wait('@apiHome').as('apiHomeHttp');
     cy.wait('@apiCategoryNews').as('apiCategoryNewsHttp');
     cy.tick(1000);
-  });
+  };
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
+    visit();
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
     cy.ignoreKnownError('Navigation cancelled from');
 
@@ -51,6 +53,7 @@ describe('zum 투자 홈', () => {
 
   describe('사이드바', () => {
     it('메뉴가 보여진다.', () => {
+      visit();
       cy.tick(600000)
         .withHidden('#header, .right_cont .interested_items, .right_cont .gdn_wrap', () => {
         cy.get('.right_cont_inner')
@@ -66,6 +69,7 @@ describe('zum 투자 홈', () => {
     });
 
     it('아래로 스크롤하면 따라온다.', () => {
+      visit();
       cy.scrollTo('bottom')
         .get('.right_cont')
         .should('have.descendants', '.sticky');
@@ -73,6 +77,7 @@ describe('zum 투자 홈', () => {
 
     describe('주요지표', () => {
       beforeEach(() => {
+        visit();
         cy.get('.main_indicator')
           .as('mainIndicator');
 
@@ -165,13 +170,9 @@ describe('zum 투자 홈', () => {
   });  // END: 사이드바
 
   describe('오늘의 주요뉴스', () => {
-    beforeEach(() => {
-      cy.get('.today_news')
-        .first()
-        .as('todayNews');
-    });
-
     it('화살표 버튼을 눌러 투자노트와 공시를 살펴볼 수 있다.', () => {
+      visit();
+
       cy.get('.breaking_news')
         .as('breakingNews');
 
@@ -209,6 +210,12 @@ describe('zum 투자 홈', () => {
     });
 
     it('오늘의 주요 뉴스가 보여진다.', () => {
+      visit();
+
+      cy.get('.today_news')
+        .first()
+        .as('todayNews');
+
       cy.get('@todayNews')
         .scrollIntoView();
 
@@ -225,6 +232,23 @@ describe('zum 투자 홈', () => {
     });
 
     it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다.', () => {
+      cy.fixture('home')
+        .then(home => {
+          const [firstItem,] = home.realtimeComments.items;
+          firstItem.content = '세상을 읽고 담는 줌인터넷';
+          firstItem.stockCode = '239340';
+          firstItem.stockName = '줌인터넷';
+
+          const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
+          firstTemplatedNews.id = '12345678';
+          firstTemplatedNews.title = '@@주요뉴스_제목@@';
+          firstTemplatedNews.landingUrl = 'https://news.zum.com/articles/12345678';
+
+          cy.intercept('/api/home', home)
+            .as('apiHome');
+        });
+      visit();
+
       const articleIdx = '12345678';
 
       cy.intercept('POST', 'https://cmnt.zum.com/vote/article/like', req => {
@@ -284,6 +308,7 @@ describe('zum 투자 홈', () => {
 
   describe('증시전망', () => {
     beforeEach(() => {
+      visit();
       cy.get('.stock_view')
         .scrollIntoView()
         .as('stockView');
@@ -323,6 +348,8 @@ describe('zum 투자 홈', () => {
   });  // END: 증시전망
 
   describe('투자노트', () => {
+    beforeEach(visit);
+
     it('투자노트가 보여진다.', () => {
       cy.get('.expert_insight').scrollIntoView();
       cy.withHidden('#header', () => {
@@ -341,6 +368,7 @@ describe('zum 투자 홈', () => {
 
   describe('실시간 종목 TALK', () => {
     it('스크롤하여 대화를 볼 수 있다.', () => {
+      visit();
       cy.get('.real_time_contents_wrap')
         .within(() => {
           cy.get('ul > li').as('listItems');
@@ -353,15 +381,29 @@ describe('zum 투자 홈', () => {
     });
 
     it('대화를 클릭하여 종목 상세페이지로 이동할 수 있다. ', () => {
+      cy.fixture('home')
+        .then(home => {
+          const [firstItem,] = home.realtimeComments.items;
+          firstItem.content = '세상을 읽고 담는 줌인터넷';
+          firstItem.stockCode = '239340';
+          firstItem.stockName = '줌인터넷';
+
+          cy.intercept('/api/home', home)
+            .as('apiHome');
+        });
+      visit();
+
       cy.get('.real_time_contents_wrap')
         .contains('세상을 읽고 담는 줌인터넷')
         .click()
         .url()
         .should('contain', '239340');
     });
-  });
+  });  // END: 실시간 종목 TALK
 
   describe('분야별 실시간 뉴스', () => {
+    beforeEach(visit);
+
     it('카테고리를 변경할 수 있다.', () => {
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
       const categoryTable = {
