@@ -318,27 +318,23 @@ describe('zum 투자 홈', () => {
     });
 
     it('목록에서 클릭하면 해당 영상이 재생된다.', () => {
-      recurse(
-        () => cy.get('@postMessage'),
-        message =>
-          expect(message).to.be.calledWithMatch(/resize/),
-        {
-          delay: 1000,
-          timeout: 20000,
-        }
-      );
+      const shouldPostMessageMatch = pattern => {
+        recurse(
+          () => cy.get('@postMessage'),
+          message =>
+            expect(message).to.be.calledWithMatch(pattern),
+          {
+            delay: 1000,
+            timeout: 20000,
+          }
+        );
+      };
+
+      shouldPostMessageMatch(/resize/);
       cy.get('.thumbnail_list_wrap ul > li:not(.active) > a')
         .each($link => {
           cy.wrap($link).click();
-          recurse(
-            () => cy.get('@postMessage'),
-            message =>
-              expect(message).to.be.calledWithMatch(/settedIdAndPlay/),
-            {
-              delay: 1000,
-              timeout: 20000,
-            }
-          );
+          shouldPostMessageMatch(/settedIdAndPlay/);
         });
     });
   });  // END: 증시전망
