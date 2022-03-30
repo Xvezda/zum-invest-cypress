@@ -99,84 +99,8 @@ Cypress.Commands.add('stubInvestApi', () => {
   cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
     .as('apiDebateHome');
 
-  const modifyInvestmentContent = home => {
-    const [firstContent,] = home.recentInvestmentContents;
-    firstContent.authorId = 123;
-    firstContent.postId = 42;
-    firstContent.authorName = '@@투자노트_작성자@@';
-    firstContent.title = '@@투자노트_제목@@';
-    firstContent.leadText = '@@투자노트_내용@@';
-    firstContent.subCategory = '@@투자노트_카테고리@@';
-  };
-
-  const modifyRepresentativeStock = home => {
-    home.representativeStock = [
-      {
-        "stock": {
-          "financeCategory": "OVERSEAS_STOCK",
-          "id": "AAPL",
-          "name": "애플",
-          "updateDateTime": "2022-02-01T06:40:08",
-          "symbol": "NASDAQ",
-          "currentPrice": 174.07,
-          "priceChange": 3.86,
-          "rateOfChange": 2.27,
-          "preClosingPrice": 170.21,
-          "highPrice": 174.14,
-          "lowPrice": 170.21
-        },
-        "article": {
-          "id": "https://apple.com/",
-          "thumbnail": null,
-          "title": "@@대표종목_뉴스a@@",
-          "leadText": "@@대표종목_뉴스a_내용@@",
-          "registerDateTime": "2022-02-24T09:28:48",
-          "mediaName": "@@대표종목_뉴스a_미디어@@",
-          "landingUrl": null,
-          "category": "해외증시",
-          "subCategory": null
-        }
-      },
-      {
-        "stock": {
-          "financeCategory": "OVERSEAS_STOCK",
-          "id": "AMZN",
-          "name": "아마존",
-          "updateDateTime": "2022-02-09T06:41:10",
-          "symbol": "NASDAQ",
-          "currentPrice": 3272.99,
-          "priceChange": 4.8301,
-          "rateOfChange": 0.15,
-          "preClosingPrice": 3268.16,
-          "highPrice": 3282.37,
-          "lowPrice": 3201
-        },
-        "article": {
-          "id": "https://amazon.com/",
-          "thumbnail": null,
-          "title": "@@대표종목_뉴스b@@",
-          "leadText": "@@대표종목_뉴스b_내용@@",
-          "registerDateTime": "2022-02-24T09:28:48",
-          "mediaName": "@@대표종목_뉴스b_미디어@@",
-          "landingUrl": null,
-          "category": "해외증시",
-          "subCategory": null
-        }
-      }
-    ]
-  };
-
-  const modifyMainNews = home => {
-  };
-
-  cy.fixture('overseas-home')
-    .then(home => {
-      modifyInvestmentContent(home);
-      modifyRepresentativeStock(home);
-
-      cy.intercept('/api/overseas/home', home)
-        .as('apiOverseasHome');
-    });
+  cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
+    .as('apiOverseasHome');
 
   cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
     .as('apiOverseasMekoChart');
