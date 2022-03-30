@@ -322,7 +322,7 @@ Cypress.Commands.add(
       },
       http => expect(http).to.be.not.null,
       {
-        delay: 1,
+        delay: 10,
         log: false,
       }
     );
