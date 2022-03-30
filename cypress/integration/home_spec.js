@@ -244,15 +244,18 @@ describe('zum 투자 홈', () => {
         .url()
         .should('contain', articleIdx);
 
-      cy.repeatUntilAvailable(
-        () => cy.tick(1000),
-        '@apiCmntArticleInfo',
-      );
+      const tickWhileWait = alias => {
+        return recurse(
+          () => cy
+            .tick(1000)
+            .get(alias),
+          http => expect(http).to.be.not.null,
+          { delay: 100 },
+        )
+      };
 
-      cy.repeatUntilAvailable(
-        () => cy.tick(1000),
-        '@apiCmntArticleList',
-      );
+      tickWhileWait('@apiCmntArticleInfo');
+      tickWhileWait('@apiCmntArticleList');
 
       // NOTE: 불필요한것으로 추정되는 요청
       cy.wait('@apiCmntArticleInfo');
