@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 require('cypress-plugin-snapshots/commands');
+const { recurse } = require('cypress-recurse');
 
 const { basename } = require('path');
 Cypress.Commands.add('fixCypressSpec', function () {
@@ -104,12 +105,19 @@ Cypress.Commands.add('stubInvestApi', () => {
       firstItem.stockCode = '239340';
       firstItem.stockName = '줌인터넷';
 
+      const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
+      firstTemplatedNews.id = '12345678';
+      firstTemplatedNews.title = '@@주요뉴스_제목@@';
+      firstTemplatedNews.landingUrl = 'https://news.zum.com/articles/12345678';
+
       cy.intercept('/api/home', home)
         .as('apiHome');
     });
 
-  cy.intercept('/article/info/**', {statusCode: 200});
-  cy.intercept('/api/news/detail/*', {fixture: 'news-detail'});
+  cy.intercept('/article/info/**', {statusCode: 200})
+    .as('apiArticleInfo');
+  cy.intercept('/api/news/detail/*', {fixture: 'news-detail'})
+    .as('apiNewsDetail');
 
   cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
     .as('apiDebateHome');
@@ -180,6 +188,10 @@ Cypress.Commands.add('stubInvestApi', () => {
       }
     ]
   };
+
+  const modifyMainNews = home => {
+  };
+
   cy.fixture('overseas-home')
     .then(home => {
       modifyInvestmentContent(home);
@@ -208,6 +220,12 @@ Cypress.Commands.add('stubInvestApi', () => {
     .as('apiOverseasRepresentativeStock');
   cy.intercept('/api/overseas/common', {fixture: 'overseas-common'})
     .as('apiOverseasCommon');
+
+  cy.intercept('https://cmnt.zum.com/article/info/**', {fixture: 'cmnt-article-info'})
+    .as('apiCmntArticleInfo');
+
+  cy.intercept('https://cmnt.zum.com/cmnt/article-list/**', {fixture: 'cmnt-article-list'})
+    .as('apiCmntArticleList');
 });
 
 Cypress.Commands.add(
@@ -293,6 +311,23 @@ Cypress.Commands.add(
     );
   }
 );
+
+Cypress.Commands.add(
+  'repeatUntilAvailable',
+  (toRepeat, target) => {
+    return recurse(
+      () => {
+        toRepeat();
+        return cy.get(target);
+      },
+      http => expect(http).to.be.not.null,
+      {
+        delay: 1,
+        log: false,
+      }
+    );
+  }
+)
 
 Cypress.Commands.add('login', () => 
   cy.setCookie('_ZIL', '1')  // 로그인 & 로그아웃 표시 버튼
