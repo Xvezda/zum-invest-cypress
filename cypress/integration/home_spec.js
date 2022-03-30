@@ -247,10 +247,10 @@ describe('zum 투자 홈', () => {
       const tickWhileWait = alias => {
         return recurse(
           () => cy
-            .tick(1000)
+            .tick(100)
             .get(alias),
           http => expect(http).to.be.not.null,
-          { delay: 1000 },
+          { delay: 100 },
         )
       };
 
