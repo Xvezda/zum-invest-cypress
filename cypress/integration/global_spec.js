@@ -1,11 +1,14 @@
-describe('해외증시', () => {
-  const now = new Date('2022-03-15T10:00:00');
+describe.only('해외증시', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
 
     cy.stubInvestApi();
+  });
+
+  const now = new Date('2022-03-15T10:00:00');
+  const visit = () => {
     cy.clock(now);
 
     cy.visit('/investment', {
@@ -23,10 +26,11 @@ describe('해외증시', () => {
       // FIXME: Bad code!
       .its('0.response.body')
       .as('overseasHomeResponse');
-  });
+  };
 
   describe('해외증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
+      visit();
       const mapTable = {
         '다우산업 30': 'dow',
         '나스닥 100': 'nasdaq'
@@ -44,6 +48,7 @@ describe('해외증시', () => {
     });
 
     it('다우산업 화살표를 클릭해 주요뉴스를 살펴볼 수 있다.', () => {
+      visit();
       cy.get('.main_news_list')
         .as('mainNewsList')
         .scrollIntoView();
@@ -98,6 +103,7 @@ describe('해외증시', () => {
           cy.wrap(mainCountryNames)
             .each(name => cy.get('@majorIndex').should('contain', name));
         });
+      visit();
 
       cy.get('@majorIndex')
         .contains('나스닥 종합')
@@ -120,6 +126,7 @@ describe('해외증시', () => {
 
   describe('해외 대표 종목', () => {
     it('차트와 뉴스, 종목 리스트를 보여준다.', () => {
+      visit();
       // DOW와 NASDAQ 요청 대기
       cy.wait('@apiOverseasRepresentativeStock');
       cy.wait('@apiOverseasRepresentativeStock');
@@ -130,6 +137,67 @@ describe('해외증시', () => {
     });
 
     it('기간 버튼을 눌러 차트를 바꾸고 리스트를 클릭하여 뉴스를 바꿀 수 있다.', () => {
+      cy.fixture('overseas-home')
+        .then(home => {
+          home.representativeStock = [
+            {
+              "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "AAPL",
+                "name": "애플",
+                "updateDateTime": "2022-02-01T06:40:08",
+                "symbol": "NASDAQ",
+                "currentPrice": 174.07,
+                "priceChange": 3.86,
+                "rateOfChange": 2.27,
+                "preClosingPrice": 170.21,
+                "highPrice": 174.14,
+                "lowPrice": 170.21
+              },
+              "article": {
+                "id": "https://apple.com/",
+                "thumbnail": null,
+                "title": "@@대표종목_뉴스a@@",
+                "leadText": "@@대표종목_뉴스a_내용@@",
+                "registerDateTime": "2022-02-24T09:28:48",
+                "mediaName": "@@대표종목_뉴스a_미디어@@",
+                "landingUrl": null,
+                "category": "해외증시",
+                "subCategory": null
+              }
+            },
+            {
+              "stock": {
+                "financeCategory": "OVERSEAS_STOCK",
+                "id": "AMZN",
+                "name": "아마존",
+                "updateDateTime": "2022-02-09T06:41:10",
+                "symbol": "NASDAQ",
+                "currentPrice": 3272.99,
+                "priceChange": 4.8301,
+                "rateOfChange": 0.15,
+                "preClosingPrice": 3268.16,
+                "highPrice": 3282.37,
+                "lowPrice": 3201
+              },
+              "article": {
+                "id": "https://amazon.com/",
+                "thumbnail": null,
+                "title": "@@대표종목_뉴스b@@",
+                "leadText": "@@대표종목_뉴스b_내용@@",
+                "registerDateTime": "2022-02-24T09:28:48",
+                "mediaName": "@@대표종목_뉴스b_미디어@@",
+                "landingUrl": null,
+                "category": "해외증시",
+                "subCategory": null
+              }
+            }
+          ]
+          cy.intercept('/api/overseas/home', home)
+            .as('apiOverseasHome');
+        });
+      visit();
+
       const periodTable = {
         '1주': 'WEEKLY',
         '3개월': 'MONTHLY3',
@@ -177,6 +245,7 @@ describe('해외증시', () => {
     });
 
     it.skip('해외증시 주요뉴스를 화살표 버튼을 눌러 살펴볼 수 있다.', () => {
+      visit();
       cy.get('.stock_main_news_wrap')
         .as('stockMainNewsWrap');
 
@@ -228,6 +297,7 @@ describe('해외증시', () => {
     cy.intercept('/api/overseas/debates/*/vote', {fixture: 'overseas-debates-vote'})
       .as('debatesVote');
 
+    visit();
     cy.wrap([
         {
           selector: '.rise',
@@ -254,6 +324,7 @@ describe('해외증시', () => {
 
   describe('해외 투자노트', () => {
     it('해외 투자노트 타이틀을 클릭하면 투자노트 목록의 해외증시 탭으로 이동한다.', () => {
+      visit();
       cy.get('.expert_insight')
         .contains('해외 투자노트')
         .click()
@@ -263,6 +334,21 @@ describe('해외증시', () => {
     });
 
     it('클릭할 경우, 이름 또는 프로필은 필진페이지, 카테고리는 카테고리 상세, 제목은 게시글 보기로 이동한다.', () => {
+      cy.fixture('overseas-home')
+        .then(home => {
+          const [firstContent,] = home.recentInvestmentContents;
+          firstContent.authorId = 123;
+          firstContent.postId = 42;
+          firstContent.authorName = '@@투자노트_작성자@@';
+          firstContent.title = '@@투자노트_제목@@';
+          firstContent.leadText = '@@투자노트_내용@@';
+          firstContent.subCategory = '@@투자노트_카테고리@@';
+
+          cy.intercept('/api/overseas/home', home)
+            .as('apiOverseasHome');
+        });
+      visit();
+
       cy.wrap([
           {
             target: '@@투자노트_작성자@@',
@@ -289,6 +375,7 @@ describe('해외증시', () => {
 
   describe('해외 실시간 뉴스', () => {
     it('카테고리를 변경할 수 있다.', () => {
+      visit();
       const categoryTable = {
         '해외 증시': 'MARKET',
         '해외 종목': 'STOCK',
@@ -306,11 +393,13 @@ describe('해외증시', () => {
     });
 
     it('스크롤을 하여 다음 해외 실시간 뉴스를 불러온다.', () => {
+      visit();
       cy.clock().invoke('restore');
       cy.shouldRequestOnScroll('@apiRealTimeNews');
     });
 
     it('달력을 클릭하여 열고 닫을 수 있다.', () => {
+      visit();
       cy.get('.mini-calendar')
         .as('miniCalendar');
 
@@ -331,6 +420,7 @@ describe('해외증시', () => {
     });
 
     it('달력을 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
+      visit();
       const getFormattedDate = date => [
           date.getFullYear(),
           date.getMonth() + 1,
