@@ -1,4 +1,4 @@
-describe.only('해외증시', () => {
+describe('해외증시', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
