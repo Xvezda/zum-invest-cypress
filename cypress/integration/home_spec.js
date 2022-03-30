@@ -19,7 +19,8 @@ describe('zum 투자 홈', () => {
       .filter(':contains("홈")')
       .click();
 
-    cy.wait(['@apiHome', '@apiCategoryNews']);
+    cy.wait('@apiHome').as('apiHomeHttp');
+    cy.wait('@apiCategoryNews').as('apiCategoryNewsHttp');
     cy.tick(1000);
   });
 
@@ -223,24 +224,58 @@ describe('zum 투자 홈', () => {
       });
     });
 
-    it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있다.', () => {
-      cy.fixture('home')
-        .its('mainNews')
-        .as('mainNews');
+    it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다.', () => {
+      const articleIdx = '12345678';
 
-      const clickNewsAndMatchUrl = news => {
-        cy.contains(news.title).click();
-        cy.url().should('contain', news.id);
-        cy.go('back');
-      };
+      cy.intercept('POST', 'https://cmnt.zum.com/vote/article/like', req => {
+          expect(req.body).to.deep.contain({articleIdx});
+          req.reply({
+            statusCode: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: '"LIKE"',
+          });
+        })
+        .as('apiCmntVoteArticleLike');
 
-      cy.get('@mainNews')
-        .its('templatedNews.items')
-        .each(clickNewsAndMatchUrl);
+      cy.contains('@@주요뉴스_제목@@')
+        .click()
+        .url()
+        .should('contain', articleIdx);
 
-      cy.get('@mainNews')
-        .its('subNewsItems.0')  // 첫번째 뉴스만 확인
-        .then(clickNewsAndMatchUrl);
+      cy.repeatUntilAvailable(
+        () => cy.tick(1000),
+        '@apiCmntArticleInfo',
+      );
+
+      cy.repeatUntilAvailable(
+        () => cy.tick(1000),
+        '@apiCmntArticleList',
+      );
+
+      // NOTE: 불필요한것으로 추정되는 요청
+      cy.wait('@apiCmntArticleInfo');
+      cy.wait('@apiCmntArticleInfo');
+      cy.wait('@apiCmntArticleInfo');
+
+      // API stub 응답값 덮어쓰기
+      cy.fixture('cmnt-article-info')
+        .then(info => {
+          info.likeCount += 1;
+          cy.intercept('https://cmnt.zum.com/article/info/**', info)
+            .as('apiCmntArticleInfo');
+        });
+
+      cy.get('.like button')
+        .first()
+        .click();
+
+      cy.wait('@apiCmntVoteArticleLike');
+      cy.wait('@apiCmntArticleInfo');
+
+      cy.get('.like .count')
+        .should('contain', 1);
     });
   });  // END: 오늘의 주요뉴스
 
