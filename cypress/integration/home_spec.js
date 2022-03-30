@@ -232,24 +232,20 @@ describe('zum 투자 홈', () => {
     });
 
     it('주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다.', () => {
+      const articleIdx = '12345678';
+      const articleTitle = '@@주요뉴스_제목@@';
+
       cy.fixture('home')
         .then(home => {
-          const [firstItem,] = home.realtimeComments.items;
-          firstItem.content = '세상을 읽고 담는 줌인터넷';
-          firstItem.stockCode = '239340';
-          firstItem.stockName = '줌인터넷';
-
           const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
-          firstTemplatedNews.id = '12345678';
-          firstTemplatedNews.title = '@@주요뉴스_제목@@';
+          firstTemplatedNews.id = articleIdx;
+          firstTemplatedNews.title = articleTitle;
           firstTemplatedNews.landingUrl = 'https://news.zum.com/articles/12345678';
 
           cy.intercept('/api/home', home)
             .as('apiHome');
         });
       visit();
-
-      const articleIdx = '12345678';
 
       cy.intercept('POST', 'https://cmnt.zum.com/vote/article/like', req => {
           expect(req.body).to.deep.contain({articleIdx});
@@ -263,7 +259,7 @@ describe('zum 투자 홈', () => {
         })
         .as('apiCmntVoteArticleLike');
 
-      cy.contains('@@주요뉴스_제목@@')
+      cy.contains(articleTitle)
         .click()
         .url()
         .should('contain', articleIdx);
@@ -381,11 +377,13 @@ describe('zum 투자 홈', () => {
     });
 
     it('대화를 클릭하여 종목 상세페이지로 이동할 수 있다. ', () => {
+      const stockCode = '239340';
+      const content = '세상을 읽고 담는 줌인터넷';
       cy.fixture('home')
         .then(home => {
           const [firstItem,] = home.realtimeComments.items;
-          firstItem.content = '세상을 읽고 담는 줌인터넷';
-          firstItem.stockCode = '239340';
+          firstItem.content = content;
+          firstItem.stockCode = stockCode;
           firstItem.stockName = '줌인터넷';
 
           cy.intercept('/api/home', home)
@@ -394,10 +392,10 @@ describe('zum 투자 홈', () => {
       visit();
 
       cy.get('.real_time_contents_wrap')
-        .contains('세상을 읽고 담는 줌인터넷')
+        .contains(content)
         .click()
         .url()
-        .should('contain', '239340');
+        .should('contain', stockCode);
     });
   });  // END: 실시간 종목 TALK
 
