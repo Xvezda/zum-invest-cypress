@@ -88,21 +88,8 @@ Cypress.Commands.add('stubInvestApi', () => {
     .as('apiCategoryNews');
 
   // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
-  cy.fixture('home')
-    .then(home => {
-      const [firstItem,] = home.realtimeComments.items;
-      firstItem.content = '세상을 읽고 담는 줌인터넷';
-      firstItem.stockCode = '239340';
-      firstItem.stockName = '줌인터넷';
-
-      const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
-      firstTemplatedNews.id = '12345678';
-      firstTemplatedNews.title = '@@주요뉴스_제목@@';
-      firstTemplatedNews.landingUrl = 'https://news.zum.com/articles/12345678';
-
-      cy.intercept('/api/home', home)
-        .as('apiHome');
-    });
+  cy.intercept('/api/home', {fixture: 'home'})
+    .as('apiHome');
 
   cy.intercept('/article/info/**', {statusCode: 200})
     .as('apiArticleInfo');
