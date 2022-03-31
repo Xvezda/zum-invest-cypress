@@ -234,6 +234,29 @@ Cypress.Commands.add(
   }
 );
 
+Cypress.Commands.add(
+  'reverse',
+  {
+    prevSubject: true,
+  },
+  subject => {
+    const log = Cypress.log({
+      autoEnd: false,
+      displayName: 'reverse',
+    });
+    try {
+      const reversed = Array.from(subject).reverse();
+      log.set({$el: reversed})
+      return reversed;
+    } catch (e) {
+      log.error(e);
+      return subject;
+    } finally {
+      log.end();
+    }
+  }
+);
+
 Cypress.Commands.add('login', () => 
   cy.setCookie('_ZIL', '1')  // 로그인 & 로그아웃 표시 버튼
     .setCookie('ZSID', '11111111-2222-3333-4444-555555555555')  // 회원관련 API 요청
