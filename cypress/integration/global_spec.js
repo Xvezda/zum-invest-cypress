@@ -31,20 +31,18 @@ describe('해외증시', () => {
   describe('해외증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
       visit();
-      const mapTable = {
-        '다우산업 30': 'dow',
-        '나스닥 100': 'nasdaq'
-      };
       cy.get('.map_title_wrap').within(() => {
         cy.get('ul > li > a')
           .reverse()
-          .each($menu => {
-            const menuText = $menu.text();
-            cy.get(`a:contains("${menuText}")`)
-              .click()
+          .clickEachWithTable(
+            {
+              '다우산업 30': 'dow',
+              '나스닥 100': 'nasdaq'
+            },
+            id => cy
               .url()
-              .should('contain', `category=${mapTable[menuText]}`);
-          });
+              .should('contain', `category=${id}`),
+          );
         });
     });
 
@@ -199,25 +197,22 @@ describe('해외증시', () => {
         });
       visit();
 
-      const periodTable = {
-        '1주': 'WEEKLY',
-        '3개월': 'MONTHLY3',
-        '6개월': 'MONTHLY6',
-        '1년': 'YEARLY',
-      };
       cy.get('.representative_index')
         .within(() => {
           cy.get('.chart_tab a')
-            .each($button => {
-              const buttonText = $button.text();
-              const period = periodTable[buttonText];
-
-              cy.wrap($button).click().should('be.activated');
-              cy.get('.chart iframe')
+            .clickEachWithTable(
+              {
+                '1주': 'WEEKLY',
+                '3개월': 'MONTHLY3',
+                '6개월': 'MONTHLY6',
+                '1년': 'YEARLY',
+              },
+              id => cy
+                .get('.chart iframe')
                 .as('chartIframe')
                 .should('have.attr', 'src')
-                .and('contain', `period=${period}`);
-            });
+                .and('contain', `period=${id}`)
+            );
           
           cy.contains('애플')
             .click()
@@ -377,22 +372,19 @@ describe('해외증시', () => {
   describe('해외 실시간 뉴스', () => {
     it('카테고리를 변경할 수 있다.', () => {
       visit();
-      const categoryTable = {
-        '전체': 'ALL',
-        '해외 증시': 'MARKET',
-        '해외 종목': 'STOCK',
-      };
       cy.get('.area_real_news ul.menu_tab > li > a')
         .reverse()
-        .each($menu => {
-          const menuText = $menu.text();
-          cy.wrap($menu)
-            .click({force: true});
-
-          cy.wait('@apiRealTimeNews')
+        .clickEachWithTable(
+          {
+            '전체': 'ALL',
+            '해외 증시': 'MARKET',
+            '해외 종목': 'STOCK',
+          },
+          id => cy
+            .wait('@apiRealTimeNews')
             .its('request.url')
-            .should('contain', `category=${categoryTable[menuText]}`);
-        });
+            .should('contain', `category=${id}`)
+        );
     });
 
     it('스크롤을 하여 다음 해외 실시간 뉴스를 불러온다.', () => {
