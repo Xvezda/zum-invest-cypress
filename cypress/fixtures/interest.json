@@ -2,21 +2,6 @@
     "items": [
         {
             "financeCategory": "DOMESTIC_STOCK",
-            "id": "239340",
-            "name": "줌인터넷",
-            "updateDateTime": "2022-03-28T14:20:59",
-            "code": "239340",
-            "symbol": "KOSDAQ",
-            "registerDateTime": "2022-03-28T14:41:44",
-            "order": 0,
-            "rateOfChange": -4.27,
-            "benefitRate": 0,
-            "priceOnRegistration": 6730,
-            "currentPrice": 6730,
-            "priceChange": -300
-        },
-        {
-            "financeCategory": "DOMESTIC_STOCK",
             "id": "005930",
             "name": "삼성전자",
             "updateDateTime": "2022-03-28T14:21:00",
