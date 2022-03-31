@@ -33,21 +33,19 @@ describe('국내증시', () => {
 
   describe('국내증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
-      const mapTable = {
-        'TOP1000': 'ALL',
-        '코스피': 'KOSPI',
-        '코스닥': 'KOSDAQ'
-      };
       cy.get('.map_title_wrap').within(() => {
         cy.get('ul > li > a')
           .reverse()
-          .each($menu => {
-            const menuText = $menu.text();
-            cy.get(`a:contains("${menuText}")`)
-              .click()
+          .clickEachWithTable(
+            {
+              'TOP1000': 'ALL',
+              '코스피': 'KOSPI',
+              '코스닥': 'KOSDAQ'
+            },
+            id => cy
               .url()
-              .should('contain', `category=${mapTable[menuText]}`);
-          });
+              .should('contain', `category=${id}`)
+          );
         });
     });
 
@@ -201,14 +199,6 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
-      const menuTable = {
-        '급등주 PICK': 'soaring',
-        '리포트 PICK': 'report',
-        '거래급증': 'transaction-rise',
-        '신규상장주': 'new',
-        '낙폭과대': 'fall',
-        '골든크로스': 'golden-cross',
-      };
       recurse(
           () =>
             triggerDomesticHomeApi()
@@ -221,23 +211,26 @@ describe('국내증시', () => {
       cy.get('.today_hot_pick')
         .as('todayHotPick')
         .find('ul > li > a')
-        .each($menu => {
-          const menuText = $menu.text();
-          cy.wrap($menu)
-            .click()
-            .should('be.activated');
-          
-          cy.get('@domesticHomeResponse')
+        .clickEachWithTable(
+          {
+            '급등주 PICK': 'soaring',
+            '리포트 PICK': 'report',
+            '거래급증': 'transaction-rise',
+            '신규상장주': 'new',
+            '낙폭과대': 'fall',
+            '골든크로스': 'golden-cross',
+          },
+          id => cy
+            .get('@domesticHomeResponse')
             .then(home => {
-              const key = menuTable[menuText];
-              return home.todayHotPick[key].map(({ name }) => name);
+              return home.todayHotPick[id].map(({ name }) => name);
             })
             .each(name =>
               cy.get('@todayHotPick')
                 .contains(name)
                 .should('be.visible')
-            );
-        });
+            )
+        );
     });
   }); // END: 오늘의 HOT PICK
 
