@@ -36,7 +36,8 @@ describe('해외증시', () => {
         '나스닥 100': 'nasdaq'
       };
       cy.get('.map_title_wrap').within(() => {
-        cy.get('ul > li:not(:first-child) > a')
+        cy.get('ul > li > a')
+          .reverse()
           .each($menu => {
             const menuText = $menu.text();
             cy.get(`a:contains("${menuText}")`)
@@ -377,10 +378,12 @@ describe('해외증시', () => {
     it('카테고리를 변경할 수 있다.', () => {
       visit();
       const categoryTable = {
+        '전체': 'ALL',
         '해외 증시': 'MARKET',
         '해외 종목': 'STOCK',
       };
-      cy.get('.area_real_news ul.menu_tab > li:not(:first-child) > a')
+      cy.get('.area_real_news ul.menu_tab > li > a')
+        .reverse()
         .each($menu => {
           const menuText = $menu.text();
           cy.wrap($menu)

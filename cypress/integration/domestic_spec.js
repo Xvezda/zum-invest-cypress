@@ -34,11 +34,13 @@ describe('국내증시', () => {
   describe('국내증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
       const mapTable = {
+        'TOP1000': 'ALL',
         '코스피': 'KOSPI',
         '코스닥': 'KOSDAQ'
       };
       cy.get('.map_title_wrap').within(() => {
-        cy.get('ul > li:not(:first-child) > a')
+        cy.get('ul > li > a')
+          .reverse()
           .each($menu => {
             const menuText = $menu.text();
             cy.get(`a:contains("${menuText}")`)

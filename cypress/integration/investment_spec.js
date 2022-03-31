@@ -60,6 +60,7 @@ describe('투자노트', () => {
 
     it('최신글에서 카테고리 선택을 할 수 있다.', () => {
       const categoryTable = {
+        '전체': 'all',
         '국내증시': 'domesticStock',
         '해외증시': 'overseasStock',
         '가상화폐': 'coin',
@@ -68,7 +69,8 @@ describe('투자노트', () => {
       };
       cy.get('.lasted_write_wrap')
         .within(() => {
-          cy.get('ul.menu_tab > li:not(:first-child) > a')
+          cy.get('ul.menu_tab > li > a')
+            .reverse()
             .each($category => {
               const categoryText = $category.text();
               cy.contains(categoryText)
