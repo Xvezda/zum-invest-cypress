@@ -217,18 +217,29 @@ Cypress.Commands.add(
   {
     prevSubject: 'element',
   },
-  (subject, table, predicate, selector) => {
+  (subject, table, predicate, selectorOrOptions) => {
+    const defaultOptions = {
+      activeClassName: 'active',
+    };
+
+    const options = {
+      ...defaultOptions,
+      ...(typeof selectorOrOptions === 'object' ? selectorOrOptions : {})
+    };
+
     return cy
       .wrap(subject)
       .each($menu => {
-        const menuText = typeof selector === 'function' ?
-          selector($menu) :
-          $menu.text();
+        const selector = typeof selectorOrOptions === 'function' ?
+          selectorOrOptions :
+          $el => $el.text();
+
+        const menuText = selector($menu);
 
         return cy
           .wrap($menu)
           .click({force: true})
-          .should('be.activated')
+          .should('have.ancestors', `.${options.activeClassName}`)
           .then(() => predicate(table[menuText]));
       });
   }
