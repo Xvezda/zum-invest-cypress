@@ -22,7 +22,27 @@ describe('투자노트', () => {
   };
 
   describe('투자노트 TOP6', () => {
-    beforeEach(visit);
+    const post = {
+      "postId": 480,
+      "title": "@@제목@@",
+      "subCategory": "해외종목분석",
+      "writeDateTime": "2022-03-17T00:00:00",
+      "authorId": 34,
+      "authorName": "@@줌투자@@",
+      "leadText": "@@내용@@",
+      "authorThumbnailUrl": "https://finance.zumst.com/writing/85c1c64e_1.jpg",
+      "isOriginal": false
+    };
+
+    beforeEach(() => {
+      cy.fixture('investment')
+        .then(investment => {
+          investment.top.items[0] = post;
+          cy.intercept('/api/investment', investment)
+            .as('apiInvestment');
+        });
+      visit();
+    });
 
     it('카드형태로 보여준다.', () => {
       cy.withHidden('#header', () => {
@@ -32,7 +52,7 @@ describe('투자노트', () => {
     });
 
     it('필진 이름을 클릭하면 필진 상세페이지로 이동하고 스크롤을 내려 최신글을 확인 가능하다.', () => {
-      cy.contains('@@줌투자@@')
+      cy.contains(post.authorName)
         .click();
 
       cy.url()
@@ -47,13 +67,13 @@ describe('투자노트', () => {
         cy.url()
           .should('contain', '/investment/view/480');
 
-      cy.contains('@@제목@@')
+      cy.contains(post.title)
         .click()
         .then(expectUrlToMatch);
 
       cy.go('back');
 
-      cy.contains('@@내용@@')
+      cy.contains(post.leadText)
         .click()
         .then(expectUrlToMatch);
     });
@@ -91,7 +111,35 @@ describe('투자노트', () => {
   });  // END: 최신글
 
   describe('줌 투자 필진', () => {
+    const author = {
+      "authorId": 34,
+      "authorName": "@@줌투자필진@@",
+      "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+      "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
+      "recentTitles": [
+        {
+          "postId": 480,
+          "title": "[🔑개장] 철강주의 상승률 상위 점령"
+        },
+        {
+          "postId": 478,
+          "title": "[🔒 마감] 빵빵 터지는 신고가🎉"
+        },
+        {
+          "postId": 476,
+          "title": "[🔑개장] 물가 대란"
+        }
+      ]
+    };
+
     beforeEach(() => {
+      cy.fixture('investment-authors')
+        .then(authors => {
+          authors.items[0] = author;
+          cy.intercept('/api/investment/authors*', authors)
+            .as('apiInvestmentAuthors');
+        });
+
       visit();
 
       cy.get('.writers_wrap')
@@ -117,10 +165,10 @@ describe('투자노트', () => {
     it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동하고 정렬할 수 있다.', () => {
       cy.contains('줌 투자 필진')
         .click();
-      
+
       cy.url().should('contain', '/investment/author');
       cy.wait('@apiInvestmentAuthors');
-      cy.contains('@@줌투자필진@@').should('be.visible');
+      cy.contains(author.authorName).should('be.visible');
 
       const clickAndMatchApiRequest = name =>
         cy.contains(name)
