@@ -460,3 +460,40 @@ describe('국내증시 종목', () => {
     cy.shouldRequestOnScroll('@apiDomesticStockRealtimeComments');
   });
 });  // END: 국내증시 종목
+
+describe('카테고리별 랭킹', () => {
+  beforeEach(() => {
+    cy.stubInvestApi();
+  });
+
+  const defaultRanking = '시가총액';
+  it(`기본으로 ${defaultRanking} 페이지가 보여지고 탭을 눌러 다른 카테고리를 볼 수 있다.`, () => {
+    cy.visit('/domestic/ranking');
+
+    cy.wait('@apiDomesticRanking')
+      .its('request.url')
+      .should('contain', 'category=MARKET_CAP');
+
+    cy.get('.cont_wrap .tab_line')
+      .find('ul > li:not(.active) > a')
+      .clickEachWithTable(
+        {
+          '상승': 'UPPER',
+          '하락': 'LOWER',
+          '상한가': 'UPPER_LIMIT',
+          '하한가': 'LOWER_LIMIT',
+          '거래급증': 'SOARING_TRADE_VOLUME',
+          '신규상장주': 'NEW_STOCK',
+          '낙폭과대': 'FALL',
+          '골든크로스': 'GOLDEN_CROSS',
+        },
+        id => cy
+          .wait('@apiDomesticRanking')
+          .its('request.url')
+          .should('contain', `category=${id}`)
+          .end()
+          .url()
+          .should('contain', `category=${id}`),
+      );
+  });
+});  // END: 카테고리별 랭킹
