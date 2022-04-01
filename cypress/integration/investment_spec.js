@@ -191,21 +191,8 @@ describe('투자노트', () => {
     // TODO: 테스트 정렬 (가독성)
     // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
     it('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
-      const waitUntil = (alias, predicate, options) =>
-        recurse(
-          () => cy.get(alias),
-          http => http && predicate(http),
-          {
-            ...options,
-            limit: Infinity,
-            timeout: Cypress.config('requestTimeout') || 5000,
-            delay: 1,
-            log: false,
-          },
-        );
-      
       const waitForAuthorsApiUntil = predicate =>
-        waitUntil('@apiAuthors', predicate);
+        cy.waitUntil('@apiAuthors', predicate);
 
       cy.get('@writersWrap')
         .within(() => {

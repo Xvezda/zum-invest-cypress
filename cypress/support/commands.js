@@ -235,6 +235,22 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+  'waitUntil',
+  (alias, predicate, options) =>
+    recurse(
+      () => cy.get(alias),
+      http => http && predicate(http),
+      {
+        limit: Infinity,
+        timeout: Cypress.config('requestTimeout') || 5000,
+        delay: 1,
+        log: false,
+        ...options,
+      },
+    ),
+);
+
+Cypress.Commands.add(
   'reverse',
   {
     prevSubject: true,
