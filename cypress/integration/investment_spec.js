@@ -144,6 +144,57 @@ describe('투자노트', () => {
         .should('contain', `/investment/author/${author.authorId}`);
     });
 
+    // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
+    it('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
+      visit();
+
+      cy.get('.writers_wrap')
+        .scrollIntoView()
+        .as('writersWrap');
+
+      const waitForAuthorsApiUntil = predicate =>
+        cy.waitUntil('@apiAuthors', predicate);
+
+      cy.get('@writersWrap')
+        .within(() => {
+          cy.get('.next')
+            .click();
+
+          waitForAuthorsApiUntil(
+            ({ request }) => expect(request.url).to.contain('page=2'),
+          );
+
+          cy.get('.prev')
+            .click();
+
+          waitForAuthorsApiUntil(
+            ({ request }) => expect(request.url).to.contain('page=1'),
+          );
+
+          cy.get('.count')
+            .invoke('text')
+            .then(text => {
+              const [, _count, total] = text
+                .match(/(\d+)[^\d](\d+)/)
+                .map(d => parseInt(d, 10));
+
+              cy.get('.prev')
+                .click();
+
+              waitForAuthorsApiUntil(
+                ({ request }) => expect(request.url).to.contain(`page=${total}`),
+              );
+            })
+
+          cy.get('.next')
+            .click();
+
+          waitForAuthorsApiUntil(
+            ({ request }) => expect(request.url).to.contain('page=1'),
+          );
+        });
+    });
+
     it('타이틀을 눌러 목록으로 이동하고 목록 정렬과 더보기, 이름과 제목 클릭으로 필진 상세페이지 및 게시글 이동이 가능하다.', () => {
       const post = {
         postId: 123,
@@ -223,57 +274,6 @@ describe('투자노트', () => {
         .go('back');
     });
 
-    // TODO: 테스트 정렬 (가독성)
-    // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
-    it('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
-      visit();
-
-      cy.get('.writers_wrap')
-        .scrollIntoView()
-        .as('writersWrap');
-
-      const waitForAuthorsApiUntil = predicate =>
-        cy.waitUntil('@apiAuthors', predicate);
-
-      cy.get('@writersWrap')
-        .within(() => {
-          cy.get('.next')
-            .click();
-
-          waitForAuthorsApiUntil(
-            ({ request }) => expect(request.url).to.contain('page=2'),
-          );
-
-          cy.get('.prev')
-            .click();
-
-          waitForAuthorsApiUntil(
-            ({ request }) => expect(request.url).to.contain('page=1'),
-          );
-
-          cy.get('.count')
-            .invoke('text')
-            .then(text => {
-              const [, _count, total] = text
-                .match(/(\d+)[^\d](\d+)/)
-                .map(d => parseInt(d, 10));
-
-              cy.get('.prev')
-                .click();
-
-              waitForAuthorsApiUntil(
-                ({ request }) => expect(request.url).to.contain(`page=${total}`),
-              );
-            })
-
-          cy.get('.next')
-            .click();
-
-          waitForAuthorsApiUntil(
-            ({ request }) => expect(request.url).to.contain('page=1'),
-          );
-        });
-    });
   });  // END: 줌 투자 필진
 
 });  // END: 투자노트
