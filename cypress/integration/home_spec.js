@@ -69,6 +69,7 @@ describe('zum 투자 홈', () => {
 
   describe('사이드바', () => {
     it('메뉴가 보여진다.', () => {
+      cy.stubImages();
       visit();
       cy.tick(600000)
         .withHidden('#header, .right_cont .interested_items, .right_cont .gdn_wrap', () => {
@@ -250,6 +251,7 @@ describe('zum 투자 홈', () => {
     });
 
     it('오늘의 주요 뉴스가 보여진다.', () => {
+      cy.stubImages();
       visit();
 
       cy.get('.today_news')
@@ -412,6 +414,7 @@ describe('zum 투자 홈', () => {
             .as('apiHome');
         });
 
+      cy.stubImages();
       visit();
 
       cy.get('.expert_insight').as('expertInsight');

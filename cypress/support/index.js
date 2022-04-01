@@ -20,7 +20,6 @@ import './commands';
 // require('./commands')
 
 import './assertions';
-import './thumbnails';
 
 beforeEach(() => {
   cy.fixCypressSpec();

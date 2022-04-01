@@ -13,9 +13,8 @@ describe('국내증시', () => {
   const triggerMekoChartApi = () =>
     cy.tick(5000);
 
-  beforeEach(() => {
+  const visit = () => {
     cy.stubInvestApi();
-
     cy.visit('/investment', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
@@ -26,13 +25,14 @@ describe('국내증시', () => {
       .click();
 
     cy.wait('@apiDomesticHome');
-  });
+  };
 
   const hideHeaderWhile = callback =>
     cy.withHidden('#header', callback);
 
   describe('국내증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
+      visit();
       cy.get('.map_title_wrap').within(() => {
         cy.get('ul > li > a')
           .reverse()
@@ -65,6 +65,9 @@ describe('국내증시', () => {
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+      cy.stubImages();
+      visit();
+
       cy.get('.map_cont iframe')
         .as('mekoChart');
 
@@ -118,6 +121,7 @@ describe('국내증시', () => {
   });  // END: 국내증시 MAP
 
   it('HOT 업종을 화살표를 눌러 좌우로 살펴볼 수 있다.', () => {
+    visit();
     cy.wait('@apiDomesticCommon');
 
     cy.get('.main_news_list')
@@ -150,6 +154,9 @@ describe('국내증시', () => {
 
   describe('실시간 국내 증시', () => {
     it('코스피 지수를 보여준다.', () => {
+      cy.stubImages();
+      visit();
+
       hideHeaderWhile(() => {
         cy.get('.stock_index_wrap')
           .toMatchImageSnapshot();
@@ -157,6 +164,7 @@ describe('국내증시', () => {
     });
 
     it('각 지표 탭에 마우스를 올리면 활성화 된다.', () => {
+      visit();
       const forEachTab = callback =>
         cy.get('.stock_index_wrap')
           .as('stockIndexWrap')
@@ -185,6 +193,7 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 되고, 항목을 클릭하면 자세한 내용을 여닫을 수 있다.', () => {
+      visit();
       cy.clock().invoke('restore').reload();
       cy.get('.investment_calendar')
         .scrollIntoView()
@@ -214,6 +223,7 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
+      visit();
       recurse(
           () =>
             triggerDomesticHomeApi()
@@ -251,6 +261,9 @@ describe('국내증시', () => {
 
   describe('ZUM 인기종목', () => {
     it('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
+      cy.stubImages();
+      visit();
+
       hideHeaderWhile(() => {
         cy.get('.popularity_event_wrap')
           .toMatchImageSnapshot();
@@ -258,6 +271,7 @@ describe('국내증시', () => {
     });
 
     it('각 탭에 마우스를 올려 인기종목과 연관기사를 볼 수 있다.', () => {
+      visit();
       const emulateMouseOverAndMatch = $tab =>
         cy.wrap($tab)
           .trigger('mouseenter', {force: true})
