@@ -2,6 +2,22 @@ const { recurse } = require("cypress-recurse");
 
 describe('zum 투자 홈', () => {
   const now = new Date('2022-03-15T10:00:00');
+  const stock = {
+    "financeCategory": "DOMESTIC_STOCK",
+    "id": "239340",
+    "name": "줌인터넷",
+    "updateDateTime": "2022-03-28T14:20:59",
+    "code": "239340",
+    "symbol": "KOSDAQ",
+    "registerDateTime": "2022-03-28T14:41:44",
+    "order": 0,
+    "rateOfChange": -4.27,
+    "benefitRate": 0,
+    "priceOnRegistration": 6730,
+    "currentPrice": 6730,
+    "priceChange": -300
+  };
+
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
@@ -34,20 +50,20 @@ describe('zum 투자 홈', () => {
 
     cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
       .as('searchInput')
-      .type('줌인터넷');
+      .type(stock.name);
 
     cy.tick(1000);
     cy.wait('@apiSuggest').then(() => {
       cy.get('.stock_list_wrap .list > *')
         .first()
-        .should('contain', '줌인터넷');
+        .should('contain', stock.name);
 
       cy.get('@searchInput')
         .click({force: true})
         .type('{enter}', {force: true});
       
       cy.url()
-        .should('contain', '239340');
+        .should('contain', stock.code);
     });
   });
 
@@ -148,22 +164,6 @@ describe('zum 투자 홈', () => {
     });  // END: 주요지표
 
     it('로그인하면 관심종목이 보여지고 관심 선택, 해제 및 종목 이동이 가능하다.', () => {
-      const stock = {
-        "financeCategory": "DOMESTIC_STOCK",
-        "id": "239340",
-        "name": "줌인터넷",
-        "updateDateTime": "2022-03-28T14:20:59",
-        "code": "239340",
-        "symbol": "KOSDAQ",
-        "registerDateTime": "2022-03-28T14:41:44",
-        "order": 0,
-        "rateOfChange": -4.27,
-        "benefitRate": 0,
-        "priceOnRegistration": 6730,
-        "currentPrice": 6730,
-        "priceChange": -300
-      };
-
       cy.fixture('interest')
         .then(interest => {
           interest.items.unshift(stock);
@@ -374,7 +374,7 @@ describe('zum 투자 홈', () => {
     });
   });  // END: 증시전망
 
-  describe.only('투자노트', () => {
+  describe('투자노트', () => {
     beforeEach(() => {
       cy.fixture('home')
         .then(home => {
@@ -464,14 +464,13 @@ describe('zum 투자 홈', () => {
     });
 
     it('대화를 클릭하여 종목 상세페이지로 이동할 수 있다. ', () => {
-      const stockCode = '239340';
       const content = '세상을 읽고 담는 줌인터넷';
       cy.fixture('home')
         .then(home => {
           const [firstItem,] = home.realtimeComments.items;
           firstItem.content = content;
-          firstItem.stockCode = stockCode;
-          firstItem.stockName = '줌인터넷';
+          firstItem.stockCode = stock.code;
+          firstItem.stockName = stock.name;
 
           cy.intercept('/api/home', home)
             .as('apiHome');
@@ -482,7 +481,7 @@ describe('zum 투자 홈', () => {
         .contains(content)
         .click()
         .url()
-        .should('contain', stockCode);
+        .should('contain', stock.code);
     });
   });  // END: 실시간 종목 TALK
 
