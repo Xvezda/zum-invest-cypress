@@ -1,5 +1,3 @@
-const { recurse } = require('cypress-recurse');
-
 describe('투자노트', () => {
   beforeEach(() => {
     // TODO: 원인조사
@@ -146,7 +144,7 @@ describe('투자노트', () => {
         .should('contain', `/investment/author/${author.authorId}`);
     });
 
-    it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동하고 정렬할 수 있다.', () => {
+    it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동하고 정렬과 더보기가 가능하다.', () => {
       const author = {
         "authorId": 34,
         "authorName": "@@줌투자필진@@",
@@ -180,7 +178,9 @@ describe('투자노트', () => {
         .click();
 
       cy.url().should('contain', '/investment/author');
-      cy.wait('@apiInvestmentAuthors');
+      cy.wait('@apiInvestmentAuthors')
+        .its('request.url')
+        .should('contain', 'page=1');
       cy.contains(author.authorName).should('be.visible');
 
       const clickAndMatchApiRequest = name =>
@@ -199,6 +199,14 @@ describe('투자노트', () => {
           clickAndMatchApiRequest(name)
             .then(() => clickAndMatchApiRequest(name))
         );
+
+      cy.get('.writer_list_wrap')
+        .contains('더보기')
+        .click();
+
+      cy.wait('@apiInvestmentAuthors')
+        .its('request.url')
+        .should('contain', 'page=2');
     });
 
     // TODO: 테스트 정렬 (가독성)
