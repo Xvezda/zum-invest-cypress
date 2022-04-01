@@ -87,10 +87,12 @@ describe('투자노트', () => {
 
   describe('줌 투자 필진', () => {
     beforeEach(() => {
-      cy.waitForImage('.writers_wrap img');
 
       cy.get('.writers_wrap')
+        .scrollIntoView()
         .as('writersWrap');
+
+      cy.waitForImage('.writers_wrap img');
     });
 
     it('필진이 카드형태로 보여지고, 필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
