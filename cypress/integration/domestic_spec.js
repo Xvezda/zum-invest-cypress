@@ -332,9 +332,26 @@ describe('국내증시 종목', () => {
   });
 
   it('종목개요에서 일별 시세와 투자자별 매매동향을 페이지단위로 볼 수 있다.', () => {
+    const rowsPerPage = 10;
+
+    const expectRequestToMatchPage = pageNumber => alias =>
+      cy.wait(alias)
+        .its('request.url')
+        .should('contain', `page=${pageNumber}`)
+        .and('contain', `size=${rowsPerPage}`);
+
+    const expectRequestToMatchFirstPage = expectRequestToMatchPage(1);
+
+    const clickButtonOf = containerSelector => buttonSelector =>
+      cy.get(containerSelector)
+        .find(buttonSelector)
+        .click();
+
+    const clickButtonOfStockDaily = clickButtonOf('.stock_daily');
+    const clickButtonOfTradingTrend = clickButtonOf('.trading_trend');
+
     cy.fixture('domestic-stock-price')
       .then(price => {
-        const rowsPerPage = 10;
         const lastPage = Math.ceil(price.totalCount / rowsPerPage);
 
         cy.log('last page of stock price is', lastPage);
@@ -350,23 +367,45 @@ describe('국내증시 종목', () => {
 
     cy.fixture('domestic-stock-investor')
       .then(investor => {
-        cy.intercept('/api/domestic/stock/*/investor*', investor)
-          .as('apiDomesticStockInvestor');
+        const lastPage = Math.ceil(investor.totalCount / rowsPerPage);
+
+        cy.log('last page of investor is', lastPage);
+        cy.intercept('/api/domestic/stock/*/investor*', req => {
+          if (req.query.page == lastPage) {
+            req.alias = 'apiDomesticStockInvestorLastPage';
+          } else {
+            req.alias = 'apiDomesticStockInvestor';
+          }
+          req.reply(investor);
+        });
       });
 
     cy.visit('/domestic/item/239340');
-    cy.wait('@apiDomesticStockPrice')
-      .its('request.url')
-      .should('contain', 'page=1');
+    expectRequestToMatchFirstPage('@apiDomesticStockPrice');
+    expectRequestToMatchFirstPage('@apiDomesticStockInvestor')
 
-    cy.wait('@apiDomesticStockInvestor')
-      .its('request.url')
-      .should('contain', 'page=1');
-
-    cy.get('.stock_daily')
-      .find('.last')
-      .click();
-
+    clickButtonOfStockDaily('.last');
     cy.wait('@apiDomesticStockPriceLastPage');
+
+    clickButtonOfStockDaily('.first');
+    expectRequestToMatchFirstPage('@apiDomesticStockPrice');
+
+    clickButtonOfStockDaily('.next');
+    expectRequestToMatchPage(2)('@apiDomesticStockPrice');
+
+    clickButtonOfStockDaily('.prev');
+    expectRequestToMatchFirstPage('@apiDomesticStockPrice');
+
+    clickButtonOfTradingTrend('.last');
+    cy.wait('@apiDomesticStockInvestorLastPage');
+
+    clickButtonOfTradingTrend('.first');
+    expectRequestToMatchFirstPage('@apiDomesticStockInvestor');
+
+    clickButtonOfTradingTrend('.next');
+    expectRequestToMatchPage(2)('@apiDomesticStockInvestor');
+
+    clickButtonOfTradingTrend('.prev');
+    expectRequestToMatchFirstPage('@apiDomesticStockInvestor');
   });
 });  // END: 국내증시 종목
