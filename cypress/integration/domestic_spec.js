@@ -330,4 +330,43 @@ describe('국내증시 종목', () => {
           .should('not.have.class', 'activation');
       });
   });
-});
+
+  it('종목개요에서 일별 시세와 투자자별 매매동향을 페이지단위로 볼 수 있다.', () => {
+    cy.fixture('domestic-stock-price')
+      .then(price => {
+        const rowsPerPage = 10;
+        const lastPage = Math.ceil(price.totalCount / rowsPerPage);
+
+        cy.log('last page of stock price is', lastPage);
+        cy.intercept('/api/domestic/stock/*/price*', req => {
+          if (req.query.page == lastPage) {
+            req.alias = 'apiDomesticStockPriceLastPage';
+          } else {
+            req.alias = 'apiDomesticStockPrice';
+          }
+          req.reply(price);
+        });
+      });
+
+    cy.fixture('domestic-stock-investor')
+      .then(investor => {
+        cy.intercept('/api/domestic/stock/*/investor*', investor)
+          .as('apiDomesticStockInvestor');
+      });
+
+    cy.visit('/domestic/item/239340');
+    cy.wait('@apiDomesticStockPrice')
+      .its('request.url')
+      .should('contain', 'page=1');
+
+    cy.wait('@apiDomesticStockInvestor')
+      .its('request.url')
+      .should('contain', 'page=1');
+
+    cy.get('.stock_daily')
+      .find('.last')
+      .click();
+
+    cy.wait('@apiDomesticStockPriceLastPage');
+  });
+});  // END: 국내증시 종목
