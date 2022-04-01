@@ -280,7 +280,7 @@ describe('zum 투자 홈', () => {
           const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
           firstTemplatedNews.id = articleIdx;
           firstTemplatedNews.title = articleTitle;
-          firstTemplatedNews.landingUrl = 'https://news.zum.com/articles/12345678';
+          firstTemplatedNews.landingUrl = `https://news.zum.com/articles/${articleIdx}`;
 
           cy.intercept('/api/home', home)
             .as('apiHome');
@@ -316,11 +316,6 @@ describe('zum 투자 홈', () => {
 
       tickWhileWait('@apiCmntArticleInfo');
       tickWhileWait('@apiCmntArticleList');
-
-      // NOTE: 불필요한것으로 추정되는 요청
-      cy.wait('@apiCmntArticleInfo');
-      cy.wait('@apiCmntArticleInfo');
-      cy.wait('@apiCmntArticleInfo');
 
       // API stub 응답값 덮어쓰기
       cy.fixture('cmnt-article-info')
@@ -379,22 +374,78 @@ describe('zum 투자 홈', () => {
     });
   });  // END: 증시전망
 
-  describe('투자노트', () => {
-    beforeEach(visit);
+  describe.only('투자노트', () => {
+    beforeEach(() => {
+      cy.fixture('home')
+        .then(home => {
+          const {
+            all,
+            alternativeInvestment,
+            coin,
+            domesticStock,
+            investmentTrend,
+            overseasStock,
+          } = home.recentInvestmentContents;
 
-    it('투자노트가 보여진다.', () => {
-      cy.get('.expert_insight').scrollIntoView();
+          const contentsMap = {
+            '전체': all,
+            '국내증시': domesticStock,
+            '해외증시': overseasStock,
+            '가상화폐': coin,
+            '대체투자': alternativeInvestment,
+            '투자트렌드': investmentTrend,
+          };
+          cy.wrap(contentsMap).as('contentsMap');
+
+          Object
+            .entries(contentsMap)
+            .forEach(([name, contents], i) => {
+              contents.forEach((content, j) => {
+                content.title = `@@${name}_${i}_${j}@@`;
+                content.leadText = `@@${name}_요약_${i}_${j}@@`;
+                content.authorName = `@@${name}_작성자_${i}_${j}@@`;
+                content.subCategory = `@@${name}_카테고리_${i}_${j}@@`;
+              });
+            });
+
+          cy.intercept('/api/home', home)
+            .as('apiHome');
+        });
+
+      visit();
+
+      cy.get('.expert_insight').as('expertInsight');
+    });
+
+    it('메뉴를 클릭하여 해당하는 투자노트 목록을 볼 수 있다.', () => {
+      cy.get('@contentsMap')
+        .then(contentsMap => {
+          cy.get('@expertInsight')
+            .find('ul.menu_tab > li > a')
+            .each($tab => {
+              cy.wrap($tab).click().should('be.activated');
+
+              const tabText = $tab.text();
+              cy.wrap(contentsMap[tabText])
+                .each(content => {
+                  cy.get('@expertInsight')
+                    .should('contain', content.title)
+                    .and('contain', content.authorName)
+                    .and('contain', content.leadText)
+                    .and('contain', content.subCategory);
+                });
+            });
+        });
+    });
+
+    it('투자노트가 카드형태로 4개씩 보여진다.', () => {
+      cy.get('@expertInsight').scrollIntoView();
       cy.withHidden('#header', () => {
         cy.waitForImage('.expert_insight img');
 
-        cy.get('.expert_insight')
+        cy.get('@expertInsight')
           .toMatchImageSnapshot();
       });
-    });
-
-    it('메뉴를 클릭하여 활성화 할 수 있다.', () => {
-      cy.get('.expert_insight ul.menu_tab > li > a')
-        .each($tab => cy.wrap($tab).click().should('activated'));
     });
   });  // END: 투자노트
 
