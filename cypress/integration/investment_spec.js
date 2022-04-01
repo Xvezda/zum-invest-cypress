@@ -205,7 +205,7 @@ describe('투자노트', () => {
         );
       
       const waitForAuthorsApiUntil = predicate =>
-        waitUntil('@apiAuthors', predicate, { delay: 100, limit: 3 });
+        waitUntil('@apiAuthors', predicate);
 
       cy.get('@writersWrap')
         .within(() => {
