@@ -47,6 +47,21 @@ describe('국내증시', () => {
               .should('contain', `category=${id}`)
           );
         });
+
+        cy.get('.map_filter_line > button')
+          .reverse()
+          .clickEachWithTable(
+            {
+              '당일 기준': 'day',
+              '최근 1개월 기준': 'monthly',
+            },
+            id => cy
+              .url()
+              .should('contain', `filter=${id}`),
+            {
+              activeClassName: 'on',
+            }
+          );
     });
 
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
