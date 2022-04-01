@@ -180,13 +180,12 @@ describe('투자노트', () => {
             cy.location().its('search').should('include', sortParam);
           });
 
-      ['콘텐츠 많은 순', '필진명순', '최근 등록 순']
-        .map(name => {
+      cy.wrap(['콘텐츠 많은 순', '필진명순', '최근 등록 순'])
+        .each(name =>
           // 오름차순, 내림차순 각각 테스트
-          return clickAndMatchApiRequest(name)
-            .then(() => clickAndMatchApiRequest(name));
-        })
-        .reduce((acc, p) => acc.then(() => p));
+          clickAndMatchApiRequest(name)
+            .then(() => clickAndMatchApiRequest(name))
+        );
     });
 
     // TODO: 테스트 정렬 (가독성)
