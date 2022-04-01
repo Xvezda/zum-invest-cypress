@@ -50,11 +50,36 @@ describe('투자노트', () => {
     });
 
     it('필진 이름을 클릭하면 필진 상세페이지로 이동하고 스크롤을 내려 최신글을 확인 가능하다.', () => {
-      cy.contains(post.authorName)
+      const author = {
+        "authorId": post.authorId,
+        "authorName": post.authorName,
+        "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+        "introduction": "@@소개@@",
+        "profile": "@@프로필@@",
+        "personalChannelLink": "https://zum-invest.tistory.com/"
+      };
+
+      cy.fixture('investment-author')
+        .then(api => {
+          api.author = author;
+          cy.intercept('/api/investment/authors/*', api)
+            .as('apiInvestmentAuthor');
+        });
+
+      cy.contains(author.authorName)
         .click();
 
       cy.url()
-        .should('contain', '/investment/author/34');
+        .should('contain', `/investment/author/${author.authorId}`);
+
+      cy.get('.writer_info_wrap')
+        .should('contain', author.authorName)
+        .and('contain', author.introduction)
+        .and('contain', author.profile);
+
+      cy.get('.btn_home')
+        .should('have.attr', 'href')
+        .and('equal', author.personalChannelLink);
       
       cy.wait('@apiInvestmentAuthor');
       cy.shouldRequestOnScroll('@apiAuthorsPostsRecent');
