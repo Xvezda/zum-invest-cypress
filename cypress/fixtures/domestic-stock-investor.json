@@ -1,0 +1,75 @@
+{
+    "items": [
+        {
+            "date": "2022-03-30",
+            "foreignerShareCount": 88480,
+            "foreignerShareRatio": 0.33,
+            "foreignerNetSales": -13937,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-29",
+            "foreignerShareCount": 102417,
+            "foreignerShareRatio": 0.38,
+            "foreignerNetSales": -24374,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-28",
+            "foreignerShareCount": 126791,
+            "foreignerShareRatio": 0.47,
+            "foreignerNetSales": -11587,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-25",
+            "foreignerShareCount": 138378,
+            "foreignerShareRatio": 0.51,
+            "foreignerNetSales": -388731,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-24",
+            "foreignerShareCount": 527109,
+            "foreignerShareRatio": 1.95,
+            "foreignerNetSales": 373055,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-23",
+            "foreignerShareCount": 154054,
+            "foreignerShareRatio": 0.57,
+            "foreignerNetSales": -13674,
+            "institutionNetSales": -150
+        },
+        {
+            "date": "2022-03-22",
+            "foreignerShareCount": 167728,
+            "foreignerShareRatio": 0.62,
+            "foreignerNetSales": 13210,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-21",
+            "foreignerShareCount": 154518,
+            "foreignerShareRatio": 0.57,
+            "foreignerNetSales": 3309,
+            "institutionNetSales": 0
+        },
+        {
+            "date": "2022-03-18",
+            "foreignerShareCount": 151209,
+            "foreignerShareRatio": 0.56,
+            "foreignerNetSales": 107950,
+            "institutionNetSales": -1760
+        },
+        {
+            "date": "2022-03-17",
+            "foreignerShareCount": 43259,
+            "foreignerShareRatio": 0.16,
+            "foreignerNetSales": -24661,
+            "institutionNetSales": 1760
+        }
+    ],
+    "totalCount": 270
+}
