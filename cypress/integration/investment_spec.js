@@ -144,17 +144,19 @@ describe('투자노트', () => {
         .should('contain', `/investment/author/${author.authorId}`);
     });
 
-    it('줌 투자 필진 타이틀을 눌러 필진 목록으로 이동하고 정렬과 더보기가 가능하다.', () => {
+    it('타이틀을 눌러 목록으로 이동하고 목록 정렬과 더보기, 이름과 제목 클릭으로 필진 상세페이지 및 게시글 이동이 가능하다.', () => {
+      const post = {
+        postId: 123,
+        title: '@@줌투자필진_게시글제목@@',
+      };
+
       const author = {
         "authorId": 34,
         "authorName": "@@줌투자필진@@",
         "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
         "introduction": "ZUM투자에서 알려주는 개장/마감 시황 콘텐츠를 소개합니다.\r\n증시MAP을 통해 주요 종목 이슈를 확인해보세요.!",
         "recentTitles": [
-          {
-            "postId": 480,
-            "title": "[🔑개장] 철강주의 상승률 상위 점령"
-          },
+          post,
           {
             "postId": 478,
             "title": "[🔒 마감] 빵빵 터지는 신고가🎉"
@@ -207,6 +209,18 @@ describe('투자노트', () => {
       cy.wait('@apiInvestmentAuthors')
         .its('request.url')
         .should('contain', 'page=2');
+
+      cy.contains(author.authorName)
+        .click()
+        .url()
+        .should('contain', `/investment/author/${author.authorId}`)
+        .go('back');
+
+      cy.contains(post.title)
+        .click()
+        .url()
+        .should('contain', `/investment/view/${post.postId}`)
+        .go('back');
     });
 
     // TODO: 테스트 정렬 (가독성)
