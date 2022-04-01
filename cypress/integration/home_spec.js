@@ -148,23 +148,25 @@ describe('zum 투자 홈', () => {
     });  // END: 주요지표
 
     it('로그인하면 관심종목이 보여지고 관심 선택, 해제 및 종목 이동이 가능하다.', () => {
+      const stock = {
+        "financeCategory": "DOMESTIC_STOCK",
+        "id": "239340",
+        "name": "줌인터넷",
+        "updateDateTime": "2022-03-28T14:20:59",
+        "code": "239340",
+        "symbol": "KOSDAQ",
+        "registerDateTime": "2022-03-28T14:41:44",
+        "order": 0,
+        "rateOfChange": -4.27,
+        "benefitRate": 0,
+        "priceOnRegistration": 6730,
+        "currentPrice": 6730,
+        "priceChange": -300
+      };
+
       cy.fixture('interest')
         .then(interest => {
-          interest.items.unshift({
-            "financeCategory": "DOMESTIC_STOCK",
-            "id": "239340",
-            "name": "줌인터넷",
-            "updateDateTime": "2022-03-28T14:20:59",
-            "code": "239340",
-            "symbol": "KOSDAQ",
-            "registerDateTime": "2022-03-28T14:41:44",
-            "order": 0,
-            "rateOfChange": -4.27,
-            "benefitRate": 0,
-            "priceOnRegistration": 6730,
-            "currentPrice": 6730,
-            "priceChange": -300
-          });
+          interest.items.unshift(stock);
           cy.intercept('/api/interest', req => {
               req.reply({
                 ...interest,
@@ -188,11 +190,11 @@ describe('zum 투자 홈', () => {
 
       cy.get('@sideBar')
         .should('have.descendants', '.stock_list')
-        .contains('줌인터넷')
+        .contains(stock.name)
         .click()
 
       cy.url()
-        .should('contain', '239340')
+        .should('contain', stock.code)
         .go('back');
 
       cy.get('@sideBar')
@@ -202,7 +204,7 @@ describe('zum 투자 홈', () => {
 
       cy.wait('@apiInterestDelete')
         .its('request.body')
-        .should('be.deep.equal', {id: '239340'});
+        .should('be.deep.equal', {id: stock.id});
     });
 
   });  // END: 사이드바
