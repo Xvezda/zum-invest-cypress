@@ -201,7 +201,7 @@ describe('zum 투자 홈', () => {
       cy.get('@sideBar')
         .find('.stock_list .like')
         .first()
-        .click();
+        .click({force: true});
 
       cy.wait('@apiInterestDelete')
         .its('request.body')
