@@ -423,4 +423,20 @@ describe('국내증시 종목', () => {
 
     cy.wait('@niceWidget');
   });
+
+  it('실시간반응을 누르면 종목과 관련된 실시간반응 리스트를 보여주고, 스크롤하면 추가 반응을 불러올 수 있다.', () => {
+    cy.intercept('/api/domestic/stock/*/realtime-comments*', {
+        fixture: 'domestic-stock-realtime-comments'
+      })
+      .as('apiDomesticStockRealtimeComments');
+
+    visit();
+    cy.get('.stock_menu_info')
+      .contains('실시간반응')
+      .click();
+
+    cy.wait('@apiDomesticStockRealtimeComments');
+
+    cy.shouldRequestOnScroll('@apiDomesticStockRealtimeComments');
+  });
 });  // END: 국내증시 종목
