@@ -78,6 +78,8 @@ Cypress.Commands.add('stubInvestApi', () => {
       req.reply({fixture: `real-time-news-${req.query.page}`});
     })
     .as('apiRealTimeNews');
+  cy.intercept('/api/domestic/ranking*', {fixture: 'domestic-ranking'})
+    .as('apiDomesticRanking');
 
 
   cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
