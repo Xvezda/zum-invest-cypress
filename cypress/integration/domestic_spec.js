@@ -261,8 +261,11 @@ describe('국내증시', () => {
 });  // END: 국내증시
 
 describe('국내증시 종목', () => {
-  it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
+  const visit = () => 
     cy.visit('/domestic/item/239340');
+
+  it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
+    visit();
     cy.fixture('interest').then(interest => {
       cy.intercept(/\/api\/interest(\/delete)?/, req => {
           req.reply(201, {
@@ -380,7 +383,7 @@ describe('국내증시 종목', () => {
         });
       });
 
-    cy.visit('/domestic/item/239340');
+    visit();
     expectRequestToMatchFirstPage('@apiDomesticStockPrice');
     expectRequestToMatchFirstPage('@apiDomesticStockInvestor')
 
@@ -407,5 +410,17 @@ describe('국내증시 종목', () => {
 
     clickButtonOfTradingTrend('.prev');
     expectRequestToMatchFirstPage('@apiDomesticStockInvestor');
+  });
+
+  it('기업정보탭을 누르면 NICE평가정보를 보여준다.', () => {
+    cy.intercept('/nice-asp/**', {statusCode: 200})
+      .as('niceWidget');
+
+    visit();
+    cy.get('.stock_menu_info')
+      .contains('기업정보')
+      .click();
+
+    cy.wait('@niceWidget');
   });
 });  // END: 국내증시 종목
