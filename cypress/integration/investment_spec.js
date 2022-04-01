@@ -39,6 +39,8 @@ describe('투자노트', () => {
           cy.intercept('/api/investment', investment)
             .as('apiInvestment');
         });
+
+      cy.stubImages();
       visit();
     });
 
@@ -149,6 +151,8 @@ describe('투자노트', () => {
           cy.intercept('/api/investment', investment)
             .as('apiInvestment');
         });
+
+      cy.stubImages();
       visit();
 
       cy.get('.writers_wrap')

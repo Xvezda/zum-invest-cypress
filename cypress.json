@@ -12,18 +12,25 @@
         "openMode": 0
     },
     "blockHosts": [
-        "*.g.doubleclick.net",
-        "*.googlesyndication.com",
-        "*.googleadservices.com",
-        "*.googletagmanager.com",
-        "analytics.google.com",
+        "*doubleclick.net",
+        "*googlesyndication.com",
+        "*googleadservices.com",
+        "*googletagmanager.com",
+        "*analytics.google.com",
         "*.criteo.com",
         "*.vrixon.com",
         "*.onkakao.net",
+        "*daumcdn.net",
+        "*daum.net",
         "*.dable.io",
         "wcs.naver.net",
         "estat.zum.com",
-        "displayad.zum.com"
+        "displayad.zum.com",
+        "thumb.zumst.com",
+        "thumb.tv.zumst.com",
+        "pip-thumb.zumst.com",
+        "static.news.zumst.com",
+        "pstatic.zumst.com"
     ],
     "env": {
         "cypress-plugin-snapshots": {
