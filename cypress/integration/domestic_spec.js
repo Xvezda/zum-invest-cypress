@@ -261,8 +261,9 @@ describe('국내증시', () => {
 });  // END: 국내증시
 
 describe('국내증시 종목', () => {
+  const stockCode = '239340';
   const visit = () => 
-    cy.visit('/domestic/item/239340');
+    cy.visit(`/domestic/item/${stockCode}`);
 
   it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
     visit();
@@ -421,7 +422,9 @@ describe('국내증시 종목', () => {
       .contains('기업정보')
       .click();
 
-    cy.wait('@niceWidget');
+    cy.wait('@niceWidget')
+      .its('request.url')
+      .should('contain', stockCode);
   });
 
   it('실시간반응을 누르면 종목과 관련된 실시간반응 리스트를 보여주고, 스크롤하면 추가 반응을 불러올 수 있다.', () => {
@@ -435,7 +438,9 @@ describe('국내증시 종목', () => {
       .contains('실시간반응')
       .click();
 
-    cy.wait('@apiDomesticStockRealtimeComments');
+    cy.wait('@apiDomesticStockRealtimeComments')
+      .its('request.url')
+      .should('contain', 'page=1');
 
     cy.shouldRequestOnScroll('@apiDomesticStockRealtimeComments');
   });
