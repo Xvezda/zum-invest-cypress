@@ -271,9 +271,9 @@ Cypress.Commands.add('logout', () =>
 
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   const overwrittenOptions = {
-    ...(options || {}),
     // 서버측의 응답실패로 인한 테스트 실패의 가능성 최소화
     retryOnStatusCodeFailure: true,
+    ...(options || {}),
   };
   return originalFn(url, overwrittenOptions);
 });
