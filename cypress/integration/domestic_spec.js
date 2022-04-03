@@ -7,12 +7,6 @@ describe('국내증시', () => {
     cy.clock(now);
   });
 
-  const triggerDomesticHomeApi = () =>
-    cy.tick(20001);
-  
-  const triggerMekoChartApi = () =>
-    cy.tick(5000);
-
   const visit = () => {
     cy.stubInvestApi();
     cy.visit('/investment', {
@@ -27,10 +21,41 @@ describe('국내증시', () => {
     cy.wait('@apiDomesticHome');
   };
 
-  const hideHeaderWhile = callback =>
+  const triggerDomesticHomeApi = () =>
+    cy.tick(20000);
+  
+  const triggerMekoChartApi = () =>
+    cy.tick(5000);
+
+  const withHiddenHeader = callback =>
     cy.withHidden('#header', callback);
 
   describe('국내증시 MAP', () => {
+    it('LIVE 뉴스가 일정시간마다 변경되고, 클릭하면 뉴스페이지로 이동한다.', () => {
+      cy.fixture('domestic-home').as('fixtureDomesticHome');
+
+      visit();
+      cy.get('.live_news_list').as('liveNewsList');
+      cy.get('@fixtureDomesticHome')
+        .then(({ liveNews }) => {
+          cy.wrap(liveNews)
+            .each(news => {
+              cy.get('@liveNewsList')
+                .contains(news.title)
+                .should('be.visible');
+
+              cy.tick(700)
+                .tick(3000);
+            });
+
+          const [firstLiveNews,] = liveNews;
+          cy.get('@liveNewsList')
+            .contains(firstLiveNews.title)
+            .should('have.attr', 'href')
+            .and('contain', /[0-9]+$/.exec(firstLiveNews.id)[0]);
+        });
+    });
+
     it('MAP의 종류를 선택할 수 있다.', () => {
       visit();
       cy.get('.map_title_wrap').within(() => {
@@ -105,7 +130,7 @@ describe('국내증시', () => {
 
       expectMekoChartLoaded()
         .then(() => {
-          hideHeaderWhile(() => {
+          withHiddenHeader(() => {
             expectMekoChartSnapshotToMatch();
             cy.get('.map_menu_tab li:not(:first-child) > a')
               .each($menu => {
@@ -157,7 +182,7 @@ describe('국내증시', () => {
       cy.stubImages();
       visit();
 
-      hideHeaderWhile(() => {
+      withHiddenHeader(() => {
         cy.get('.stock_index_wrap')
           .toMatchImageSnapshot();
       });
@@ -264,7 +289,7 @@ describe('국내증시', () => {
       cy.stubImages();
       visit();
 
-      hideHeaderWhile(() => {
+      withHiddenHeader(() => {
         cy.get('.popularity_event_wrap')
           .toMatchImageSnapshot();
       });
