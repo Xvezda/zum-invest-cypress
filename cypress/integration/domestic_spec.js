@@ -503,17 +503,55 @@ describe('국내증시 종목', () => {
 describe('카테고리별 랭킹', () => {
   beforeEach(() => {
     cy.stubInvestApi();
+
+    cy.visit('/domestic/ranking');
+    cy.wait('@apiDomesticRanking');
+
+    cy.get('.cont_wrap .tab_line').as('domesticRankingMenu');
   });
 
-  const defaultRanking = '시가총액';
-  it(`기본으로 ${defaultRanking} 페이지가 보여지고 탭을 눌러 다른 카테고리를 볼 수 있다.`, () => {
-    cy.visit('/domestic/ranking');
+  it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
+    const optionTable = {
+      tradeVolume: "거래량(천주)",
+      tradeValue: "거래대금(백만)",
+      preTradeVolume: "전일거래량(천주)",
+      marketCap: "시가총액(억)",
+      per: "주가순이익비율(PER)",
+      operatingProfit: "영업이익(억)",
+      eps: "주당순이익(EPS)",
+      openPrice: "시가",
+      highPrice: "고가",
+      lowPrice: "저가",
+      take: "매출액(억)",
+      netIncome: "당기순이익(억)",
+      totalAssets: "자산총계(억)",
+      totalDebt: "부채총계(억)",
+      newListedCount: "상장주식수(천주)",
+      foreignerShareRatio: "외국인 비율(%)",
+      monthlyRateOfChange: "1개월 대비",
+      threeMonthlyRateOfChange: "3개월 대비",
+      yearlyRateOfChange: "1년 대비",
+      threeYearlyRateOfChange: "3년 대비",
+      bps: "주당순자산(BPS)",
+    };
 
-    cy.wait('@apiDomesticRanking')
-      .its('request.url')
-      .should('contain', 'category=MARKET_CAP');
+    const defaultOptions = {
+      MARKET_CAP: ['tradeVolume', 'per', 'newListedCount', 'marketCap', 'foreignerShareRatio'],
+      UPPER: ['tradeVolume', 'tradeValue', 'preTradeVolume'],
+      LOWER: ['tradeVolume', 'tradeValue', 'preTradeVolume'],
+      UPPER_LIMIT: ['tradeVolume', 'monthlyRateOfChange', 'threeMonthlyRateOfChange'],
+      LOWER_LIMIT: ['tradeVolume', 'monthlyRateOfChange', 'threeMonthlyRateOfChange'],
+      SOARING_TRADE_VOLUME: ['tradeVolume', 'tradeValue', 'preTradeVolume'],
+      NEW_STOCK: ['tradeVolume', 'tradeValue'],
+      FALL: ['tradeVolume', 'monthlyRateOfChange', 'threeMonthlyRateOfChange'],
+      GOLDEN_CROSS: ['tradeVolume', 'tradeValue', 'monthlyRateOfChange'],
+    };
 
-    cy.get('.cont_wrap .tab_line')
+    cy.get('@domesticRankingMenu')
+      .find('.active')
+      .should('contain', '시가총액');
+
+    cy.get('@domesticRankingMenu')
       .find('ul > li:not(.active) > a')
       .clickEachWithTable(
         {
@@ -526,13 +564,23 @@ describe('카테고리별 랭킹', () => {
           '낙폭과대': 'FALL',
           '골든크로스': 'GOLDEN_CROSS',
         },
-        id => cy
-          .wait('@apiDomesticRanking')
-          .its('request.url')
-          .should('contain', `category=${id}`)
-          .end()
-          .url()
-          .should('contain', `category=${id}`),
+        id => {
+          cy.wait('@apiDomesticRanking')
+            .its('request.url')
+            .should('contain', `category=${id}`);
+
+          cy.url()
+            .should('contain', `category=${id}`);
+
+          cy.wrap(defaultOptions[id])
+            .each(option => {
+              cy.get(`input[value="${option}"]`)
+                .should('be.checked');
+
+              cy.url()
+                .should('contain', id);
+            });
+        },
       );
   });
 });  // END: 카테고리별 랭킹
