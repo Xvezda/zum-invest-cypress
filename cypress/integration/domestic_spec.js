@@ -511,30 +511,6 @@ describe('카테고리별 랭킹', () => {
   });
 
   it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
-    const optionTable = {
-      tradeVolume: "거래량(천주)",
-      tradeValue: "거래대금(백만)",
-      preTradeVolume: "전일거래량(천주)",
-      marketCap: "시가총액(억)",
-      per: "주가순이익비율(PER)",
-      operatingProfit: "영업이익(억)",
-      eps: "주당순이익(EPS)",
-      openPrice: "시가",
-      highPrice: "고가",
-      lowPrice: "저가",
-      take: "매출액(억)",
-      netIncome: "당기순이익(억)",
-      totalAssets: "자산총계(억)",
-      totalDebt: "부채총계(억)",
-      newListedCount: "상장주식수(천주)",
-      foreignerShareRatio: "외국인 비율(%)",
-      monthlyRateOfChange: "1개월 대비",
-      threeMonthlyRateOfChange: "3개월 대비",
-      yearlyRateOfChange: "1년 대비",
-      threeYearlyRateOfChange: "3년 대비",
-      bps: "주당순자산(BPS)",
-    };
-
     const defaultOptions = {
       MARKET_CAP: ['tradeVolume', 'per', 'newListedCount', 'marketCap', 'foreignerShareRatio'],
       UPPER: ['tradeVolume', 'tradeValue', 'preTradeVolume'],
