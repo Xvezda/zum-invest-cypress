@@ -30,7 +30,8 @@
         "thumb.tv.zumst.com",
         "pip-thumb.zumst.com",
         "static.news.zumst.com",
-        "pstatic.zumst.com"
+        "pstatic.zumst.com",
+        "finance.zumst.com"
     ],
     "env": {
         "cypress-plugin-snapshots": {
