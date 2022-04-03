@@ -351,6 +351,12 @@ describe('zum 투자 홈', () => {
           .tick(10000)
           .get('@stockView'),
         $el => expect($el).to.have.descendants('#zum-player iframe'),
+        {
+          delay: 100,
+          timeout: 20000,
+          limit: 30,
+          log: false,
+        }
       );
     });
 
@@ -361,8 +367,10 @@ describe('zum 투자 홈', () => {
           message =>
             expect(message).to.be.calledWithMatch(pattern),
           {
-            delay: 1000,
+            delay: 100,
             timeout: 20000,
+            limit: 30,
+            log: false,
           }
         );
       };
