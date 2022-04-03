@@ -123,7 +123,7 @@ describe('국내증시', () => {
         },
         $body => expect($body).to.have.descendants('[id^="treemap-node-stock"]'),
         {
-          delay: 1000,
+          delay: 100,
           log: false,
         }
       );
