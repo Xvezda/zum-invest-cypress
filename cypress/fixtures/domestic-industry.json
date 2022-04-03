@@ -1,0 +1,1264 @@
+[
+    {
+        "market": "KOSPI",
+        "industryPriceItems": [
+            {
+                "id": 2,
+                "name": "섬유·의복",
+                "rateOfChange": 3.23,
+                "positiveCount": 15,
+                "positiveStocks": [
+                    {
+                        "code": "002070",
+                        "name": "비비안"
+                    },
+                    {
+                        "code": "102280",
+                        "name": "쌍방울"
+                    }
+                ],
+                "negativeCount": 10,
+                "negativeStocks": [
+                    {
+                        "code": "008500",
+                        "name": "일정실업"
+                    },
+                    {
+                        "code": "111110",
+                        "name": "호전실업"
+                    }
+                ]
+            },
+            {
+                "id": 16,
+                "name": "통신업",
+                "rateOfChange": 0.99,
+                "positiveCount": 3,
+                "positiveStocks": [
+                    {
+                        "code": "006490",
+                        "name": "인스코비"
+                    },
+                    {
+                        "code": "030200",
+                        "name": "KT"
+                    }
+                ],
+                "negativeCount": 0,
+                "negativeStocks": []
+            },
+            {
+                "id": 1,
+                "name": "음식료품",
+                "rateOfChange": 0.83,
+                "positiveCount": 27,
+                "positiveStocks": [
+                    {
+                        "code": "003230",
+                        "name": "삼양식품"
+                    },
+                    {
+                        "code": "027740",
+                        "name": "마니커"
+                    }
+                ],
+                "negativeCount": 17,
+                "negativeStocks": [
+                    {
+                        "code": "033920",
+                        "name": "무학"
+                    },
+                    {
+                        "code": "049770",
+                        "name": "동원F&B"
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "전기가스업",
+                "rateOfChange": 0.66,
+                "positiveCount": 7,
+                "positiveStocks": [
+                    {
+                        "code": "117580",
+                        "name": "대성에너지"
+                    },
+                    {
+                        "code": "267290",
+                        "name": "경동도시가스"
+                    }
+                ],
+                "negativeCount": 1,
+                "negativeStocks": [
+                    {
+                        "code": "036460",
+                        "name": "한국가스공사"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "화학",
+                "rateOfChange": 0.39,
+                "positiveCount": 97,
+                "positiveStocks": [
+                    {
+                        "code": "016100",
+                        "name": "리더스코스메틱"
+                    },
+                    {
+                        "code": "226320",
+                        "name": "잇츠한불"
+                    }
+                ],
+                "negativeCount": 93,
+                "negativeStocks": [
+                    {
+                        "code": "035200",
+                        "name": "프럼파스트"
+                    },
+                    {
+                        "code": "082660",
+                        "name": "코스나인"
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "name": "운수창고",
+                "rateOfChange": 0.28,
+                "positiveCount": 12,
+                "positiveStocks": [
+                    {
+                        "code": "089590",
+                        "name": "제주항공"
+                    },
+                    {
+                        "code": "272450",
+                        "name": "진에어"
+                    }
+                ],
+                "negativeCount": 13,
+                "negativeStocks": [
+                    {
+                        "code": "009180",
+                        "name": "한솔로지스틱스"
+                    },
+                    {
+                        "code": "028670",
+                        "name": "팬오션"
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "name": "증권",
+                "rateOfChange": 0.2,
+                "positiveCount": 16,
+                "positiveStocks": [
+                    {
+                        "code": "003535",
+                        "name": "한화투자증권우"
+                    },
+                    {
+                        "code": "003540",
+                        "name": "대신증권"
+                    }
+                ],
+                "negativeCount": 8,
+                "negativeStocks": [
+                    {
+                        "code": "001515",
+                        "name": "SK증권우"
+                    },
+                    {
+                        "code": "003475",
+                        "name": "유안타증권우"
+                    }
+                ]
+            },
+            {
+                "id": 20,
+                "name": "보험",
+                "rateOfChange": 0.04,
+                "positiveCount": 7,
+                "positiveStocks": [
+                    {
+                        "code": "000370",
+                        "name": "한화손해보험"
+                    },
+                    {
+                        "code": "003690",
+                        "name": "코리안리"
+                    }
+                ],
+                "negativeCount": 7,
+                "negativeStocks": [
+                    {
+                        "code": "000400",
+                        "name": "롯데손해보험"
+                    },
+                    {
+                        "code": "032830",
+                        "name": "삼성생명"
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "name": "유통업",
+                "rateOfChange": -0.14,
+                "positiveCount": 34,
+                "positiveStocks": [
+                    {
+                        "code": "009810",
+                        "name": "플레이그램"
+                    },
+                    {
+                        "code": "123690",
+                        "name": "한국화장품"
+                    }
+                ],
+                "negativeCount": 26,
+                "negativeStocks": [
+                    {
+                        "code": "001745",
+                        "name": "SK네트웍스우"
+                    },
+                    {
+                        "code": "009240",
+                        "name": "한샘"
+                    }
+                ]
+            },
+            {
+                "id": 21,
+                "name": "서비스업",
+                "rateOfChange": -0.29,
+                "positiveCount": 46,
+                "positiveStocks": [
+                    {
+                        "code": "007120",
+                        "name": "미래아이앤지"
+                    },
+                    {
+                        "code": "095570",
+                        "name": "AJ네트웍스"
+                    }
+                ],
+                "negativeCount": 47,
+                "negativeStocks": [
+                    {
+                        "code": "130660",
+                        "name": "한전산업"
+                    },
+                    {
+                        "code": "251270",
+                        "name": "넷마블"
+                    }
+                ]
+            },
+            {
+                "id": 14,
+                "name": "건설업",
+                "rateOfChange": -0.34,
+                "positiveCount": 11,
+                "positiveStocks": [
+                    {
+                        "code": "002460",
+                        "name": "화성산업"
+                    },
+                    {
+                        "code": "009415",
+                        "name": "태영건설우"
+                    }
+                ],
+                "negativeCount": 22,
+                "negativeStocks": [
+                    {
+                        "code": "002410",
+                        "name": "범양건영"
+                    },
+                    {
+                        "code": "013700",
+                        "name": "까뮤이앤씨"
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "name": "금융업",
+                "rateOfChange": -0.49,
+                "positiveCount": 24,
+                "positiveStocks": [
+                    {
+                        "code": "024720",
+                        "name": "한국콜마홀딩스"
+                    },
+                    {
+                        "code": "044820",
+                        "name": "코스맥스비티아이"
+                    }
+                ],
+                "negativeCount": 51,
+                "negativeStocks": [
+                    {
+                        "code": "013570",
+                        "name": "디와이"
+                    },
+                    {
+                        "code": "377300",
+                        "name": "카카오페이"
+                    }
+                ]
+            },
+            {
+                "id": 62,
+                "name": "종이·목재",
+                "rateOfChange": -0.51,
+                "positiveCount": 6,
+                "positiveStocks": [
+                    {
+                        "code": "002200",
+                        "name": "한국수출포장"
+                    },
+                    {
+                        "code": "012690",
+                        "name": "모나리자"
+                    }
+                ],
+                "negativeCount": 20,
+                "negativeStocks": [
+                    {
+                        "code": "001020",
+                        "name": "페이퍼코리아"
+                    },
+                    {
+                        "code": "037230",
+                        "name": "한국팩키지"
+                    }
+                ]
+            },
+            {
+                "id": 11,
+                "name": "운수장비",
+                "rateOfChange": -0.54,
+                "positiveCount": 20,
+                "positiveStocks": [
+                    {
+                        "code": "001420",
+                        "name": "태원물산"
+                    },
+                    {
+                        "code": "214330",
+                        "name": "금호에이치티"
+                    }
+                ],
+                "negativeCount": 36,
+                "negativeStocks": [
+                    {
+                        "code": "009540",
+                        "name": "한국조선해양"
+                    },
+                    {
+                        "code": "023810",
+                        "name": "인팩"
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "기계",
+                "rateOfChange": -0.55,
+                "positiveCount": 16,
+                "positiveStocks": [
+                    {
+                        "code": "002900",
+                        "name": "TYM"
+                    },
+                    {
+                        "code": "074610",
+                        "name": "이엔플러스"
+                    }
+                ],
+                "negativeCount": 20,
+                "negativeStocks": [
+                    {
+                        "code": "017550",
+                        "name": "수산중공업"
+                    },
+                    {
+                        "code": "210540",
+                        "name": "디와이파워"
+                    }
+                ]
+            },
+            {
+                "id": 18,
+                "name": "은행",
+                "rateOfChange": -0.79,
+                "positiveCount": 2,
+                "positiveStocks": [
+                    {
+                        "code": "006220",
+                        "name": "제주은행"
+                    },
+                    {
+                        "code": "024110",
+                        "name": "기업은행"
+                    }
+                ],
+                "negativeCount": 1,
+                "negativeStocks": [
+                    {
+                        "code": "323410",
+                        "name": "카카오뱅크"
+                    }
+                ]
+            },
+            {
+                "id": 10,
+                "name": "의료정밀",
+                "rateOfChange": -0.85,
+                "positiveCount": 2,
+                "positiveStocks": [
+                    {
+                        "code": "025560",
+                        "name": "미래산업"
+                    },
+                    {
+                        "code": "145720",
+                        "name": "덴티움"
+                    }
+                ],
+                "negativeCount": 5,
+                "negativeStocks": [
+                    {
+                        "code": "003160",
+                        "name": "디아이"
+                    },
+                    {
+                        "code": "137310",
+                        "name": "에스디바이오센서"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "비금속광물",
+                "rateOfChange": -0.85,
+                "positiveCount": 9,
+                "positiveStocks": [
+                    {
+                        "code": "004870",
+                        "name": "티웨이홀딩스"
+                    },
+                    {
+                        "code": "004985",
+                        "name": "성신양회우"
+                    }
+                ],
+                "negativeCount": 16,
+                "negativeStocks": [
+                    {
+                        "code": "011390",
+                        "name": "부산산업"
+                    },
+                    {
+                        "code": "047400",
+                        "name": "유니온머티리얼"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "철강및금속",
+                "rateOfChange": -1.06,
+                "positiveCount": 19,
+                "positiveStocks": [
+                    {
+                        "code": "001770",
+                        "name": "SHD"
+                    },
+                    {
+                        "code": "008355",
+                        "name": "남선알미우"
+                    }
+                ],
+                "negativeCount": 31,
+                "negativeStocks": [
+                    {
+                        "code": "008350",
+                        "name": "남선알미늄"
+                    },
+                    {
+                        "code": "306200",
+                        "name": "세아제강"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "의약품",
+                "rateOfChange": -1.14,
+                "positiveCount": 10,
+                "positiveStocks": [
+                    {
+                        "code": "000100",
+                        "name": "유한양행"
+                    },
+                    {
+                        "code": "002210",
+                        "name": "동성제약"
+                    }
+                ],
+                "negativeCount": 41,
+                "negativeStocks": [
+                    {
+                        "code": "000230",
+                        "name": "일동홀딩스"
+                    },
+                    {
+                        "code": "019175",
+                        "name": "신풍제약우"
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "name": "전기·전자",
+                "rateOfChange": -1.33,
+                "positiveCount": 10,
+                "positiveStocks": [
+                    {
+                        "code": "009450",
+                        "name": "경동나비엔"
+                    },
+                    {
+                        "code": "033180",
+                        "name": "KH 필룩스"
+                    }
+                ],
+                "negativeCount": 56,
+                "negativeStocks": [
+                    {
+                        "code": "006340",
+                        "name": "대원전선"
+                    },
+                    {
+                        "code": "006345",
+                        "name": "대원전선우"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "market": "KOSDAQ",
+        "industryPriceItems": [
+            {
+                "id": 98,
+                "name": "오락·문화",
+                "rateOfChange": 1.96,
+                "positiveCount": 19,
+                "positiveStocks": [
+                    {
+                        "code": "078860",
+                        "name": "아이오케이"
+                    },
+                    {
+                        "code": "361570",
+                        "name": "알비더블유"
+                    }
+                ],
+                "negativeCount": 8,
+                "negativeStocks": [
+                    {
+                        "code": "206560",
+                        "name": "덱스터"
+                    },
+                    {
+                        "code": "289220",
+                        "name": "자이언트스텝"
+                    }
+                ]
+            },
+            {
+                "id": 70,
+                "name": "의료·정밀기기",
+                "rateOfChange": 1.33,
+                "positiveCount": 30,
+                "positiveStocks": [
+                    {
+                        "code": "149980",
+                        "name": "하이로닉"
+                    },
+                    {
+                        "code": "238120",
+                        "name": "얼라인드"
+                    }
+                ],
+                "negativeCount": 29,
+                "negativeStocks": [
+                    {
+                        "code": "049430",
+                        "name": "코메론"
+                    },
+                    {
+                        "code": "214610",
+                        "name": "미코바이오메드"
+                    }
+                ]
+            },
+            {
+                "id": 106,
+                "name": "방송서비스",
+                "rateOfChange": 1.2,
+                "positiveCount": 2,
+                "positiveStocks": [
+                    {
+                        "code": "035760",
+                        "name": "CJ ENM"
+                    },
+                    {
+                        "code": "048550",
+                        "name": "SM C&C"
+                    }
+                ],
+                "negativeCount": 5,
+                "negativeStocks": [
+                    {
+                        "code": "033830",
+                        "name": "티비씨"
+                    },
+                    {
+                        "code": "066790",
+                        "name": "씨씨에스"
+                    }
+                ]
+            },
+            {
+                "id": 71,
+                "name": "운송장비·부품",
+                "rateOfChange": 0.38,
+                "positiveCount": 20,
+                "positiveStocks": [
+                    {
+                        "code": "014200",
+                        "name": "광림"
+                    },
+                    {
+                        "code": "024740",
+                        "name": "한일단조"
+                    }
+                ],
+                "negativeCount": 34,
+                "negativeStocks": [
+                    {
+                        "code": "011320",
+                        "name": "유니크"
+                    },
+                    {
+                        "code": "013720",
+                        "name": "CBI"
+                    }
+                ]
+            },
+            {
+                "id": 112,
+                "name": "정보기기",
+                "rateOfChange": 0.34,
+                "positiveCount": 8,
+                "positiveStocks": [
+                    {
+                        "code": "051360",
+                        "name": "토비스"
+                    },
+                    {
+                        "code": "332370",
+                        "name": "아이디피"
+                    }
+                ],
+                "negativeCount": 9,
+                "negativeStocks": [
+                    {
+                        "code": "066110",
+                        "name": "한프"
+                    },
+                    {
+                        "code": "131180",
+                        "name": "딜리"
+                    }
+                ]
+            },
+            {
+                "id": 86,
+                "name": "금융",
+                "rateOfChange": 0.3,
+                "positiveCount": 17,
+                "positiveStocks": [
+                    {
+                        "code": "034810",
+                        "name": "해성산업"
+                    },
+                    {
+                        "code": "054620",
+                        "name": "APS홀딩스"
+                    }
+                ],
+                "negativeCount": 12,
+                "negativeStocks": [
+                    {
+                        "code": "016600",
+                        "name": "큐캐피탈"
+                    },
+                    {
+                        "code": "019590",
+                        "name": "엠벤처투자"
+                    }
+                ]
+            },
+            {
+                "id": 114,
+                "name": "IT부품",
+                "rateOfChange": 0.19,
+                "positiveCount": 35,
+                "positiveStocks": [
+                    {
+                        "code": "096640",
+                        "name": "멜파스"
+                    },
+                    {
+                        "code": "151910",
+                        "name": "나노스"
+                    }
+                ],
+                "negativeCount": 58,
+                "negativeStocks": [
+                    {
+                        "code": "036710",
+                        "name": "심텍홀딩스"
+                    },
+                    {
+                        "code": "243840",
+                        "name": "신흥에스이씨"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "화학",
+                "rateOfChange": 0.16,
+                "positiveCount": 97,
+                "positiveStocks": [
+                    {
+                        "code": "016100",
+                        "name": "리더스코스메틱"
+                    },
+                    {
+                        "code": "226320",
+                        "name": "잇츠한불"
+                    }
+                ],
+                "negativeCount": 93,
+                "negativeStocks": [
+                    {
+                        "code": "035200",
+                        "name": "프럼파스트"
+                    },
+                    {
+                        "code": "082660",
+                        "name": "코스나인"
+                    }
+                ]
+            },
+            {
+                "id": 105,
+                "name": "통신서비스",
+                "rateOfChange": 0.12,
+                "positiveCount": 4,
+                "positiveStocks": [
+                    {
+                        "code": "039290",
+                        "name": "인포뱅크"
+                    },
+                    {
+                        "code": "115310",
+                        "name": "인포바인"
+                    }
+                ],
+                "negativeCount": 4,
+                "negativeStocks": [
+                    {
+                        "code": "052600",
+                        "name": "한네트"
+                    },
+                    {
+                        "code": "065530",
+                        "name": "와이어블"
+                    }
+                ]
+            },
+            {
+                "id": 72,
+                "name": "기타 제조",
+                "rateOfChange": 0.04,
+                "positiveCount": 5,
+                "positiveStocks": [
+                    {
+                        "code": "026040",
+                        "name": "제이에스티나"
+                    },
+                    {
+                        "code": "073190",
+                        "name": "듀오백"
+                    }
+                ],
+                "negativeCount": 4,
+                "negativeStocks": [
+                    {
+                        "code": "327260",
+                        "name": "RF머트리얼즈"
+                    },
+                    {
+                        "code": "376180",
+                        "name": "피코그램"
+                    }
+                ]
+            },
+            {
+                "id": 61,
+                "name": "섬유·의류",
+                "rateOfChange": -0.04,
+                "positiveCount": 9,
+                "positiveStocks": [
+                    {
+                        "code": "098660",
+                        "name": "에스티오"
+                    },
+                    {
+                        "code": "306040",
+                        "name": "에스제이그룹"
+                    }
+                ],
+                "negativeCount": 6,
+                "negativeStocks": [
+                    {
+                        "code": "011080",
+                        "name": "형지I&C"
+                    },
+                    {
+                        "code": "352700",
+                        "name": "씨앤투스성진"
+                    }
+                ]
+            },
+            {
+                "id": 110,
+                "name": "컴퓨터서비스",
+                "rateOfChange": -0.27,
+                "positiveCount": 10,
+                "positiveStocks": [
+                    {
+                        "code": "010280",
+                        "name": "쌍용정보통신"
+                    },
+                    {
+                        "code": "053980",
+                        "name": "오상자이엘"
+                    }
+                ],
+                "negativeCount": 12,
+                "negativeStocks": [
+                    {
+                        "code": "075130",
+                        "name": "플랜티넷"
+                    },
+                    {
+                        "code": "139050",
+                        "name": "시티랩스"
+                    }
+                ]
+            },
+            {
+                "id": 109,
+                "name": "소프트웨어",
+                "rateOfChange": -0.36,
+                "positiveCount": 37,
+                "positiveStocks": [
+                    {
+                        "code": "067920",
+                        "name": "이글루시큐리티"
+                    },
+                    {
+                        "code": "153460",
+                        "name": "네이블"
+                    }
+                ],
+                "negativeCount": 50,
+                "negativeStocks": [
+                    {
+                        "code": "053800",
+                        "name": "안랩"
+                    },
+                    {
+                        "code": "189330",
+                        "name": "씨이랩"
+                    }
+                ]
+            },
+            {
+                "id": 108,
+                "name": "디지털컨텐츠",
+                "rateOfChange": -0.4,
+                "positiveCount": 13,
+                "positiveStocks": [
+                    {
+                        "code": "066980",
+                        "name": "이엔코퍼레이션"
+                    },
+                    {
+                        "code": "194480",
+                        "name": "데브시스터즈"
+                    }
+                ],
+                "negativeCount": 26,
+                "negativeStocks": [
+                    {
+                        "code": "060240",
+                        "name": "룽투코리아"
+                    },
+                    {
+                        "code": "066410",
+                        "name": "버킷스튜디오"
+                    }
+                ]
+            },
+            {
+                "id": 67,
+                "name": "금속",
+                "rateOfChange": -0.46,
+                "positiveCount": 22,
+                "positiveStocks": [
+                    {
+                        "code": "018310",
+                        "name": "삼목에스폼"
+                    },
+                    {
+                        "code": "023440",
+                        "name": "제일제강"
+                    }
+                ],
+                "negativeCount": 37,
+                "negativeStocks": [
+                    {
+                        "code": "024940",
+                        "name": "PN풍년"
+                    },
+                    {
+                        "code": "039240",
+                        "name": "경남스틸"
+                    }
+                ]
+            },
+            {
+                "id": 65,
+                "name": "제약",
+                "rateOfChange": -0.77,
+                "positiveCount": 42,
+                "positiveStocks": [
+                    {
+                        "code": "086890",
+                        "name": "이수앱지스"
+                    },
+                    {
+                        "code": "200130",
+                        "name": "콜마비앤에이치"
+                    }
+                ],
+                "negativeCount": 60,
+                "negativeStocks": [
+                    {
+                        "code": "145020",
+                        "name": "휴젤"
+                    },
+                    {
+                        "code": "179530",
+                        "name": "애드바이오텍"
+                    }
+                ]
+            },
+            {
+                "id": 102,
+                "name": "기타서비스",
+                "rateOfChange": -0.8,
+                "positiveCount": 3,
+                "positiveStocks": [
+                    {
+                        "code": "054800",
+                        "name": "아이디스홀딩스"
+                    },
+                    {
+                        "code": "377450",
+                        "name": "리파인"
+                    }
+                ],
+                "negativeCount": 2,
+                "negativeStocks": [
+                    {
+                        "code": "030190",
+                        "name": "NICE평가정보"
+                    },
+                    {
+                        "code": "092130",
+                        "name": "이크레더블"
+                    }
+                ]
+            },
+            {
+                "id": 68,
+                "name": "기계·장비",
+                "rateOfChange": -0.91,
+                "positiveCount": 25,
+                "positiveStocks": [
+                    {
+                        "code": "109740",
+                        "name": "디에스케이"
+                    },
+                    {
+                        "code": "317830",
+                        "name": "에스피시스템스"
+                    }
+                ],
+                "negativeCount": 66,
+                "negativeStocks": [
+                    {
+                        "code": "056190",
+                        "name": "에스에프에이"
+                    },
+                    {
+                        "code": "297890",
+                        "name": "HB솔루션"
+                    }
+                ]
+            },
+            {
+                "id": 107,
+                "name": "인터넷",
+                "rateOfChange": -0.93,
+                "positiveCount": 5,
+                "positiveStocks": [
+                    {
+                        "code": "080010",
+                        "name": "이상네트웍스"
+                    },
+                    {
+                        "code": "089230",
+                        "name": "THE E&M"
+                    }
+                ],
+                "negativeCount": 5,
+                "negativeStocks": [
+                    {
+                        "code": "119860",
+                        "name": "다나와"
+                    },
+                    {
+                        "code": "337930",
+                        "name": "브랜드엑스코퍼레이션"
+                    }
+                ]
+            },
+            {
+                "id": 111,
+                "name": "통신장비",
+                "rateOfChange": -1,
+                "positiveCount": 18,
+                "positiveStocks": [
+                    {
+                        "code": "035460",
+                        "name": "기산텔레콤"
+                    },
+                    {
+                        "code": "174880",
+                        "name": "장원테크"
+                    }
+                ],
+                "negativeCount": 28,
+                "negativeStocks": [
+                    {
+                        "code": "091440",
+                        "name": "텔레필드"
+                    },
+                    {
+                        "code": "115440",
+                        "name": "우리넷"
+                    }
+                ]
+            },
+            {
+                "id": 69,
+                "name": "일반전기전자",
+                "rateOfChange": -1,
+                "positiveCount": 24,
+                "positiveStocks": [
+                    {
+                        "code": "111870",
+                        "name": "KH 일렉트론"
+                    },
+                    {
+                        "code": "388050",
+                        "name": "지투파워"
+                    }
+                ],
+                "negativeCount": 39,
+                "negativeStocks": [
+                    {
+                        "code": "082850",
+                        "name": "우리바이오"
+                    },
+                    {
+                        "code": "247660",
+                        "name": "나노씨엠에스"
+                    }
+                ]
+            },
+            {
+                "id": 60,
+                "name": "음식료·담배",
+                "rateOfChange": -1.14,
+                "positiveCount": 20,
+                "positiveStocks": [
+                    {
+                        "code": "092040",
+                        "name": "아미코젠"
+                    },
+                    {
+                        "code": "136480",
+                        "name": "하림"
+                    }
+                ],
+                "negativeCount": 19,
+                "negativeStocks": [
+                    {
+                        "code": "005860",
+                        "name": "한일사료"
+                    },
+                    {
+                        "code": "016790",
+                        "name": "현대사료"
+                    }
+                ]
+            },
+            {
+                "id": 63,
+                "name": "출판·매체복제",
+                "rateOfChange": -1.14,
+                "positiveCount": 5,
+                "positiveStocks": [
+                    {
+                        "code": "036000",
+                        "name": "예림당"
+                    },
+                    {
+                        "code": "134060",
+                        "name": "이퓨쳐"
+                    }
+                ],
+                "negativeCount": 15,
+                "negativeStocks": [
+                    {
+                        "code": "050960",
+                        "name": "수산아이앤티"
+                    },
+                    {
+                        "code": "289010",
+                        "name": "아이스크림에듀"
+                    }
+                ]
+            },
+            {
+                "id": 66,
+                "name": "비금속",
+                "rateOfChange": -1.5,
+                "positiveCount": 3,
+                "positiveStocks": [
+                    {
+                        "code": "079650",
+                        "name": "서산"
+                    },
+                    {
+                        "code": "238090",
+                        "name": "앤디포스"
+                    }
+                ],
+                "negativeCount": 11,
+                "negativeStocks": [
+                    {
+                        "code": "075970",
+                        "name": "동국알앤에스"
+                    },
+                    {
+                        "code": "198440",
+                        "name": "고려시멘트"
+                    }
+                ]
+            },
+            {
+                "id": 113,
+                "name": "반도체",
+                "rateOfChange": -1.65,
+                "positiveCount": 28,
+                "positiveStocks": [
+                    {
+                        "code": "062860",
+                        "name": "티엘아이"
+                    },
+                    {
+                        "code": "096870",
+                        "name": "엘디티"
+                    }
+                ],
+                "negativeCount": 81,
+                "negativeStocks": [
+                    {
+                        "code": "098120",
+                        "name": "마이크로컨텍솔"
+                    },
+                    {
+                        "code": "101400",
+                        "name": "엔시트론"
+                    }
+                ]
+            },
+            {
+                "id": 62,
+                "name": "종이·목재",
+                "rateOfChange": -1.78,
+                "positiveCount": 6,
+                "positiveStocks": [
+                    {
+                        "code": "002200",
+                        "name": "한국수출포장"
+                    },
+                    {
+                        "code": "012690",
+                        "name": "모나리자"
+                    }
+                ],
+                "negativeCount": 20,
+                "negativeStocks": [
+                    {
+                        "code": "001020",
+                        "name": "페이퍼코리아"
+                    },
+                    {
+                        "code": "037230",
+                        "name": "한국팩키지"
+                    }
+                ]
+            }
+        ]
+    }
+]

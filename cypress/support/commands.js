@@ -80,7 +80,8 @@ Cypress.Commands.add('stubInvestApi', () => {
     .as('apiRealTimeNews');
   cy.intercept('/api/domestic/ranking*', {fixture: 'domestic-ranking'})
     .as('apiDomesticRanking');
-
+  cy.intercept('/api/domestic/industry', {fixture: 'domestic-industry'})
+    .as('apiDomesticIndustry');
 
   cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
     .as('apiSuggest');
