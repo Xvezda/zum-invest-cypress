@@ -521,27 +521,72 @@ describe('카테고리별 랭킹', () => {
 
   it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
     const optionTable = {
-      tradeVolume: "거래량(천주)",
-      tradeValue: "거래대금(백만)",
-      preTradeVolume: "전일거래량(천주)",
-      marketCap: "시가총액(억)",
-      per: "주가순이익비율(PER)",
-      operatingProfit: "영업이익(억)",
-      eps: "주당순이익(EPS)",
-      openPrice: "시가",
-      highPrice: "고가",
-      lowPrice: "저가",
-      take: "매출액(억)",
-      netIncome: "당기순이익(억)",
-      totalAssets: "자산총계(억)",
-      totalDebt: "부채총계(억)",
-      newListedCount: "상장주식수(천주)",
-      foreignerShareRatio: "외국인 비율(%)",
-      monthlyRateOfChange: "1개월 대비",
-      threeMonthlyRateOfChange: "3개월 대비",
-      yearlyRateOfChange: "1년 대비",
-      threeYearlyRateOfChange: "3년 대비",
-      bps: "주당순자산(BPS)",
+      tradeVolume: {
+        name: "거래량(천주)",
+      },
+      tradeValue: {
+        name: "거래대금(백만)",
+      },
+      preTradeVolume: {
+        name: "전일거래량(천주)"
+      },
+      marketCap: {
+        name: "시가총액(억)",
+      },
+      per: {
+        name: "주가순이익비율(PER)",
+        alt: "PER (배)"
+      },
+      operatingProfit: {
+        name: "영업이익(억)",
+      },
+      eps: {
+        name: "주당순이익(EPS)",
+        alt: 'EPS',
+      },
+      openPrice: {
+        name: "시가",
+      },
+      highPrice: {
+        name: "고가",
+      },
+      lowPrice: {
+        name: "저가",
+      },
+      take: {
+        name: "매출액(억)",
+      },
+      netIncome: {
+        name: "당기순이익(억)",
+      },
+      totalAssets: {
+        name: "자산총계(억)",
+      },
+      totalDebt: {
+        name: "부채총계(억)",
+      },
+      newListedCount: {
+        name: "상장주식수(천주)",
+      },
+      foreignerShareRatio: {
+        name: "외국인 비율(%)",
+        alt: '외국인 비율',
+      },
+      monthlyRateOfChange: {
+        name: "1개월 대비",
+      },
+      threeMonthlyRateOfChange: {
+        name: "3개월 대비",
+      },
+      yearlyRateOfChange: {
+        name: "1년 대비",
+      },
+      threeYearlyRateOfChange: {
+        name: "3년 대비",
+      },
+      bps: {
+        name: "주당순자산(BPS)",
+      },
     };
 
     const defaultOptions = {
@@ -591,5 +636,43 @@ describe('카테고리별 랭킹', () => {
             });
         },
       );
+
+      cy.get('.stock_option_wrap input[type="checkbox"]')
+        .as('stockOptionCheckBoxes');
+
+      cy.get('@stockOptionCheckBoxes')
+        .uncheck({force: true})
+
+      cy.get('button:contains("적용하기")')
+        .as('stockOptionApplyButton')
+        .click();
+
+      cy.log('모든 항목이 해제 되어도 남아있는 정보를 확인');
+      cy.get('.tbl_scroll')
+        .as('scrollableTable');
+
+      cy.get('@scrollableTable')
+        .should('contain', '현재가')
+        .and('contain', '전일비')
+        .and('contain', '등락률')
+        .and('contain', '종토방');
+
+      cy.get('@stockOptionCheckBoxes')
+        .check({force: true});
+
+      cy.get('@stockOptionApplyButton')
+        .click();
+
+      cy.wrap(Object.values(optionTable).map(({ name, alt }) => alt || name))
+        .each(name => {
+          cy.get('@scrollableTable')
+            .contains(name);
+        });
+
+    cy.log('스크롤하면 좌우로 스크롤되고 오른쪽 끝에 종토방이 위치한다');
+    cy.get('@scrollableTable')
+      .scrollTo('right')
+      .contains('종토방')
+      .should('be.visible');
   });
 });  // END: 카테고리별 랭킹
