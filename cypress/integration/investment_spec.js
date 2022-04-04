@@ -34,6 +34,15 @@ describe('투자노트', () => {
       "isOriginal": false
     };
 
+    const author = {
+      "authorId": post.authorId,
+      "authorName": post.authorName,
+      "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
+      "introduction": "@@소개@@",
+      "profile": "@@프로필@@",
+      "personalChannelLink": "https://zum-invest.tistory.com/"
+    };
+
     beforeEach(() => {
       cy.fixture('investment')
         .then(investment => {
@@ -54,15 +63,6 @@ describe('투자노트', () => {
     });
 
     it('필진 이름을 클릭하면 필진 상세페이지로 이동하고 스크롤을 내려 최신글을 확인 가능하다.', () => {
-      const author = {
-        "authorId": post.authorId,
-        "authorName": post.authorName,
-        "authorThumbnailUrl": "https://finance.zumst.com/writing/a41a3074_계정이미지 black_zum_428.png",
-        "introduction": "@@소개@@",
-        "profile": "@@프로필@@",
-        "personalChannelLink": "https://zum-invest.tistory.com/"
-      };
-
       cy.fixture('investment-author')
         .then(api => {
           api.author = author;
@@ -99,11 +99,6 @@ describe('투자노트', () => {
         .then(expectUrlToMatch);
 
       cy.go('back');
-
-      const author = {
-        authorName: '@@글쓴이@@',
-        authorId: 42,
-      };
 
       const recentTitles = [
         {
@@ -146,6 +141,11 @@ describe('투자노트', () => {
             .should('contain', post.postId)
             .go('back');
         });
+
+      cy.get('@writerProfile')
+        .find('.btn_home')
+        .should('have.attr', 'href')
+        .and('equal', author.personalChannelLink);
 
       cy.get('@writerProfile')
         .contains(author.authorName)
