@@ -152,10 +152,7 @@ Cypress.Commands.add(
     });
 
     cy.intercept('https://pip-thumb.zumst.com/api/v1/**', req => {
-      const url = new URL(req.url);
-      const width = url.searchParams.get('w');
-      const height = url.searchParams.get('h');
-      if (width === '880' && height === '495') {
+      if (req.query.w === 880 && req.query.h === 495) {
         req.reply({fixture: '880x495.jpg'});
       } else {
         req.reply({fixture: '640x360.jpg'});
