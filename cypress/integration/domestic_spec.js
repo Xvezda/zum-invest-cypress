@@ -219,7 +219,7 @@ describe('국내증시', () => {
   describe('이번주 투자 캘린더', () => {
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 되고, 항목을 클릭하면 자세한 내용을 여닫을 수 있다.', () => {
       visit();
-      cy.clock().invoke('restore').reload();
+
       cy.get('.investment_calendar')
         .scrollIntoView()
         .within(() => {
@@ -231,16 +231,20 @@ describe('국내증시', () => {
               const date = $day.find('.date').text();
 
               cy.wrap($day).click();
+              cy.tick(2000);
               cy.get(`[data-offset$="${date}"]`).should('be.visible');
             });
 
           cy.get('@dayTabs')
             .first()
             .click();
+
+          cy.tick(2000);
           
           cy.get('.investment_calendar_list .first a')
             .first()
             .click({force: true})
+            .tick(2000)
             .should('have.class', 'open');
         });
     });
