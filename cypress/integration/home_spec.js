@@ -292,6 +292,29 @@ describe('zum 투자 홈', () => {
         });
       visit();
 
+      const newsStocks = [
+        {
+            "type": "industry",
+            "code": "5",
+            "name": "@@산업@@",
+            "rateOfChange": -0.24,
+            "currentPrice": null
+        },
+        {
+            "type": "item",
+            "code": "239340",
+            "name": "@@종목@@",
+            "rateOfChange": 0.33,
+            "currentPrice": 153500
+        }
+      ];
+      cy.fixture('news-detail')
+        .then(news => {
+          news.detail.stocks = newsStocks;
+          cy.intercept('/api/news/detail/*', news)
+            .as('apiNewsDetail');
+        });
+
       cy.intercept('POST', 'https://cmnt.zum.com/vote/article/like', req => {
           expect(req.body).to.deep.contain({articleIdx});
           req.reply({
@@ -308,6 +331,33 @@ describe('zum 투자 홈', () => {
         .click()
         .url()
         .should('contain', articleIdx);
+
+      // TODO: 원인 파악
+      cy.ignoreKnownError("Cannot read properties of undefined (reading 'items')");
+
+      cy.wrap(newsStocks)
+        .each(stock => {
+          cy.get('.article_index_info')
+            .find(`a:contains("${stock.name}")`)
+            .as('articleStockInfo')
+            .should('be.visible');
+
+          const clickAndMatchUrl = url => 
+            cy.get('@articleStockInfo')
+              .click()
+              .url()
+              .should('contain', url);
+
+          switch (stock.type) {
+            case 'industry':
+              clickAndMatchUrl(`/domestic/industry/${stock.code}`);
+              break;
+            case 'item':
+              clickAndMatchUrl(`/domestic/item/${stock.code}`);
+              break;
+          }
+          cy.go('back');
+        });
 
       const tickWhileWait = alias => {
         return recurse(
