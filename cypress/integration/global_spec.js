@@ -85,26 +85,35 @@ describe('해외증시', () => {
     it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', () => {
       cy.fixture('overseas-home')
         .then(home => {
+          const checkMajorIndexBy = datas => {
+            cy.wrap(datas)
+              .each(({
+                currentPrice,
+                name,
+                priceChange,
+                rateOfChange
+              }) => {
+                const formatNumber = number => Math.abs(number).toLocaleString('en-US');
+                cy.get('@majorIndex')
+                  .should('contain', name)
+                  .and('contain', formatNumber(currentPrice))
+                  .and('contain', formatNumber(priceChange))
+                  .and('contain', formatNumber(rateOfChange));
+              });
+          };
+
           cy.get('.major_index')
             .as('majorIndex')
             .contains('주요 지표 현황')
             .click();
 
-          const mainIndexNames = home.indicatorOfMainIndex
-            .map(({ name }) => name);
-
-          cy.wrap(mainIndexNames)
-            .each(name => cy.get('@majorIndex').should('contain', name));
+          checkMajorIndexBy(home.indicatorOfMainIndex)
 
           cy.get('@majorIndex')
             .contains('주요국 지수 현황')
             .click();
 
-          const mainCountryNames = home.countryIndexOfMainIndex
-            .map(({ name }) => name);
-
-          cy.wrap(mainCountryNames)
-            .each(name => cy.get('@majorIndex').should('contain', name));
+          checkMajorIndexBy(home.countryIndexOfMainIndex);
         });
       visit();
 
