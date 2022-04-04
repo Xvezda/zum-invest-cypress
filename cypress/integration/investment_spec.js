@@ -5,11 +5,14 @@ describe('투자노트', () => {
     cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
   });
 
+  beforeEach(() => {
+    cy.stubInvestmentApi();
+  });
+
   const visit = () => {
     cy.stubHomeApi();
     cy.visit('/');
 
-    cy.stubInvestmentApi();
     cy.get('.gnb_finance')
       .find('a')
       .filter(':contains("투자노트")')

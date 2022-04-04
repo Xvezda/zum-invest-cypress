@@ -21,6 +21,7 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
+    cy.stubHomeApi();
   });
 
   const visit = () => {
@@ -33,7 +34,6 @@ describe('zum 투자 홈', () => {
       }
     });
 
-    cy.stubHomeApi();
     cy.tick(1000);
     cy.get('.gnb_finance a')
       .filter(':contains("홈")')
