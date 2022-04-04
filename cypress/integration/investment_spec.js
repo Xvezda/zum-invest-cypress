@@ -92,7 +92,7 @@ describe('투자노트', () => {
     it('제목 혹은 내용요약을 클릭하면 읽기페이지로 이동한다.', () => {
       const expectUrlToMatch = () => 
         cy.url()
-          .should('contain', '/investment/view/480');
+          .should('contain', `/investment/view/${post.postId}`);
 
       cy.contains(post.title)
         .click()
@@ -100,9 +100,58 @@ describe('투자노트', () => {
 
       cy.go('back');
 
+      const author = {
+        authorName: '@@글쓴이@@',
+        authorId: 42,
+      };
+
+      const recentTitles = [
+        {
+          postId: 123,
+          title: '@@최신글_1@@',
+        },
+        {
+          postId: 124,
+          title: '@@최신글_2@@',
+        },
+        {
+          postId: 125,
+          title: '@@최신글_3@@',
+        }
+      ];
+      cy.fixture('investment-posts')
+        .then(posts => {
+          posts.detail.recentTitles = recentTitles;
+          posts.detail.author = {
+            ...posts.detail.author,
+            ...author,
+          };
+          cy.intercept('/api/investment/posts/*', posts);
+        });
+
       cy.contains(post.leadText)
         .click()
         .then(expectUrlToMatch);
+
+      cy.get('.writer_profile')
+        .as('writerProfile');
+
+      cy.wrap(recentTitles)
+        .each(post => {
+          cy.get('@writerProfile')
+            .find('.write_list')
+            .contains(post.title)
+            .click()
+            .url()
+            .should('contain', post.postId)
+            .go('back');
+        });
+
+      cy.get('@writerProfile')
+        .contains(author.authorName)
+        .click()
+        .url()
+        .should('contain', author.authorId);
     });
   });  // END: 투자노트 TOP6
 
