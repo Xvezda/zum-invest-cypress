@@ -7,6 +7,7 @@ describe('해외증시', () => {
 
   beforeEach(() => {
     cy.stubCommonApi();
+    cy.stubOverseasApi();
   });
 
   const now = new Date('2022-03-15T10:00:00');
@@ -20,7 +21,6 @@ describe('해외증시', () => {
       }
     });
 
-    cy.stubOverseasApi();
     cy.get('.gnb_finance a')
       .filter(':contains("해외증시")')
       .click();
