@@ -5,6 +5,7 @@ describe('국내증시', () => {
   const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     cy.clock(now);
+    cy.stubDomesticApi();
   });
 
   const visit = () => {
@@ -15,7 +16,6 @@ describe('국내증시', () => {
       }
     });
 
-    cy.stubDomesticApi();
     cy.get('.gnb_finance a:contains("국내증시")')
       .click();
 

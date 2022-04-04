@@ -5,11 +5,14 @@ describe('해외증시', () => {
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
   });
 
+  beforeEach(() => {
+    cy.stubCommonApi();
+  });
+
   const now = new Date('2022-03-15T10:00:00');
   const visit = () => {
     cy.clock(now);
 
-    cy.stubCommonApi();
     cy.stubInvestmentApi();
     cy.visit('/investment', {
       onBeforeLoad(win) {
