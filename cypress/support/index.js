@@ -24,12 +24,12 @@ import './assertions';
 beforeEach(() => {
   cy.fixCypressSpec();
 
+  cy.stubCommonApi();
+
   cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
-
-  cy.intercept('https://zvod.zumst.com/zumvrix/zvod/**', {statusCode: 206});
-
   cy.intercept('https://cmnt.zum.com/member/login', {fixture: 'member-login'})
     .as('apiMemberLogin');
+
   cy.fixture('user-info')
     .then(userInfo => {
       cy.intercept('https://userapi.zum.com/getUserInfo*', req => {

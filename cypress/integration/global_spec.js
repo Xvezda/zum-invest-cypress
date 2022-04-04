@@ -3,20 +3,21 @@ describe('해외증시', () => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
-
-    cy.stubInvestApi();
   });
 
   const now = new Date('2022-03-15T10:00:00');
   const visit = () => {
     cy.clock(now);
 
+    cy.stubCommonApi();
+    cy.stubInvestmentApi();
     cy.visit('/investment', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
     });
 
+    cy.stubOverseasApi();
     cy.get('.gnb_finance a')
       .filter(':contains("해외증시")')
       .click();
