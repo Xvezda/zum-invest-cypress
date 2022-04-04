@@ -8,13 +8,14 @@ describe('국내증시', () => {
   });
 
   const visit = () => {
-    cy.stubInvestApi();
+    cy.stubInvestmentApi();
     cy.visit('/investment', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
     });
 
+    cy.stubDomesticApi();
     cy.get('.gnb_finance a:contains("국내증시")')
       .click();
 
@@ -323,6 +324,10 @@ describe('국내증시 종목', () => {
   const visit = () => 
     cy.visit(`/domestic/item/${stockCode}`);
 
+  beforeEach(() => {
+    cy.stubDomesticApi();
+  });
+
   it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
     visit();
     cy.fixture('interest').then(interest => {
@@ -506,7 +511,7 @@ describe('국내증시 종목', () => {
 
 describe('카테고리별 랭킹', () => {
   beforeEach(() => {
-    cy.stubInvestApi();
+    cy.stubDomesticApi();
 
     cy.visit('/domestic/ranking');
     cy.wait('@apiDomesticRanking');

@@ -39,24 +39,56 @@ Cypress.Commands.add('fixCypressSpec', function () {
   };
 });
 
-Cypress.Commands.add('stubInvestApi', () => {
-  cy.intercept('/api/global', {fixture: 'global'})
-    .as('apiGlobal');
+Cypress.Commands.add(
+  'stubCommonApi',
+  () => {
+    cy.intercept('/api/global', {fixture: 'global'})
+      .as('apiGlobal');
 
-  cy.intercept('/api/investment', {fixture: 'investment'})
-    .as('apiInvestment');
+    cy.intercept('/api/*/home/real-time-news*', req => {
+        req.reply({fixture: `real-time-news-${req.query.page}`});
+      })
+      .as('apiRealTimeNews');
+
+    cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
+      .as('apiSuggest');
+
+    cy.intercept('/article/info/**', {statusCode: 200})
+      .as('apiArticleInfo');
+
+    cy.intercept('/api/news/detail/*', {fixture: 'news-detail'})
+      .as('apiNewsDetail');
+
+    cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
+      .as('apiDebateHome');
+
+    cy.intercept('https://cmnt.zum.com/article/info/**', {fixture: 'cmnt-article-info'})
+      .as('apiCmntArticleInfo');
+
+    cy.intercept('https://cmnt.zum.com/cmnt/article-list/**', {fixture: 'cmnt-article-list'})
+      .as('apiCmntArticleList');
+  }
+);
+
+Cypress.Commands.add('stubInvestmentApi', () => {
+  cy.intercept('/api/investment', {fixture: 'investment'}).as('apiInvestment');
+
   cy.intercept('/api/investment/authors*', req => {
       req.reply({fixture: 'investment-authors'});
     })
     .as('apiInvestmentAuthors');
+
   cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
     .as('apiInvestmentAuthor');
+
   cy.intercept('/api/investment/posts*', req => {
       req.reply({fixture: `investment-home-authors-${req.query.page}`});
     })
     .as('posts');
+
   cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
     .as('apiInvestmentPosts');
+
   cy.intercept('/api/investment/home/authors*', req => {
       req.reply({fixture: `investment-home-authors-${req.query.page}`});
     })
@@ -66,70 +98,59 @@ Cypress.Commands.add('stubInvestApi', () => {
       req.reply({fixture: `investment-authors-posts-recent-${req.query.page}`});
     })
     .as('apiAuthorsPostsRecent');
+});
 
+Cypress.Commands.add('stubHomeApi', () => {
+  cy.intercept('/api/home/category-news*', req => {
+      req.reply({fixture: `category-news-${req.query.page}`});
+    })
+    .as('apiCategoryNews');
+
+  cy.intercept('/api/home', {fixture: 'home'})
+    .as('apiHome');
+});
+
+Cypress.Commands.add('stubDomesticApi', () => {
   cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
     .as('apiDomesticCommon');
   cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
     .as('apiDomesticHome');
   cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
     .as('apiMekoChart');
-
-  cy.intercept('/api/*/home/real-time-news*', req => {
-      req.reply({fixture: `real-time-news-${req.query.page}`});
-    })
-    .as('apiRealTimeNews');
   cy.intercept('/api/domestic/ranking*', {fixture: 'domestic-ranking'})
     .as('apiDomesticRanking');
   cy.intercept('/api/domestic/industry', {fixture: 'domestic-industry'})
     .as('apiDomesticIndustry');
-
-  cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
-    .as('apiSuggest');
-  cy.intercept('/api/home/category-news*', req => {
-      req.reply({fixture: `category-news-${req.query.page}`});
-    })
-    .as('apiCategoryNews');
-
-  // 정적 컨텐츠를 fixture값으로 대체하기 위해 의도적으로 다른 페이지에서 라우팅하여 이동
-  cy.intercept('/api/home', {fixture: 'home'})
-    .as('apiHome');
-
-  cy.intercept('/article/info/**', {statusCode: 200})
-    .as('apiArticleInfo');
-  cy.intercept('/api/news/detail/*', {fixture: 'news-detail'})
-    .as('apiNewsDetail');
-
-  cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
-    .as('apiDebateHome');
-
-  cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
-    .as('apiOverseasHome');
-
-  cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
-    .as('apiOverseasMekoChart');
-  cy.intercept('/api/overseas/home/representative-stock*', req => {
-      switch (req.query.category) {
-        case 'DOW':
-          req.reply({fixture: 'overseas-representative-stock-dow'});
-          break;
-        case 'NASDAQ':
-          req.reply({fixture: 'overseas-representative-stock-nasdaq'});
-          break;
-        default:
-          req.destroy();
-          break;
-      }
-    })
-    .as('apiOverseasRepresentativeStock');
-  cy.intercept('/api/overseas/common', {fixture: 'overseas-common'})
-    .as('apiOverseasCommon');
-
-  cy.intercept('https://cmnt.zum.com/article/info/**', {fixture: 'cmnt-article-info'})
-    .as('apiCmntArticleInfo');
-
-  cy.intercept('https://cmnt.zum.com/cmnt/article-list/**', {fixture: 'cmnt-article-list'})
-    .as('apiCmntArticleList');
 });
+
+Cypress.Commands.add(
+  'stubOverseasApi',
+  () => {
+    cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
+      .as('apiOverseasHome');
+
+    cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
+      .as('apiOverseasMekoChart');
+
+    cy.intercept('/api/overseas/home/representative-stock*', req => {
+        switch (req.query.category) {
+          case 'DOW':
+            req.reply({fixture: 'overseas-representative-stock-dow'});
+            break;
+          case 'NASDAQ':
+            req.reply({fixture: 'overseas-representative-stock-nasdaq'});
+            break;
+          default:
+            req.destroy();
+            break;
+        }
+      })
+      .as('apiOverseasRepresentativeStock');
+
+    cy.intercept('/api/overseas/common', {fixture: 'overseas-common'})
+      .as('apiOverseasCommon');
+  }
+);
 
 Cypress.Commands.add(
   'stubImages',
