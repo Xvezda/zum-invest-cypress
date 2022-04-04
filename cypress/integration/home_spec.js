@@ -68,7 +68,7 @@ describe('zum 투자 홈', () => {
   });
 
   describe('사이드바', () => {
-    it('메뉴가 보여진다.', () => {
+    it.skip('메뉴가 보여진다.', () => {
       cy.stubImages();
       visit();
       cy.tick(600000)
@@ -250,7 +250,7 @@ describe('zum 투자 홈', () => {
         });
     });
 
-    it('오늘의 주요 뉴스가 보여진다.', () => {
+    it.skip('오늘의 주요 뉴스가 보여진다.', () => {
       cy.stubImages();
       visit();
 
@@ -449,7 +449,7 @@ describe('zum 투자 홈', () => {
         });
     });
 
-    it('투자노트가 카드형태로 4개씩 보여진다.', () => {
+    it.skip('투자노트가 카드형태로 4개씩 보여진다.', () => {
       cy.get('@expertInsight').scrollIntoView();
       cy.withHidden('#header', () => {
         cy.waitForImage('.expert_insight img');
