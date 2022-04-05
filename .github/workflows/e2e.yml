@@ -12,4 +12,5 @@ jobs:
     container: cypress/included:9.5.3
     steps:
       - uses: actions/checkout@v2
+      - run: yarn --frozen-lockfile --silent
       - run: cypress run
