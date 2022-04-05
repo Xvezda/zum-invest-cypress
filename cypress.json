@@ -56,7 +56,7 @@
                     ".ticker_bar",
                     ".il_noti",
                     ".main_indicator .chart",
-                    ".representative_index_cont .chart"
+                    ".representative_index iframe"
                 ],
                 "capture": "fullPage",
                 "clip": null,

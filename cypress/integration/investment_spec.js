@@ -52,7 +52,7 @@ describe('투자노트', () => {
         });
     });
 
-    it.skip('카드형태로 보여준다.', () => {
+    it('카드형태로 보여준다.', () => {
       cy.stubImages();
       visit();
       cy.withHidden('#header', () => {
@@ -194,7 +194,7 @@ describe('투자노트', () => {
   });  // END: 최신글
 
   describe('줌 투자 필진', () => {
-    it.skip('필진이 카드형태로 보여지고, 필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
+    it('필진이 카드형태로 보여지고, 필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
       const author = {
         "authorId": 34,
         "authorName": "줌투자",

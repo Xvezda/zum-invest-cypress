@@ -92,6 +92,7 @@ describe('국내증시', () => {
           );
     });
 
+    // TODO: https://glebbahmutov.com/blog/canvas-testing/
     it.skip('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
       cy.stubImages();
       visit();
@@ -100,40 +101,43 @@ describe('국내증시', () => {
         .as('mekoChart');
 
       const expectMekoChartLoaded = () =>
-        cy.get('@mekoChart')
-          .its('0.contentWindow')
-          .then(function injectTooltipHidingStyle(win) {
-            win.eval(`
-              const style = document.createElement('style');
-              style.textContent = '[id*="chart-info-tooltip"] { display: none !important }';
-              document.head.appendChild(style);
-            `);
-          });
+        cy.frameLoaded(
+          '.map_cont iframe',
+          {
+            url: 'chart-finance.zum.com/api/chart/treemap/domestic'
+          }
+        );
 
       const expectMekoChartSnapshotToMatch = () =>
         cy.get('@mekoChart')
           .toMatchImageSnapshot();
 
-      // NOTE: 불안정한 메코차트의 로드 문제 해결
-      // TODO: 근본적인 원인 파악
-      recurse(
-        () => {
-          triggerMekoChartApi();
-          cy.wait('@apiMekoChart');
-          return cy
-            .get('@mekoChart')
-            .its('0.contentDocument.body');
-        },
-        $body => expect($body).to.have.descendants('[id^="treemap-node-stock"]'),
-        {
-          delay: 100,
-          log: false,
-        }
-      );
-
       expectMekoChartLoaded()
         .then(() => {
+          // NOTE: 불안정한 메코차트의 로드 문제 해결
+          // TODO: 근본적인 원인 파악
+          recurse(
+            () => {
+              triggerMekoChartApi();
+              cy.wait('@apiMekoChart');
+              return cy
+                .get('@mekoChart')
+                .its('0.contentDocument.body');
+            },
+            $body => expect($body).to.have.descendants('[class*="treemap-container"]'),
+            {
+              delay: 100,
+              limit: Infinity,
+              timeout: 30000,
+              log: false,
+            }
+          );
+
           withHiddenHeader(() => {
+            triggerMekoChartApi();
+            cy.wait('@apiMekoChart');
+            cy.wait(500);
+
             expectMekoChartSnapshotToMatch();
             cy.get('.map_menu_tab li:not(:first-child) > a')
               .each($menu => {
@@ -181,7 +185,7 @@ describe('국내증시', () => {
   });
 
   describe('실시간 국내 증시', () => {
-    it.skip('코스피 지수를 보여준다.', () => {
+    it('코스피 지수를 보여준다.', () => {
       cy.stubImages();
       visit();
 
@@ -292,7 +296,7 @@ describe('국내증시', () => {
   }); // END: 오늘의 HOT PICK
 
   describe('ZUM 인기종목', () => {
-    it.skip('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
+    it('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
       cy.stubImages();
       visit();
 
