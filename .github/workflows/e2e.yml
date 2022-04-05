@@ -12,5 +12,9 @@ jobs:
     container: cypress/included:9.5.3
     steps:
       - uses: actions/checkout@v2
-      - run: yarn --frozen-lockfile --silent
-      - run: cypress run
+      - uses: cypress-io/github-action@v2
+        with:
+          parallel: true
+          install-command: yarn --frozen-lockfile --silent
+        env:
+          CYPRESS_INSTALL_BINARY: 0
