@@ -373,6 +373,7 @@ describe('국내증시 종목', () => {
         .as('apiInterest');
     });
 
+    cy.log('로그인 후 로그인, 관심종목 API로부터 응답을 받을 때 까지 대기');
     cy.login();
     cy.wait('@apiMemberLogin')
       .wait('@apiInterest');
@@ -382,6 +383,7 @@ describe('국내증시 종목', () => {
         cy.get('.like')
           .as('likeButton');
 
+        cy.log('아이콘을 클릭하면 관심종목 API로 종목코드를 전송');
         cy.get('@likeButton')
           .should('not.have.class', 'activation')
           .click({force: true});
@@ -393,9 +395,11 @@ describe('국내증시 종목', () => {
             expect(request.body).to.deep.equal({id: '239340'});
           });
 
+        cy.log('관심종목에 등록이 되면 클릭한 아이콘이 활성화');
         cy.get('@likeButton')
           .should('have.class', 'activation');
 
+        cy.log('관심종목인 상태에서 다시 클릭을 하면 제거요청 전송');
         cy.get('@likeButton')
           .click({force: true});
         
@@ -403,6 +407,7 @@ describe('국내증시 종목', () => {
           .its('request.url')
           .should('contain', 'delete');  // NOTE: RESTful?
         
+        cy.log('관심종목 제거 이후 아이콘은 비활성화 상태');
         cy.get('@likeButton')
           .should('not.have.class', 'activation');
       });
@@ -431,7 +436,7 @@ describe('국내증시 종목', () => {
       .then(price => {
         const lastPage = Math.ceil(price.totalCount / rowsPerPage);
 
-        cy.log('last page of stock price is', lastPage);
+        cy.log(`일별 시세의 마지막 페이지: ${lastPage}`);
         cy.intercept('/api/domestic/stock/*/price*', req => {
           if (req.query.page == lastPage) {
             req.alias = 'apiDomesticStockPriceLastPage';
@@ -446,7 +451,7 @@ describe('국내증시 종목', () => {
       .then(investor => {
         const lastPage = Math.ceil(investor.totalCount / rowsPerPage);
 
-        cy.log('last page of investor is', lastPage);
+        cy.log(`투자자별 매매동향의 마지막 페이지: ${lastPage}`);
         cy.intercept('/api/domestic/stock/*/investor*', req => {
           if (req.query.page == lastPage) {
             req.alias = 'apiDomesticStockInvestorLastPage';
@@ -491,6 +496,7 @@ describe('국내증시 종목', () => {
       .as('niceWidget');
 
     visit();
+    cy.log('기업정보탭을 클릭하면 NICE 위젯의 URL이 종목코드를 포함');
     cy.get('.stock_menu_info')
       .contains('기업정보')
       .click();
@@ -529,76 +535,76 @@ describe('카테고리별 랭킹', () => {
     cy.get('.cont_wrap .tab_line').as('domesticRankingMenu');
   });
 
-  it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
+  it.only('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
     cy.request('/api/domestic/ranking?category=MARKET_CAP')
       .toMatchApiSnapshot();
 
     const optionTable = {
       tradeVolume: {
-        name: "거래량(천주)",
+        optionName: "거래량(천주)",
       },
       tradeValue: {
-        name: "거래대금(백만)",
+        optionName: "거래대금(백만)",
       },
       preTradeVolume: {
-        name: "전일거래량(천주)"
+        optionName: "전일거래량(천주)",
       },
       marketCap: {
-        name: "시가총액(억)",
+        optionName: "시가총액(억)",
       },
       per: {
-        name: "주가순이익비율(PER)",
-        alt: "PER (배)"
+        optionName: "주가순이익비율(PER)",
+        tableHeaderName: "PER (배)"
       },
       operatingProfit: {
-        name: "영업이익(억)",
+        optionName: "영업이익(억)",
       },
       eps: {
-        name: "주당순이익(EPS)",
-        alt: 'EPS',
+        optionName: "주당순이익(EPS)",
+        tableHeaderName: 'EPS',
       },
       openPrice: {
-        name: "시가",
+        optionName: "시가",
       },
       highPrice: {
-        name: "고가",
+        optionName: "고가",
       },
       lowPrice: {
-        name: "저가",
+        optionName: "저가",
       },
       take: {
-        name: "매출액(억)",
+        optionName: "매출액(억)",
       },
       netIncome: {
-        name: "당기순이익(억)",
+        optionName: "당기순이익(억)",
       },
       totalAssets: {
-        name: "자산총계(억)",
+        optionName: "자산총계(억)",
       },
       totalDebt: {
-        name: "부채총계(억)",
+        optionName: "부채총계(억)",
       },
       newListedCount: {
-        name: "상장주식수(천주)",
+        optionName: "상장주식수(천주)",
       },
       foreignerShareRatio: {
-        name: "외국인 비율(%)",
-        alt: '외국인 비율',
+        optionName: "외국인 비율(%)",
+        tableHeaderName: '외국인 비율',
       },
       monthlyRateOfChange: {
-        name: "1개월 대비",
+        optionName: "1개월 대비",
       },
       threeMonthlyRateOfChange: {
-        name: "3개월 대비",
+        optionName: "3개월 대비",
       },
       yearlyRateOfChange: {
-        name: "1년 대비",
+        optionName: "1년 대비",
       },
       threeYearlyRateOfChange: {
-        name: "3년 대비",
+        optionName: "3년 대비",
       },
       bps: {
-        name: "주당순자산(BPS)",
+        optionName: "주당순자산(BPS)",
       },
     };
 
@@ -614,10 +620,12 @@ describe('카테고리별 랭킹', () => {
       GOLDEN_CROSS: ['tradeVolume', 'tradeValue', 'monthlyRateOfChange'],
     };
 
+    cy.log('기본 페이지는 시가총액');
     cy.get('@domesticRankingMenu')
       .find('.active')
       .should('contain', '시가총액');
 
+    cy.log('기본 페이지를 제외한 나머지 메뉴를 클릭해서 이동');
     cy.get('@domesticRankingMenu')
       .find('ul > li:not(.active) > a')
       .clickEachWithTable(
@@ -632,6 +640,7 @@ describe('카테고리별 랭킹', () => {
           '골든크로스': 'GOLDEN_CROSS',
         },
         id => {
+          cy.log('카테고리를 클릭하면 API요청과 라우팅 발생');
           cy.wait('@apiDomesticRanking')
             .its('request.url')
             .should('contain', `category=${id}`);
@@ -639,6 +648,7 @@ describe('카테고리별 랭킹', () => {
           cy.url()
             .should('contain', `category=${id}`);
 
+          cy.log('각 카테고리마다 기본으로 체크되어있는 항목이 다름');
           cy.wrap(defaultOptions[id])
             .each(option => {
               cy.get(`input[value="${option}"]`)
@@ -653,30 +663,58 @@ describe('카테고리별 랭킹', () => {
       cy.get('.stock_option_wrap input[type="checkbox"]')
         .as('stockOptionCheckBoxes');
 
-      cy.get('@stockOptionCheckBoxes')
-        .uncheck({force: true})
+      const executeScript = script => 
+        cy.window()
+          .then(win => win.eval(script));
 
+      const uncheckAllCheckBoxes = () => {
+        /*
+        아래 코드와 동일한 역할을 수행하지만 더 나은 성능을 보여줌
+        ```
+        cy.get('@stockOptionCheckBoxes')
+          .uncheck({force: true})
+        ```
+        */
+        executeScript(`
+          document
+            .querySelectorAll('.stock_option_wrap input[type="checkbox"]:checked')
+            .forEach(checkbox => checkbox.click());
+        `);
+      };
+
+      const checkAllCheckBoxes = () => {
+        executeScript(`
+          document
+            .querySelectorAll('.stock_option_wrap input[type="checkbox"]:not(:checked)')
+            .forEach(checkbox => checkbox.click());
+        `);
+      };
+
+      uncheckAllCheckBoxes();
       cy.get('button:contains("적용하기")')
         .as('stockOptionApplyButton')
         .click();
 
-      cy.log('모든 항목이 해제 되어도 남아있는 정보를 확인');
       cy.get('.tbl_scroll')
         .as('scrollableTable');
 
+      cy.log('모든 항목이 해제 되어도 남아있는 정보를 확인');
       cy.get('@scrollableTable')
         .should('contain', '현재가')
         .and('contain', '전일비')
         .and('contain', '등락률')
         .and('contain', '종토방');
 
-      cy.get('@stockOptionCheckBoxes')
-        .check({force: true});
-
+      checkAllCheckBoxes();
       cy.get('@stockOptionApplyButton')
         .click();
 
-      cy.wrap(Object.values(optionTable).map(({ name, alt }) => alt || name))
+      cy.log('테이블에 옵션에 해당하는 정보가 표시 됨');
+      cy.wrap(
+          Object
+            .values(optionTable)
+            .map(({ tableHeaderName, optionName }) => tableHeaderName || optionName)
+        )
         .each(name => {
           cy.get('@scrollableTable')
             .contains(name);
