@@ -9,6 +9,7 @@ describe('국내증시', () => {
   });
 
   const visit = () => {
+    cy.log('국내증시 페이지의 초기값을 무시하고 API 호출을 유도하기 위해 의도적으로 라우팅');
     cy.stubInvestmentApi();
     cy.visit('/investment', {
       onBeforeLoad(win) {
@@ -43,6 +44,7 @@ describe('국내증시', () => {
         .then(({ liveNews }) => {
           cy.wrap(liveNews)
             .each(news => {
+              cy.log('LIVE 뉴스가 표시되는지 확인하고 애니메이션을 실행하여 다음 확인');
               cy.get('@liveNewsList')
                 .contains(news.title)
                 .should('be.visible');
@@ -50,6 +52,8 @@ describe('국내증시', () => {
               cy.tick(700)
                 .tick(3000);
             });
+
+          cy.log('LIVE 뉴스를 클릭했을때 해당 뉴스페이지로 이동이 가능한지 주소 확인');
 
           const [firstLiveNews,] = liveNews;
           cy.get('@liveNewsList')
