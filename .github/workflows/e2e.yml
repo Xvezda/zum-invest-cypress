@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cypress/included:9.5.3
-      options: -u root:root
     steps:
       - uses: actions/checkout@v2
+      - run: chmod -R 777 /github/home
       - uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+          
