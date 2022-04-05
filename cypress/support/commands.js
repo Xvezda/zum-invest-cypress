@@ -26,6 +26,52 @@
 
 require('cypress-plugin-snapshots/commands');
 const { recurse } = require('cypress-recurse');
+const {
+  quicktype,
+  InputData,
+  jsonInputForTargetLanguage,
+} = require('quicktype-core');
+
+async function toTypeObject(json) {
+  const jsonInput = jsonInputForTargetLanguage('ts');
+  await jsonInput.addSource({
+    name: 'TopLevel',
+    samples: [JSON.stringify(json)],
+  });
+
+  const inputData = new InputData();
+  inputData.addInput(jsonInput);
+
+  const { lines } = await quicktype({
+    inputData,
+    lang: 'ts',
+    inferEnums: false,
+    leadingComments: []
+  });
+
+  const output = lines.join('\n');
+  const types = output.match(/interface \w+ \{[^}]*\}/g);
+
+  return types.reduce((acc, t) => {
+    const name = /^interface (\w+)/.exec(t)[1];
+
+    const props = t
+      .split('\n')
+      .map(s => s.match(/(\w+):\s+([^;]+);/))
+      .filter(x => x)
+      .reduce((acc, [_, k, v]) => {
+        return {
+          ...acc,
+          [k]: v,
+        };
+      }, {});
+
+    return {
+      ...acc,
+      [name]: props,
+    };
+  }, {});
+}
 
 const { basename } = require('path');
 Cypress.Commands.add('fixCypressSpec', function () {
@@ -37,7 +83,22 @@ Cypress.Commands.add('fixCypressSpec', function () {
     name: basename(absoluteFile),
     relative: relativeFile,
   };
-});
+})
+
+Cypress.Commands.add(
+  'toMatchApiSnapshot',
+  {
+    prevSubject: true,
+  },
+  (subject) => {
+    return cy
+      .wrap(subject)
+      .its('body')
+      .then(body => {
+        cy.wrap(toTypeObject(body)).toMatchSnapshot();
+      });
+  }
+);
 
 Cypress.Commands.add(
   'stubCommonApi',
@@ -119,8 +180,10 @@ Cypress.Commands.add('stubDomesticApi', () => {
     .as('apiMekoChart');
   cy.intercept('/api/domestic/ranking*', {fixture: 'domestic-ranking'})
     .as('apiDomesticRanking');
-  cy.intercept('/api/domestic/industry', {fixture: 'domestic-industry'})
+  cy.intercept('/api/domestic/industry/*', {fixture: 'domestic-industry'})
     .as('apiDomesticIndustry');
+  cy.intercept('/api/domestic/stock/*', {fixture: 'domestic-stock'})
+    .as('apiDomesticStock');
 });
 
 Cypress.Commands.add(

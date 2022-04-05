@@ -280,6 +280,7 @@ describe('zum 투자 홈', () => {
       const articleIdx = '12345678';
       const articleTitle = '@@주요뉴스_제목@@';
 
+      cy.request('/api/home').toMatchApiSnapshot();
       cy.fixture('home')
         .then(home => {
           const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
@@ -340,23 +341,9 @@ describe('zum 투자 홈', () => {
           cy.get('.article_index_info')
             .find(`a:contains("${stock.name}")`)
             .as('articleStockInfo')
-            .should('be.visible');
-
-          const clickAndMatchUrl = url => 
-            cy.get('@articleStockInfo')
-              .click()
-              .url()
-              .should('contain', url);
-
-          switch (stock.type) {
-            case 'industry':
-              clickAndMatchUrl(`/domestic/industry/${stock.code}`);
-              break;
-            case 'item':
-              clickAndMatchUrl(`/domestic/item/${stock.code}`);
-              break;
-          }
-          cy.go('back');
+            .should('be.visible')
+            .and('have.attr', 'href')
+            .and('contain', `/domestic/${stock.type}/${stock.code}`);
         });
 
       const tickWhileWait = alias => {
@@ -574,6 +561,9 @@ describe('zum 투자 홈', () => {
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
       cy.clock().invoke('restore');
+      const today = new Date().toISOString().match(/\d{4}-\d{2}-\d{2}/)[0];
+      cy.request(`/api/home/category-news?category=all&date=${today}&page=2`)
+        .toMatchApiSnapshot();
       cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 

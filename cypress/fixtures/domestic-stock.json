@@ -1,0 +1,314 @@
+{
+    "price": {
+        "detail": {
+            "financeCategory": "DOMESTIC_STOCK",
+            "id": "239340",
+            "name": "줌인터넷",
+            "updateDateTime": "2022-04-05T11:25:55",
+            "symbol": "KOSDAQ",
+            "currentPrice": 6720,
+            "prevClosingPrice": 6570,
+            "tradeVolume": 2489066,
+            "tradeValue": 16575634520,
+            "marketCap": 172669657600,
+            "priceChange": 150,
+            "rateOfChange": 2.28,
+            "stockType": "ST",
+            "yearlyTop": 8770,
+            "yearlyBottom": 5980,
+            "openPrice": 6470,
+            "highPrice": 6790,
+            "lowPrice": 6330,
+            "stockStatus": "장중"
+        },
+        "investmentIndicator": {
+            "marketCap": 172669657600,
+            "perValue": 149.32,
+            "epsValue": 44,
+            "pbrValue": 6.6,
+            "bpsValue": 996
+        },
+        "periodBenefitRate": {
+            "day4": 7.35,
+            "weekly": -2.75,
+            "monthly": 52.73,
+            "monthly3": 34.13,
+            "monthly6": 37,
+            "yearly": 22.4,
+            "yearly3": 84.11
+        },
+        "interestScore": 0
+    },
+    "additionalInfo": {
+        "industry": {
+            "id": 107,
+            "name": "인터넷",
+            "stocks": [
+                {
+                    "id": "042000",
+                    "name": "카페24",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 22450,
+                    "priceChange": 1450,
+                    "rateOfChange": 6.9
+                },
+                {
+                    "id": "239340",
+                    "name": "줌인터넷",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 6720,
+                    "priceChange": 150,
+                    "rateOfChange": 2.28
+                },
+                {
+                    "id": "143240",
+                    "name": "사람인에이치알",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 41150,
+                    "priceChange": 150,
+                    "rateOfChange": 0.37
+                },
+                {
+                    "id": "093320",
+                    "name": "케이아이엔엑스",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 56500,
+                    "priceChange": 200,
+                    "rateOfChange": 0.36
+                },
+                {
+                    "id": "079940",
+                    "name": "가비아",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 13500,
+                    "priceChange": 0,
+                    "rateOfChange": 0
+                },
+                {
+                    "id": "080010",
+                    "name": "이상네트웍스",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 7660,
+                    "priceChange": -90,
+                    "rateOfChange": -1.16
+                },
+                {
+                    "id": "337930",
+                    "name": "브랜드엑스코퍼레이션",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 9360,
+                    "priceChange": -110,
+                    "rateOfChange": -1.16
+                },
+                {
+                    "id": "119860",
+                    "name": "다나와",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 23350,
+                    "priceChange": -300,
+                    "rateOfChange": -1.27
+                },
+                {
+                    "id": "089230",
+                    "name": "THE E&M",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 629,
+                    "priceChange": -11,
+                    "rateOfChange": -1.72
+                },
+                {
+                    "id": "053280",
+                    "name": "예스24",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 8780,
+                    "priceChange": -170,
+                    "rateOfChange": -1.9
+                }
+            ]
+        },
+        "theme": null,
+        "interestDateTime": null
+    },
+    "overview": {
+        "priceHistory": {
+            "items": [
+                {
+                    "date": "2022-04-04",
+                    "price": 6570,
+                    "priceChange": 310,
+                    "rateOfChange": 4.95,
+                    "highPrice": 6580,
+                    "lowPrice": 5980,
+                    "openPrice": 6210,
+                    "tradeVolume": 3003015
+                },
+                {
+                    "date": "2022-04-01",
+                    "price": 6260,
+                    "priceChange": -10,
+                    "rateOfChange": -0.16,
+                    "highPrice": 6670,
+                    "lowPrice": 6250,
+                    "openPrice": 6250,
+                    "tradeVolume": 3145958
+                },
+                {
+                    "date": "2022-03-31",
+                    "price": 6270,
+                    "priceChange": 0,
+                    "rateOfChange": 0,
+                    "highPrice": 6430,
+                    "lowPrice": 6220,
+                    "openPrice": 6250,
+                    "tradeVolume": 1093660
+                },
+                {
+                    "date": "2022-03-30",
+                    "price": 6270,
+                    "priceChange": -640,
+                    "rateOfChange": -9.26,
+                    "highPrice": 6860,
+                    "lowPrice": 6240,
+                    "openPrice": 6790,
+                    "tradeVolume": 1895891
+                },
+                {
+                    "date": "2022-03-29",
+                    "price": 6910,
+                    "priceChange": -260,
+                    "rateOfChange": -3.63,
+                    "highPrice": 7160,
+                    "lowPrice": 6910,
+                    "openPrice": 7040,
+                    "tradeVolume": 1729098
+                },
+                {
+                    "date": "2022-03-28",
+                    "price": 7170,
+                    "priceChange": 140,
+                    "rateOfChange": 1.99,
+                    "highPrice": 7170,
+                    "lowPrice": 6680,
+                    "openPrice": 6900,
+                    "tradeVolume": 3649148
+                },
+                {
+                    "date": "2022-03-25",
+                    "price": 7030,
+                    "priceChange": -600,
+                    "rateOfChange": -7.86,
+                    "highPrice": 7390,
+                    "lowPrice": 7020,
+                    "openPrice": 7270,
+                    "tradeVolume": 5660267
+                },
+                {
+                    "date": "2022-03-24",
+                    "price": 7630,
+                    "priceChange": 750,
+                    "rateOfChange": 10.9,
+                    "highPrice": 7630,
+                    "lowPrice": 6630,
+                    "openPrice": 6800,
+                    "tradeVolume": 8503893
+                },
+                {
+                    "date": "2022-03-23",
+                    "price": 6880,
+                    "priceChange": 220,
+                    "rateOfChange": 3.3,
+                    "highPrice": 7000,
+                    "lowPrice": 6550,
+                    "openPrice": 6670,
+                    "tradeVolume": 6291660
+                },
+                {
+                    "date": "2022-03-22",
+                    "price": 6660,
+                    "priceChange": 110,
+                    "rateOfChange": 1.68,
+                    "highPrice": 6760,
+                    "lowPrice": 6560,
+                    "openPrice": 6620,
+                    "tradeVolume": 2016966
+                }
+            ],
+            "totalCount": 1431
+        },
+        "investorHistory": {
+            "items": [
+                {
+                    "date": "2022-04-04",
+                    "foreignerShareCount": 203650,
+                    "foreignerShareRatio": 0.75,
+                    "foreignerNetSales": 160114,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-04-01",
+                    "foreignerShareCount": 43536,
+                    "foreignerShareRatio": 0.16,
+                    "foreignerNetSales": -43290,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-31",
+                    "foreignerShareCount": 86826,
+                    "foreignerShareRatio": 0.32,
+                    "foreignerNetSales": -1654,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-30",
+                    "foreignerShareCount": 88480,
+                    "foreignerShareRatio": 0.33,
+                    "foreignerNetSales": -13937,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-29",
+                    "foreignerShareCount": 102417,
+                    "foreignerShareRatio": 0.38,
+                    "foreignerNetSales": -24374,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-28",
+                    "foreignerShareCount": 126791,
+                    "foreignerShareRatio": 0.47,
+                    "foreignerNetSales": -11587,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-25",
+                    "foreignerShareCount": 138378,
+                    "foreignerShareRatio": 0.51,
+                    "foreignerNetSales": -388731,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-24",
+                    "foreignerShareCount": 527109,
+                    "foreignerShareRatio": 1.95,
+                    "foreignerNetSales": 373055,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-03-23",
+                    "foreignerShareCount": 154054,
+                    "foreignerShareRatio": 0.57,
+                    "foreignerNetSales": -13674,
+                    "institutionNetSales": -150
+                },
+                {
+                    "date": "2022-03-22",
+                    "foreignerShareCount": 167728,
+                    "foreignerShareRatio": 0.62,
+                    "foreignerNetSales": 13210,
+                    "institutionNetSales": 0
+                }
+            ],
+            "totalCount": 273
+        }
+    }
+}
