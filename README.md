@@ -16,29 +16,21 @@
 ## 구조
 ```
 zum-invest-cypress
-├── cypress
-│   ├── downloads
-│   ├── fixtures
-│   │   ├── ...
-│   ├── integration
-│   │   ├── domestic_spec.js    # 국내증시
-│   │   ├── global_spec.js      # 해외증시
-│   │   ├── home_spec.js        # 메인페이지
-│   │   └── investment_spec.js  # 투자노트
-│   ├── plugins
-│   │   └── index.js
-│   └── support
-│       ├── __image_snapshots__  # 시각적 테스트 스냅샷
-│       │   ├── ...
-│       ├── commands.js
-│       └── index.js
-├── cy-open.yml # open 모드 컨테이너 설정
-├── docker-compose.yml # run 모드 컨테이너 설정
-├── cypress.json
-├── open.sh   # open 모드로 실행
-├── reset.sh  # 파일이벤트를 감지하지 못하는 환경에서의 cypress 수동 리셋
-└── test.sh   # run 모드로 실행
+├── downloads
+├── fixtures
+│   ├── api
+│   ├── cmnt.zum.com
+│   └── userapi.zum.com
+├── integration
+├── plugins
+└── support
+    ├── __image_snapshots__
+    └── __snapshots__
 ```
+* fixture
+  * API fixture는 API의 URL path와 일치하도록 관리
+    * e.g. `/api/home`: `cy.fixture('api/home.json')`
+  * `baseUrl`인 `invest.zum.com`이 아닌 다른 도메인은 도메인 이름으로 디렉토리 생성하여 관리
 
 ## 목표
 * [Cypress best practices](https://docs.cypress.io/guides/references/best-practices)에 부합하도록
