@@ -83,6 +83,7 @@ describe('해외증시', () => {
 
   describe('해외 주요지수', () => {
     it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', () => {
+      visit();
       cy.fixture('overseas-home')
         .then(home => {
           const checkMajorIndexBy = datas => {
@@ -99,6 +100,14 @@ describe('해외증시', () => {
                   .and('contain', formatNumber(currentPrice))
                   .and('contain', formatNumber(priceChange))
                   .and('contain', formatNumber(rateOfChange));
+
+                cy.withHidden('#header', () => {
+                  cy.get(`li:contains("${name}")`)
+                    .find('.graph')
+                    .realHover()
+                    .find('.graph_tooltip')
+                    .should('be.visible');
+                });
               });
           };
 
@@ -115,7 +124,6 @@ describe('해외증시', () => {
 
           checkMajorIndexBy(home.countryIndexOfMainIndex);
         });
-      visit();
 
       cy.get('@majorIndex')
         .contains('나스닥 종합')
