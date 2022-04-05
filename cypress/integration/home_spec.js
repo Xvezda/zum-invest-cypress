@@ -49,25 +49,38 @@ describe('zum 투자 홈', () => {
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
     cy.ignoreKnownError('Navigation cancelled from');
 
-    cy.contains('증권 검색').click({force: true});
+    cy.get('#header')
+      .within(() => {
+        cy.contains('증권 검색').click({force: true});
+        cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
+          .as('searchInput');
 
-    cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
-      .as('searchInput')
-      .type(stock.name);
+        cy.get('@searchInput').should('be.visible');
+        cy.get('button:contains("닫기")').click();
+        cy.get('@searchInput').should('not.be.exist');
+
+        cy.contains('증권 검색').click({force: true});
+        cy.get('@searchInput')
+          .type(stock.name);
+      });
 
     cy.tick(1000);
-    cy.wait('@apiSuggest').then(() => {
-      cy.get('.stock_list_wrap .list > *')
-        .first()
-        .should('contain', stock.name);
+    cy.wait('@apiSuggest')
+      .then(() => {
+        cy.get('.stock_list_wrap .list > *')
+          .first()
+          .should('contain', stock.name);
 
-      cy.get('@searchInput')
-        .click({force: true})
-        .type('{enter}', {force: true});
-      
-      cy.url()
-        .should('contain', stock.code);
-    });
+        cy.get('@searchInput')
+          .click({force: true})
+          .type('{enter}', {force: true});
+
+        cy.contains('종목 데이터를 가져오는 중입니다')
+          .should('be.visible');
+        
+        cy.url()
+          .should('contain', stock.code);
+      });
   });
 
   describe('사이드바', () => {
