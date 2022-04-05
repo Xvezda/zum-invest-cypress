@@ -150,6 +150,7 @@ describe('해외증시', () => {
     });
 
     it('기간 버튼을 눌러 차트를 바꾸고 리스트를 클릭하여 뉴스를 바꿀 수 있다.', () => {
+      cy.request('/api/overseas/home').toMatchApiSnapshot();
       cy.fixture('overseas-home')
         .then(home => {
           home.representativeStock = [
@@ -209,6 +210,7 @@ describe('해외증시', () => {
           cy.intercept('/api/overseas/home', home)
             .as('apiOverseasHome');
         });
+
       visit();
 
       cy.get('.representative_index')
