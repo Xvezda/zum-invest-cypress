@@ -651,7 +651,7 @@ describe('zum 투자 홈', () => {
       cy.log('달력을 열고 현재달의 1일을 누른다');
       cy.get('.date_select .btn_calendar').click();
 
-      const clickAndMatchUrlToDate = (subject, date) => {
+      const clickAndMatchDateToUrl = (subject, date) => {
         return subject
           .click({force: true})
           .wait('@apiCategoryNews')
@@ -659,7 +659,7 @@ describe('zum 투자 홈', () => {
           .should('contain', `date=${date}`);
       };
 
-      clickAndMatchUrlToDate(
+      clickAndMatchDateToUrl(
         cy.get('.dates > .date-item')
           .not('.empty')
           .first(),  // 1일
@@ -670,19 +670,19 @@ describe('zum 투자 홈', () => {
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate#description
       const lastDateOfPrevMonth = getFormattedDate(new Date(date.setDate(0)));
       cy.log('이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다');
-      clickAndMatchUrlToDate(
+      clickAndMatchDateToUrl(
         cy.get('.date_nav .btn.pre'),
         lastDateOfPrevMonth,
       );
 
       cy.log('다시 다음 버튼을 눌러 이번달의 1일로 이동');
-      clickAndMatchUrlToDate(
+      clickAndMatchDateToUrl(
         cy.get('.date_nav .btn.next'),
         firstDateOfThisMonth,
       );
 
       cy.log('오늘 버튼을 눌러 오늘 날짜로 복귀');
-      clickAndMatchUrlToDate(
+      clickAndMatchDateToUrl(
         cy.get('.btn_today'),
         getFormattedDate(new Date(now)),
       );
