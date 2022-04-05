@@ -9,12 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: cypress/included:9.5.3
+    container:
+      image: cypress/included:9.5.3
+      # https://github.com/cypress-io/github-action/issues/446#issuecomment-987015822
+      options: --user 1001
     steps:
       - uses: actions/checkout@v2
-      # https://github.com/cypress-io/cypress-docker-images/issues/560#issuecomment-1029781116
-      - name: Set permissions
-        run: |
-          chmod -R 777 /github/home
-          chmod -R 777 cypress
       - uses: cypress-io/github-action@v2
