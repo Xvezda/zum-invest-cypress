@@ -33,6 +33,7 @@ describe('국내증시', () => {
 
   describe('국내증시 MAP', () => {
     it('LIVE 뉴스가 일정시간마다 변경되고, 클릭하면 뉴스페이지로 이동한다.', () => {
+      cy.request('/api/domestic/home').toMatchApiSnapshot();
       cy.fixture('domestic-home').as('fixtureDomesticHome');
 
       visit();
@@ -520,6 +521,9 @@ describe('카테고리별 랭킹', () => {
   });
 
   it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
+    cy.request('/api/domestic/ranking?category=MARKET_CAP')
+      .toMatchApiSnapshot();
+
     const optionTable = {
       tradeVolume: {
         name: "거래량(천주)",
