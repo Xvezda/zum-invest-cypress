@@ -56,6 +56,7 @@ async function toTypeObject(json) {
     inputData,
     lang: 'ts',
     inferEnums: false,
+    inferDateTimes: false,
     leadingComments: []
   });
 
