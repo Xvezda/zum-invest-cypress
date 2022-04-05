@@ -27,10 +27,10 @@ beforeEach(() => {
   cy.stubCommonApi();
 
   cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
-  cy.intercept('https://cmnt.zum.com/member/login', {fixture: 'member-login'})
+  cy.intercept('https://cmnt.zum.com/member/login', {fixture: 'cmnt.zum.com/member/login.json'})
     .as('apiMemberLogin');
 
-  cy.fixture('user-info')
+  cy.fixture('userapi.zum.com/getUserInfo.json')
     .then(userInfo => {
       cy.intercept('https://userapi.zum.com/getUserInfo*', req => {
         req.reply({

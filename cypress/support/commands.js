@@ -114,105 +114,105 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'stubCommonApi',
   () => {
-    cy.intercept('/api/global', {fixture: 'global'})
+    cy.intercept('/api/global', {fixture: 'api/global.json'})
       .as('apiGlobal');
 
     cy.intercept('/api/*/home/real-time-news*', req => {
-        req.reply({fixture: `real-time-news-${req.query.page}`});
+        req.reply({fixture: `real-time-news-${req.query.page}.json`});
       })
       .as('apiRealTimeNews');
 
-    cy.intercept('/api/suggest*', {fixture: 'search-suggest-zum'})
+    cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
       .as('apiSuggest');
 
     cy.intercept('/article/info/**', {statusCode: 200})
       .as('apiArticleInfo');
 
-    cy.intercept('/api/news/detail/*', {fixture: 'news-detail'})
+    cy.intercept('/api/news/detail/*', {fixture: 'api/news/detail.json'})
       .as('apiNewsDetail');
 
     cy.intercept('/api/discussion/debate-home/**', {statusCode: 200})
       .as('apiDebateHome');
 
-    cy.intercept('https://cmnt.zum.com/article/info/**', {fixture: 'cmnt-article-info'})
+    cy.intercept('https://cmnt.zum.com/article/info/**', {fixture: 'cmnt.zum.com/article/info.json'})
       .as('apiCmntArticleInfo');
 
-    cy.intercept('https://cmnt.zum.com/cmnt/article-list/**', {fixture: 'cmnt-article-list'})
+    cy.intercept('https://cmnt.zum.com/cmnt/article-list/**', {fixture: 'cmnt.zum.com/cmnt/article-list.json'})
       .as('apiCmntArticleList');
   }
 );
 
 Cypress.Commands.add('stubInvestmentApi', () => {
-  cy.intercept('/api/investment', {fixture: 'investment'}).as('apiInvestment');
+  cy.intercept('/api/investment', {fixture: 'api/investment.json'}).as('apiInvestment');
 
   cy.intercept('/api/investment/authors*', req => {
-      req.reply({fixture: 'investment-authors'});
+      req.reply({fixture: 'api/investment/authors.json'});
     })
     .as('apiInvestmentAuthors');
 
-  cy.intercept('/api/investment/authors/*', {fixture: 'investment-author'})
+  cy.intercept('/api/investment/authors/*', {fixture: 'api/investment/author.json'})
     .as('apiInvestmentAuthor');
 
   cy.intercept('/api/investment/posts*', req => {
-      req.reply({fixture: `investment-home-authors-${req.query.page}`});
+      req.reply({fixture: `api/investment/home/authors-${req.query.page}.json`});
     })
     .as('posts');
 
-  cy.intercept('/api/investment/posts/*', {fixture: 'investment-posts'})
+  cy.intercept('/api/investment/posts/*', {fixture: 'api/investment/posts.json'})
     .as('apiInvestmentPosts');
 
   cy.intercept('/api/investment/home/authors*', req => {
-      req.reply({fixture: `investment-home-authors-${req.query.page}`});
+      req.reply({fixture: `api/investment/home/authors-${req.query.page}.json`});
     })
     .as('apiAuthors');
 
   cy.intercept('/api/investment/authors/*/posts/recent**', req => {
-      req.reply({fixture: `investment-authors-posts-recent-${req.query.page}`});
+      req.reply({fixture: `api/investment/authors/posts/recent-${req.query.page}.json`});
     })
     .as('apiAuthorsPostsRecent');
 });
 
 Cypress.Commands.add('stubHomeApi', () => {
   cy.intercept('/api/home/category-news*', req => {
-      req.reply({fixture: `category-news-${req.query.page}`});
+      req.reply({fixture: `api/home/category-news-${req.query.page}.json`});
     })
     .as('apiCategoryNews');
 
-  cy.intercept('/api/home', {fixture: 'home'})
+  cy.intercept('/api/home', {fixture: 'api/home.json'})
     .as('apiHome');
 });
 
 Cypress.Commands.add('stubDomesticApi', () => {
-  cy.intercept('/api/domestic/common', {fixture: 'domestic-common'})
+  cy.intercept('/api/domestic/common', {fixture: 'api/domestic/common.json'})
     .as('apiDomesticCommon');
-  cy.intercept('/api/domestic/home', {fixture: 'domestic-home'})
+  cy.intercept('/api/domestic/home', {fixture: 'api/domestic/home.json'})
     .as('apiDomesticHome');
-  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'domestic-meko-chart'})
+  cy.intercept('/api/domestic/home/meko-chart', {fixture: 'api/domestic/meko-chart.json'})
     .as('apiMekoChart');
-  cy.intercept('/api/domestic/ranking*', {fixture: 'domestic-ranking'})
+  cy.intercept('/api/domestic/ranking*', {fixture: 'api/domestic/ranking.json'})
     .as('apiDomesticRanking');
-  cy.intercept('/api/domestic/industry/*', {fixture: 'domestic-industry'})
+  cy.intercept('/api/domestic/industry/*', {fixture: 'api/domestic/industry.json'})
     .as('apiDomesticIndustry');
-  cy.intercept('/api/domestic/stock/*', {fixture: 'domestic-stock'})
+  cy.intercept('/api/domestic/stock/*', {fixture: 'api/domestic/stock.json'})
     .as('apiDomesticStock');
 });
 
 Cypress.Commands.add(
   'stubOverseasApi',
   () => {
-    cy.intercept('/api/overseas/home', {fixture: 'overseas-home'})
+    cy.intercept('/api/overseas/home', {fixture: 'api/overseas/home.json'})
       .as('apiOverseasHome');
 
-    cy.intercept('/api/overseas/home/meko-chart', {fixture: 'overseas-meko-chart'})
+    cy.intercept('/api/overseas/home/meko-chart', {fixture: 'api/overseas/meko-chart.json'})
       .as('apiOverseasMekoChart');
 
     cy.intercept('/api/overseas/home/representative-stock*', req => {
         switch (req.query.category) {
           case 'DOW':
-            req.reply({fixture: 'overseas-representative-stock-dow'});
+            req.reply({fixture: 'api/overseas/home/representative-stock-dow.json'});
             break;
           case 'NASDAQ':
-            req.reply({fixture: 'overseas-representative-stock-nasdaq'});
+            req.reply({fixture: 'api/overseas/home/representative-stock-nasdaq.json'});
             break;
           default:
             req.destroy();
@@ -221,7 +221,7 @@ Cypress.Commands.add(
       })
       .as('apiOverseasRepresentativeStock');
 
-    cy.intercept('/api/overseas/common', {fixture: 'overseas-common'})
+    cy.intercept('/api/overseas/common', {fixture: 'api/overseas/common.json'})
       .as('apiOverseasCommon');
   }
 );

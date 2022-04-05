@@ -84,7 +84,7 @@ describe('해외증시', () => {
   describe('해외 주요지수', () => {
     it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', () => {
       visit();
-      cy.fixture('overseas-home')
+      cy.fixture('api/overseas/home.json')
         .then(home => {
           const checkMajorIndexBy = datas => {
             cy.wrap(datas)
@@ -159,7 +159,7 @@ describe('해외증시', () => {
 
     it('기간 버튼을 눌러 차트를 바꾸고 리스트를 클릭하여 뉴스를 바꿀 수 있다.', () => {
       cy.request('/api/overseas/home').toMatchApiSnapshot();
-      cy.fixture('overseas-home')
+      cy.fixture('api/overseas/home.json')
         .then(home => {
           home.representativeStock = [
             {
@@ -313,7 +313,7 @@ describe('해외증시', () => {
     // TODO: 원인파악
     cy.ignoreKnownError("Cannot read properties of undefined (reading 'reduce')");
 
-    cy.intercept('/api/overseas/debates/*/vote', {fixture: 'overseas-debates-vote'})
+    cy.intercept('/api/overseas/debates/*/vote', {fixture: 'api/overseas/debates-vote.json'})
       .as('debatesVote');
 
     visit();
@@ -353,7 +353,7 @@ describe('해외증시', () => {
     });
 
     it('클릭할 경우, 이름 또는 프로필은 필진페이지, 카테고리는 카테고리 상세, 제목은 게시글 보기로 이동한다.', () => {
-      cy.fixture('overseas-home')
+      cy.fixture('api/overseas/home.json')
         .then(home => {
           const [firstContent,] = home.recentInvestmentContents;
           firstContent.authorId = 123;

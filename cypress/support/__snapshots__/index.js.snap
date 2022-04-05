@@ -1,502 +1,3 @@
-exports[`zum 투자 홈 > 오늘의 주요뉴스 > 주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다. #0`] =
-{
-  "AlternativeInvestmentElement": {
-    "authorId": "number",
-    "authorName": "string",
-    "authorThumbnailUrl": "string",
-    "isOriginal": "boolean",
-    "leadText": "string",
-    "postId": "number",
-    "subCategory": "string",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "CategoryNews": {
-    "all": "DomesticElement[]",
-    "coin": "DomesticElement[]",
-    "domestic": "DomesticElement[]",
-    "esg": "DomesticElement[]",
-    "market": "DomesticElement[]",
-    "overseas": "DomesticElement[]"
-  },
-  "DomesticElement": {
-    "category": "null | string",
-    "id": "string",
-    "landingUrl": "string",
-    "mediaName": "null | string",
-    "registerDateTime": "Date | null",
-    "subCategory": "null | string",
-    "thumbnail": "string",
-    "title": "string"
-  },
-  "InvestmentContentsNotice": {
-    "postId": "number",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "MainIndicator": {
-    "items": "MainIndicatorItem[]"
-  },
-  "MainIndicatorItem": {
-    "category": "string",
-    "currentPrice": "number",
-    "id": "string",
-    "name": "string",
-    "priceChange": "number",
-    "rateOfChange": "number",
-    "unit": "string"
-  },
-  "MainNews": {
-    "subCategories": "string[]",
-    "subNewsItems": "DomesticElement[]",
-    "templateCategories": "string[]",
-    "templatedNews": "TemplatedNews"
-  },
-  "News": {
-    "items": "DomesticElement[]"
-  },
-  "Notices": {
-    "investmentContentsNotices": "InvestmentContentsNotice[]",
-    "performanceSummaryNotices": "PerformanceSummaryNotice[]"
-  },
-  "PerformanceSummaryNotice": {
-    "disclosureDateTime": "Date",
-    "stockCode": "string",
-    "stockName": "string",
-    "title": "string"
-  },
-  "RealtimeComments": {
-    "items": "RealtimeCommentsItem[]"
-  },
-  "RealtimeCommentsItem": {
-    "channelName": "string",
-    "content": "string",
-    "createDateTime": "Date",
-    "key": "string",
-    "stockCode": "string",
-    "stockIcon": "string",
-    "stockName": "string",
-    "title": "string"
-  },
-  "RecentInvestmentContents": {
-    "all": "AlternativeInvestmentElement[]",
-    "alternativeInvestment": "AlternativeInvestmentElement[]",
-    "coin": "AlternativeInvestmentElement[]",
-    "domesticStock": "AlternativeInvestmentElement[]",
-    "investmentTrend": "AlternativeInvestmentElement[]",
-    "overseasStock": "AlternativeInvestmentElement[]"
-  },
-  "TemplatedNews": {
-    "items": "DomesticElement[]",
-    "templates": "string[]"
-  },
-  "TopLevel": {
-    "categoryNews": "CategoryNews",
-    "mainIndicator": "MainIndicator",
-    "mainNews": "MainNews",
-    "mostReadNews": "News",
-    "notices": "Notices",
-    "realtimeComments": "RealtimeComments",
-    "recentInvestmentContents": "RecentInvestmentContents",
-    "todayMarketNews": "News",
-    "videos": "Videos"
-  },
-  "Videos": {
-    "invenId": "string",
-    "items": "VideosItem[]"
-  },
-  "VideosItem": {
-    "body": "string",
-    "categoryCode": "string",
-    "cpCode": "string",
-    "cpName": "string",
-    "createDateTime": "Date",
-    "enabled": "boolean",
-    "episode": "number",
-    "id": "string",
-    "playTime": "number",
-    "publishDateTime": "Date",
-    "sectionCode": "string",
-    "targetAge": "number",
-    "targetNation": "string",
-    "title": "string",
-    "updateDateTime": "Date",
-    "vodImage": "string"
-  }
-};
-
-exports[`zum 투자 홈 > 오늘의 주요뉴스 > 주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다. #1`] =
-{
-  "AlternativeInvestmentElement": {
-    "authorId": "number",
-    "authorName": "string",
-    "authorThumbnailUrl": "string",
-    "isOriginal": "boolean",
-    "leadText": "string",
-    "postId": "number",
-    "subCategory": "string",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "CategoryNews": {
-    "all": "DomesticElement[]",
-    "coin": "DomesticElement[]",
-    "domestic": "DomesticElement[]",
-    "esg": "DomesticElement[]",
-    "market": "DomesticElement[]",
-    "overseas": "DomesticElement[]"
-  },
-  "DomesticElement": {
-    "category": "null | string",
-    "id": "string",
-    "landingUrl": "string",
-    "mediaName": "null | string",
-    "registerDateTime": "Date | null",
-    "subCategory": "null | string",
-    "thumbnail": "null | string",
-    "title": "string"
-  },
-  "InvestmentContentsNotice": {
-    "postId": "number",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "MainIndicator": {
-    "items": "MainIndicatorItem[]"
-  },
-  "MainIndicatorItem": {
-    "category": "string",
-    "currentPrice": "number",
-    "id": "string",
-    "name": "string",
-    "priceChange": "number",
-    "rateOfChange": "number",
-    "unit": "string"
-  },
-  "MainNews": {
-    "subCategories": "string[]",
-    "subNewsItems": "DomesticElement[]",
-    "templateCategories": "string[]",
-    "templatedNews": "TemplatedNews"
-  },
-  "News": {
-    "items": "DomesticElement[]"
-  },
-  "Notices": {
-    "investmentContentsNotices": "InvestmentContentsNotice[]",
-    "performanceSummaryNotices": "PerformanceSummaryNotice[]"
-  },
-  "PerformanceSummaryNotice": {
-    "disclosureDateTime": "Date",
-    "stockCode": "string",
-    "stockName": "string",
-    "title": "string"
-  },
-  "RealtimeComments": {
-    "items": "RealtimeCommentsItem[]"
-  },
-  "RealtimeCommentsItem": {
-    "channelName": "string",
-    "content": "string",
-    "createDateTime": "Date",
-    "key": "string",
-    "stockCode": "string",
-    "stockIcon": "string",
-    "stockName": "string",
-    "title": "string"
-  },
-  "RecentInvestmentContents": {
-    "all": "AlternativeInvestmentElement[]",
-    "alternativeInvestment": "AlternativeInvestmentElement[]",
-    "coin": "AlternativeInvestmentElement[]",
-    "domesticStock": "AlternativeInvestmentElement[]",
-    "investmentTrend": "AlternativeInvestmentElement[]",
-    "overseasStock": "AlternativeInvestmentElement[]"
-  },
-  "TemplatedNews": {
-    "items": "DomesticElement[]",
-    "templates": "string[]"
-  },
-  "TopLevel": {
-    "categoryNews": "CategoryNews",
-    "mainIndicator": "MainIndicator",
-    "mainNews": "MainNews",
-    "mostReadNews": "News",
-    "notices": "Notices",
-    "realtimeComments": "RealtimeComments",
-    "recentInvestmentContents": "RecentInvestmentContents",
-    "todayMarketNews": "News",
-    "videos": "Videos"
-  },
-  "Videos": {
-    "invenId": "string",
-    "items": "VideosItem[]"
-  },
-  "VideosItem": {
-    "body": "string",
-    "categoryCode": "string",
-    "cpCode": "string",
-    "cpName": "string",
-    "createDateTime": "Date",
-    "enabled": "boolean",
-    "episode": "number",
-    "id": "string",
-    "playTime": "number",
-    "publishDateTime": "Date",
-    "sectionCode": "string",
-    "targetAge": "number",
-    "targetNation": "string",
-    "title": "string",
-    "updateDateTime": "Date",
-    "vodImage": "string"
-  }
-};
-
-exports[`zum 투자 홈 > 오늘의 주요뉴스 > 주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다. #2`] =
-{
-  "AlternativeInvestmentElement": {
-    "authorId": "number",
-    "authorName": "string",
-    "authorThumbnailUrl": "string",
-    "isOriginal": "boolean",
-    "leadText": "string",
-    "postId": "number",
-    "subCategory": "string",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "CategoryNews": {
-    "all": "DomesticElement[]",
-    "coin": "DomesticElement[]",
-    "domestic": "DomesticElement[]",
-    "esg": "DomesticElement[]",
-    "market": "DomesticElement[]",
-    "overseas": "DomesticElement[]"
-  },
-  "DomesticElement": {
-    "category": "null | string",
-    "id": "string",
-    "landingUrl": "string",
-    "mediaName": "null | string",
-    "registerDateTime": "Date | null",
-    "subCategory": "null | string",
-    "thumbnail": "string",
-    "title": "string"
-  },
-  "InvestmentContentsNotice": {
-    "postId": "number",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "MainIndicator": {
-    "items": "MainIndicatorItem[]"
-  },
-  "MainIndicatorItem": {
-    "category": "string",
-    "currentPrice": "number",
-    "id": "string",
-    "name": "string",
-    "priceChange": "number",
-    "rateOfChange": "number",
-    "unit": "string"
-  },
-  "MainNews": {
-    "subCategories": "string[]",
-    "subNewsItems": "DomesticElement[]",
-    "templateCategories": "string[]",
-    "templatedNews": "TemplatedNews"
-  },
-  "News": {
-    "items": "DomesticElement[]"
-  },
-  "Notices": {
-    "investmentContentsNotices": "InvestmentContentsNotice[]",
-    "performanceSummaryNotices": "PerformanceSummaryNotice[]"
-  },
-  "PerformanceSummaryNotice": {
-    "disclosureDateTime": "Date",
-    "stockCode": "string",
-    "stockName": "string",
-    "title": "string"
-  },
-  "RealtimeComments": {
-    "items": "RealtimeCommentsItem[]"
-  },
-  "RealtimeCommentsItem": {
-    "channelName": "string",
-    "content": "string",
-    "createDateTime": "Date",
-    "key": "string",
-    "stockCode": "string",
-    "stockIcon": "string",
-    "stockName": "string",
-    "title": "string"
-  },
-  "RecentInvestmentContents": {
-    "all": "AlternativeInvestmentElement[]",
-    "alternativeInvestment": "AlternativeInvestmentElement[]",
-    "coin": "AlternativeInvestmentElement[]",
-    "domesticStock": "AlternativeInvestmentElement[]",
-    "investmentTrend": "AlternativeInvestmentElement[]",
-    "overseasStock": "AlternativeInvestmentElement[]"
-  },
-  "TemplatedNews": {
-    "items": "DomesticElement[]",
-    "templates": "string[]"
-  },
-  "TopLevel": {
-    "categoryNews": "CategoryNews",
-    "mainIndicator": "MainIndicator",
-    "mainNews": "MainNews",
-    "mostReadNews": "News",
-    "notices": "Notices",
-    "realtimeComments": "RealtimeComments",
-    "recentInvestmentContents": "RecentInvestmentContents",
-    "todayMarketNews": "News",
-    "videos": "Videos"
-  },
-  "Videos": {
-    "invenId": "string",
-    "items": "VideosItem[]"
-  },
-  "VideosItem": {
-    "body": "string",
-    "categoryCode": "string",
-    "cpCode": "string",
-    "cpName": "string",
-    "createDateTime": "Date",
-    "enabled": "boolean",
-    "episode": "number",
-    "id": "string",
-    "playTime": "number",
-    "publishDateTime": "Date",
-    "sectionCode": "string",
-    "targetAge": "number",
-    "targetNation": "string",
-    "title": "string",
-    "updateDateTime": "Date",
-    "vodImage": "string"
-  }
-};
-
-exports[`zum 투자 홈 > 분야별 실시간 뉴스 > 스크롤을 내리면 다음 페이지를 불러온다. #0`] =
-{
-  "Item": {
-    "category": "string",
-    "id": "string",
-    "landingUrl": "string",
-    "leadText": "string",
-    "mediaName": "string",
-    "registerDateTime": "Date",
-    "subCategory": "string",
-    "thumbnail": "string",
-    "title": "string"
-  },
-  "TopLevel": {
-    "items": "Item[]",
-    "totalCount": "number"
-  }
-};
-
-exports[`해외증시 > 해외 대표 종목 > 기간 버튼을 눌러 차트를 바꾸고 리스트를 클릭하여 뉴스를 바꿀 수 있다. #0`] =
-{
-  "DebateItem": {
-    "agreeCount": "number",
-    "agreePercent": "number",
-    "articles": "null",
-    "content": "string",
-    "createdDateTime": "Date",
-    "disagreeCount": "number",
-    "disagreePercent": "number",
-    "endedDateTime": "Date",
-    "firstOpinion": "string",
-    "id": "number",
-    "numberOfParticipants": "number",
-    "popularityEnabledDateTime": "Date",
-    "secondOpinion": "string",
-    "startedDateTime": "Date",
-    "theme": "string",
-    "title": "string"
-  },
-  "Dow": {
-    "articleId": "null | string",
-    "articleTitle": "null | string",
-    "stockCode": "string",
-    "stockName": "string"
-  },
-  "LiveNew": {
-    "id": "string",
-    "title": "string"
-  },
-  "MainNews": {
-    "dow": "Dow[]",
-    "nasdaq": "Dow[]"
-  },
-  "OfMainIndex": {
-    "currentPrice": "number",
-    "financeCategory": "string",
-    "id": "string",
-    "name": "string",
-    "priceChange": "number",
-    "rateOfChange": "number",
-    "updateDateTime": "Date",
-    "yearlyBottom": "number",
-    "yearlyTop": "number"
-  },
-  "RealTimeNews": {
-    "items": "RepresentativeNew[]",
-    "totalCount": "number"
-  },
-  "RecentInvestmentContent": {
-    "authorId": "number",
-    "authorName": "string",
-    "authorThumbnailUrl": "string",
-    "isOriginal": "boolean",
-    "leadText": "string",
-    "postId": "number",
-    "subCategory": "string",
-    "title": "string",
-    "writeDateTime": "Date"
-  },
-  "RepresentativeNew": {
-    "id": "string",
-    "landingUrl": "null | string",
-    "leadText": "string",
-    "mediaName": "string",
-    "registerDateTime": "Date",
-    "thumbnail": "null | string",
-    "title": "string"
-  },
-  "RepresentativeStock": {
-    "article": "RepresentativeNew",
-    "stock": "Stock"
-  },
-  "Stock": {
-    "currentPrice": "number",
-    "financeCategory": "string",
-    "highPrice": "number",
-    "id": "string",
-    "lowPrice": "number",
-    "name": "string",
-    "preClosingPrice": "number",
-    "priceChange": "number",
-    "rateOfChange": "number",
-    "symbol": "string",
-    "updateDateTime": "Date"
-  },
-  "TopLevel": {
-    "countryIndexOfMainIndex": "OfMainIndex[]",
-    "debateItems": "DebateItem[]",
-    "indicatorOfMainIndex": "OfMainIndex[]",
-    "liveNews": "LiveNew[]",
-    "mainNews": "MainNews",
-    "realTimeNews": "RealTimeNews",
-    "recentInvestmentContents": "RecentInvestmentContent[]",
-    "representativeNews": "RepresentativeNew[]",
-    "representativeStock": "RepresentativeStock[]"
-  }
-};
-
 exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변경되고, 클릭하면 뉴스페이지로 이동한다. #0`] =
 {
   "Article": {
@@ -505,7 +6,7 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "id": "string",
     "name": "string",
     "rateOfChange": "number",
-    "updateDateTime": "Date"
+    "updateDateTime": "string"
   },
   "CalendarItem": {
     "classification": "string",
@@ -519,16 +20,16 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "eventTitle": "null | string",
     "id": "number",
     "ipoStatus": "null | string",
-    "listingDateTime": "Date | null",
+    "listingDateTime": "null | string",
     "market": "null | string",
     "organizer": "null | string",
     "payDay": "null",
     "personalSubscriptionCompetitionRate": "null | string",
-    "personalSubscriptionEndDateTime": "Date | null",
-    "personalSubscriptionStartedDateTime": "Date | null",
+    "personalSubscriptionEndDateTime": "null | string",
+    "personalSubscriptionStartedDateTime": "null | string",
     "rateOfChange": "number | null",
     "rateReturn": "null",
-    "registerDateTime": "Date",
+    "registerDateTime": "string",
     "stockCode": "null | string",
     "stockName": "string"
   },
@@ -541,14 +42,14 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
   "InvestmentCalendarItem": {
     "calendarItems": "CalendarItem[]",
     "dayOfWeekday": "string",
-    "exposureDateTime": "Date"
+    "exposureDateTime": "string"
   },
   "InvestmentCalendarNew": {
     "id": "string",
     "landingUrl": "string",
     "leadText": "string",
     "mediaName": "string",
-    "registerDateTime": "Date",
+    "registerDateTime": "string",
     "thumbnail": "string",
     "title": "string"
   },
@@ -587,7 +88,7 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "landingUrl": "string",
     "leadText": "string",
     "mediaName": "string",
-    "registerDateTime": "Date",
+    "registerDateTime": "string",
     "subCategory": "string",
     "thumbnail": "string",
     "title": "string"
@@ -605,7 +106,7 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "price": "number",
     "priceChange": "number",
     "rateOfChange": "number",
-    "updateDateTime": "Date"
+    "updateDateTime": "string"
   },
   "TodayHotPick": {
     "fall": "MainStockItem[]",
@@ -663,11 +164,256 @@ exports[`카테고리별 랭킹 > 카테고리별 체크된 기본항목이 다�
     "totalDebt": "number | null",
     "tradeValue": "number",
     "tradeVolume": "number",
-    "updateDateTime": "Date",
+    "updateDateTime": "string",
     "yearlyRateOfChange": "number"
   },
   "TopLevel": {
     "kosdaq": "Kos[]",
     "kospi": "Kos[]"
+  }
+};
+
+exports[`해외증시 > 해외 대표 종목 > 기간 버튼을 눌러 차트를 바꾸고 리스트를 클릭하여 뉴스를 바꿀 수 있다. #0`] =
+{
+  "DebateItem": {
+    "agreeCount": "number",
+    "agreePercent": "number",
+    "articles": "null",
+    "content": "string",
+    "createdDateTime": "string",
+    "disagreeCount": "number",
+    "disagreePercent": "number",
+    "endedDateTime": "string",
+    "firstOpinion": "string",
+    "id": "number",
+    "numberOfParticipants": "number",
+    "popularityEnabledDateTime": "string",
+    "secondOpinion": "string",
+    "startedDateTime": "string",
+    "theme": "string",
+    "title": "string"
+  },
+  "Dow": {
+    "articleId": "null | string",
+    "articleTitle": "null | string",
+    "stockCode": "string",
+    "stockName": "string"
+  },
+  "LiveNew": {
+    "id": "string",
+    "title": "string"
+  },
+  "MainNews": {
+    "dow": "Dow[]",
+    "nasdaq": "Dow[]"
+  },
+  "OfMainIndex": {
+    "currentPrice": "number",
+    "financeCategory": "string",
+    "id": "string",
+    "name": "string",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "updateDateTime": "string",
+    "yearlyBottom": "number",
+    "yearlyTop": "number"
+  },
+  "RealTimeNews": {
+    "items": "RepresentativeNew[]",
+    "totalCount": "number"
+  },
+  "RecentInvestmentContent": {
+    "authorId": "number",
+    "authorName": "string",
+    "authorThumbnailUrl": "string",
+    "isOriginal": "boolean",
+    "leadText": "string",
+    "postId": "number",
+    "subCategory": "string",
+    "title": "string",
+    "writeDateTime": "string"
+  },
+  "RepresentativeNew": {
+    "id": "string",
+    "landingUrl": "null | string",
+    "leadText": "string",
+    "mediaName": "string",
+    "registerDateTime": "string",
+    "thumbnail": "null | string",
+    "title": "string"
+  },
+  "RepresentativeStock": {
+    "article": "RepresentativeNew",
+    "stock": "Stock"
+  },
+  "Stock": {
+    "currentPrice": "number",
+    "financeCategory": "string",
+    "highPrice": "number",
+    "id": "string",
+    "lowPrice": "number",
+    "name": "string",
+    "preClosingPrice": "number",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "symbol": "string",
+    "updateDateTime": "string"
+  },
+  "TopLevel": {
+    "countryIndexOfMainIndex": "OfMainIndex[]",
+    "debateItems": "DebateItem[]",
+    "indicatorOfMainIndex": "OfMainIndex[]",
+    "liveNews": "LiveNew[]",
+    "mainNews": "MainNews",
+    "realTimeNews": "RealTimeNews",
+    "recentInvestmentContents": "RecentInvestmentContent[]",
+    "representativeNews": "RepresentativeNew[]",
+    "representativeStock": "RepresentativeStock[]"
+  }
+};
+
+exports[`zum 투자 홈 > 오늘의 주요뉴스 > 주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다. #0`] =
+{
+  "AlternativeInvestmentElement": {
+    "authorId": "number",
+    "authorName": "string",
+    "authorThumbnailUrl": "string",
+    "isOriginal": "boolean",
+    "leadText": "string",
+    "postId": "number",
+    "subCategory": "string",
+    "title": "string",
+    "writeDateTime": "string"
+  },
+  "CategoryNews": {
+    "all": "DomesticElement[]",
+    "coin": "DomesticElement[]",
+    "domestic": "DomesticElement[]",
+    "esg": "DomesticElement[]",
+    "market": "DomesticElement[]",
+    "overseas": "DomesticElement[]"
+  },
+  "DomesticElement": {
+    "category": "null | string",
+    "id": "string",
+    "landingUrl": "string",
+    "mediaName": "null | string",
+    "registerDateTime": "null | string",
+    "subCategory": "null | string",
+    "thumbnail": "string",
+    "title": "string"
+  },
+  "InvestmentContentsNotice": {
+    "postId": "number",
+    "title": "string",
+    "writeDateTime": "string"
+  },
+  "MainIndicator": {
+    "items": "MainIndicatorItem[]"
+  },
+  "MainIndicatorItem": {
+    "category": "string",
+    "currentPrice": "number",
+    "id": "string",
+    "name": "string",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "unit": "string"
+  },
+  "MainNews": {
+    "subCategories": "string[]",
+    "subNewsItems": "DomesticElement[]",
+    "templateCategories": "string[]",
+    "templatedNews": "TemplatedNews"
+  },
+  "News": {
+    "items": "DomesticElement[]"
+  },
+  "Notices": {
+    "investmentContentsNotices": "InvestmentContentsNotice[]",
+    "performanceSummaryNotices": "PerformanceSummaryNotice[]"
+  },
+  "PerformanceSummaryNotice": {
+    "disclosureDateTime": "string",
+    "stockCode": "string",
+    "stockName": "string",
+    "title": "string"
+  },
+  "RealtimeComments": {
+    "items": "RealtimeCommentsItem[]"
+  },
+  "RealtimeCommentsItem": {
+    "channelName": "string",
+    "content": "string",
+    "createDateTime": "string",
+    "key": "string",
+    "stockCode": "string",
+    "stockIcon": "string",
+    "stockName": "string",
+    "title": "string"
+  },
+  "RecentInvestmentContents": {
+    "all": "AlternativeInvestmentElement[]",
+    "alternativeInvestment": "AlternativeInvestmentElement[]",
+    "coin": "AlternativeInvestmentElement[]",
+    "domesticStock": "AlternativeInvestmentElement[]",
+    "investmentTrend": "AlternativeInvestmentElement[]",
+    "overseasStock": "AlternativeInvestmentElement[]"
+  },
+  "TemplatedNews": {
+    "items": "DomesticElement[]",
+    "templates": "string[]"
+  },
+  "TopLevel": {
+    "categoryNews": "CategoryNews",
+    "mainIndicator": "MainIndicator",
+    "mainNews": "MainNews",
+    "mostReadNews": "News",
+    "notices": "Notices",
+    "realtimeComments": "RealtimeComments",
+    "recentInvestmentContents": "RecentInvestmentContents",
+    "todayMarketNews": "News",
+    "videos": "Videos"
+  },
+  "Videos": {
+    "invenId": "string",
+    "items": "VideosItem[]"
+  },
+  "VideosItem": {
+    "body": "string",
+    "categoryCode": "string",
+    "cpCode": "string",
+    "cpName": "string",
+    "createDateTime": "string",
+    "enabled": "boolean",
+    "episode": "number",
+    "id": "string",
+    "playTime": "number",
+    "publishDateTime": "string",
+    "sectionCode": "string",
+    "targetAge": "number",
+    "targetNation": "string",
+    "title": "string",
+    "updateDateTime": "string",
+    "vodImage": "string"
+  }
+};
+
+exports[`zum 투자 홈 > 분야별 실시간 뉴스 > 스크롤을 내리면 다음 페이지를 불러온다. #0`] =
+{
+  "Item": {
+    "category": "string",
+    "id": "string",
+    "landingUrl": "string",
+    "leadText": "string",
+    "mediaName": "string",
+    "registerDateTime": "string",
+    "subCategory": "string",
+    "thumbnail": "string",
+    "title": "string"
+  },
+  "TopLevel": {
+    "items": "Item[]",
+    "totalCount": "number"
   }
 };

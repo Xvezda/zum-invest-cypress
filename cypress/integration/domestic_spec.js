@@ -33,8 +33,9 @@ describe('국내증시', () => {
 
   describe('국내증시 MAP', () => {
     it('LIVE 뉴스가 일정시간마다 변경되고, 클릭하면 뉴스페이지로 이동한다.', () => {
-      cy.request('/api/domestic/home').toMatchApiSnapshot();
-      cy.fixture('domestic-home').as('fixtureDomesticHome');
+      cy.request('/api/domestic/home')
+        .toMatchApiSnapshot();
+      cy.fixture('api/domestic/home.json').as('fixtureDomesticHome');
 
       visit();
       cy.get('.live_news_list').as('liveNewsList');
@@ -331,7 +332,7 @@ describe('국내증시 종목', () => {
 
   it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
     visit();
-    cy.fixture('interest').then(interest => {
+    cy.fixture('api/interest.json').then(interest => {
       cy.intercept(/\/api\/interest(\/delete)?/, req => {
           req.reply(201, {
             ...interest,
@@ -418,7 +419,7 @@ describe('국내증시 종목', () => {
     const clickButtonOfStockDaily = clickButtonOf('.stock_daily');
     const clickButtonOfTradingTrend = clickButtonOf('.trading_trend');
 
-    cy.fixture('domestic-stock-price')
+    cy.fixture('api/domestic/stock/price.json')
       .then(price => {
         const lastPage = Math.ceil(price.totalCount / rowsPerPage);
 
@@ -433,7 +434,7 @@ describe('국내증시 종목', () => {
         });
       });
 
-    cy.fixture('domestic-stock-investor')
+    cy.fixture('api/domestic/stock/investor.json')
       .then(investor => {
         const lastPage = Math.ceil(investor.totalCount / rowsPerPage);
 
@@ -493,7 +494,7 @@ describe('국내증시 종목', () => {
 
   it('실시간반응을 누르면 종목과 관련된 실시간반응 리스트를 보여주고, 스크롤하면 추가 반응을 불러올 수 있다.', () => {
     cy.intercept('/api/domestic/stock/*/realtime-comments*', {
-        fixture: 'domestic-stock-realtime-comments'
+        fixture: 'api/domestic/stock/realtime-comments.json'
       })
       .as('apiDomesticStockRealtimeComments');
 
