@@ -12,4 +12,9 @@ jobs:
     container: cypress/included:9.5.3
     steps:
       - uses: actions/checkout@v2
+      # https://github.com/cypress-io/cypress-docker-images/issues/560#issuecomment-1029781116
+      - name: Set permissions
+        run: |
+          chmod -R 777 /github/home
+          chmod -R 777 cypress
       - uses: cypress-io/github-action@v2
