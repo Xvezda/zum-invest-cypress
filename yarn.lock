@@ -1002,6 +1002,11 @@ cypress-plugin-snapshots@^1.4.4:
     source-map-support "^0.5.10"
     unidiff "1.0.2"
 
+cypress-real-events@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.7.0.tgz#ad6a78de33af3af0e6437f5c713e30691c44472c"
+  integrity sha512-iyXp07j0V9sG3YClVDcvHN2DAQDgr+EjTID82uWDw6OZBlU3pXEBqTMNYqroz3bxlb0k+F74U81aZwzMNaKyew==
+
 cypress-recurse@^1.18.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/cypress-recurse/-/cypress-recurse-1.18.0.tgz#7f09af8f1c88e04e5384bd7a9303e357d25ccb5a"

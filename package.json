@@ -16,6 +16,7 @@
     "cypress-iframe": "^1.0.1",
     "cypress-image-snapshot": "^4.0.1",
     "cypress-plugin-snapshots": "^1.4.4",
+    "cypress-real-events": "^1.7.0",
     "cypress-recurse": "^1.18.0",
     "quicktype": "^15.0.261",
     "quicktype-core": "^6.0.71"
