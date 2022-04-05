@@ -431,6 +431,7 @@ const retryOnStatusCodeFailureByDefault = (originalFn, url, options) => {
   const overwrittenOptions = {
     // 서버측의 응답실패로 인한 테스트 실패의 가능성 최소화
     retryOnStatusCodeFailure: true,
+    failOnStatusCode: false,
     ...(options || {}),
   };
   return originalFn(url, overwrittenOptions);
