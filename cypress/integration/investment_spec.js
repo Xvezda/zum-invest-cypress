@@ -213,6 +213,7 @@ describe('투자노트', () => {
       cy.stubImages();
       visit();
 
+      cy.log('lazy load 이미지를 불러오도록 해당 위치까지 스크롤하고 기다린 이후 스냅샷');
       cy.get('.writers_wrap')
         .scrollIntoView()
         .as('writersWrap');
@@ -223,6 +224,7 @@ describe('투자노트', () => {
         cy.get('@writersWrap').toMatchImageSnapshot();
       });
 
+      cy.log('필진 이름을 클릭해 필진 상세페이지 이동');
       cy.get('@writersWrap')
         .contains(author.authorName)
         .click();
@@ -242,11 +244,13 @@ describe('투자노트', () => {
       // NOTE: API가 2회 이상 호출되어도 사용자에게는 정상적으로 표시된다
       // TODO: 다만, 렌더링 최적화에 영향을 주어 사용자경험에 악영향을 끼칠 수 있으므로
       // 2회 이상 호출의 경우 경고를 표시하도록 수정 필요
+      // 당장의 크리티컬한 이슈는 아니기 때문에 waitUntil 명령을 사용했으나, 이후 수정이 필요
       const waitForAuthorsApiUntil = predicate =>
         cy.waitUntil('@apiAuthors', predicate);
 
       cy.get('@writersWrap')
         .within(() => {
+          cy.log('다음 버튼을 누르면 2페이지를 가져온다');
           cy.get('.next')
             .click();
 
@@ -254,6 +258,7 @@ describe('투자노트', () => {
             ({ request }) => expect(request.url).to.contain('page=2'),
           );
 
+          cy.log('이전 버튼을 누르면 다시 1페이지를 가져온다');
           cy.get('.prev')
             .click();
 
@@ -261,6 +266,7 @@ describe('투자노트', () => {
             ({ request }) => expect(request.url).to.contain('page=1'),
           );
 
+          cy.log('1페이지에서 이전버튼을 누르면 `1/n`의 마지막 페이지인 n페이지로 이동');
           cy.get('.count')
             .invoke('text')
             .then(text => {
@@ -276,6 +282,7 @@ describe('투자노트', () => {
               );
             })
 
+          cy.log('마지막 페이지에서 다음 버튼을 누르면 1페이지로 순환');
           cy.get('.next')
             .click();
 
@@ -317,6 +324,7 @@ describe('투자노트', () => {
         });
       visit();
 
+      cy.log('타이틀을 클릭해 필진 목록 페이지로 이동');
       cy.contains('줌 투자 필진')
         .click();
 
@@ -336,6 +344,7 @@ describe('투자노트', () => {
             cy.location().its('search').should('include', sortParam);
           });
 
+      cy.log('각 정렬 옵션을 클릭해 오름차순, 내림차순을 토글한다');
       cy.wrap(['콘텐츠 많은 순', '필진명순', '최근 등록 순'])
         .each(name =>
           // 오름차순, 내림차순 각각 테스트
@@ -343,6 +352,7 @@ describe('투자노트', () => {
             .then(() => clickAndMatchApiRequest(name))
         );
 
+      cy.log('더보기 버튼을 누르면 다음 페이지를 불러온다');
       cy.get('.writer_list_wrap')
         .contains('더보기')
         .click();
@@ -351,12 +361,14 @@ describe('투자노트', () => {
         .its('request.url')
         .should('contain', 'page=2');
 
+      cy.log('필진 이름을 눌러 필진 상세페이지로 이동');
       cy.contains(author.authorName)
         .click()
         .url()
         .should('contain', `/investment/author/${author.authorId}`)
         .go('back');
 
+      cy.log('제목을 눌러 게시글 페이지로 이동');
       cy.contains(post.title)
         .click()
         .url()
