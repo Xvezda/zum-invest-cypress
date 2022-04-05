@@ -32,6 +32,15 @@ const {
   jsonInputForTargetLanguage,
 } = require('quicktype-core');
 
+/*
+ * NOTE: 원안은 `quicktype`의 출력 TypeScript 코드를 string으로
+ * 스냅샷 테스트에 사용하려 했으나, `cypress-plugin-snapshots`의 미지원으로
+ * interface에서 타입을 추출해 object 형태로 변환하여 임시 해결함
+ * 
+ * See:
+ * - https://github.com/meinaart/cypress-plugin-snapshots/issues/181
+ * - https://github.com/meinaart/cypress-plugin-snapshots/issues/122
+ */
 async function toTypeObject(json) {
   const jsonInput = jsonInputForTargetLanguage('ts');
   await jsonInput.addSource({
