@@ -675,4 +675,73 @@ describe('카테고리별 랭킹', () => {
       .contains('종토방')
       .should('be.visible');
   });
+
+  it('사이드바에서 각 카테고리별 상위 5종목을 간략하게 나타내고, 이동, 여닫기가 가능하다.', () => {
+    const categoryTable = {
+      marketCap: '시가총액',
+      upper: '상승',
+      lower: '하락',
+      upperLimit: '상한가',
+      lowerLimit: '하한가',
+      soaringTradeVolume: '거래급증',
+      newStock: '신규상장주',
+      fall: '낙폭과대',
+      goldenCross: '골든크로스',
+      soaringPick: '급등주 PICK',
+      reportPick: '리포트 PICK',
+    };
+
+    cy.wait('@apiDomesticCommon')
+      .its('response.body')
+      .as('domesticCommonResponse');
+
+    cy.get('.right_cont_inner')
+      .within(() => {
+        const substract = (a, b) => {
+          return b.reduce((acc, v) => {
+            acc.delete(v);
+            return acc;
+          }, new Set(a));
+        };
+        const allCategoryKeySet = new Set(Object.keys(categoryTable));
+
+        cy.log('기본으로 보이는 항목은 업종 시세 TOP5, 시가총액, 상승, 급등주 PICK이다');
+
+        // 업종시세 TOP5는 토글리스트가 아님
+        cy.get('@domesticCommonResponse')
+          .then(({ industryTop5 }) => {
+            cy.wrap(industryTop5)
+              .each(({ name }) => cy.get(`a:contains("${name}")`).should('be.visible'));
+          });
+
+        const visibleCategories = [
+          'marketCap',
+          'upper',
+          'soaringPick'
+        ];
+        cy.wrap(visibleCategories)
+          .each(category => {
+            cy.get(`.toggle_list:contains("${categoryTable[category]}")`)
+              .should('have.class', 'activation');
+          });
+
+        cy.log('나머지 항목을 더보기 버튼을 눌러서 열어본다');
+        cy.wrap([
+            ...substract(allCategoryKeySet, visibleCategories)
+          ])
+          .each(category => {
+            const toggleTitle = categoryTable[category];
+            cy.get(`.toggle_list:contains("${toggleTitle}")`)
+              .as('toggleList')
+              .should('not.have.class', 'activation');
+
+            cy.get(`h2:contains("${toggleTitle}")`)
+              .find('a:contains("더보기")')
+              .click();
+
+            cy.get('@toggleList')
+              .should('have.class', 'activation');
+      });
+    });
+  });
 });  // END: 카테고리별 랭킹
