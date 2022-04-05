@@ -94,6 +94,8 @@ describe('해외증시', () => {
                 priceChange,
                 rateOfChange
               }) => {
+                cy.log('API에서 받아온 정보를 표시');
+                // 음양(-, +) 등의 정보는 텍스트가 아닌 이미지로 표현될 수 있기 때문에 절대값을 사용
                 const formatNumber = number => Math.abs(number).toLocaleString('en-US');
                 cy.get('@majorIndex')
                   .should('contain', name)
@@ -125,22 +127,21 @@ describe('해외증시', () => {
           checkMajorIndexBy(home.countryIndexOfMainIndex);
         });
 
-      cy.get('@majorIndex')
-        .contains('나스닥 종합')
-        .click()
-        .url()
-        .should('contain', '/global/index/2')
-        .go('back');
+      const clickStockNameAndMatchUrl = (stockName, stockUrl) =>
+        cy.get('@majorIndex')
+          .contains(stockName)
+          .click()
+          .url()
+          .should('contain', url);
+
+      clickStockNameAndMatchUrl('나스닥 종합', '/global/index/2');
+      cy.go('back');
 
       cy.get('@majorIndex')
         .contains('주요 지표 현황')
         .click();
 
-      cy.get('@majorIndex')
-        .contains('나스닥 선물')
-        .click()
-        .url()
-        .should('contain', '/global/index/16');
+      clickStockNameAndMatchUrl('나스닥 선물', '/global/index/16');
     });
   });  // END: 해외 주요지수
 
@@ -291,6 +292,7 @@ describe('해외증시', () => {
       }
       const groupByThree = groupBy(newsPerPage);
 
+      cy.log('한 페이지에 보이는 개수로 묶어 페이지를 넘겨가며 확인');
       cy.get('@overseasHomeResponse')
         .its('representativeNews')
         .then(groupByThree)
@@ -304,6 +306,7 @@ describe('해외증시', () => {
           cy.get('@nextButton').click();
         });
 
+      cy.log('페이지를 모두 넘기면 현재페이지 표시와 마지막 페이지가 같다');
       cy.get('@stockMainNewsWrap')
         .find('.count')
         .then($el => {
@@ -321,6 +324,7 @@ describe('해외증시', () => {
       .as('debatesVote');
 
     visit();
+    cy.log('로그인 후 투표하여 투표 API요청을 확인한 이후 쿠키를 정리하여 재시도');
     cy.wrap([
         {
           selector: '.rise',
@@ -420,8 +424,9 @@ describe('해외증시', () => {
       cy.shouldRequestOnScroll('@apiRealTimeNews');
     });
 
-    it('달력을 클릭하여 열고 닫을 수 있다.', () => {
+    it('달력을 클릭하여 여닫기 가능하고 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
       visit();
+      cy.log('달력아이콘을 클릭하면 미니 달력이 보여진다');
       cy.get('.mini-calendar')
         .as('miniCalendar');
 
@@ -434,15 +439,13 @@ describe('해외증시', () => {
       cy.get('@miniCalendar')
         .should('be.visible');
 
+      cy.log('다시 달력아이콘을 클릭하면 미니 달력이 숨겨진다');
       cy.get('@miniCalendarButton')
         .click();
 
       cy.get('@miniCalendar')
         .should('not.be.visible');
-    });
 
-    it('달력을 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
-      visit();
       const getFormattedDate = date => [
           date.getFullYear(),
           date.getMonth() + 1,
@@ -453,19 +456,20 @@ describe('해외증시', () => {
 
       const date = new Date(now);
       const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
-      // 달력을 열고 현재달의 1일을 누른다.
+      cy.log('달력을 열고 현재달의 1일을 누른다');
       cy.get('.date_select .btn_calendar').click();
 
-      const clickAndMatchUrlToDate = (subject, date) => {
+      const clickAndMatchDateToUrl = (subject, date) => {
         return subject
           .click({force: true})
-          .wait('@apiRealTimeNews')
+          .wait('@apiCategoryNews')
           .its('request.url')
           .should('contain', `date=${date}`);
       };
 
-      clickAndMatchUrlToDate(
-        cy.get('.dates > .date-item:not(.empty)')
+      clickAndMatchDateToUrl(
+        cy.get('.dates > .date-item')
+          .not('.empty')
           .first(),  // 1일
         firstDateOfThisMonth,
       );
@@ -473,20 +477,20 @@ describe('해외증시', () => {
       // dayValue에 0이 제공되면 날짜는 이전 달의 마지막 날로 설정됩니다.
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate#description
       const lastDateOfPrevMonth = getFormattedDate(new Date(date.setDate(0)));
-      // 이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다.
-      clickAndMatchUrlToDate(
+      cy.log('이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다');
+      clickAndMatchDateToUrl(
         cy.get('.date_nav .btn.pre'),
         lastDateOfPrevMonth,
       );
 
-      // 다시 다음 버튼을 눌러 이번달의 1일로 이동
-      clickAndMatchUrlToDate(
+      cy.log('다시 다음 버튼을 눌러 이번달의 1일로 이동');
+      clickAndMatchDateToUrl(
         cy.get('.date_nav .btn.next'),
         firstDateOfThisMonth,
       );
 
-      // 오늘 버튼을 눌러 오늘 날짜로 복귀
-      clickAndMatchUrlToDate(
+      cy.log('오늘 버튼을 눌러 오늘 날짜로 복귀');
+      clickAndMatchDateToUrl(
         cy.get('.btn_today'),
         getFormattedDate(new Date(now)),
       );

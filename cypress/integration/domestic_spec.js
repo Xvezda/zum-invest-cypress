@@ -535,7 +535,7 @@ describe('카테고리별 랭킹', () => {
     cy.get('.cont_wrap .tab_line').as('domesticRankingMenu');
   });
 
-  it.only('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
+  it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
     cy.request('/api/domestic/ranking?category=MARKET_CAP')
       .toMatchApiSnapshot();
 
