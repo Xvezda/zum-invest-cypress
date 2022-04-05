@@ -9,11 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: cypress/included:9.5.3
-      options: --user root
+    container: cypress/included:9.5.3
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
-        with:
-          install-command: yarn --frozen-lockfile --silent
+        env:
+          CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
