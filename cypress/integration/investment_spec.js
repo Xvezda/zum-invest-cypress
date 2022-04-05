@@ -44,7 +44,7 @@ describe('투자노트', () => {
     };
 
     beforeEach(() => {
-      cy.fixture('investment')
+      cy.fixture('api/investment.json')
         .then(investment => {
           investment.top.items[0] = post;
           cy.intercept('/api/investment', investment)
@@ -63,7 +63,7 @@ describe('투자노트', () => {
     });
 
     it('필진 이름을 클릭하면 필진 상세페이지로 이동하고 스크롤을 내려 최신글을 확인 가능하다.', () => {
-      cy.fixture('investment-author')
+      cy.fixture('api/investment/author.json')
         .then(api => {
           api.author = author;
           cy.intercept('/api/investment/authors/*', api)
@@ -114,7 +114,7 @@ describe('투자노트', () => {
           title: '@@최신글_3@@',
         }
       ];
-      cy.fixture('investment-posts')
+      cy.fixture('api/investment/posts.json')
         .then(posts => {
           posts.detail.recentTitles = recentTitles;
           posts.detail.author = {
@@ -196,7 +196,7 @@ describe('투자노트', () => {
         "isNewbie": false
       };
 
-      cy.fixture('investment')
+      cy.fixture('api/investment.json')
         .then(investment => {
           investment.authors.items[0] = author;
           cy.intercept('/api/investment', investment)
@@ -299,7 +299,7 @@ describe('투자노트', () => {
         ]
       };
 
-      cy.fixture('investment-authors')
+      cy.fixture('api/investment/authors.json')
         .then(authors => {
           authors.items[0] = author;
           cy.intercept('/api/investment/authors*', authors)

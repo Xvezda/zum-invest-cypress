@@ -199,7 +199,7 @@ describe('zum 투자 홈', () => {
     });  // END: 주요지표
 
     it('로그인하면 관심종목이 보여지고 관심 선택, 해제 및 종목 이동이 가능하다.', () => {
-      cy.fixture('interest')
+      cy.fixture('api/interest.json')
         .then(interest => {
           interest.items.unshift(stock);
           cy.intercept('/api/interest', req => {
@@ -260,7 +260,7 @@ describe('zum 투자 홈', () => {
         .as('prevButton');
 
       const removeCarrageReturn = title => title.replace(/\r/g, '');
-      cy.fixture('home')
+      cy.fixture('api/home.json')
         .then(home => {
           const notices = [
             ...home.notices.performanceSummaryNotices,
@@ -312,7 +312,7 @@ describe('zum 투자 홈', () => {
       const articleTitle = '@@주요뉴스_제목@@';
 
       cy.request('/api/home').toMatchApiSnapshot();
-      cy.fixture('home')
+      cy.fixture('api/home.json')
         .then(home => {
           const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
           firstTemplatedNews.id = articleIdx;
@@ -340,7 +340,7 @@ describe('zum 투자 홈', () => {
             "currentPrice": 153500
         }
       ];
-      cy.fixture('news-detail')
+      cy.fixture('api/news/detail.json')
         .then(news => {
           news.detail.stocks = newsStocks;
           cy.intercept('/api/news/detail/*', news)
@@ -391,7 +391,7 @@ describe('zum 투자 홈', () => {
       tickWhileWait('@apiCmntArticleList');
 
       // API stub 응답값 덮어쓰기
-      cy.fixture('cmnt-article-info')
+      cy.fixture('cmnt.zum.com/article/info.json')
         .then(info => {
           info.likeCount += 1;
           cy.intercept('https://cmnt.zum.com/article/info/**', info)
@@ -457,7 +457,7 @@ describe('zum 투자 홈', () => {
 
   describe('투자노트', () => {
     beforeEach(() => {
-      cy.fixture('home')
+      cy.fixture('api/home.json')
         .then(home => {
           const {
             all,
@@ -547,7 +547,7 @@ describe('zum 투자 홈', () => {
 
     it('대화를 클릭하여 종목 상세페이지로 이동할 수 있다. ', () => {
       const content = '세상을 읽고 담는 줌인터넷';
-      cy.fixture('home')
+      cy.fixture('api/home.json')
         .then(home => {
           const [firstItem,] = home.realtimeComments.items;
           firstItem.content = content;
