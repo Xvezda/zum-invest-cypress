@@ -9,10 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: cypress/included:9.5.3
-      # https://github.com/cypress-io/github-action/issues/446#issuecomment-987015822
-      options: --user 1001
+    container: cypress/included:9.5.3
     steps:
       - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v2
+      - run: cypress run
