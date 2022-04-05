@@ -50,12 +50,11 @@ describe('투자노트', () => {
           cy.intercept('/api/investment', investment)
             .as('apiInvestment');
         });
-
-      cy.stubImages();
-      visit();
     });
 
     it.skip('카드형태로 보여준다.', () => {
+      cy.stubImages();
+      visit();
       cy.withHidden('#header', () => {
         cy.get('.invest_note_list')
           .toMatchImageSnapshot();
@@ -69,6 +68,7 @@ describe('투자노트', () => {
           cy.intercept('/api/investment/authors/*', api)
             .as('apiInvestmentAuthor');
         });
+      visit();
 
       cy.contains(author.authorName)
         .click();
@@ -76,6 +76,7 @@ describe('투자노트', () => {
       cy.url()
         .should('contain', `/investment/author/${author.authorId}`);
 
+      cy.log('필진 정보가 표시되는지 확인');
       cy.get('.writer_info_wrap')
         .should('contain', author.authorName)
         .and('contain', author.introduction)
@@ -85,6 +86,7 @@ describe('투자노트', () => {
         .should('have.attr', 'href')
         .and('equal', author.personalChannelLink);
       
+      cy.log('스크롤을 내려서 필진의 최신글을 불러 올 수 있다');
       cy.wait('@apiInvestmentAuthor');
       cy.shouldRequestOnScroll('@apiAuthorsPostsRecent');
     });
@@ -94,6 +96,8 @@ describe('투자노트', () => {
         cy.url()
           .should('contain', `/investment/view/${post.postId}`);
 
+      visit();
+      cy.log('제목을 클릭해서 읽기페이지로 이동하고 다시 뒤로가기');
       cy.contains(post.title)
         .click()
         .then(expectUrlToMatch);
@@ -124,6 +128,7 @@ describe('투자노트', () => {
           cy.intercept('/api/investment/posts/*', posts);
         });
 
+      cy.log('내용을 클릭해서 읽기페이지로 이동');
       cy.contains(post.leadText)
         .click()
         .then(expectUrlToMatch);
@@ -131,6 +136,7 @@ describe('투자노트', () => {
       cy.get('.writer_profile')
         .as('writerProfile');
 
+      cy.log('게시글 페이지에서 필진의 최신 쓴 글 목록을 클릭하고 각 게시글로 이동 확인');
       cy.wrap(recentTitles)
         .each(post => {
           cy.get('@writerProfile')
@@ -142,6 +148,7 @@ describe('투자노트', () => {
             .go('back');
         });
 
+      cy.log('게시글 페이지에서 필진의 개인채널 링크와 이름이 표시됨');
       cy.get('@writerProfile')
         .find('.btn_home')
         .should('have.attr', 'href')
@@ -232,6 +239,9 @@ describe('투자노트', () => {
         .scrollIntoView()
         .as('writersWrap');
 
+      // NOTE: API가 2회 이상 호출되어도 사용자에게는 정상적으로 표시된다
+      // TODO: 다만, 렌더링 최적화에 영향을 주어 사용자경험에 악영향을 끼칠 수 있으므로
+      // 2회 이상 호출의 경우 경고를 표시하도록 수정 필요
       const waitForAuthorsApiUntil = predicate =>
         cy.waitUntil('@apiAuthors', predicate);
 
