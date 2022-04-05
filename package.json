@@ -17,6 +17,7 @@
     "cypress-image-snapshot": "^4.0.1",
     "cypress-plugin-snapshots": "^1.4.4",
     "cypress-recurse": "^1.18.0",
-    "quicktype": "^15.0.261"
+    "quicktype": "^15.0.261",
+    "quicktype-core": "^6.0.71"
   }
 }
