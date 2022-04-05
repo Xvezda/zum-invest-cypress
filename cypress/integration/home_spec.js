@@ -51,6 +51,7 @@ describe('zum 투자 홈', () => {
 
     cy.get('#header')
       .within(() => {
+        cy.log('증권 검색창을 클릭해서 검색레이어를 열고 닫을 수 있다');
         cy.contains('증권 검색').as('searchBox');
 
         cy.get('@searchBox').click({force: true});
@@ -61,6 +62,7 @@ describe('zum 투자 홈', () => {
         cy.get('button:contains("닫기")').click();
         cy.get('@searchInput').should('not.be.exist');
 
+        cy.log('검색 키워드를 입력한다');
         cy.contains('증권 검색').click({force: true});
         cy.get('@searchInput')
           .type(stock.name);
@@ -69,6 +71,7 @@ describe('zum 투자 홈', () => {
     cy.tick(1000);
     cy.wait('@apiSuggest')
       .then(() => {
+        cy.log('추천 검색어가 표시되면 엔터를 눌러 검색할 수 있다');
         cy.get('.stock_list_wrap .list > *')
           .first()
           .should('contain', stock.name);
@@ -84,6 +87,7 @@ describe('zum 투자 홈', () => {
           .should('contain', stock.code);
       });
 
+    cy.log('뒤로가기해서 최근 검색내역이 올바르게 입력되었는지 확인한다');
     cy.go('back');
     cy.get('@searchBox').click({force: true});
     cy.get('#header')
@@ -139,6 +143,7 @@ describe('zum 투자 홈', () => {
       });
 
       it('기간과 지표를 선택하여 해당하는 차트를 볼 수 있다.', () => {
+        cy.log('클릭하는 내용에 따라 위젯 주소가 변경되는지 확인');
         cy.get('@mainIndicator')
           .find('ul')
           .filter(`:contains("1주일")`)
@@ -217,12 +222,14 @@ describe('zum 투자 홈', () => {
             .as('apiInterestDelete');
         });
 
+      cy.log('로그인 후 사이드바에 관심종목이 표시되는지 확인');
       cy.login()
         .then(visit);
 
       cy.get('.right_cont')
         .as('sideBar');
 
+      cy.log('관심종목의 종목이름을 클릭하면 해당 종목페이지로 이동한다');
       cy.get('@sideBar')
         .should('have.descendants', '.stock_list')
         .contains(stock.name)
@@ -232,6 +239,7 @@ describe('zum 투자 홈', () => {
         .should('contain', stock.code)
         .go('back');
 
+      cy.log('활성화 별 모양 아이콘을 클릭하여 관심종목을 해제할 수 있다');
       cy.get('@sideBar')
         .find('.stock_list .like')
         .first()
@@ -259,9 +267,11 @@ describe('zum 투자 홈', () => {
         .find('.prev')
         .as('prevButton');
 
+      // Carrage Return 문자는 HTML에서 제외
       const removeCarrageReturn = title => title.replace(/\r/g, '');
       cy.fixture('api/home.json')
         .then(home => {
+          cy.log('API로 받아온 값이 올바르게 주요뉴스 타이틀 옆에 표시되는지 확인');
           const notices = [
             ...home.notices.performanceSummaryNotices,
             ...home.notices.investmentContentsNotices,
@@ -367,6 +377,7 @@ describe('zum 투자 홈', () => {
       // TODO: 원인 파악
       cy.ignoreKnownError("Cannot read properties of undefined (reading 'items')");
 
+      cy.log('표시된 뉴스 관련종목, 업종을 클릭해 해당 페이지로 이동 가능');
       cy.wrap(newsStocks)
         .each(stock => {
           cy.get('.article_index_info')
@@ -387,6 +398,7 @@ describe('zum 투자 홈', () => {
         )
       };
 
+      // setTimeout으로 호출되는 API들을 기다림
       tickWhileWait('@apiCmntArticleInfo');
       tickWhileWait('@apiCmntArticleList');
 
@@ -398,6 +410,7 @@ describe('zum 투자 홈', () => {
             .as('apiCmntArticleInfo');
         });
 
+      cy.log('하트 아이콘을 눌러 좋아요 할 수 있고 좋아요 수가 증가한다');
       cy.get('.like button')
         .first()
         .click();
@@ -446,6 +459,7 @@ describe('zum 투자 홈', () => {
         );
       };
 
+      cy.log('동영상 플레이어는 우선 resize 메시지를 받고 settedIdAndPlay 메시지를 받아 재생한다');
       shouldPostMessageMatch(/resize/);
       cy.get('.thumbnail_list_wrap ul > li:not(.active) > a')
         .each($link => {
@@ -538,6 +552,8 @@ describe('zum 투자 홈', () => {
         .within(() => {
           cy.get('ul > li').as('listItems');
 
+          cy.log('스크롤해서 첫 번째 부터 마지막 대화까지 볼 수 있다');
+
           cy.get('@listItems').first().should('be.visible');
           cy.get('.content_inner')
             .scrollTo('bottom');
@@ -572,7 +588,9 @@ describe('zum 투자 홈', () => {
 
     it('카테고리를 변경할 수 있다.', () => {
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
+      cy.log('각 카테고리를 클릭하면 API 요청이 발생한다');
       cy.get('.area_real_news ul.menu_tab > li > a')
+        // 활성화된 첫 번째 카테고리를 클릭하는것은 의미가 없기때문에 역순으로 클릭
         .reverse()
         .clickEachWithTable(
           {
@@ -591,6 +609,7 @@ describe('zum 투자 홈', () => {
     });
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
+      // 스크롤 과정에서 setTimeout 호출이 빈번하게 발생하므로 clock stub을 해제
       cy.clock().invoke('restore');
       const today = new Date().toISOString().match(/\d{4}-\d{2}-\d{2}/)[0];
       cy.request(`/api/home/category-news?category=all&date=${today}&page=2`)
@@ -599,6 +618,7 @@ describe('zum 투자 홈', () => {
     });
 
     it('달력을 여닫을 수 있고 일자를 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
+      cy.log('달력아이콘을 클릭하면 미니 달력이 보여진다');
       cy.get('.mini-calendar')
         .as('miniCalendar');
 
@@ -611,6 +631,7 @@ describe('zum 투자 홈', () => {
       cy.get('@miniCalendar')
         .should('be.visible');
 
+      cy.log('다시 달력아이콘을 클릭하면 미니 달력이 숨겨진다');
       cy.get('@miniCalendarButton')
         .click();
 
@@ -627,7 +648,7 @@ describe('zum 투자 홈', () => {
 
       const date = new Date(now);
       const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
-      // 달력을 열고 현재달의 1일을 누른다.
+      cy.log('달력을 열고 현재달의 1일을 누른다');
       cy.get('.date_select .btn_calendar').click();
 
       const clickAndMatchUrlToDate = (subject, date) => {
@@ -648,19 +669,19 @@ describe('zum 투자 홈', () => {
       // dayValue에 0이 제공되면 날짜는 이전 달의 마지막 날로 설정됩니다.
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate#description
       const lastDateOfPrevMonth = getFormattedDate(new Date(date.setDate(0)));
-      // 이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다.
+      cy.log('이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다');
       clickAndMatchUrlToDate(
         cy.get('.date_nav .btn.pre'),
         lastDateOfPrevMonth,
       );
 
-      // 다시 다음 버튼을 눌러 이번달의 1일로 이동
+      cy.log('다시 다음 버튼을 눌러 이번달의 1일로 이동');
       clickAndMatchUrlToDate(
         cy.get('.date_nav .btn.next'),
         firstDateOfThisMonth,
       );
 
-      // 오늘 버튼을 눌러 오늘 날짜로 복귀
+      cy.log('오늘 버튼을 눌러 오늘 날짜로 복귀');
       clickAndMatchUrlToDate(
         cy.get('.btn_today'),
         getFormattedDate(new Date(now)),
