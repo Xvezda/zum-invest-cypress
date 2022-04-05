@@ -577,7 +577,7 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "price": "number",
     "priceChange": "number",
     "rateOfChange": "number",
-    "updateDateTime": "Date"
+    "updateDateTime": "string"
   },
   "MainStockNewsItem": {
     "enabled": "boolean",
