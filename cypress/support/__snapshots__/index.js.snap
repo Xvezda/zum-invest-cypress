@@ -496,3 +496,178 @@ exports[`해외증시 > 해외 대표 종목 > 기간 버튼을 눌러 차트를
     "representativeStock": "RepresentativeStock[]"
   }
 };
+
+exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변경되고, 클릭하면 뉴스페이지로 이동한다. #0`] =
+{
+  "Article": {
+    "currentPrice": "number",
+    "financeCategory": "string",
+    "id": "string",
+    "name": "string",
+    "rateOfChange": "number",
+    "updateDateTime": "Date"
+  },
+  "CalendarItem": {
+    "classification": "string",
+    "conspiracy": "null | string",
+    "currentPrice": "number | null",
+    "dividend": "null",
+    "dividendDateTime": "null",
+    "estimatedNetProfitPerShare": "null",
+    "estimatedSales": "null",
+    "eventContent": "null | string",
+    "eventTitle": "null | string",
+    "id": "number",
+    "ipoStatus": "null | string",
+    "listingDateTime": "Date | null",
+    "market": "null | string",
+    "organizer": "null | string",
+    "payDay": "null",
+    "personalSubscriptionCompetitionRate": "null | string",
+    "personalSubscriptionEndDateTime": "Date | null",
+    "personalSubscriptionStartedDateTime": "Date | null",
+    "rateOfChange": "number | null",
+    "rateReturn": "null",
+    "registerDateTime": "Date",
+    "stockCode": "null | string",
+    "stockName": "string"
+  },
+  "HotIndustryItem": {
+    "id": "number",
+    "mainStockItem": "MainStockItem",
+    "name": "string",
+    "rateOfChange": "number"
+  },
+  "InvestmentCalendarItem": {
+    "calendarItems": "CalendarItem[]",
+    "dayOfWeekday": "string",
+    "exposureDateTime": "Date"
+  },
+  "InvestmentCalendarNew": {
+    "id": "string",
+    "landingUrl": "string",
+    "leadText": "string",
+    "mediaName": "string",
+    "registerDateTime": "Date",
+    "thumbnail": "string",
+    "title": "string"
+  },
+  "LiveNew": {
+    "id": "string",
+    "title": "string"
+  },
+  "MainIndexItem": {
+    "currentPrice": "number",
+    "financeCategory": "string",
+    "foreignerNetSalesValue": "number",
+    "id": "number",
+    "individualNetSalesValue": "number",
+    "institutionNetSalesValue": "number",
+    "name": "string",
+    "prevClosingPrice": "number",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "symbol": "string",
+    "updateDateTime": "string"
+  },
+  "MainStockItem": {
+    "financeCategory": "string",
+    "id": "string",
+    "name": "string",
+    "price": "number",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "updateDateTime": "Date"
+  },
+  "MainStockNewsItem": {
+    "enabled": "boolean",
+    "financeCategory": "string",
+    "id": "string",
+    "keywords": "null",
+    "landingUrl": "string",
+    "leadText": "string",
+    "mediaName": "string",
+    "registerDateTime": "Date",
+    "subCategory": "string",
+    "thumbnail": "string",
+    "title": "string"
+  },
+  "RealtimeNews": {
+    "items": "InvestmentCalendarNew[]",
+    "totalCount": "number"
+  },
+  "Report": {
+    "articleId": "string",
+    "articleTitle": "string",
+    "financeCategory": "string",
+    "id": "string",
+    "name": "string",
+    "price": "number",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "updateDateTime": "Date"
+  },
+  "TodayHotPick": {
+    "fall": "MainStockItem[]",
+    "new": "MainStockItem[]",
+    "report": "Report[]",
+    "soaring": "Report[]"
+  },
+  "TodayPopular": {
+    "article": "Article[]",
+    "discussion": "Article[]",
+    "search": "Article[]",
+    "star": "Article[]"
+  },
+  "TopLevel": {
+    "hotIndustryItems": "HotIndustryItem[]",
+    "investmentCalendarItems": "InvestmentCalendarItem[]",
+    "investmentCalendarNews": "InvestmentCalendarNew[]",
+    "liveNews": "LiveNew[]",
+    "mainIndexItems": "MainIndexItem[]",
+    "mainStockNewsItems": "MainStockNewsItem[]",
+    "realtimeNews": "RealtimeNews",
+    "realtimeNewsCategories": "string[]",
+    "todayHotPick": "TodayHotPick",
+    "todayPopular": "TodayPopular"
+  }
+};
+
+exports[`카테고리별 랭킹 > 카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다. #0`] =
+{
+  "Kos": {
+    "bps": "number",
+    "currentPrice": "number",
+    "eps": "number",
+    "financeCategory": "string",
+    "foreignerShareRatio": "number",
+    "highPrice": "number",
+    "id": "string",
+    "lowPrice": "number",
+    "marketCap": "number",
+    "monthlyRateOfChange": "number",
+    "name": "string",
+    "netIncome": "number | null",
+    "newListedCount": "number",
+    "newListedRateOfChange": "null",
+    "openPrice": "number",
+    "operatingProfit": "number | null",
+    "per": "number | null",
+    "preTradeVolume": "number",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "take": "number | null",
+    "threeMonthlyRateOfChange": "number",
+    "threeYearlyRateOfChange": "number",
+    "totalAssets": "number | null",
+    "totalDebt": "number | null",
+    "tradeValue": "number",
+    "tradeVolume": "number",
+    "updateDateTime": "Date",
+    "yearlyRateOfChange": "number"
+  },
+  "TopLevel": {
+    "kosdaq": "Kos[]",
+    "kospi": "Kos[]"
+  }
+};
