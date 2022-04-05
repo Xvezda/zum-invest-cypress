@@ -51,7 +51,9 @@ describe('zum 투자 홈', () => {
 
     cy.get('#header')
       .within(() => {
-        cy.contains('증권 검색').click({force: true});
+        cy.contains('증권 검색').as('searchBox');
+
+        cy.get('@searchBox').click({force: true});
         cy.get('[placeholder="지수명, 종목명(종목코드) 입력"]')
           .as('searchInput');
 
@@ -80,6 +82,22 @@ describe('zum 투자 홈', () => {
         
         cy.url()
           .should('contain', stock.code);
+      });
+
+    cy.go('back');
+    cy.get('@searchBox').click({force: true});
+    cy.get('#header')
+      .within(() => {
+        cy.get('.latest_word')
+          .as('latestWord');
+        
+        cy.get('@latestWord')
+          .find(`.word:contains("${stock.name}") button`)
+          .click()
+          .should('not.be.exist');
+
+        cy.get('@latestWord')
+          .should('contain', '최근 검색내역이 존재하지 않습니다');
       });
   });
 
