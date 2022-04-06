@@ -121,6 +121,7 @@ describe('zum 투자 홈', () => {
           ].join(','),
           () => {
             cy.get('.right_cont_inner')
+              .scrollIntoView()
               .then($el => {
                 $el.css('position', 'relative');
                 return cy
@@ -397,6 +398,7 @@ describe('zum 투자 홈', () => {
       cy.ignoreKnownError("Cannot read properties of undefined (reading 'items')");
 
       cy.log('표시된 뉴스 관련종목, 업종을 클릭해 해당 페이지로 이동 가능');
+      cy.wait('@apiNewsDetail');
       cy.wrap(newsStocks)
         .each(stock => {
           cy.get('.article_index_info')
