@@ -27,8 +27,8 @@ describe('zum 투자 홈', () => {
   const visit = () => {
     cy.clock(now);
 
-    cy.stubInvestmentApi();
-    cy.visit('/investment', {
+    cy.intercept('/api/domestic/ranking', {statusCode: 503});
+    cy.visit('/domestic/ranking', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }

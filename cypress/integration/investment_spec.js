@@ -9,8 +9,12 @@ describe('투자노트', () => {
   });
 
   const visit = () => {
-    cy.stubHomeApi();
-    cy.visit('/');
+    cy.intercept('/api/domestic/ranking', {statusCode: 503});
+    cy.visit('/domestic/ranking', {
+      onBeforeLoad(win) {
+        cy.spy(win, 'postMessage').as('postMessage');
+      }
+    });
 
     cy.get('.gnb_finance')
       .find('a')
