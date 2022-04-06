@@ -9,17 +9,7 @@ describe('국내증시', () => {
   });
 
   const visit = () => {
-    cy.log('국내증시 페이지의 초기값을 무시하고 API 호출을 유도하기 위해 의도적으로 라우팅');
-    cy.intercept('/api/domestic/ranking', {statusCode: 503});
-    cy.visit('/domestic/ranking', {
-      onBeforeLoad(win) {
-        cy.spy(win, 'postMessage').as('postMessage');
-      }
-    });
-
-    cy.get('.gnb_finance a:contains("국내증시")')
-      .click();
-
+    cy.triggerRouteAndVisit('/domestic');
     cy.wait('@apiDomesticHome');
   };
 
