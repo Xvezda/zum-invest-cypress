@@ -114,6 +114,7 @@ describe('국내증시', () => {
 
       const expectMekoChartSnapshotToMatch = () =>
         cy.get('@mekoChart')
+          .onlyOn('linux')
           .toMatchImageSnapshot();
 
       expectMekoChartLoaded()
@@ -195,6 +196,7 @@ describe('국내증시', () => {
 
       withHiddenHeader(() => {
         cy.get('.stock_index_wrap')
+          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
@@ -306,6 +308,7 @@ describe('국내증시', () => {
 
       withHiddenHeader(() => {
         cy.get('.popularity_event_wrap')
+          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });

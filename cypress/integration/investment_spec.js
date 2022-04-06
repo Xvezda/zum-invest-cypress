@@ -57,6 +57,7 @@ describe('투자노트', () => {
       visit();
       cy.withHidden('#header', () => {
         cy.get('.invest_note_list')
+          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
@@ -221,7 +222,7 @@ describe('투자노트', () => {
       cy.waitForImage('.writers_wrap img');
 
       cy.withHidden('#header', () => {
-        cy.get('@writersWrap').toMatchImageSnapshot();
+        cy.get('@writersWrap').onlyOn('linux').toMatchImageSnapshot();
       });
 
       cy.log('필진 이름을 클릭해 필진 상세페이지 이동');
