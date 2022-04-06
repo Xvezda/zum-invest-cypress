@@ -258,18 +258,18 @@ Cypress.Commands.add(
   () => {
     cy.intercept(/^https?:\/\/thumb\.zumst\.com\/.*/, req => {
       const url = new URL(req.url);
-      if (url.pathname.startsWith('/378x241')) {
-        req.reply({fixture: '378x241.jpg'});
-      } else if (url.pathname.startsWith('/182x77')) {
-        req.reply({fixture: '182x77.jpg'});
-      } else if (url.pathname.startsWith('/166x116')) {
-        req.reply({fixture: '166x116.jpg'});
-      } else if (url.pathname.startsWith('/76x48')) {
-        req.reply({fixture: '76x48.jpg'});
-      } else if (url.pathname.startsWith('/54x34')) {
-        req.reply({fixture: '54x34.jpg'});
-      } else {
-        req.reply({fixture: 'fallback.jpg'});
+      const dimension = (/\d+x\d+/.exec(url.pathname) || [])[0];
+      switch (dimension) {
+        case '378x241':
+        case '182x77':
+        case '166x116':
+        case '76x48':
+        case '54x34':
+          req.reply({fixture: dimension + '.jpg'});
+          break;
+        default:
+          req.reply({fixture: 'fallback.jpg'});
+          break;
       }
     });
 
