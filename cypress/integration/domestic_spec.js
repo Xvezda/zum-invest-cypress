@@ -10,7 +10,7 @@ describe('국내증시', () => {
 
   const visit = () => {
     cy.triggerRouteAndVisit('/domestic');
-    cy.wait('@apiDomesticHome');
+    return cy.wait('@apiDomesticHome');
   };
 
   const triggerDomesticHomeApi = () =>
