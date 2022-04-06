@@ -27,21 +27,6 @@ beforeEach(() => {
   cy.stubCommonApi();
 
   cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
-  cy.intercept('https://cmnt.zum.com/member/login', {fixture: 'cmnt.zum.com/member/login.json'})
-    .as('apiMemberLogin');
-
-  cy.fixture('userapi.zum.com/getUserInfo.json')
-    .then(userInfo => {
-      cy.intercept('https://userapi.zum.com/getUserInfo*', req => {
-        req.reply({
-          headers: {
-            'Content-Type': 'application/javascript',
-          },
-          statusCode: 200,
-          body: `${req.query.callback}(${JSON.stringify(userInfo)})`,
-        });
-      });
-    });
 });
 
 const messages = [

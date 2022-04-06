@@ -326,8 +326,9 @@ describe('해외증시', () => {
     cy.intercept('/api/overseas/debates/*/vote', {fixture: 'api/overseas/debates-vote.json'})
       .as('debatesVote');
 
-    visit();
     cy.log('로그인 후 투표하여 투표 API요청을 확인한 이후 쿠키를 정리하여 재시도');
+    cy.stubLoginApi();
+    visit();
     cy.wrap([
         {
           selector: '.rise',

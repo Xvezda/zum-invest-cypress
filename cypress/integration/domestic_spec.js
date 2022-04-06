@@ -348,7 +348,6 @@ describe('국내증시 종목', () => {
   });
 
   it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
-    visit();
     cy.fixture('api/interest.json').then(interest => {
       cy.intercept(/\/api\/interest(\/delete)?/, req => {
           req.reply(201, {
@@ -383,7 +382,8 @@ describe('국내증시 종목', () => {
     });
 
     cy.log('로그인 후 로그인, 관심종목 API로부터 응답을 받을 때 까지 대기');
-    cy.login();
+    cy.stubLoginApi();
+    cy.login().then(visit);
     cy.wait('@apiMemberLogin')
       .wait('@apiInterest');
 
