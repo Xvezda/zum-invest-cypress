@@ -464,7 +464,7 @@ describe('해외증시', () => {
       const clickAndMatchDateToUrl = (subject, date) => {
         return subject
           .click({force: true})
-          .wait('@apiCategoryNews')
+          .wait('@apiRealTimeNews')
           .its('request.url')
           .should('contain', `date=${date}`);
       };
