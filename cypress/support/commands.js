@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+require('@cypress/skip-test/support')
 require('cypress-real-events/support');
 require('cypress-plugin-snapshots/commands');
 const { recurse } = require('cypress-recurse');

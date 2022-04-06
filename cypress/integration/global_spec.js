@@ -154,11 +154,13 @@ describe('해외증시', () => {
       cy.wait('@apiOverseasRepresentativeStock');
 
       cy.withHidden('#header', () => {
-        cy.get('.representative_index').toMatchImageSnapshot({
-          imageConfig: {
-            threshold: 0.03,
-          }
-        });
+        cy.get('.representative_index')
+          .onlyOn('linux')
+          .toMatchImageSnapshot({
+            imageConfig: {
+              threshold: 0.03,
+            }
+          });
       });
     });
 

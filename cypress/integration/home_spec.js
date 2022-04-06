@@ -119,6 +119,7 @@ describe('zum 투자 홈', () => {
               .end()
               .wrap($el);
           })
+          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
@@ -312,6 +313,7 @@ describe('zum 투자 홈', () => {
 
             cy.root()
               .first()
+              .onlyOn('linux')
               .toMatchImageSnapshot();
           });
       });
@@ -540,6 +542,7 @@ describe('zum 투자 홈', () => {
         cy.waitForImage('.expert_insight img');
 
         cy.get('@expertInsight')
+          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
