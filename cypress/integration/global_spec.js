@@ -15,16 +15,7 @@ describe('해외증시', () => {
   const visit = () => {
     cy.clock(now);
 
-    cy.intercept('/api/domestic/ranking', {statusCode: 503});
-    cy.visit('/domestic/ranking', {
-      onBeforeLoad(win) {
-        cy.spy(win, 'postMessage').as('postMessage');
-      }
-    });
-
-    cy.get('.gnb_finance a')
-      .filter(':contains("해외증시")')
-      .click();
+    cy.triggerRouteAndVisit('/global');
 
     cy.tick(1000);
     cy.wait(['@apiOverseasHome', '@apiOverseasCommon'])

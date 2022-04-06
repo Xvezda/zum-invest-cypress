@@ -9,18 +9,7 @@ describe('투자노트', () => {
   });
 
   const visit = () => {
-    cy.intercept('/api/domestic/ranking', {statusCode: 503});
-    cy.visit('/domestic/ranking', {
-      onBeforeLoad(win) {
-        cy.spy(win, 'postMessage').as('postMessage');
-      }
-    });
-
-    cy.get('.gnb_finance')
-      .find('a')
-      .filter(':contains("투자노트")')
-      .click();
-
+    cy.triggerRouteAndVisit('/investment');
     cy.wait('@apiInvestment');
   };
 

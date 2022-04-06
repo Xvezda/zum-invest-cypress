@@ -361,12 +361,27 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
-  'routingToVisitPage',
-  path => {
+  'triggerRouteAndVisit',
+  (path, options) => {
+    const pathTable = {
+      '/': '홈',
+      '/global': '해외증시',
+      '/domestic': '국내증시',
+      '/investment': '투자노트',
+    };
+    expect(pathTable[path], 'pathTable에 페이지가 존재하지 않음')
+      .to.be.string;
+
     cy.intercept('/api/domestic/ranking', {statusCode: 503});
-    cy.visit('/domestic/ranking');
+    cy.visit('/domestic/ranking', options);
+
+    return cy
+      .get('.gnb_finance')
+      .find('a')
+      .filter(`:contains("${pathTable[path]}")`)
+      .click();
   }
-);
+)
 
 Cypress.Commands.add(
   'ignoreKnownError',
