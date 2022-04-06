@@ -104,7 +104,7 @@ describe('국내증시', () => {
 
     // TODO: https://glebbahmutov.com/blog/canvas-testing/
     it.skip('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
 
       cy.get('.map_cont iframe')
@@ -120,7 +120,6 @@ describe('국내증시', () => {
 
       const expectMekoChartSnapshotToMatch = () =>
         cy.get('@mekoChart')
-          .onlyOn('linux')
           .toMatchImageSnapshot();
 
       expectMekoChartLoaded()
@@ -197,12 +196,11 @@ describe('국내증시', () => {
 
   describe('실시간 국내 증시', () => {
     it('코스피 지수를 보여준다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
 
       withHiddenHeader(() => {
         cy.get('.stock_index_wrap')
-          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
@@ -309,12 +307,11 @@ describe('국내증시', () => {
 
   describe('ZUM 인기종목', () => {
     it('로드가 되면 첫 번째 탭이 활성화 되어 관련 내용이 보여진다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
 
       withHiddenHeader(() => {
         cy.get('.popularity_event_wrap')
-          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });

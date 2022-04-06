@@ -354,6 +354,13 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+  'useImageSnapshot',
+  () => 
+    cy.onlyOn('linux')
+      .stubImages(),
+);
+
+Cypress.Commands.add(
   'ignoreKnownError',
   message => {
     return cy

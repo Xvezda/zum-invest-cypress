@@ -53,11 +53,10 @@ describe('투자노트', () => {
     });
 
     it('카드형태로 보여준다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
       cy.withHidden('#header', () => {
         cy.get('.invest_note_list')
-          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
@@ -196,6 +195,7 @@ describe('투자노트', () => {
 
   describe('줌 투자 필진', () => {
     it('필진이 카드형태로 보여지고, 필진을 클릭하여 필진 상세페이지로 이동한다.', () => {
+      cy.useImageSnapshot();
       const author = {
         "authorId": 34,
         "authorName": "줌투자",
@@ -222,7 +222,7 @@ describe('투자노트', () => {
       cy.waitForImage('.writers_wrap img');
 
       cy.withHidden('#header', () => {
-        cy.get('@writersWrap').onlyOn('linux').toMatchImageSnapshot();
+        cy.get('@writersWrap').toMatchImageSnapshot();
       });
 
       cy.log('필진 이름을 클릭해 필진 상세페이지 이동');
