@@ -102,12 +102,20 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject) => {
+  (subject, options = {}) => {
+    const merge = typeof options === 'object' &&
+      typeof options.merge === 'object' &&
+      options.merge;
+    delete options.merge;
+
     return cy
       .wrap(subject)
       .its('body')
-      .then(body => {
-        cy.wrap(toTypeObject(body)).toMatchSnapshot();
+      .then(toTypeObject)
+      .then(typeObject => {
+        cy.wrap(
+          Cypress._.merge(typeObject, merge || {})
+        ).toMatchSnapshot(options);
       });
   }
 );
