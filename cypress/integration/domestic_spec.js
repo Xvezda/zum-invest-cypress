@@ -1,6 +1,10 @@
 require('cypress-iframe');
 const { recurse } = require('cypress-recurse');
 
+const executeScript = script => 
+  cy.window()
+    .then(win => win.eval(script));
+
 describe('국내증시', () => {
   const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
@@ -520,6 +524,41 @@ describe('국내증시 종목', () => {
 
     cy.shouldRequestOnScroll('@apiDomesticStockRealtimeComments');
   });
+
+  it('서버사이드 렌더링으로 클라이언트 라우팅 결과와 동일한 화면을 보여준다.', () => {
+    cy.intercept(/\.js$/, {statusCode: 503});
+    cy.useImageSnapshot();
+
+    cy.request(`/domestic/item/${stockCode}`)
+      .its('body')
+      .then(html => {
+        return cy
+          .document()
+          .invoke({log: false}, 'write', html);
+      })
+      .then(() => {
+        // 동적인 요소를 전부 숨김 처리
+        return executeScript(`
+          const style = document.createElement('style');
+          style.innerHTML = [
+            '#header',
+            '.price',
+            '.point',
+            '.per',
+            '.txt',
+            '.min_max_bar',
+            '.data',
+            '.bar',
+            '.chart',
+            '.creat_at'
+          ].join(',') + ' { visibility: hidden !important }';
+          document.head.appendChild(style);
+        `);
+      })
+      .then(() => {
+        cy.get('.stock_board').toMatchImageSnapshot();
+      });
+  });
 });  // END: 국내증시 종목
 
 describe('카테고리별 랭킹', () => {
@@ -659,10 +698,6 @@ describe('카테고리별 랭킹', () => {
 
       cy.get('.stock_option_wrap input[type="checkbox"]')
         .as('stockOptionCheckBoxes');
-
-      const executeScript = script => 
-        cy.window()
-          .then(win => win.eval(script));
 
       const uncheckAllCheckBoxes = () => {
         /*
