@@ -23,10 +23,7 @@ import './assertions';
 
 beforeEach(() => {
   cy.fixCypressSpec();
-
   cy.stubCommonApi();
-
-  cy.intercept('https://finance.zumst.com/content/**', {statusCode: 200});
 });
 
 const messages = [
