@@ -97,7 +97,7 @@ describe('국내증시', () => {
     });
 
     // TODO: https://glebbahmutov.com/blog/canvas-testing/
-    it.skip('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+    it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
       cy.useImageSnapshot();
       visit();
 
@@ -112,47 +112,43 @@ describe('국내증시', () => {
           }
         );
 
-      const expectMekoChartSnapshotToMatch = () =>
-        cy.get('@mekoChart')
-          .toMatchImageSnapshot();
-
-      expectMekoChartLoaded()
-        .then(() => {
-          // NOTE: 불안정한 메코차트의 로드 문제 해결
-          // TODO: 근본적인 원인 파악
-          recurse(
-            () => {
-              triggerMekoChartApi();
-              cy.wait('@apiMekoChart');
-              return cy
-                .get('@mekoChart')
-                .its('0.contentDocument.body');
-            },
-            $body => expect($body).to.have.descendants('[class*="treemap-container"]'),
-            {
-              delay: 100,
-              limit: Infinity,
-              timeout: 30000,
-              log: false,
-            }
-          );
-
-          withHiddenHeader(() => {
-            triggerMekoChartApi();
-            cy.wait('@apiMekoChart');
-            cy.wait(500);
-
-            expectMekoChartSnapshotToMatch();
-            cy.get('.map_menu_tab li:not(:first-child) > a')
-              .each($menu => {
-                cy.wrap($menu)
-                  .click({force: true})
-                  .should('be.activated')
-                  .then(expectMekoChartSnapshotToMatch);
-              });
-          });
+      expectMekoChartLoaded();
+      cy.get('@mekoChart')
+        .its('0.contentWindow')
+        .then(win => {
+          cy.spy(win, 'postMessage').as('mekoChartPostMessage');
         });
 
+      recurse(
+        () => {
+          triggerMekoChartApi();
+          return cy.get('@mekoChartPostMessage');
+        },
+        message => expect(message).to.be.called,
+        {
+          log: false,
+          delay: 10,
+        }
+      );
+
+      const expectMekoChartSnapshotToMatch = () =>
+        cy.get('@mekoChart')
+          .toMatchImageSnapshot({
+            imageConfig: {
+              threshold: 0.05,
+            }
+          });
+
+      withHiddenHeader(() => {
+        expectMekoChartSnapshotToMatch();
+        cy.get('.map_menu_tab li:not(:first-child) > a')
+          .each($menu => {
+            cy.wrap($menu)
+              .click({force: true})
+              .should('be.activated')
+              .then(expectMekoChartSnapshotToMatch);
+          });
+      });
     });
   });  // END: 국내증시 MAP
 
