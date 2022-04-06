@@ -2,7 +2,6 @@ describe('투자노트', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
-    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
   });
 
   beforeEach(() => {
