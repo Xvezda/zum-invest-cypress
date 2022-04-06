@@ -148,7 +148,7 @@ describe('해외증시', () => {
 
   describe('해외 대표 종목', () => {
     it('차트와 뉴스, 종목 리스트를 보여준다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
       // DOW와 NASDAQ 요청 대기
       cy.wait('@apiOverseasRepresentativeStock');
@@ -156,7 +156,6 @@ describe('해외증시', () => {
 
       cy.withHidden('#header', () => {
         cy.get('.representative_index')
-          .onlyOn('linux')
           .toMatchImageSnapshot({
             imageConfig: {
               threshold: 0.03,

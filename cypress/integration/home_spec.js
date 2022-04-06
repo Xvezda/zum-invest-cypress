@@ -107,7 +107,7 @@ describe('zum 투자 홈', () => {
 
   describe('사이드바', () => {
     it('메뉴가 보여진다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
       cy.tick(600000)
         .withHidden('#header, .right_cont .interested_items, .right_cont .gdn_wrap', () => {
@@ -119,7 +119,6 @@ describe('zum 투자 홈', () => {
               .end()
               .wrap($el);
           })
-          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
@@ -297,7 +296,7 @@ describe('zum 투자 홈', () => {
     });
 
     it('오늘의 주요 뉴스가 보여진다.', () => {
-      cy.stubImages();
+      cy.useImageSnapshot();
       visit();
 
       cy.get('.today_news')
@@ -314,7 +313,6 @@ describe('zum 투자 홈', () => {
 
             cy.root()
               .first()
-              .onlyOn('linux')
               .toMatchImageSnapshot();
           });
       });
@@ -545,12 +543,12 @@ describe('zum 투자 홈', () => {
     });
 
     it('투자노트가 카드형태로 4개씩 보여진다.', () => {
+      cy.useImageSnapshot();
       cy.get('@expertInsight').scrollIntoView();
       cy.withHidden('#header', () => {
         cy.waitForImage('.expert_insight img');
 
         cy.get('@expertInsight')
-          .onlyOn('linux')
           .toMatchImageSnapshot();
       });
     });
