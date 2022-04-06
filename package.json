@@ -4,8 +4,10 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "./test.sh",
-    "open": "./open.sh"
+    "run": "cypress run",
+    "open": "cypress open",
+    "run:docker": "./run.sh",
+    "open:docker": "./open.sh"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.1.0",
