@@ -330,6 +330,10 @@ Cypress.Commands.add(
   }
 );
 
+/**
+ * selector로 이미지 태그를 선택하여 이미지의 넓이가 0이 아닌경우
+ * 이미지가 로드되어 화면에 표시 되었다고 판단하고 다음 명령을 실행
+ */
 Cypress.Commands.add(
   'waitForImage',
   (selector = 'img') => {
@@ -342,6 +346,10 @@ Cypress.Commands.add(
   }
 );
 
+/**
+ * 이미지 스냅샷의 표준화를 위해 컨테이너의 리눅스 환경이 아닌경우
+ * 테스트하지 않도록 처리하고, 이외에는 이미지 fixture를 적용
+ */
 Cypress.Commands.add(
   'useImageSnapshot',
   () => 
@@ -349,6 +357,9 @@ Cypress.Commands.add(
       .stubImages(),
 );
 
+/**
+ * SSR로 인한 API 호출 부재를 우회하기 위해 다른 페이지로부터 라우팅하여 API호출을 유도
+ */
 Cypress.Commands.add(
   'triggerRouteAndVisit',
   (path, options) => {
@@ -361,6 +372,7 @@ Cypress.Commands.add(
     expect(pathTable[path], 'pathTable에 페이지가 존재하지 않음')
       .to.be.string;
 
+    // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나, 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
     cy.intercept('/api/domestic/ranking', {statusCode: 503});
     cy.visit('/domestic/ranking', options);
 
