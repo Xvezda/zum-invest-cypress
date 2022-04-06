@@ -18,10 +18,7 @@ describe('해외증시', () => {
     cy.triggerRouteAndVisit('/global');
 
     cy.tick(1000);
-    cy.wait(['@apiOverseasHome', '@apiOverseasCommon'])
-      // FIXME: Bad code!
-      .its('0.response.body')
-      .as('overseasHomeResponse');
+    return cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
   };
 
   describe('해외증시 MAP', () => {
@@ -263,7 +260,11 @@ describe('해외증시', () => {
     });
 
     it('해외증시 주요뉴스를 화살표 버튼을 눌러 살펴볼 수 있다.', () => {
-      visit();
+      visit()
+        .spread(({ response }) => {
+          cy.wrap(response.body).as('overseasHome');
+        });
+
       cy.get('.stock_main_news_wrap')
         .as('stockMainNewsWrap');
 
@@ -286,7 +287,7 @@ describe('해외증시', () => {
       const groupByThree = groupBy(newsPerPage);
 
       cy.log('한 페이지에 보이는 개수로 묶어 페이지를 넘겨가며 확인');
-      cy.get('@overseasHomeResponse')
+      cy.get('@overseasHome')
         .its('representativeNews')
         .then(groupByThree)
         .each(group => {
@@ -491,5 +492,20 @@ describe('해외증시', () => {
     });
 
   });  // END: 해외 실시간 뉴스
+
+  it('오늘의 해외증시 TOP PICK이 보여진다.', () => {
+    visit()
+      .spread((_, { response }) => {
+        const { todayIndexTopPick } = response.body;
+        cy.wrap(todayIndexTopPick)
+          .each(({ title, id }) => {
+            const extractNewsId = id => /\d+$/.exec(id)[0];
+            cy.get('.right_cont section:contains("오늘의 해외증시 TOP PICK")')
+              .contains(title)
+              .should('have.attr', 'href')
+              .and('contain', extractNewsId(id));
+          });
+      });
+  });
 
 });  // END: 해외증시
