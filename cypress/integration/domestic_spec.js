@@ -199,7 +199,7 @@ describe('국내증시', () => {
       cy.useImageSnapshot();
       visit();
 
-      withHiddenHeader(() => {
+      cy.withHidden('#header, .stock_state_chart', () => {
         cy.get('.stock_index_wrap')
           .toMatchImageSnapshot();
       });
@@ -310,7 +310,7 @@ describe('국내증시', () => {
       cy.useImageSnapshot();
       visit();
 
-      withHiddenHeader(() => {
+      cy.withHidden('#header, .il_noti', () => {
         cy.get('.popularity_event_wrap')
           .toMatchImageSnapshot();
       });

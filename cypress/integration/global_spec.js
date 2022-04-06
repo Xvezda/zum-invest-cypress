@@ -154,7 +154,7 @@ describe('해외증시', () => {
       cy.wait('@apiOverseasRepresentativeStock');
       cy.wait('@apiOverseasRepresentativeStock');
 
-      cy.withHidden('#header', () => {
+      cy.withHidden('#header, .representative_index .chart iframe', () => {
         cy.get('.representative_index')
           .toMatchImageSnapshot({
             imageConfig: {

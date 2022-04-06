@@ -417,3 +417,169 @@ exports[`zum 투자 홈 > 분야별 실시간 뉴스 > 스크롤을 내리면 �
     "totalCount": "number"
   }
 };
+
+exports[`카테고리별 랭킹 > 카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다. #1`] =
+{
+  "Kos": {
+    "bps": "number",
+    "currentPrice": "number",
+    "eps": "number",
+    "financeCategory": "string",
+    "foreignerShareRatio": "number | null",
+    "highPrice": "number",
+    "id": "string",
+    "lowPrice": "number",
+    "marketCap": "number",
+    "monthlyRateOfChange": "number",
+    "name": "string",
+    "netIncome": "number | null",
+    "newListedCount": "number | null",
+    "newListedRateOfChange": "null",
+    "openPrice": "number",
+    "operatingProfit": "number | null",
+    "per": "number | null",
+    "preTradeVolume": "number | null",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "take": "number | null",
+    "threeMonthlyRateOfChange": "number",
+    "threeYearlyRateOfChange": "number",
+    "totalAssets": "number | null",
+    "totalDebt": "number | null",
+    "tradeValue": "number",
+    "tradeVolume": "number",
+    "updateDateTime": "string",
+    "yearlyRateOfChange": "number"
+  },
+  "TopLevel": {
+    "kosdaq": "Kos[]",
+    "kospi": "Kos[]"
+  }
+};
+
+exports[`zum 투자 홈 > 오늘의 주요뉴스 > 주요뉴스 카드를 클릭하여 투자뉴스 읽기 페이지로 이동할 수 있고 하트를 눌러 좋아요 표시 할 수 있다. #1`] =
+{
+  "AlternativeInvestmentElement": {
+    "authorId": "number",
+    "authorName": "string",
+    "authorThumbnailUrl": "string",
+    "isOriginal": "boolean",
+    "leadText": "string",
+    "postId": "number",
+    "subCategory": "string",
+    "title": "string",
+    "writeDateTime": "string"
+  },
+  "CategoryNews": {
+    "all": "DomesticElement[]",
+    "coin": "DomesticElement[]",
+    "domestic": "DomesticElement[]",
+    "esg": "DomesticElement[]",
+    "market": "DomesticElement[]",
+    "overseas": "DomesticElement[]"
+  },
+  "DomesticElement": {
+    "category": "null | string",
+    "id": "string",
+    "landingUrl": "string",
+    "mediaName": "null | string",
+    "registerDateTime": "null | string",
+    "subCategory": "null | string",
+    "thumbnail": "null | string",
+    "title": "string"
+  },
+  "InvestmentContentsNotice": {
+    "postId": "number",
+    "title": "string",
+    "writeDateTime": "string"
+  },
+  "MainIndicator": {
+    "items": "MainIndicatorItem[]"
+  },
+  "MainIndicatorItem": {
+    "category": "string",
+    "currentPrice": "number",
+    "id": "string",
+    "name": "string",
+    "priceChange": "number",
+    "rateOfChange": "number",
+    "unit": "string"
+  },
+  "MainNews": {
+    "subCategories": "string[]",
+    "subNewsItems": "DomesticElement[]",
+    "templateCategories": "string[]",
+    "templatedNews": "TemplatedNews"
+  },
+  "News": {
+    "items": "DomesticElement[]"
+  },
+  "Notices": {
+    "investmentContentsNotices": "InvestmentContentsNotice[]",
+    "performanceSummaryNotices": "PerformanceSummaryNotice[]"
+  },
+  "PerformanceSummaryNotice": {
+    "disclosureDateTime": "string",
+    "stockCode": "string",
+    "stockName": "string",
+    "title": "string"
+  },
+  "RealtimeComments": {
+    "items": "RealtimeCommentsItem[]"
+  },
+  "RealtimeCommentsItem": {
+    "channelName": "string",
+    "content": "string",
+    "createDateTime": "string",
+    "key": "string",
+    "stockCode": "string",
+    "stockIcon": "string",
+    "stockName": "string",
+    "title": "string"
+  },
+  "RecentInvestmentContents": {
+    "all": "AlternativeInvestmentElement[]",
+    "alternativeInvestment": "AlternativeInvestmentElement[]",
+    "coin": "AlternativeInvestmentElement[]",
+    "domesticStock": "AlternativeInvestmentElement[]",
+    "investmentTrend": "AlternativeInvestmentElement[]",
+    "overseasStock": "AlternativeInvestmentElement[]"
+  },
+  "TemplatedNews": {
+    "items": "DomesticElement[]",
+    "templates": "string[]"
+  },
+  "TopLevel": {
+    "categoryNews": "CategoryNews",
+    "mainIndicator": "MainIndicator",
+    "mainNews": "MainNews",
+    "mostReadNews": "News",
+    "notices": "Notices",
+    "realtimeComments": "RealtimeComments",
+    "recentInvestmentContents": "RecentInvestmentContents",
+    "todayMarketNews": "News",
+    "videos": "Videos"
+  },
+  "Videos": {
+    "invenId": "string",
+    "items": "VideosItem[]"
+  },
+  "VideosItem": {
+    "body": "string",
+    "categoryCode": "string",
+    "cpCode": "string",
+    "cpName": "string",
+    "createDateTime": "string",
+    "enabled": "boolean",
+    "episode": "number",
+    "id": "string",
+    "playTime": "number",
+    "publishDateTime": "string",
+    "sectionCode": "string",
+    "targetAge": "number",
+    "targetNation": "string",
+    "title": "string",
+    "updateDateTime": "string",
+    "vodImage": "string"
+  }
+};

@@ -110,17 +110,25 @@ describe('zum 투자 홈', () => {
       cy.useImageSnapshot();
       visit();
       cy.tick(600000)
-        .withHidden('#header, .right_cont .interested_items, .right_cont .gdn_wrap', () => {
-        cy.get('.right_cont_inner')
-          .then($el => {
-            $el.css('position', 'relative !important');
-            return cy
-              .waitForImage('.right_cont_inner .thumb img')
-              .end()
-              .wrap($el);
-          })
-          .toMatchImageSnapshot();
-      });
+        .withHidden(
+          [
+            '#header',
+            '.right_cont .interested_items',
+            '.right_cont .gdn_wrap',
+            '.main_indicator .chart'
+          ].join(','),
+          () => {
+            cy.get('.right_cont_inner')
+              .then($el => {
+                $el.css('position', 'relative');
+                return cy
+                  .waitForImage('.right_cont_inner .thumb img')
+                  .end()
+                  .wrap($el);
+              })
+              .toMatchImageSnapshot();
+          }
+        );
     });
 
     it('아래로 스크롤하면 따라온다.', () => {
