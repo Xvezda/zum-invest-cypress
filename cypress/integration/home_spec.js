@@ -120,7 +120,7 @@ describe('zum 투자 홈', () => {
             '.main_indicator .chart'
           ].join(','),
           () => {
-            cy.get('.right_cont_inner')
+            cy.get('.right_cont')
               .scrollIntoView()
               .then($el => {
                 $el.css('position', 'relative');
