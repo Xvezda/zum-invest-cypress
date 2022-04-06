@@ -44,6 +44,9 @@ describe('zum 투자 홈', () => {
   };
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
+    cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
+      .as('apiSuggest');
+
     visit();
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
     cy.ignoreKnownError('Navigation cancelled from');
