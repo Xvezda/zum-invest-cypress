@@ -51,13 +51,7 @@
                 "thresholdType": "percent" 
             },
             "screenshotConfig": { 
-                "blackout": [
-                    ".stock_state_chart",
-                    ".ticker_bar",
-                    ".il_noti",
-                    ".main_indicator .chart",
-                    ".representative_index iframe"
-                ],
+                "blackout": [],
                 "capture": "fullPage",
                 "clip": null,
                 "disableTimersAndAnimations": true,

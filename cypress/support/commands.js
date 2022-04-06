@@ -332,12 +332,12 @@ Cypress.Commands.add(
   'withHidden',
   (selector, callback) => {
     cy.get(selector)
-      .then($el => cy.wrap($el.hide()))
+      .then($el => cy.wrap($el.css('visibility', 'hidden')))
       .then($el => {
         callback($el);
         return cy.wrap($el);
       })
-      .then($el => cy.wrap($el.show()));
+      .then($el => cy.wrap($el.css('visibility', 'visible')));
   }
 );
 
@@ -358,6 +358,14 @@ Cypress.Commands.add(
   () => 
     cy.onlyOn('linux')
       .stubImages(),
+);
+
+Cypress.Commands.add(
+  'routingToVisitPage',
+  path => {
+    cy.intercept('/api/domestic/ranking', {statusCode: 503});
+    cy.visit('/domestic/ranking');
+  }
 );
 
 Cypress.Commands.add(
