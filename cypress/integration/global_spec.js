@@ -3,6 +3,7 @@ describe('해외증시', () => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
+    cy.ignoreKnownError("Cannot read properties of undefined (reading 'reduce')");
   });
 
   beforeEach(() => {
