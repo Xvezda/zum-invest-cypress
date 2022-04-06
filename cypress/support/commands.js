@@ -34,14 +34,21 @@ const {
   jsonInputForTargetLanguage,
 } = require('quicktype-core');
 
-/*
- * NOTE: 원안은 `quicktype`의 출력 TypeScript 코드를 string으로
- * 스냅샷 테스트에 사용하려 했으나, `cypress-plugin-snapshots`의 미지원으로
- * interface에서 타입을 추출해 object 형태로 변환하여 임시 해결함
- * 
- * See:
- * - https://github.com/meinaart/cypress-plugin-snapshots/issues/181
- * - https://github.com/meinaart/cypress-plugin-snapshots/issues/122
+const { basename } = require('path');
+Cypress.Commands.add('fixCypressSpec', function () {
+  // https://github.com/cypress-io/cypress/issues/3090#issuecomment-889470707
+  const { absoluteFile, relativeFile } = this.test.invocationDetails;
+  Cypress.spec = {
+    ...Cypress.spec,
+    absolute: absoluteFile,
+    name: basename(absoluteFile),
+    relative: relativeFile,
+  };
+})
+
+/**
+ * quicktype으로 생성한 타입에서 interface를 정규식으로 추출하여
+ * [key: value] 쌍의 오브젝트로 변환하여 사용한다
  */
 async function toTypeObject(json) {
   const jsonInput = jsonInputForTargetLanguage('ts');
@@ -62,21 +69,18 @@ async function toTypeObject(json) {
   });
 
   const output = lines.join('\n');
-  const types = output.match(/interface \w+ \{[^}]*\}/g);
+  const interfaces = output.match(/interface \w+ \{[^}]*\}/g);
 
-  return types.reduce((acc, t) => {
-    const name = /^interface (\w+)/.exec(t)[1];
+  return interfaces.reduce((acc, i) => {
+    const name = /^interface (\w+)/.exec(i)[1];
 
-    const props = t
-      .split('\n')
-      .map(s => s.match(/(\w+):\s+([^;]+);/))
-      .filter(x => x)
-      .reduce((acc, [_, k, v]) => {
-        return {
-          ...acc,
-          [k]: v,
-        };
-      }, {});
+    const props = Object.fromEntries(
+      i
+        .split('\n')
+        .map(s => s.match(/(\w+):\s+([^;]+);/))
+        .filter(x => x)
+        .map(([_, k, v]) => [k, v])
+    );
 
     return {
       ...acc,
@@ -84,18 +88,6 @@ async function toTypeObject(json) {
     };
   }, {});
 }
-
-const { basename } = require('path');
-Cypress.Commands.add('fixCypressSpec', function () {
-  // https://github.com/cypress-io/cypress/issues/3090#issuecomment-889470707
-  const { absoluteFile, relativeFile } = this.test.invocationDetails;
-  Cypress.spec = {
-    ...Cypress.spec,
-    absolute: absoluteFile,
-    name: basename(absoluteFile),
-    relative: relativeFile,
-  };
-})
 
 Cypress.Commands.add(
   'toMatchApiSnapshot',
