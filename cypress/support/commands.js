@@ -151,6 +151,24 @@ Cypress.Commands.add(
   }
 );
 
+Cypress.Commands.add('stubLoginApi', () => {
+  cy.intercept('https://cmnt.zum.com/member/login', {fixture: 'cmnt.zum.com/member/login.json'})
+    .as('apiMemberLogin');
+
+  cy.fixture('userapi.zum.com/getUserInfo.json')
+    .then(userInfo => {
+      cy.intercept('https://userapi.zum.com/getUserInfo*', req => {
+        req.reply({
+          headers: {
+            'Content-Type': 'application/javascript',
+          },
+          statusCode: 200,
+          body: `${req.query.callback}(${JSON.stringify(userInfo)})`,
+        });
+      });
+    });
+});
+
 Cypress.Commands.add('stubInvestmentApi', () => {
   cy.intercept('/api/investment', {fixture: 'api/investment.json'}).as('apiInvestment');
 
