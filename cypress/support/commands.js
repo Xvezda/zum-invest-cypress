@@ -384,6 +384,9 @@ Cypress.Commands.add(
   }
 )
 
+/**
+ * 알려진 클라이언트 사이드 오류(무시가능한, 혹은 수정, 파악중인)로 인해 테스트가 실패하지 않도록 명시적으로 처리
+ */
 Cypress.Commands.add(
   'ignoreKnownError',
   message => {
@@ -403,6 +406,11 @@ Cypress.Commands.add(
   }
 );
 
+/**
+ * 클릭한 요소가 활성화 되었는지 확인하고
+ * 해당 요소의 텍스트를 key로 사용하는 테이블(오브젝트)을 인자로 받아
+ * key에 대응하는 value를 인자로 받는 조건 콜백을 통해 assertion 처리
+ */
 Cypress.Commands.add(
   'clickEachWithTable',
   {
@@ -436,6 +444,9 @@ Cypress.Commands.add(
   }
 );
 
+/**
+ * 응답이 일정시간동안 오지 않으면 실패하는 `cy.wait`과 달리 조건을 만족할때까지 반복적으로 대기
+ */
 Cypress.Commands.add(
   'waitUntil',
   (alias, predicate, options) =>
