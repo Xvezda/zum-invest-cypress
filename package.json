@@ -10,11 +10,9 @@
     "open:docker": "./open.sh"
   },
   "devDependencies": {
-    "@4tw/cypress-drag-drop": "^2.1.0",
     "@cypress/skip-test": "^2.6.1",
     "cypress": "9.5.3",
     "cypress-iframe": "^1.0.1",
-    "cypress-image-snapshot": "^4.0.1",
     "cypress-plugin-snapshots": "^1.4.4",
     "cypress-real-events": "^1.7.0",
     "cypress-recurse": "^1.18.0",
