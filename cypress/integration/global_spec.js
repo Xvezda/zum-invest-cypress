@@ -146,7 +146,7 @@ describe('해외증시', () => {
         cy.get('.representative_index')
           .toMatchImageSnapshot({
             imageConfig: {
-              threshold: 0.03,
+              threshold: 0.05,
             }
           });
       });
