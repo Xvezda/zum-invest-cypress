@@ -132,7 +132,7 @@ describe('해외증시', () => {
           .contains(stockName)
           .click()
           .url()
-          .should('contain', url);
+          .should('contain', stockUrl);
 
       clickStockNameAndMatchUrl('나스닥 종합', '/global/index/2');
       cy.go('back');
