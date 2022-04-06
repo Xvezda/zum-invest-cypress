@@ -38,9 +38,9 @@ describe('zum 투자 홈', () => {
       .filter(':contains("홈")')
       .click();
 
-    cy.wait('@apiHome').as('apiHomeHttp');
-    cy.wait('@apiCategoryNews').as('apiCategoryNewsHttp');
-    cy.tick(1000);
+    return cy
+      .wait(['@apiHome', '@apiCategoryNews'])
+      .tick(1000);
   };
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {

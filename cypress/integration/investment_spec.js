@@ -10,7 +10,7 @@ describe('투자노트', () => {
 
   const visit = () => {
     cy.triggerRouteAndVisit('/investment');
-    cy.wait('@apiInvestment');
+    return cy.wait('@apiInvestment');
   };
 
   describe('투자노트 TOP6', () => {
