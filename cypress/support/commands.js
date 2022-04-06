@@ -131,9 +131,6 @@ Cypress.Commands.add(
       })
       .as('apiRealTimeNews');
 
-    cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
-      .as('apiSuggest');
-
     cy.intercept('/article/info/**', {statusCode: 200})
       .as('apiArticleInfo');
 
