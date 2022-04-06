@@ -50,7 +50,7 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "leadText": "string",
     "mediaName": "string",
     "registerDateTime": "string",
-    "thumbnail": "string",
+    "thumbnail": "null | string",
     "title": "string"
   },
   "LiveNew": {

@@ -323,7 +323,14 @@ describe('zum 투자 홈', () => {
       const articleIdx = '12345678';
       const articleTitle = '@@주요뉴스_제목@@';
 
-      cy.request('/api/home').toMatchApiSnapshot();
+      cy.request('/api/home')
+        .toMatchApiSnapshot({
+          merge: {
+            DomesticElement: {
+              subCategory: "null | string",
+            }
+          }
+        });
       cy.fixture('api/home.json')
         .then(home => {
           const [firstTemplatedNews,] = home.mainNews.templatedNews.items;
@@ -616,7 +623,13 @@ describe('zum 투자 홈', () => {
       cy.clock().invoke('restore');
       const today = new Date().toISOString().match(/\d{4}-\d{2}-\d{2}/)[0];
       cy.request(`/api/home/category-news?category=all&date=${today}&page=2`)
-        .toMatchApiSnapshot();
+        .toMatchApiSnapshot({
+          merge: {
+            Item: {
+              subCategory: "null | string",
+            }
+          }
+        });
       cy.shouldRequestOnScroll('@apiCategoryNews');
     });
 
