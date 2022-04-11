@@ -336,8 +336,11 @@ describe('zum 투자 홈', () => {
         .toMatchApiSnapshot({
           merge: {
             DomesticElement: {
-              subCategory: "null | string",
-              thumbnail: "null | string",
+              subCategory: 'null | string',
+              thumbnail: 'null | string',
+            },
+            RealtimeCommentsItem: {
+              title: 'null | string',
             }
           }
         });
