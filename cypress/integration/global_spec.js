@@ -131,6 +131,7 @@ describe('해외증시', () => {
 
   describe('해외 대표 종목', () => {
     it('차트와 뉴스, 종목 리스트를 보여준다.', () => {
+      cy.clock(now);
       cy.useImageSnapshot();
       visit();
       // DOW와 NASDAQ 요청 대기
