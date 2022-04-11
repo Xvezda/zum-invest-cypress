@@ -21,6 +21,7 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
+    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
     cy.stubHomeApi();
   });
 
@@ -238,11 +239,8 @@ describe('zum 투자 홈', () => {
       cy.login()
         .then(visit);
 
-      cy.get('.right_cont')
-        .as('sideBar');
-
       cy.log('관심종목의 종목이름을 클릭하면 해당 종목페이지로 이동한다');
-      cy.get('@sideBar')
+      cy.get('.right_cont')
         .should('have.descendants', '.stock_list')
         .contains(stock.name)
         .click()
@@ -252,9 +250,10 @@ describe('zum 투자 홈', () => {
         .go('back');
 
       cy.log('활성화 별 모양 아이콘을 클릭하여 관심종목을 해제할 수 있다');
-      cy.get('@sideBar')
-        .find('.stock_list .like')
-        .first()
+      cy.get('.right_cont .stock_list > :first-child .like')
+        .should($el => {
+          expect(Cypress.dom.isDetached($el)).to.be.false;
+        })
         .click({force: true});
 
       cy.wait('@apiInterestDelete')
