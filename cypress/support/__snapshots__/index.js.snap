@@ -351,7 +351,7 @@ exports[`zum 투자 홈 > 오늘의 주요뉴스 > 주요뉴스 카드를 클릭
     "stockCode": "string",
     "stockIcon": "string",
     "stockName": "string",
-    "title": "string"
+    "title": "null | string"
   },
   "RecentInvestmentContents": {
     "all": "AlternativeInvestmentElement[]",
