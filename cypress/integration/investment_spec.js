@@ -227,19 +227,12 @@ describe('투자노트', () => {
     });
 
     // FIXME: 다음버튼이 요청을 두번 보내는 문제 존재
-    it('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
+    it.skip('이전/다음 버튼을 클릭하여 정보를 볼 수 있다', () => {
       visit();
 
       cy.get('.writers_wrap')
         .scrollIntoView()
         .as('writersWrap');
-
-      // NOTE: API가 2회 이상 호출되어도 사용자에게는 정상적으로 표시된다
-      // TODO: 다만, 렌더링 최적화에 영향을 주어 사용자경험에 악영향을 끼칠 수 있으므로
-      // 2회 이상 호출의 경우 경고를 표시하도록 수정 필요
-      // 당장의 크리티컬한 이슈는 아니기 때문에 waitUntil 명령을 사용했으나, 이후 수정이 필요
-      const waitForAuthorsApiUntil = predicate =>
-        cy.waitUntil('@apiAuthors', predicate);
 
       cy.get('@writersWrap')
         .within(() => {
@@ -247,17 +240,17 @@ describe('투자노트', () => {
           cy.get('.next')
             .click();
 
-          waitForAuthorsApiUntil(
-            ({ request }) => expect(request.url).to.contain('page=2'),
-          );
+          cy.wait('@apiAuthors')
+            .its('request.url')
+            .should('contain', 'page=2')
 
           cy.log('이전 버튼을 누르면 다시 1페이지를 가져온다');
           cy.get('.prev')
             .click();
 
-          waitForAuthorsApiUntil(
-            ({ request }) => expect(request.url).to.contain('page=1'),
-          );
+          cy.wait('@apiAuthors')
+            .its('request.url')
+            .should('contain', 'page=1')
 
           cy.log('1페이지에서 이전버튼을 누르면 `1/n`의 마지막 페이지인 n페이지로 이동');
           cy.get('.count')
@@ -270,18 +263,18 @@ describe('투자노트', () => {
               cy.get('.prev')
                 .click();
 
-              waitForAuthorsApiUntil(
-                ({ request }) => expect(request.url).to.contain(`page=${total}`),
-              );
+              cy.wait('@apiAuthors')
+                .its('request.url')
+                .should('contain', `page=${total}`)
             })
 
           cy.log('마지막 페이지에서 다음 버튼을 누르면 1페이지로 순환');
           cy.get('.next')
             .click();
 
-          waitForAuthorsApiUntil(
-            ({ request }) => expect(request.url).to.contain('page=1'),
-          );
+          cy.wait('@apiAuthors')
+            .its('request.url')
+            .should('contain', 'page=1')
         });
     });
 
