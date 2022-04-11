@@ -13,11 +13,7 @@ describe('해외증시', () => {
 
   const now = new Date('2022-03-15T10:00:00');
   const visit = () => {
-    cy.clock(now);
-
     cy.triggerRouteAndVisit('/global');
-
-    cy.tick(1000);
     return cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
   };
 
@@ -26,7 +22,6 @@ describe('해외증시', () => {
       visit();
       cy.get('.map_title_wrap').within(() => {
         cy.get('ul > li > a')
-          .reverse()
           .clickEachWithTable(
             {
               '다우산업 30': 'dow',
@@ -415,12 +410,13 @@ describe('해외증시', () => {
 
     it('스크롤을 하여 다음 해외 실시간 뉴스를 불러온다.', () => {
       visit();
-      cy.clock().invoke('restore');
       cy.shouldRequestOnScroll('@apiRealTimeNews');
     });
 
     it('달력을 클릭하여 여닫기 가능하고 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
+      cy.clock(now);
       visit();
+
       cy.log('달력아이콘을 클릭하면 미니 달력이 보여진다');
       cy.get('.mini-calendar')
         .as('miniCalendar');
