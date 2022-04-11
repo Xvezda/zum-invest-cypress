@@ -66,7 +66,7 @@ describe('해외증시', () => {
   });  // END: 해외증시 MAP
 
   describe('해외 주요지수', () => {
-    it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', () => {
+    it('현황을 눌러 활성화 할 수 있고 해당 내용을 보여주며, 클릭하면 종목 상세페이지로 이동한다.', {waitForAnimations: false}, () => {
       visit();
       cy.fixture('api/overseas/home.json')
         .then(home => {
