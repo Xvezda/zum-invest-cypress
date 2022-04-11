@@ -43,6 +43,9 @@ describe('국내증시', () => {
             },
             InvestmentCalendarNew: {
               thumbnail: 'null | string',
+            },
+            MainStockNewsItem: {
+              subCategory: 'null | string',
             }
           }
         });
