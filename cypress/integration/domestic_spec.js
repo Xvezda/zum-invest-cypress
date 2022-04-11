@@ -538,34 +538,41 @@ describe('국내증시 종목', () => {
     cy.intercept(/\.js$/, {statusCode: 503});
     cy.useImageSnapshot();
 
-    cy.request(`/domestic/item/${stockCode}`)
-      .its('body')
-      .then(html => {
-        return cy
-          .document()
-          .invoke({log: false}, 'write', html);
-      })
-      .then(() => {
-        // 동적인 요소를 전부 숨김 처리
-        return executeScript(`
-          const style = document.createElement('style');
-          style.innerHTML = [
-            '#header',
-            '.price',
-            '.point',
-            '.per',
-            '.txt',
-            '.min_max_bar',
-            '.data',
-            '.bar',
-            '.chart',
-            '.creat_at'
-          ].join(',') + ' { visibility: hidden !important }';
-          document.head.appendChild(style);
-        `);
-      })
-      .then(() => {
-        cy.get('.stock_board').toMatchImageSnapshot();
+    cy.wrap([
+        `/domestic/item/${stockCode}`,
+        '/domestic/index/1'
+      ])
+      .each(url => {
+        cy.request(url)
+          .its('body')
+          .then(html => {
+            return cy
+              .document()
+              .invoke({log: false}, 'write', html);
+          })
+          .then(() => {
+            // 동적인 요소를 전부 숨김 처리
+            return executeScript(`
+              const style = document.createElement('style');
+              style.innerHTML = [
+                '#header',
+                '.price',
+                '.point',
+                '.per',
+                '.txt',
+                '.min_max_bar',
+                '.data',
+                '.bar',
+                '.chart',
+                '.creat_at'
+              ].join(',') + ' { visibility: hidden !important }';
+              document.head.appendChild(style);
+            `);
+          })
+          .then(() => {
+            cy.get('.stock_board').toMatchImageSnapshot();
+            cy.reload();
+          });
       });
   });
 });  // END: 국내증시 종목
