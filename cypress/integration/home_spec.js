@@ -1,5 +1,3 @@
-const { recurse } = require("cypress-recurse");
-
 describe('zum 투자 홈', () => {
   const now = new Date('2022-03-15T10:00:00');
   const stock = {
@@ -21,33 +19,31 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
-    cy.intercept('https://pip-player.zum.com/**', {statusCode: 200});
+    cy.intercept('https://pip-player.zum.com/media/contents/**', {
+      fixture: 'pip-player.zum.com/media/contents.json'
+    });
     cy.stubHomeApi();
   });
 
   const visit = () => {
-    cy.clock(now);
-
     cy.triggerRouteAndVisit('/', {
       onBeforeLoad(win) {
         cy.spy(win, 'postMessage').as('postMessage');
       }
     });
 
-    cy.tick(1000);
     cy.get('.gnb_finance a')
       .filter(':contains("홈")')
       .click();
 
-    return cy
-      .wait(['@apiHome', '@apiCategoryNews'])
-      .tick(1000);
+    return cy.wait(['@apiHome', '@apiCategoryNews']);
   };
 
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
     cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
       .as('apiSuggest');
 
+    cy.clock(now);
     visit();
     // TODO: 어플리케이션 오류 준일님 수정사항 반영되면 재확인
     cy.ignoreKnownError('Navigation cancelled from');
@@ -112,8 +108,7 @@ describe('zum 투자 홈', () => {
     it('메뉴가 보여진다.', () => {
       cy.useImageSnapshot();
       visit();
-      cy.tick(600000)
-        .withHidden(
+      cy.withHidden(
           [
             '#header',
             '.right_cont .interested_items',
@@ -411,19 +406,8 @@ describe('zum 투자 홈', () => {
             .and('contain', `/domestic/${stock.type}/${stock.code}`);
         });
 
-      const tickWhileWait = alias => {
-        return recurse(
-          () => cy
-            .tick(1000)
-            .get(alias),
-          http => expect(http).to.be.not.null,
-          { delay: 1000 },
-        )
-      };
-
-      // setTimeout으로 호출되는 API들을 기다림
-      tickWhileWait('@apiCmntArticleInfo');
-      tickWhileWait('@apiCmntArticleList');
+      cy.wait('@apiCmntArticleInfo');
+      cy.wait('@apiCmntArticleList');
 
       // API stub 응답값 덮어쓰기
       cy.fixture('cmnt.zum.com/article/info.json')
@@ -453,33 +437,16 @@ describe('zum 투자 홈', () => {
         .scrollIntoView()
         .as('stockView');
 
-      recurse(
-        () => cy
-          .tick(10000)
-          .get('@stockView'),
-        $el => expect($el).to.have.descendants('#zum-player iframe'),
-        {
-          delay: 100,
-          timeout: 20000,
-          limit: 30,
-          log: false,
-        }
-      );
+      cy.get('.stock_view #zum-player iframe')
+        .should($el => expect($el).to.be.exist);
     });
 
     it('목록에서 클릭하면 해당 영상이 재생된다.', () => {
       const shouldPostMessageMatch = pattern => {
-        recurse(
-          () => cy.get('@postMessage'),
-          message =>
-            expect(message).to.be.calledWithMatch(pattern),
-          {
-            delay: 100,
-            timeout: 20000,
-            limit: 30,
-            log: false,
-          }
-        );
+        cy.get('@postMessage')
+          .should(message => {
+            expect(message).to.be.calledWithMatch(pattern);
+          });
       };
 
       cy.log('동영상 플레이어는 우선 resize 메시지를 받고 settedIdAndPlay 메시지를 받아 재생한다');
@@ -608,9 +575,8 @@ describe('zum 투자 홈', () => {
   });  // END: 실시간 종목 TALK
 
   describe('분야별 실시간 뉴스', () => {
-    beforeEach(visit);
-
     it('카테고리를 변경할 수 있다.', () => {
+      visit();
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
       cy.log('각 카테고리를 클릭하면 API 요청이 발생한다');
       cy.get('.area_real_news ul.menu_tab > li > a')
@@ -633,8 +599,8 @@ describe('zum 투자 홈', () => {
     });
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
-      // 스크롤 과정에서 setTimeout 호출이 빈번하게 발생하므로 clock stub을 해제
-      cy.clock().invoke('restore');
+      visit();
+
       const today = new Date().toISOString().match(/\d{4}-\d{2}-\d{2}/)[0];
       cy.request(`/api/home/category-news?category=all&date=${today}&page=2`)
         .toMatchApiSnapshot({
@@ -648,6 +614,9 @@ describe('zum 투자 홈', () => {
     });
 
     it('달력을 여닫을 수 있고 일자를 클릭하여 해당하는 날짜의 뉴스를 볼 수 있다.', () => {
+      cy.clock(now);
+      visit();
+
       cy.log('달력아이콘을 클릭하면 미니 달력이 보여진다');
       cy.get('.mini-calendar')
         .as('miniCalendar');
