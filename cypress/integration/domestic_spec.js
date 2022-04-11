@@ -31,8 +31,18 @@ describe('국내증시', () => {
       cy.request('/api/domestic/home')
         .toMatchApiSnapshot({
           merge: {
+            CalendarItem: {
+              estimatedNetProfitPerShare: 'number | null',
+              estimatedSales: 'number | null',
+              listingDateTime: 'null | string',
+              personalSubscriptionCompetitionRate: 'null | string',
+            },
+            Report: {
+              articleId: 'null | string',
+              articleTitle: 'null | string'
+            },
             InvestmentCalendarNew: {
-              thumbnail: "null | string",
+              thumbnail: 'null | string',
             }
           }
         });

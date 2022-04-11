@@ -14,8 +14,8 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "currentPrice": "number | null",
     "dividend": "null",
     "dividendDateTime": "null",
-    "estimatedNetProfitPerShare": "null",
-    "estimatedSales": "null",
+    "estimatedNetProfitPerShare": "number | null",
+    "estimatedSales": "number | null",
     "eventContent": "null | string",
     "eventTitle": "null | string",
     "id": "number",
@@ -99,8 +99,8 @@ exports[`국내증시 > 국내증시 MAP > LIVE 뉴스가 일정시간마다 변
     "totalCount": "number"
   },
   "Report": {
-    "articleId": "string",
-    "articleTitle": "string",
+    "articleId": "null | string",
+    "articleTitle": "null | string",
     "financeCategory": "string",
     "id": "string",
     "name": "string",
