@@ -152,6 +152,27 @@ describe('투자노트', () => {
         .url()
         .should('contain', author.authorId);
     });
+
+    it('게시글은 SSR 적용으로 HTML 정보가 제공된다.', () => {
+      cy.intercept(/\.js$/, {statusCode: 503});
+      cy.request('/investment/view/304')
+        .its('body')
+        .then(html => {
+          return cy
+            .document()
+            .invoke({log: false}, 'write', html);
+        })
+        .then(() => {
+          cy.get('.article_header')
+            .should('contain', '이벤트 주간 시작');
+
+          cy.get('.article_body')
+            .should('contain', '오늘 장 미리보기');
+
+          cy.get('.writer_profile')
+            .should('contain', '줌투자');
+        });
+    });
   });  // END: 투자노트 TOP6
 
   describe('최신글', () => {
