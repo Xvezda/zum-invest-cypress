@@ -260,6 +260,7 @@ describe('zum 투자 홈', () => {
 
   describe('오늘의 주요뉴스', () => {
     it('화살표 버튼을 눌러 투자노트와 공시를 살펴볼 수 있다.', () => {
+      cy.clock(now);  // 자동 페이지 넘김 방지
       visit();
 
       cy.get('.breaking_news')
