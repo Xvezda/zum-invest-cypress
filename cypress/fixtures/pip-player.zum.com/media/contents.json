@@ -1,0 +1,150 @@
+{
+    "media": {
+        "playTime": 2059,
+        "poster": "https://pip-thumb.zumst.com/api/v1/naklg_62519f8f0dde4878c2ace038_content.jpeg",
+        "video": [
+            {
+                "quality": 270,
+                "url": "https://zvod.zumst.com/zumvrix/zvod/92/ab8a81c96df602f04ac951f46f257c6d84047fa8dd67b55085fb3236749493cf/270",
+                "base": false
+            },
+            {
+                "quality": 360,
+                "url": "https://zvod.zumst.com/zumvrix/zvod/92/ab8a81c96df602f04ac951f46f257c6d84047fa8dd67b55085fb3236749493cf/360",
+                "base": false
+            },
+            {
+                "quality": 480,
+                "url": "https://zvod.zumst.com/zumvrix/zvod/92/ab8a81c96df602f04ac951f46f257c6d84047fa8dd67b55085fb3236749493cf/480",
+                "base": false
+            },
+            {
+                "quality": 720,
+                "url": "https://zvod.zumst.com/zumvrix/zvod/92/ab8a81c96df602f04ac951f46f257c6d84047fa8dd67b55085fb3236749493cf/720",
+                "base": false
+            },
+            {
+                "quality": 1080,
+                "url": "https://zvod.zumst.com/zumvrix/zvod/92/ab8a81c96df602f04ac951f46f257c6d84047fa8dd67b55085fb3236749493cf/1080",
+                "base": false
+            }
+        ],
+        "trackingUrl": {
+            "start": "https://plog.vrixon.com/zumapi/vod_trac.html?method=ddea042fadbc7278ee5036705fa19aebf815d39252a9bbd108ccf92f84c15668&mediaKey=baa8b2c79bb16aaf5336a4aeb116d64c&platform=PCWEB",
+            "end": "https://plog.vrixon.com/zumapi/vod_trac.html?method=4d27390b91a6c8293abb0a9ec7f1ab2925179a56d069370a15fc2597119f3c0a&mediaKey=baa8b2c79bb16aaf5336a4aeb116d64c&platform=PCWEB"
+        }
+    },
+    "advertiseUrl": "?invenid=HSQJH&gender=3&age=99&cpid=C-92&pid=P-172&cid=642115&ctime=2059&cate=C0301&adid&adidst&type=pre&targetkey[]&ctitle=올해 유망주식은 '이 중에서' 결정하세요 (박세익 대표)",
+    "originUrl": "https://invest.zum.com/",
+    "meta": {
+        "invenid": "HSQJH",
+        "gender": 3,
+        "age": 99,
+        "cpid": "C-92",
+        "cpTitle": "김작가TV",
+        "pid": "P-172",
+        "cid": "642115",
+        "ctime": 2059,
+        "cate": "C0301",
+        "type": "pre",
+        "targetkey": [],
+        "ctitle": "올해 유망주식은 '이 중에서' 결정하세요 (박세익 대표)",
+        "createTime": "2022.04.09"
+    },
+    "da": {
+        "daUrl": "//deepdivead.zum.com/cgi-bin/PelicanC.dll?impr&pageid=0D5h&bannercategoryid=[target]&out=json",
+        "daHouseUrl": "//deepdivead.zum.com/cgi-bin/PelicanC.dll?impr&pageid=0Dfu&out=json",
+        "small": false,
+        "hide": false
+    },
+    "recommendList": [
+        {
+            "contentIdx": 619275,
+            "contentTitle": "오늘 전국 검사장 회의‥'검수완박' 저지 논의",
+            "channelIdx": 115,
+            "channelTitle": "MBC",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/n_mbc/2022/04/11/2f6606582e45511adc40c5780fc20f7f.jpeg",
+            "playTime": 31,
+            "contentPcUrl": "//tv.zum.com/news/play/619275",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619275",
+            "inLink": false
+        },
+        {
+            "contentIdx": 619285,
+            "contentTitle": "[자막뉴스] \"더 치명적이고 강력한 무기 지원\"...흔들리는 유럽",
+            "channelIdx": 2,
+            "channelTitle": "YTN",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/ytn/2022/04/11/6235429c779be48e1842f87411988143.jpeg",
+            "playTime": 137,
+            "contentPcUrl": "//tv.zum.com/news/play/619285",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619285",
+            "inLink": false
+        },
+        {
+            "contentIdx": 619284,
+            "contentTitle": "골프채 품귀현상에 리셀가 '폭등'…\"이게 다 푸틴 때문\"",
+            "channelIdx": 69,
+            "channelTitle": "SBS",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/n_sbs/2022/04/11/904aaf3fca899eefe6b2a372045237ed.jpeg",
+            "playTime": 273,
+            "contentPcUrl": "//tv.zum.com/news/play/619284",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619284",
+            "inLink": false
+        },
+        {
+            "contentIdx": 619278,
+            "contentTitle": "[날씨] 서울 한낮 25도, 고온 현상 계속‥수요일 비",
+            "channelIdx": 115,
+            "channelTitle": "MBC",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/n_mbc/2022/04/11/b891be1d5afb0ed88e21a6238efa3ff8.jpeg",
+            "playTime": 60,
+            "contentPcUrl": "//tv.zum.com/news/play/619278",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619278",
+            "inLink": false
+        },
+        {
+            "contentIdx": 619197,
+            "contentTitle": "마지막 코너 대역전…'4관왕' 최민정, 4번째 종합우승",
+            "channelIdx": 69,
+            "channelTitle": "SBS",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/n_sbs/2022/04/11/f84a8a74bbac98cae0031fb6a8e1b8af.jpeg",
+            "playTime": 106,
+            "contentPcUrl": "//tv.zum.com/news/play/619197",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619197",
+            "inLink": false
+        },
+        {
+            "contentIdx": 619084,
+            "contentTitle": "교황, 우크라 전쟁 휴전 제안…\"무기 내려놓자\"",
+            "channelIdx": 3,
+            "channelTitle": "연합뉴스TV",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/yonhapnewstv/2022/04/11/09decee9027d5da2f6277d7e52d819c0.jpeg",
+            "playTime": 34,
+            "contentPcUrl": "//tv.zum.com/news/play/619084",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619084",
+            "inLink": false
+        },
+        {
+            "contentIdx": 617853,
+            "contentTitle": "남편은 \"그만해\" 애원, 이은해는 '조롱'...범행 당일 영상 공개돼",
+            "channelIdx": 2,
+            "channelTitle": "YTN",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/ytn/2022/04/08/6eb77d3c039b29ef50d093b20896f197.jpeg",
+            "playTime": 232,
+            "contentPcUrl": "//tv.zum.com/news/play/617853",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/617853",
+            "inLink": false
+        },
+        {
+            "contentIdx": 619313,
+            "contentTitle": "김오수 \"검찰총장직 연연 않겠다…'검수완박' 반대\"",
+            "channelIdx": 1,
+            "channelTitle": "연합뉴스",
+            "thumbnail": "//thumb.tv.zumst.com/s/zum.tv-zum-cf/yna/2022/04/11/8075b5e65a2c5ff69bce669a549a9758.jpeg",
+            "playTime": 174,
+            "contentPcUrl": "//tv.zum.com/news/play/619313",
+            "contentMobileUrl": "//m.tv.zum.com/news/play/619313",
+            "inLink": false
+        }
+    ]
+}
