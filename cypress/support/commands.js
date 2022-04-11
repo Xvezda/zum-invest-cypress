@@ -357,7 +357,8 @@ Cypress.Commands.add(
 );
 
 /**
- * SSR로 인한 API 호출 부재를 우회하기 위해 다른 페이지로부터 라우팅하여 API호출을 유도
+ * SSR 또는 스크립트 주입으로 인한 API 호출 부재를 우회하기 위해
+ * 다른 페이지로부터 라우팅하여 API호출을 유도
  */
 Cypress.Commands.add(
   'triggerRouteAndVisit',
@@ -371,7 +372,8 @@ Cypress.Commands.add(
     expect(pathTable[path], 'pathTable에 페이지가 존재하지 않음')
       .to.be.string;
 
-    // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나, 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
+    // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나,
+    // 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
     cy.intercept('/api/domestic/ranking', {statusCode: 503});
     cy.visit('/domestic/ranking', options);
 
