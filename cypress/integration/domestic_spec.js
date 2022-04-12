@@ -28,6 +28,7 @@ describe('국내증시', () => {
 
   describe('국내증시 MAP', () => {
     it('LIVE 뉴스가 일정시간마다 변경되고, 클릭하면 뉴스페이지로 이동한다.', () => {
+      cy.clock(now);
       cy.request('/api/domestic/home')
         .toMatchApiSnapshot({
           merge: {
