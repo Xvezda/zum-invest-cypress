@@ -415,7 +415,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'clickEachWithTable',
   {
-    prevSubject: 'element',
+    prevSubject: true,
   },
   (subject, table, predicate, selectorOrOptions) => {
     const defaultOptions = {
@@ -484,6 +484,21 @@ Cypress.Commands.add(
     } finally {
       log.end();
     }
+  }
+);
+
+Cypress.Commands.add(
+  'concat',
+  {
+    prevSubject: true,
+  },
+  (subject, selector) => {
+    const previous = Array.from(subject);
+    return cy
+      .get(selector)
+      .then(items => {
+        return cy.wrap(previous.concat(items));
+      });
   }
 );
 

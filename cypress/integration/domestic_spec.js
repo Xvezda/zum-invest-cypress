@@ -80,8 +80,8 @@ describe('국내증시', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
       visit();
       cy.get('.map_title_wrap').within(() => {
-        cy.get('ul > li > a')
-          .reverse()
+        cy.get('ul > li:not(.active) > a')
+          .concat('ul > li.active > a')
           .clickEachWithTable(
             {
               'TOP1000': 'ALL',
