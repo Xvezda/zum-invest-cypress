@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@cypress/skip-test": "^2.6.1",
-    "cypress": "9.5.3",
+    "cypress": "9.5.4",
     "cypress-iframe": "^1.0.1",
     "cypress-plugin-snapshots": "^1.4.4",
     "cypress-real-events": "^1.7.0",

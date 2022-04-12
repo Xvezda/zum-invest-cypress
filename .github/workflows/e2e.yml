@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: cypress/included:9.5.3
+    container: cypress/included:9.5.4
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
