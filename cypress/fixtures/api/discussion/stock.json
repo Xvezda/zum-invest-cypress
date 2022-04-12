@@ -1,0 +1,102 @@
+[
+    {
+        "id": 3484,
+        "content": "얼른 모바일에서 줌 투자로 연결하라 연결하라",
+        "writeDateTime": "2022-03-15T21:07:06",
+        "userDisplayId": "andr****",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "ZUM",
+        "certCmnt": false
+    },
+    {
+        "id": 3483,
+        "content": "올라줌 가즈아",
+        "writeDateTime": "2022-03-15T14:48:24",
+        "userDisplayId": "crys****",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "ZUM",
+        "certCmnt": false
+    },
+    {
+        "id": 3405,
+        "content": "갑자기 쫌 오르네 ㅎㅎㅎ",
+        "writeDateTime": "2022-03-08T09:03:52",
+        "userDisplayId": "klis****",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "ZUM",
+        "certCmnt": false
+    },
+    {
+        "id": 3370,
+        "content": "줌..... ",
+        "writeDateTime": "2022-03-02T10:53:32",
+        "userDisplayId": "dms2****",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "ZUM",
+        "certCmnt": false
+    },
+    {
+        "id": 3355,
+        "content": "사용자에 의해 삭제된 댓글입니다.",
+        "writeDateTime": "2022-03-02T10:07:50",
+        "userDisplayId": "wnsd****",
+        "isMyComment": false,
+        "deletedBy": "USER",
+        "loginType": "ZUM",
+        "certCmnt": true
+    },
+    {
+        "id": 3343,
+        "content": "많이 눌린 만큼 상한번 가즈아~~~~~~~~",
+        "writeDateTime": "2022-02-28T00:43:27",
+        "userDisplayId": "나",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "KAKAO",
+        "certCmnt": false
+    },
+    {
+        "id": 3229,
+        "content": "들고 있을껄 ㅠㅠ",
+        "writeDateTime": "2022-02-23T13:09:02",
+        "userDisplayId": "yang****",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "ZUM",
+        "certCmnt": true
+    },
+    {
+        "id": 3228,
+        "content": "뭐야 갑자기.. 왜 오르지.",
+        "writeDateTime": "2022-02-23T13:08:33",
+        "userDisplayId": "양지훈",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "KAKAO",
+        "certCmnt": false
+    },
+    {
+        "id": 3221,
+        "content": "운영자에 의해 삭제된 댓글입니다.",
+        "writeDateTime": "2022-02-23T08:08:16",
+        "userDisplayId": "안녕하세요",
+        "isMyComment": false,
+        "deletedBy": "ADMIN",
+        "loginType": "KAKAO",
+        "certCmnt": false
+    },
+    {
+        "id": 3074,
+        "content": "대선후보들이 뉴스기사는 원 게시글로 이동하는 게 필요하다고 하네이미 줌닷컴이 하고 있는거",
+        "writeDateTime": "2022-02-11T23:38:43",
+        "userDisplayId": "andr****",
+        "isMyComment": false,
+        "deletedBy": null,
+        "loginType": "ZUM",
+        "certCmnt": false
+    }
+]
