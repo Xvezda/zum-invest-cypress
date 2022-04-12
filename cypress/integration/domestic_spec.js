@@ -9,7 +9,6 @@ const executeScript = script =>
 
 describe('국내증시', () => {
   beforeEach(() => {
-    cy.clock(now);
     cy.stubDomesticApi();
   });
 
@@ -112,6 +111,7 @@ describe('국내증시', () => {
 
     // TODO: https://glebbahmutov.com/blog/canvas-testing/
     it('활성화된 MAP의 종류에 따라 보이는 차트가 변경된다.', () => {
+      cy.clock(now);
       cy.useImageSnapshot();
       visit();
 
@@ -239,6 +239,7 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 되고, 항목을 클릭하면 자세한 내용을 여닫을 수 있다.', () => {
+      cy.clock(now);
       visit();
 
       cy.get('.investment_calendar')
@@ -273,6 +274,7 @@ describe('국내증시', () => {
 
   describe('오늘의 HOT PICK', () => {
     it('메뉴를 눌러 선정된 종목들을 볼 수 있다.', () => {
+      cy.clock(now);
       visit();
       recurse(
           () =>
@@ -613,13 +615,133 @@ describe('국내증시 종목', () => {
     cy.shouldRequestOnScroll('@apiDomesticStockRealtimeComments');
   });
 
+  it.only('종토방을 누르면 종목토론방 탭이 보여지고, 최신/과거순 정렬과 더보기, 로그인 후 댓글 작성 삭제가 가능하다.', () => {
+    const stubDiscussionApi = callback => {
+      cy.fixture('api/discussion/stock.json')
+        .then(discussion => {
+          cy.intercept('/api/discussion/stock/**', callback(discussion))
+            .as('apiDiscussionStock');
+
+          cy.intercept('/api/discussion/stock/**', )
+            .as('apiDiscussionStock');
+        });
+    };
+
+    stubDiscussionApi(discussion => ({
+      ...discussion,
+      comments: discussion.comments.map((comment, i) => ({
+        ...comment,
+        content: `@@종토방_${i}@@`,
+      }))
+    }));
+
+    visit();
+    cy.log('종토방 탭을 클릭하면 토론 목록이 보인다');
+    cy.get('.stock_menu_info')
+      .contains('종토방')
+      .click();
+
+    cy.wait('@apiDiscussionStock')
+      .its('request.url')
+      .should('contain', stockCode)
+      .and('contain', '1,CREATED_AT_DESC,10')
+      .end()
+      .url()
+      .should('contain', 'category=DISCUSSION');
+
+    cy.log('몇 개의 의견이 존재하는지 볼 수 있다');
+    cy.get('@apiDiscussionStock')
+      .its('response.body')
+      .then(discussion => {
+        cy.get('.stock_discussion_wrap')
+          .invoke('text')
+          .should('contain', `${discussion.totalCount}개의 의견`);
+      });
+
+
+    cy.log('최신순 또는 과거순으로 정렬 가능하다');
+
+    const activeClassName = 'filter_selected';
+    cy.get(`.list_filter ul > li:not(.${activeClassName}) > a`)
+      .concat(`.list_filter ul > li.${activeClassName} > a`)
+      .clickEachWithTable(
+        {
+          '최신순': 'DESC',
+          '과거순': 'ASC',
+        },
+        id => {
+          cy.wait('@apiDiscussionStock')
+            .its('request.url')
+            .should('contain', `CREATED_AT_${id}`)
+        },
+        {
+          activeClassName,
+        }
+      );
+
+    cy.log('더보기 버튼을 누르면 추가 의견을 불러온다');
+    cy.get('.btn_more')
+      .click();
+
+    cy.wait('@apiDiscussionStock')
+      .its('request.url')
+      .should('contain', '2,CREATED_AT');
+
+    cy.log('비로그인 상태에서 댓글창을 누르면 로그인 모달이 나타난다');
+    cy.contains('줌 또는 소셜로그인 후 댓글을 작성해 주세요')
+      .click();
+
+    cy.get('.layer_login').should('be.visible');
+
+    cy.stubLoginApi();
+    cy.login();
+    cy.wait('@apiDiscussionStock');
+
+    cy.log('댓글을 작성하면 글자수를 볼 수 있다');
+    cy.get('.comment_write')
+      .within(() => {
+        const comment = '한눈에 보는 국내 해외 금융 정보와 전문가의 투자 인사이트를 줌 투자에서 확인하세요';
+        cy.get('[placeholder*="의견을 알려주세요"]')
+          .type(comment);
+
+        cy.get('.text_count')
+          .invoke('text')
+          .should(text => {
+            const [_, count] = /(\d+)\s*[^\s]\s*\d+/.exec(text);
+            expect(parseInt(count)).to.be.equal(comment.length);
+          });
+
+        cy.log('등록 버튼을 눌러 의견을 등록할 수 있다');
+        stubDiscussionApi(discussion => ({
+          ...discussion,
+          comments: [{
+            ...discussion.comments[0],
+            deletedBy: null,
+            content: comment,
+          }].concat(discussion.comments.map((comment, i) => ({
+            ...comment,
+            content: `@@종토방_${i}@@`,
+          })))
+        }));
+
+        cy.contains('등록')
+          .click();
+
+        cy.wait('@apiDiscussionStock')
+          .should(({ request }) => {
+            expect(request.method).to.equal('POST');
+            expect(request.body).to.deep.equal({content: comment});
+          });
+      });
+  });
+
   it('서버사이드 렌더링으로 클라이언트 라우팅 결과와 동일한 화면을 보여준다.', () => {
     cy.intercept(/\.js$/, {statusCode: 503});
     cy.useImageSnapshot();
 
     cy.wrap([
         `/domestic/item/${stockCode}`,
-        '/domestic/index/1'
+        '/domestic/index/1',
       ])
       .each(url => {
         cy.request(url)
