@@ -186,8 +186,8 @@ describe('투자노트', () => {
     it('최신글에서 카테고리 선택을 할 수 있다.', () => {
       cy.get('.lasted_write_wrap')
         .within(() => {
-          cy.get('ul.menu_tab > li > a')
-            .reverse()
+          cy.get('ul.menu_tab > li:not(.active) > a')
+            .concat('ul.menu_tab > li.active > a')
             .clickEachWithTable(
               {
                 '전체': 'all',

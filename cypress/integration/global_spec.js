@@ -21,7 +21,8 @@ describe('해외증시', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
       visit();
       cy.get('.map_title_wrap').within(() => {
-        cy.get('ul > li > a')
+        cy.get('ul > li:not(.active) > a')
+          .concat('ul > li.active > a')
           .clickEachWithTable(
             {
               '다우산업 30': 'dow',
@@ -394,8 +395,8 @@ describe('해외증시', () => {
   describe('해외 실시간 뉴스', () => {
     it('카테고리를 변경할 수 있다.', () => {
       visit();
-      cy.get('.area_real_news ul.menu_tab > li > a')
-        .reverse()
+      cy.get('.area_real_news ul.menu_tab > li:not(.active) > a')
+        .concat('.area_real_news ul.menu_tab > li.active > a')
         .clickEachWithTable(
           {
             '전체': 'ALL',
