@@ -1,12 +1,13 @@
 require('cypress-iframe');
 const { recurse } = require('cypress-recurse');
 
+const now = new Date('2022-03-15T10:00:00');
+
 const executeScript = script => 
   cy.window()
     .then(win => win.eval(script));
 
 describe('국내증시', () => {
-  const now = new Date('2022-03-15T10:00:00');
   beforeEach(() => {
     cy.clock(now);
     cy.stubDomesticApi();
@@ -421,6 +422,84 @@ describe('국내증시 종목', () => {
         cy.get('@likeButton')
           .should('not.have.class', 'activation');
       });
+  });
+
+  it('종목관련 정보가 현황판 형태로 보여진다.', () => {
+    cy.ignoreKnownError('Navigation cancelled from');
+
+    cy.useImageSnapshot();
+    cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
+      .as('apiSuggest');
+    cy.intercept('/api/domestic/stock/*/price*', {fixture: 'api/domestic/stock/price.json'})
+      .as('apiDomesticStockPrice');
+    cy.intercept('/api/domestic/stock/*/investor*', {fixture: 'api/domestic/stock/investor.json'})
+      .as('apiDomesticStockInvestor');
+
+    cy.clock(now);
+    cy.visit('/domestic');
+
+    cy.get('.search_box')
+      .click();
+    
+    cy.get('.search_bar input')
+      .as('searchBar')
+      .click()
+      .type(stockCode);
+
+    cy.tick(1000);
+    cy.get('.stock_list_wrap')
+      .should($el => {
+        expect($el).to.be.exist;
+      });
+
+    cy.get('@searchBar')
+      .type('{enter}');
+
+    cy.wait([
+      '@apiDomesticStock',
+      '@apiDomesticStockPrice',
+      '@apiDomesticStockInvestor',
+    ]);
+
+    cy.withHidden('#header, .chart', () => {
+      cy.tick(100000);
+      cy.get('.stock_board')
+        .toMatchImageSnapshot();
+    });
+  });
+
+  it('최저/최고가에 마우스를 올려 현재가와 비교할 수 있고, 차트의 기간을 변경할 수 있다.', () => {
+    visit();
+    // NOTE: 헤더로 인해 일부 요소가 가려져 오작동 하는 문제 방지
+    cy.withHidden('#header', () => {
+      cy.get('.stock_board')
+        .within(() => {
+          cy.get('.price_summary .bar_wrap')
+            .each($el => {
+              cy.wrap($el)
+                .realHover()
+                .find('.layer')
+                .should('be.visible');
+            });
+
+          cy.get('.chart_tab ul > li > a')
+            .clickEachWithTable(
+              {
+                '1일': 'DAILY',
+                '1개월': 'MONTHLY',
+                '3개월': 'MONTHLY3',
+                '1년': 'YEARLY',
+                '3년': 'YEARLY3',
+              },
+              id => {
+                cy.get('.chart iframe')
+                  .should('have.attr', 'src')
+                  .and('contain', `period=${id}`);
+              }
+            );
+        });
+
+    });
   });
 
   it('종목개요에서 일별 시세와 투자자별 매매동향을 페이지단위로 볼 수 있다.', () => {

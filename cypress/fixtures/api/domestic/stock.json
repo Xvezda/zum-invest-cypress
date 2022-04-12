@@ -4,38 +4,38 @@
             "financeCategory": "DOMESTIC_STOCK",
             "id": "239340",
             "name": "줌인터넷",
-            "updateDateTime": "2022-04-05T11:25:55",
+            "updateDateTime": "2022-04-11T15:30:08",
             "symbol": "KOSDAQ",
-            "currentPrice": 6720,
-            "prevClosingPrice": 6570,
-            "tradeVolume": 2489066,
-            "tradeValue": 16575634520,
-            "marketCap": 172669657600,
-            "priceChange": 150,
-            "rateOfChange": 2.28,
+            "currentPrice": 5810,
+            "prevClosingPrice": 5980,
+            "tradeVolume": 389812,
+            "tradeValue": 2301101050,
+            "marketCap": 156751673540,
+            "priceChange": -170,
+            "rateOfChange": -2.84,
             "stockType": "ST",
             "yearlyTop": 8770,
-            "yearlyBottom": 5980,
-            "openPrice": 6470,
-            "highPrice": 6790,
-            "lowPrice": 6330,
-            "stockStatus": "장중"
+            "yearlyBottom": 5770,
+            "openPrice": 5950,
+            "highPrice": 6120,
+            "lowPrice": 5770,
+            "stockStatus": "장종료"
         },
         "investmentIndicator": {
-            "marketCap": 172669657600,
-            "perValue": 149.32,
+            "marketCap": 156751673540,
+            "perValue": 132.05,
             "epsValue": 44,
-            "pbrValue": 6.6,
+            "pbrValue": 5.83,
             "bpsValue": 996
         },
         "periodBenefitRate": {
-            "day4": 7.35,
-            "weekly": -2.75,
-            "monthly": 52.73,
-            "monthly3": 34.13,
-            "monthly6": 37,
-            "yearly": 22.4,
-            "yearly3": 84.11
+            "day4": -2.84,
+            "weekly": -11.43,
+            "monthly": -10.06,
+            "monthly3": 21.68,
+            "monthly6": 20.29,
+            "yearly": 1.75,
+            "yearly3": -6.59
         },
         "interestScore": 0
     },
@@ -45,84 +45,84 @@
             "name": "인터넷",
             "stocks": [
                 {
-                    "id": "042000",
-                    "name": "카페24",
+                    "id": "079940",
+                    "name": "가비아",
                     "symbol": "KOSDAQ",
-                    "currentPrice": 22450,
-                    "priceChange": 1450,
-                    "rateOfChange": 6.9
-                },
-                {
-                    "id": "239340",
-                    "name": "줌인터넷",
-                    "symbol": "KOSDAQ",
-                    "currentPrice": 6720,
-                    "priceChange": 150,
-                    "rateOfChange": 2.28
+                    "currentPrice": 14500,
+                    "priceChange": 200,
+                    "rateOfChange": 1.4
                 },
                 {
                     "id": "143240",
                     "name": "사람인에이치알",
                     "symbol": "KOSDAQ",
-                    "currentPrice": 41150,
-                    "priceChange": 150,
-                    "rateOfChange": 0.37
-                },
-                {
-                    "id": "093320",
-                    "name": "케이아이엔엑스",
-                    "symbol": "KOSDAQ",
-                    "currentPrice": 56500,
-                    "priceChange": 200,
-                    "rateOfChange": 0.36
-                },
-                {
-                    "id": "079940",
-                    "name": "가비아",
-                    "symbol": "KOSDAQ",
-                    "currentPrice": 13500,
-                    "priceChange": 0,
-                    "rateOfChange": 0
-                },
-                {
-                    "id": "080010",
-                    "name": "이상네트웍스",
-                    "symbol": "KOSDAQ",
-                    "currentPrice": 7660,
-                    "priceChange": -90,
-                    "rateOfChange": -1.16
-                },
-                {
-                    "id": "337930",
-                    "name": "브랜드엑스코퍼레이션",
-                    "symbol": "KOSDAQ",
-                    "currentPrice": 9360,
-                    "priceChange": -110,
-                    "rateOfChange": -1.16
+                    "currentPrice": 40800,
+                    "priceChange": 100,
+                    "rateOfChange": 0.25
                 },
                 {
                     "id": "119860",
                     "name": "다나와",
                     "symbol": "KOSDAQ",
-                    "currentPrice": 23350,
-                    "priceChange": -300,
-                    "rateOfChange": -1.27
+                    "currentPrice": 22350,
+                    "priceChange": -50,
+                    "rateOfChange": -0.22
                 },
                 {
                     "id": "089230",
                     "name": "THE E&M",
                     "symbol": "KOSDAQ",
-                    "currentPrice": 629,
-                    "priceChange": -11,
-                    "rateOfChange": -1.72
+                    "currentPrice": 625,
+                    "priceChange": -2,
+                    "rateOfChange": -0.32
+                },
+                {
+                    "id": "080010",
+                    "name": "이상네트웍스",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 7560,
+                    "priceChange": -50,
+                    "rateOfChange": -0.66
+                },
+                {
+                    "id": "337930",
+                    "name": "브랜드엑스코퍼레이션",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 8900,
+                    "priceChange": -60,
+                    "rateOfChange": -0.67
+                },
+                {
+                    "id": "093320",
+                    "name": "케이아이엔엑스",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 54800,
+                    "priceChange": -600,
+                    "rateOfChange": -1.08
                 },
                 {
                     "id": "053280",
                     "name": "예스24",
                     "symbol": "KOSDAQ",
-                    "currentPrice": 8780,
+                    "currentPrice": 8900,
+                    "priceChange": -150,
+                    "rateOfChange": -1.66
+                },
+                {
+                    "id": "042000",
+                    "name": "카페24",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 20050,
+                    "priceChange": -400,
+                    "rateOfChange": -1.96
+                },
+                {
+                    "id": "239340",
+                    "name": "줌인터넷",
+                    "symbol": "KOSDAQ",
+                    "currentPrice": 5810,
                     "priceChange": -170,
-                    "rateOfChange": -1.9
+                    "rateOfChange": -2.84
                 }
             ]
         },
@@ -132,6 +132,56 @@
     "overview": {
         "priceHistory": {
             "items": [
+                {
+                    "date": "2022-04-11",
+                    "price": 5810,
+                    "priceChange": -170,
+                    "rateOfChange": -2.84,
+                    "highPrice": 6120,
+                    "lowPrice": 5770,
+                    "openPrice": 5950,
+                    "tradeVolume": 401662
+                },
+                {
+                    "date": "2022-04-08",
+                    "price": 5980,
+                    "priceChange": -270,
+                    "rateOfChange": -4.32,
+                    "highPrice": 6320,
+                    "lowPrice": 5980,
+                    "openPrice": 6250,
+                    "tradeVolume": 771109
+                },
+                {
+                    "date": "2022-04-07",
+                    "price": 6250,
+                    "priceChange": -440,
+                    "rateOfChange": -6.58,
+                    "highPrice": 6690,
+                    "lowPrice": 6210,
+                    "openPrice": 6680,
+                    "tradeVolume": 1177816
+                },
+                {
+                    "date": "2022-04-06",
+                    "price": 6690,
+                    "priceChange": 130,
+                    "rateOfChange": 1.98,
+                    "highPrice": 6870,
+                    "lowPrice": 6440,
+                    "openPrice": 6560,
+                    "tradeVolume": 4167702
+                },
+                {
+                    "date": "2022-04-05",
+                    "price": 6560,
+                    "priceChange": -10,
+                    "rateOfChange": -0.15,
+                    "highPrice": 6970,
+                    "lowPrice": 6330,
+                    "openPrice": 6470,
+                    "tradeVolume": 6261792
+                },
                 {
                     "date": "2022-04-04",
                     "price": 6570,
@@ -181,62 +231,47 @@
                     "lowPrice": 6910,
                     "openPrice": 7040,
                     "tradeVolume": 1729098
-                },
-                {
-                    "date": "2022-03-28",
-                    "price": 7170,
-                    "priceChange": 140,
-                    "rateOfChange": 1.99,
-                    "highPrice": 7170,
-                    "lowPrice": 6680,
-                    "openPrice": 6900,
-                    "tradeVolume": 3649148
-                },
-                {
-                    "date": "2022-03-25",
-                    "price": 7030,
-                    "priceChange": -600,
-                    "rateOfChange": -7.86,
-                    "highPrice": 7390,
-                    "lowPrice": 7020,
-                    "openPrice": 7270,
-                    "tradeVolume": 5660267
-                },
-                {
-                    "date": "2022-03-24",
-                    "price": 7630,
-                    "priceChange": 750,
-                    "rateOfChange": 10.9,
-                    "highPrice": 7630,
-                    "lowPrice": 6630,
-                    "openPrice": 6800,
-                    "tradeVolume": 8503893
-                },
-                {
-                    "date": "2022-03-23",
-                    "price": 6880,
-                    "priceChange": 220,
-                    "rateOfChange": 3.3,
-                    "highPrice": 7000,
-                    "lowPrice": 6550,
-                    "openPrice": 6670,
-                    "tradeVolume": 6291660
-                },
-                {
-                    "date": "2022-03-22",
-                    "price": 6660,
-                    "priceChange": 110,
-                    "rateOfChange": 1.68,
-                    "highPrice": 6760,
-                    "lowPrice": 6560,
-                    "openPrice": 6620,
-                    "tradeVolume": 2016966
                 }
             ],
-            "totalCount": 1431
+            "totalCount": 1436
         },
         "investorHistory": {
             "items": [
+                {
+                    "date": "2022-04-11",
+                    "foreignerShareCount": 137079,
+                    "foreignerShareRatio": 0.51,
+                    "foreignerNetSales": 11890,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-04-08",
+                    "foreignerShareCount": 125189,
+                    "foreignerShareRatio": 0.46,
+                    "foreignerNetSales": 39260,
+                    "institutionNetSales": 0
+                },
+                {
+                    "date": "2022-04-07",
+                    "foreignerShareCount": 85929,
+                    "foreignerShareRatio": 0.32,
+                    "foreignerNetSales": -183103,
+                    "institutionNetSales": -3001
+                },
+                {
+                    "date": "2022-04-06",
+                    "foreignerShareCount": 269032,
+                    "foreignerShareRatio": 1,
+                    "foreignerNetSales": 215509,
+                    "institutionNetSales": -814
+                },
+                {
+                    "date": "2022-04-05",
+                    "foreignerShareCount": 53523,
+                    "foreignerShareRatio": 0.2,
+                    "foreignerNetSales": -150127,
+                    "institutionNetSales": 3815
+                },
                 {
                     "date": "2022-04-04",
                     "foreignerShareCount": 203650,
@@ -271,44 +306,9 @@
                     "foreignerShareRatio": 0.38,
                     "foreignerNetSales": -24374,
                     "institutionNetSales": 0
-                },
-                {
-                    "date": "2022-03-28",
-                    "foreignerShareCount": 126791,
-                    "foreignerShareRatio": 0.47,
-                    "foreignerNetSales": -11587,
-                    "institutionNetSales": 0
-                },
-                {
-                    "date": "2022-03-25",
-                    "foreignerShareCount": 138378,
-                    "foreignerShareRatio": 0.51,
-                    "foreignerNetSales": -388731,
-                    "institutionNetSales": 0
-                },
-                {
-                    "date": "2022-03-24",
-                    "foreignerShareCount": 527109,
-                    "foreignerShareRatio": 1.95,
-                    "foreignerNetSales": 373055,
-                    "institutionNetSales": 0
-                },
-                {
-                    "date": "2022-03-23",
-                    "foreignerShareCount": 154054,
-                    "foreignerShareRatio": 0.57,
-                    "foreignerNetSales": -13674,
-                    "institutionNetSales": -150
-                },
-                {
-                    "date": "2022-03-22",
-                    "foreignerShareCount": 167728,
-                    "foreignerShareRatio": 0.62,
-                    "foreignerNetSales": 13210,
-                    "institutionNetSales": 0
                 }
             ],
-            "totalCount": 273
+            "totalCount": 278
         }
     }
 }
