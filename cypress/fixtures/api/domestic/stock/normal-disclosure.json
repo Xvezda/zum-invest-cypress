@@ -1,0 +1,65 @@
+{
+    "items": [
+        {
+            "id": "031997",
+            "title": "줌인터넷(주) 해산사유 발생(자율공시)(종속회사의 주요경영사항)",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-04-05T00:00:00"
+        },
+        {
+            "id": "028452",
+            "title": "줌인터넷(주) 정기주주총회결과",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-03-28T00:00:00"
+        },
+        {
+            "id": "024233",
+            "title": "줌인터넷(주) 감사보고서 제출",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-03-18T00:00:00"
+        },
+        {
+            "id": "023311",
+            "title": "줌인터넷(주) [투자주의]스팸관여과다종목",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-03-17T00:00:00"
+        },
+        {
+            "id": "022511",
+            "title": "줌인터넷(주) [투자주의]스팸관여과다종목",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-03-16T00:00:00"
+        },
+        {
+            "id": "021692",
+            "title": "줌인터넷(주) (예고)단기과열종목(3거래일 단일가매매) 지정예고",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-03-15T00:00:00"
+        },
+        {
+            "id": "020105",
+            "title": "줌인터넷(주) (정정)주주총회소집결의",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-03-11T00:00:00"
+        },
+        {
+            "id": "014331",
+            "title": "줌인터넷(주) 매출액 또는 손익구조 30%(대규모법인은 15%)이상 변동",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-02-25T00:00:00"
+        },
+        {
+            "id": "014400",
+            "title": "줌인터넷(주) 주주총회소집결의",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-02-25T00:00:00"
+        },
+        {
+            "id": "012399",
+            "title": "줌인터넷(주) 연결재무제표 기준 영업(잠정)실적(공정공시)",
+            "dataSource": "KOSCOM",
+            "disclosureDateTime": "2022-02-22T00:00:00"
+        }
+    ],
+    "totalCount": 83
+}
