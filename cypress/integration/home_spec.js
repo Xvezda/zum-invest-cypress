@@ -39,6 +39,17 @@ describe('zum 투자 홈', () => {
     return cy.wait(['@apiHome', '@apiCategoryNews']);
   };
 
+  it('인기종목을 마우스를 올리면 드롭다운으로 볼 수 있다.', () => {
+    visit();
+    cy.withHidden('.ticker_bar', () => {
+      cy.get('.issue_keywords')
+        .realHover();
+
+      cy.get('.layer_issue_keywords')
+        .should('be.visible');
+    });
+  });
+
   it('검색창을 클릭한 뒤 종목을 입력하고 엔터를 눌러 검색할 수 있다.', () => {
     cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
       .as('apiSuggest');
