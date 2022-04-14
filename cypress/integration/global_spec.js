@@ -1,9 +1,8 @@
 describe('해외증시', () => {
   beforeEach(() => {
     // TODO: 원인조사
-    cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(dow|children)'\)/);
+    cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(children|reduce|dow)'\)/);
     cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
-    cy.ignoreKnownError("Cannot read properties of undefined (reading 'reduce')");
   });
 
   beforeEach(() => {
@@ -39,6 +38,9 @@ describe('해외증시', () => {
       visit();
       cy.get('.main_news_list')
         .as('mainNewsList')
+        .should('be.exist');
+
+      cy.get('@mainNewsList')
         .scrollIntoView();
 
       cy.get('@mainNewsList')
@@ -493,8 +495,9 @@ describe('해외증시', () => {
 
   it('오늘의 해외증시 TOP PICK이 보여진다.', () => {
     visit()
-      .spread((_, { response }) => {
-        const { todayIndexTopPick } = response.body;
+      .its('1.response.body')
+      .should('be.not.undefined')
+      .then(({ todayIndexTopPick }) => {
         cy.wrap(todayIndexTopPick)
           .each(({ title, id }) => {
             const extractNewsId = id => /\d+$/.exec(id)[0];
