@@ -428,9 +428,9 @@ describe('국내증시 종목', () => {
   });
 
   it('종목관련 정보가 현황판 형태로 보여진다.', () => {
+    cy.useImageSnapshot();
     cy.ignoreKnownError('Navigation cancelled from');
 
-    cy.useImageSnapshot();
     cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
       .as('apiSuggest');
     cy.intercept('/api/domestic/stock/*/price*', {fixture: 'api/domestic/stock/price.json'})
@@ -501,7 +501,6 @@ describe('국내증시 종목', () => {
               }
             );
         });
-
     });
   });
 
@@ -768,6 +767,89 @@ describe('국내증시 종목', () => {
     cy.wait('@apiDiscussionStockDelete')
       .its('request.body')
       .should('deep.contain', {commentId,});
+  });
+
+  it('뉴스탭을 눌러 뉴스목록을 보고 클릭하여 이동, 페이지 넘기기가 가능하다.', () => {
+    const placeholder = '@@종목상세_뉴스제목@@';
+    const newsId = '12345678';
+
+    cy.fixture('api/domestic/stock/news.json')
+      .as('domesticStockNews');
+
+    const stubNewsApi = callback => {
+      cy.get('@domesticStockNews')
+        .then(news => {
+          cy.intercept('/api/domestic/stock/*/news*', callback(news))
+            .as('apiDomesticStockNews');
+        });
+    };
+
+    const replaceNewsId = (url, id) => url.replace(/\d+$/, id);
+    stubNewsApi(news => ({
+      ...news,
+      newses: news.newses
+        .map((n, i) => i === 0 ?
+          {
+            ...n,
+            title: placeholder,
+            // NOTE: id, landingUrl이 동일한 값을 반환하고 있음 (어째서?)
+            id: replaceNewsId(n.id, newsId),
+            landingUrl: replaceNewsId(n.landingUrl, newsId),
+          } :
+          n
+        )
+    }));
+
+    visit();
+    cy.log('뉴스 탭을 클릭하면 뉴스 목록이 보인다');
+    cy.get('.stock_menu_info')
+      .contains('뉴스')
+      .click();
+
+    cy.wait('@apiDomesticStockNews')
+      .its('request.url')
+      .should('contain', stockCode);
+
+    cy.log('뉴스 제목을 클릭하여 뉴스페이지로 이동');
+    cy.contains(placeholder)
+      .click();
+
+    cy.url()
+      .should('contain', newsId)
+      .go('back');
+
+    cy.wait('@apiDomesticStockNews');
+
+    cy.log('홑화살표를 눌러 이전/다음페이지로 이동');
+    stubNewsApi(news => req => {
+      req.alias = `apiDomesticStockNewsPage${req.query.page}`;
+      req.reply(news);
+    });
+
+    cy.get('.paging_wrap .next')
+      .click();
+
+    cy.wait('@apiDomesticStockNewsPage2');
+
+    cy.get('.paging_wrap .prev')
+      .click();
+
+    cy.log('겹화살표를 눌러 마지막/처음페이지로 이동');
+    const newsPerPage = 10;
+    cy.wait('@apiDomesticStockNewsPage1');
+    cy.get('@domesticStockNews')
+      .then(news => {
+        const lastPage = Math.ceil(news.totalCount / newsPerPage);
+        cy.get('.paging_wrap .last')
+          .click();
+
+        cy.wait(`@apiDomesticStockNewsPage${lastPage}`);
+      });
+
+    cy.get('.paging_wrap .first')
+      .click();
+
+    cy.wait(`@apiDomesticStockNewsPage1`);
   });
 
   it('서버사이드 렌더링으로 클라이언트 라우팅 결과와 동일한 화면을 보여준다.', () => {
