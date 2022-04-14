@@ -241,7 +241,6 @@ describe('zum 투자 홈', () => {
         });
 
       cy.log('로그인 후 사이드바에 관심종목이 표시되는지 확인');
-      cy.stubLoginApi();
       cy.login()
         .then(visit);
 

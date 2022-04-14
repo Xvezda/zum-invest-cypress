@@ -386,11 +386,9 @@ describe('국내증시 종목', () => {
     });
 
     cy.log('로그인 후 로그인, 관심종목 API로부터 응답을 받을 때 까지 대기');
-    cy.stubLoginApi();
     visit();
     cy.login();
-    cy.wait('@apiMemberLogin')
-      .wait('@apiInterest');
+    cy.wait('@apiInterest');
 
     cy.get('.stock_board')
       .within(() => {
@@ -690,7 +688,6 @@ describe('국내증시 종목', () => {
 
     cy.get('.layer_login').should('be.visible');
 
-    cy.stubLoginApi();
     cy.login();
     cy.wait('@apiDiscussionStock');
 
