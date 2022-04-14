@@ -222,26 +222,28 @@ describe('zum 투자 홈', () => {
     });  // END: 주요지표
 
     it('로그인하면 관심종목이 보여지고 관심 선택, 해제 및 종목 이동이 가능하다.', () => {
-      cy.fixture('api/interest.json')
-        .then(interest => {
-          interest.items.unshift(stock);
-          cy.intercept('/api/interest', req => {
-              req.reply({
-                ...interest,
-                itemCount: interest.itemCount + 1,
-              });
-            })
-            .as('apiInterest');
+      const stubInterestApi = () => {
+        cy.fixture('api/interest.json')
+          .then(interest => {
+            interest.items.unshift(stock);
+            cy.intercept('/api/interest', req => {
+                req.reply({
+                  ...interest,
+                  itemCount: interest.itemCount + 1,
+                });
+              })
+              .as('apiInterest');
 
-          cy.intercept('/api/interest/delete', req => {
-              interest.items.shift();
-              req.reply(interest);
-            })
-            .as('apiInterestDelete');
-        });
+            cy.intercept('/api/interest/delete', req => {
+                interest.items.shift();
+                req.reply(interest);
+              })
+              .as('apiInterestDelete');
+          });
+      };
 
       cy.log('로그인 후 사이드바에 관심종목이 표시되는지 확인');
-      cy.login()
+      cy.login({postStub: stubInterestApi})
         .then(visit);
 
       cy.log('관심종목의 종목이름을 클릭하면 해당 종목페이지로 이동한다');

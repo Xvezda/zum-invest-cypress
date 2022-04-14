@@ -157,6 +157,9 @@ Cypress.Commands.add('stubLoginApi', () => {
         })
         .as('jsonpGetUserInfo');
     });
+
+  cy.intercept('/api/interest**', {fixture: 'api/interest.json'})
+    .as('apiInterest');
 });
 
 Cypress.Commands.add('stubInvestmentApi', () => {
@@ -381,7 +384,6 @@ Cypress.Commands.add(
       .as('apiDomesticRanking');
 
     cy.visit('/domestic/ranking', options);
-    cy.wait(['@apiDomesticCommon', '@apiDomesticRanking']);
 
     return cy
       .get(`.gnb_finance a:contains("${pathTable[path]}")`)
@@ -506,12 +508,14 @@ Cypress.Commands.add(
   }
 );
 
-Cypress.Commands.add('login', () => 
+Cypress.Commands.add(
+  'login',
+  (options = {postStub: function noop() {}}) => 
   cy.stubLoginApi()
     .setCookie('_ZIL', '1')  // 로그인 & 로그아웃 표시 버튼
     .setCookie('ZSID', '11111111-2222-3333-4444-555555555555')  // 회원관련 API 요청
+    .then(options.postStub)
     .reload()
-    .wait(['@apiMemberLogin', '@jsonpGetUserInfo'])
 );
 
 Cypress.Commands.add('logout', () =>
