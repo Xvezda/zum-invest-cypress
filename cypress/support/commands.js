@@ -147,14 +147,15 @@ Cypress.Commands.add('stubLoginApi', () => {
   cy.fixture('userapi.zum.com/getUserInfo.json')
     .then(userInfo => {
       cy.intercept('https://userapi.zum.com/getUserInfo*', req => {
-        req.reply({
-          headers: {
-            'Content-Type': 'application/javascript',
-          },
-          statusCode: 200,
-          body: `${req.query.callback}(${JSON.stringify(userInfo)})`,
-        });
-      });
+          req.reply({
+            headers: {
+              'Content-Type': 'application/javascript',
+            },
+            statusCode: 200,
+            body: `${req.query.callback}(${JSON.stringify(userInfo)})`,
+          });
+        })
+        .as('jsonpGetUserInfo');
     });
 });
 
@@ -383,9 +384,7 @@ Cypress.Commands.add(
     cy.wait(['@apiDomesticCommon', '@apiDomesticRanking']);
 
     return cy
-      .get('.gnb_finance')
-      .find('a')
-      .filter(`:contains("${pathTable[path]}")`)
+      .get(`.gnb_finance a:contains("${pathTable[path]}")`)
       .click();
   }
 )
@@ -508,9 +507,11 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add('login', () => 
-  cy.setCookie('_ZIL', '1')  // 로그인 & 로그아웃 표시 버튼
+  cy.stubLoginApi()
+    .setCookie('_ZIL', '1')  // 로그인 & 로그아웃 표시 버튼
     .setCookie('ZSID', '11111111-2222-3333-4444-555555555555')  // 회원관련 API 요청
     .reload()
+    .wait(['@apiMemberLogin', '@jsonpGetUserInfo'])
 );
 
 Cypress.Commands.add('logout', () =>
