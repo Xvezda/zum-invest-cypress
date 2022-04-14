@@ -2,7 +2,7 @@ const { recurse } = require("cypress-recurse");
 
 describe('해외증시', () => {
   before(() => {
-    // TODO: 원인조사
+    // NOTE: `cy.on` 명령으로 예외처리를 하지 못하는 버그 방지
     Cypress.on('uncaught:exception', err => {
       if (err.message.includes("Cannot read properties of undefined (reading 'children')")) {
         return false;
@@ -21,9 +21,21 @@ describe('해외증시', () => {
     return cy.wait(['@apiOverseasHome', '@apiOverseasCommon']);
   };
 
+  const retry = (todo, when, options = {}) => {
+    return recurse(
+      todo,
+      when,
+      {
+        delay: 10,
+        limit: 30,
+        ...options,
+      }
+    );
+  };
+
   describe('해외증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
-      recurse(
+      retry(
           () => {
             visit();
             cy.wait('@apiOverseasRepresentativeStock');
@@ -515,7 +527,7 @@ describe('해외증시', () => {
 
   it('오늘의 해외증시 TOP PICK이 보여진다.', () => {
     // NOTE: 간헐적으로 undefined를 반환하는 문제가 있어 recurse로 재시도
-    recurse(
+    retry(
         () => visit().its('1.response.body'),
         body => expect(body).not.to.be.undefined,
       )
