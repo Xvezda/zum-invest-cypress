@@ -240,37 +240,34 @@ describe('국내증시', () => {
 
   describe('이번주 투자 캘린더', () => {
     it('날짜를 클릭하면 캘린더가 해당 위치로 자동 스크롤 되고, 항목을 클릭하면 자세한 내용을 여닫을 수 있다.', () => {
-      cy.clock(now);
+      cy.clock(now, ['Date']);
       visit();
 
-      cy.get('.investment_calendar')
-        .scrollIntoView()
-        .within(() => {
-          cy.get('.investment_calendar_tab a')
-            .as('dayTabs');
+      withHiddenHeader(() => {
+        cy.get('.investment_calendar')
+          .scrollIntoView()
+          .within(() => {
+            cy.get('.investment_calendar_tab :not(.active) > a')
+              .concat('.investment_calendar_tab .active > a')
+              .each($day => {
+                const date = $day.find('.date').text();
 
-          cy.get('@dayTabs')
-            .each($day => {
-              const date = $day.find('.date').text();
+                cy.wrap($day).click();
+                cy.get(`[data-offset$="${date}"]`).should('be.visible');
+              });
 
-              cy.wrap($day).click();
-              cy.tick(2000);
-              cy.get(`[data-offset$="${date}"]`).should('be.visible');
-            });
-
-          cy.get('@dayTabs')
-            .first()
-            .click();
-
-          cy.tick(2000);
-          
-          cy.get('.investment_calendar_list .first a')
-            .first()
-            .click({force: true})
-            .tick(2000)
-            .should('have.class', 'open');
-        });
+            cy.get('.investment_calendar_tab a')
+              .first()
+              .click();
+            
+            cy.get('.investment_calendar_list .first a')
+              .first()
+              .click({force: true})
+              .should('have.class', 'open');
+          });
     });
+
+      });
   });  // END: 이번주 투자 캘린더
 
   describe('오늘의 HOT PICK', () => {
@@ -349,45 +346,52 @@ describe('국내증시 종목', () => {
 
   beforeEach(() => {
     cy.stubDomesticApi();
+    cy.intercept('/api/domestic/stock/*/price*', {fixture: 'api/domestic/stock/price.json'})
+      .as('apiDomesticStockPrice');
+    cy.intercept('/api/domestic/stock/*/investor*', {fixture: 'api/domestic/stock/investor.json'})
+      .as('apiDomesticStockInvestor');
   });
 
   it('별모양 아이콘을 눌러 관심종목으로 등록하고 제거할 수 있다.', () => {
-    cy.fixture('api/interest.json').then(interest => {
-      cy.intercept(/\/api\/interest(\/delete)?/, req => {
-          req.reply(201, {
-            ...interest,
-            items: ([
-                {
-                  "financeCategory": "DOMESTIC_STOCK",
-                  "id": "239340",
-                  "name": "줌인터넷",
-                  "updateDateTime": "2022-03-28T14:20:59",
-                  "code": "239340",
-                  "symbol": "KOSDAQ",
-                  "registerDateTime": "2022-03-28T14:41:44",
-                  "order": 0,
-                  "rateOfChange": -4.27,
-                  "benefitRate": 0,
-                  "priceOnRegistration": 6730,
-                  "currentPrice": 6730,
-                  "priceChange": -300
-                }
-              ])
-              .concat(interest.items)
-              .filter((_, i) => {
-                if (req.method !== 'POST' && i === 0 || req.url.endsWith('delete')) {
-                  return false;
-                }
-                return true;
-              }),
-          });
-        })
-        .as('apiInterest');
-    });
+    const stubInterestApi = () => {
+      cy.fixture('api/interest.json')
+        .then(interest => {
+          cy.intercept(/\/api\/interest(\/delete)?/, req => {
+              req.reply(201, {
+                ...interest,
+                items: ([
+                    {
+                      "financeCategory": "DOMESTIC_STOCK",
+                      "id": "239340",
+                      "name": "줌인터넷",
+                      "updateDateTime": "2022-03-28T14:20:59",
+                      "code": "239340",
+                      "symbol": "KOSDAQ",
+                      "registerDateTime": "2022-03-28T14:41:44",
+                      "order": 0,
+                      "rateOfChange": -4.27,
+                      "benefitRate": 0,
+                      "priceOnRegistration": 6730,
+                      "currentPrice": 6730,
+                      "priceChange": -300
+                    }
+                  ])
+                  .concat(interest.items)
+                  .filter((_, i) => {
+                    if (req.method !== 'POST' && i === 0 || req.url.endsWith('delete')) {
+                      return false;
+                    }
+                    return true;
+                  }),
+              });
+            })
+            .as('apiInterest');
+        });
+    };
 
     cy.log('로그인 후 로그인, 관심종목 API로부터 응답을 받을 때 까지 대기');
     visit();
-    cy.login();
+    cy.login({postStub: stubInterestApi});
     cy.wait('@apiInterest');
 
     cy.get('.stock_board')
@@ -431,10 +435,6 @@ describe('국내증시 종목', () => {
 
     cy.intercept('/api/suggest*', {fixture: 'api/suggest.json'})
       .as('apiSuggest');
-    cy.intercept('/api/domestic/stock/*/price*', {fixture: 'api/domestic/stock/price.json'})
-      .as('apiDomesticStockPrice');
-    cy.intercept('/api/domestic/stock/*/investor*', {fixture: 'api/domestic/stock/investor.json'})
-      .as('apiDomesticStockInvestor');
 
     cy.clock(now);
     cy.visit('/domestic');
