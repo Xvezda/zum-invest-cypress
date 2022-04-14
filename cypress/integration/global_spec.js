@@ -1,8 +1,13 @@
+const { recurse } = require("cypress-recurse");
+
 describe('해외증시', () => {
-  beforeEach(() => {
+  before(() => {
     // TODO: 원인조사
-    cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(children|reduce|dow)'\)/);
-    cy.ignoreKnownError("Cannot read properties of null (reading 'getAttribute')");
+    Cypress.on('uncaught:exception', err => {
+      if (err.message.includes("Cannot read properties of undefined (reading 'children')")) {
+        return false;
+      }
+    });
   });
 
   beforeEach(() => {
@@ -18,20 +23,32 @@ describe('해외증시', () => {
 
   describe('해외증시 MAP', () => {
     it('MAP의 종류를 선택할 수 있다.', () => {
-      visit();
-      cy.get('.map_title_wrap').within(() => {
-        cy.get('ul > li:not(.active) > a')
-          .concat('ul > li.active > a')
-          .clickEachWithTable(
-            {
-              '다우산업 30': 'dow',
-              '나스닥 100': 'nasdaq'
-            },
-            id => cy
-              .url()
-              .should('contain', `category=${id}`),
-          );
-        });
+      recurse(
+          () => {
+            visit();
+            cy.wait('@apiOverseasRepresentativeStock');
+            return cy.get('.map_title_wrap');
+          },
+          $el => expect($el).to.be.exist,
+          {
+            post() {
+              cy.reload(true);
+            }
+          }
+        )
+        .within(() => {
+          cy.get('ul > li:not(.active) > a')
+            .concat('ul > li.active > a')
+            .clickEachWithTable(
+              {
+                '다우산업 30': 'dow',
+                '나스닥 100': 'nasdaq'
+              },
+              id => cy
+                .url()
+                .should('contain', `category=${id}`),
+            );
+          });
     });
 
     it('다우산업 화살표를 클릭해 주요뉴스를 살펴볼 수 있다.', () => {
@@ -74,6 +91,7 @@ describe('해외증시', () => {
       cy.fixture('api/overseas/home.json')
         .then(home => {
           const checkMajorIndexBy = datas => {
+            cy.log('API에서 받아온 정보를 표시');
             cy.wrap(datas)
               .each(({
                 currentPrice,
@@ -81,7 +99,6 @@ describe('해외증시', () => {
                 priceChange,
                 rateOfChange
               }) => {
-                cy.log('API에서 받아온 정보를 표시');
                 // 음양(-, +) 등의 정보는 텍스트가 아닌 이미지로 표현될 수 있기 때문에 절대값을 사용
                 const formatNumber = number => Math.abs(number).toLocaleString('en-US');
                 cy.get('@majorIndex')
@@ -92,10 +109,13 @@ describe('해외증시', () => {
 
                 cy.withHidden('#header', () => {
                   cy.get(`li:contains("${name}")`)
-                    .find('.graph')
-                    .realHover()
-                    .find('.graph_tooltip')
-                    .should('be.visible');
+                    .within(() => {
+                      cy.get('.graph')
+                        .realHover();
+
+                      cy.get('.graph_tooltip')
+                        .should('be.visible');
+                    });
                 });
               });
           };
@@ -494,9 +514,11 @@ describe('해외증시', () => {
   });  // END: 해외 실시간 뉴스
 
   it('오늘의 해외증시 TOP PICK이 보여진다.', () => {
-    visit()
-      .its('1.response.body')
-      .should('be.not.undefined')
+    // NOTE: 간헐적으로 undefined를 반환하는 문제가 있어 recurse로 재시도
+    recurse(
+        () => visit().its('1.response.body'),
+        body => expect(body).not.to.be.undefined,
+      )
       .then(({ todayIndexTopPick }) => {
         cy.wrap(todayIndexTopPick)
           .each(({ title, id }) => {
