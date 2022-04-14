@@ -374,8 +374,13 @@ Cypress.Commands.add(
 
     // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나,
     // 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
-    cy.intercept('/api/domestic/ranking', {statusCode: 503});
+    cy.intercept('/api/domestic/common', {fixture: 'api/domestic/common.json'})
+      .as('apiDomesticCommon');
+    cy.intercept('/api/domestic/ranking*', {fixture: 'api/domestic/ranking.json'})
+      .as('apiDomesticRanking');
+
     cy.visit('/domestic/ranking', options);
+    cy.wait(['@apiDomesticCommon', '@apiDomesticRanking']);
 
     return cy
       .get('.gnb_finance')
