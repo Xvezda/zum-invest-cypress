@@ -849,7 +849,8 @@ describe('국내증시 종목', () => {
     cy.wait(`@apiDomesticStockNewsPage1`);
   });
 
-  it('서버사이드 렌더링으로 클라이언트 라우팅 결과와 동일한 화면을 보여준다.', () => {
+  // NOTE: https://github.com/cypress-io/cypress/issues/21086
+  it.skip('서버사이드 렌더링으로 클라이언트 라우팅 결과와 동일한 화면을 보여준다.', () => {
     cy.intercept(/\.js$/, {statusCode: 503});
     cy.useImageSnapshot();
 
