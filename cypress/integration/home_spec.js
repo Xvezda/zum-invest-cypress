@@ -332,7 +332,11 @@ describe('zum 투자 홈', () => {
 
             cy.root()
               .first()
-              .toMatchImageSnapshot();
+              .toMatchImageSnapshot({
+                imageConfig: {
+                  threshold: 0.05,
+                }
+              });
           });
       });
     });
