@@ -344,6 +344,13 @@ describe('국내증시 종목', () => {
   const visit = () => 
     cy.visit(`/domestic/item/${stockCode}`);
 
+  const visitTab = text => {
+    visit();
+    cy.get('.stock_menu_info')
+      .contains(text)
+      .click();
+  };
+
   beforeEach(() => {
     cy.stubDomesticApi();
     cy.intercept('/api/domestic/stock/*/price*', {fixture: 'api/domestic/stock/price.json'})
@@ -584,11 +591,8 @@ describe('국내증시 종목', () => {
     cy.intercept('/nice-asp/**', {statusCode: 200})
       .as('niceWidget');
 
-    visit();
     cy.log('기업정보탭을 클릭하면 NICE 위젯의 URL이 종목코드를 포함');
-    cy.get('.stock_menu_info')
-      .contains('기업정보')
-      .click();
+    visitTab('기업정보');
 
     cy.wait('@niceWidget')
       .its('request.url')
@@ -601,10 +605,7 @@ describe('국내증시 종목', () => {
       })
       .as('apiDomesticStockRealtimeComments');
 
-    visit();
-    cy.get('.stock_menu_info')
-      .contains('실시간반응')
-      .click();
+    visitTab('실시간반응');
 
     cy.wait('@apiDomesticStockRealtimeComments')
       .its('request.url')
@@ -630,11 +631,8 @@ describe('국내증시 종목', () => {
       }))
     }));
 
-    visit();
     cy.log('종토방 탭을 클릭하면 토론 목록이 보인다');
-    cy.get('.stock_menu_info')
-      .contains('종토방')
-      .click();
+    visitTab('종토방');
 
     cy.wait('@apiDiscussionStock')
       .its('request.url')
@@ -797,11 +795,8 @@ describe('국내증시 종목', () => {
         )
     }));
 
-    visit();
     cy.log('뉴스 탭을 클릭하면 뉴스 목록이 보인다');
-    cy.get('.stock_menu_info')
-      .contains('뉴스')
-      .click();
+    visitTab('뉴스');
 
     cy.wait('@apiDomesticStockNews')
       .its('request.url')
