@@ -844,6 +844,128 @@ describe('국내증시 종목', () => {
     cy.wait(`@apiDomesticStockNewsPage1`);
   });
 
+  it('공시탭을 눌러 요약공시와 일반공시를 살펴볼 수 있다.', () => {
+    cy.intercept('/api/domestic/stock/*/performance*', {
+        fixture: 'api/domestic/stock/performance.json'
+      })
+      .as('apiDomesticStockPerformance');
+
+    visitTab('공시');
+
+    cy.log('API로 받아온 요약공시 정보가 표시된다');
+    cy.wait('@apiDomesticStockPerformance')
+      .its('response.body.items')
+      .each(item => {
+        cy.get('.result_list')
+          .as('resultList');
+
+        cy.get('@resultList')
+          .should('contain', item.title)
+          .and('contain', item.type)
+          .find(`a[href="${item.originalTextUrl}"]`)
+          .should('be.visible');
+
+        if (item.data !== null) {
+          const percentage = `${Math.abs(parseFloat(item.data))}%`;
+          cy.get('@resultList')
+            .should('contain', percentage);
+        }
+      });
+    
+    cy.log('페이지네이션 메뉴를 사용해 페이지 이동');
+    cy.get('.paging_wrap')
+      .as('pagingWrap');
+
+    const shouldRequestOnPagination = alias => {
+      cy.log('이전/다음 버튼을 눌러 이동');
+      cy.get('@pagingWrap')
+        .find('.next')
+        .click();
+
+      cy.wait(alias)
+        .its('request.url')
+        .should('contain', 'page=2');
+
+      cy.get('@pagingWrap')
+        .find('.prev')
+        .click();
+
+      cy.wait(alias)
+        .its('request.url')
+        .should('contain', 'page=1');
+
+      cy.log('마지막/처음 버튼을 눌러 이동');
+      cy.get('@pagingWrap')
+        .find('.last')
+        .click();
+
+      const infoPerPage = 10;
+      cy.wait(alias)
+        .should(({ request, response }) => {
+          const lastPage = Math.ceil(response.body.totalCount / infoPerPage);
+          expect(request.url).to.contain(`page=${lastPage}`);
+        });
+
+      cy.get('@pagingWrap')
+        .find('.first')
+        .click();
+
+      cy.wait(alias)
+        .its('request.url')
+        .should('contain', 'page=1');
+
+      cy.log('페이지 숫자를 눌러 해당 페이지로 이동');
+      cy.get('@pagingWrap')
+        .within(() => {
+          cy.get('.num:not(.as_is)')
+            .concat('.num.as_is')
+            .each($el => {
+              const pageNumber = $el.text().trim();
+              cy.wrap($el).click();
+              cy.wait(alias)
+                .its('request.url')
+                .should('contain', `page=${pageNumber}`);
+            });
+        });
+    };
+    shouldRequestOnPagination('@apiDomesticStockPerformance');
+
+    cy.log('일반공시 버튼을 눌러 일반공시 목록을 표시');
+    cy.intercept('/api/domestic/stock/*/normal-disclosure*', {
+        fixture: 'api/domestic/stock/normal-disclosure.json'
+      })
+      .as('apiDomesticStockNormalDisclosure');
+
+    cy.get('.stock_menu_info')
+      .contains('일반공시')
+      .click();
+
+    cy.wait('@apiDomesticStockNormalDisclosure');
+
+    cy.log('페이지네이션 메뉴를 사용해 페이지 이동');
+    shouldRequestOnPagination('@apiDomesticStockNormalDisclosure');
+
+    cy.get('@apiDomesticStockNormalDisclosure')
+      .its('response.body')
+      .then(disclosure => {
+        cy.log('일반공시 제목을 눌러 내용을 확인');
+        cy.fixture('api/domestic/stock/performance/disclosure.json')
+          .then(detail => {
+            cy.intercept('/api/domestic/stock/*/performance/*', detail)
+              .as('apiDomesticStockPerformanceDisclosure');
+          });
+        
+        const [firstDisclosure,] = disclosure.items;
+        cy.get('.stock_menu_info')
+          .contains(firstDisclosure.title)
+          .click();
+
+        cy.get('@apiDomesticStockPerformanceDisclosure')
+          .its('request.url')
+          .should('contain', firstDisclosure.id);
+      });
+  });
+
   // NOTE: https://github.com/cypress-io/cypress/issues/21086
   it.skip('서버사이드 렌더링으로 클라이언트 라우팅 결과와 동일한 화면을 보여준다.', () => {
     cy.intercept(/\.js$/, {statusCode: 503});
