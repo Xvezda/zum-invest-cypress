@@ -19,6 +19,7 @@ describe('zum 투자 홈', () => {
   beforeEach(() => {
     // TODO: 원인조사
     cy.ignoreKnownError(/Cannot read properties of undefined \(reading '(length|title)'\)/);
+    cy.ignoreKnownError("Cannot read properties of null (reading 'postMessage')");
     cy.intercept('https://pip-player.zum.com/media/contents/**', {
       fixture: 'pip-player.zum.com/media/contents.json'
     });

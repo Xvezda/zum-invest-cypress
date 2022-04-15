@@ -960,7 +960,7 @@ describe('국내증시 종목', () => {
           .contains(firstDisclosure.title)
           .click();
 
-        cy.get('@apiDomesticStockPerformanceDisclosure')
+        cy.wait('@apiDomesticStockPerformanceDisclosure')
           .its('request.url')
           .should('contain', firstDisclosure.id);
       });
