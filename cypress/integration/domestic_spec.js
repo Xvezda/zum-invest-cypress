@@ -876,59 +876,8 @@ describe('국내증시 종목', () => {
     cy.get('.paging_wrap')
       .as('pagingWrap');
 
-    const shouldRequestOnPagination = alias => {
-      cy.log('이전/다음 버튼을 눌러 이동');
-      cy.get('@pagingWrap')
-        .find('.next')
-        .click();
-
-      cy.wait(alias)
-        .its('request.url')
-        .should('contain', 'page=2');
-
-      cy.get('@pagingWrap')
-        .find('.prev')
-        .click();
-
-      cy.wait(alias)
-        .its('request.url')
-        .should('contain', 'page=1');
-
-      cy.log('마지막/처음 버튼을 눌러 이동');
-      cy.get('@pagingWrap')
-        .find('.last')
-        .click();
-
-      const infoPerPage = 10;
-      cy.wait(alias)
-        .should(({ request, response }) => {
-          const lastPage = Math.ceil(response.body.totalCount / infoPerPage);
-          expect(request.url).to.contain(`page=${lastPage}`);
-        });
-
-      cy.get('@pagingWrap')
-        .find('.first')
-        .click();
-
-      cy.wait(alias)
-        .its('request.url')
-        .should('contain', 'page=1');
-
-      cy.log('페이지 숫자를 눌러 해당 페이지로 이동');
-      cy.get('@pagingWrap')
-        .within(() => {
-          cy.get('.num:not(.as_is)')
-            .concat('.num.as_is')
-            .each($el => {
-              const pageNumber = $el.text().trim();
-              cy.wrap($el).click();
-              cy.wait(alias)
-                .its('request.url')
-                .should('contain', `page=${pageNumber}`);
-            });
-        });
-    };
-    shouldRequestOnPagination('@apiDomesticStockPerformance');
+    cy.get('@pagingWrap')
+      .shouldRequestOnPagination('@apiDomesticStockPerformance');
 
     cy.log('일반공시 버튼을 눌러 일반공시 목록을 표시');
     cy.intercept('/api/domestic/stock/*/normal-disclosure*', {
@@ -943,7 +892,8 @@ describe('국내증시 종목', () => {
     cy.wait('@apiDomesticStockNormalDisclosure');
 
     cy.log('페이지네이션 메뉴를 사용해 페이지 이동');
-    shouldRequestOnPagination('@apiDomesticStockNormalDisclosure');
+    cy.get('@pagingWrap')
+      .shouldRequestOnPagination('@apiDomesticStockNormalDisclosure');
 
     cy.get('@apiDomesticStockNormalDisclosure')
       .its('response.body')

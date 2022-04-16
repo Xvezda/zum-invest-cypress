@@ -281,6 +281,71 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+  'shouldRequestOnPagination',
+  {
+    prevSubject: 'optional',
+  },
+  (subject, alias, wrapSelector = '.paging_wrap') => {
+    const wrapAlias = 'shouldRequestOnPaginationWrap';
+    if (subject) {
+      cy.wrap(subject, {log: false}).as(wrapAlias);
+    } else {
+      cy.get(wrapSelector, {log: false}).as(wrapAlias);
+    }
+    cy.log('이전/다음 버튼을 눌러 이동');
+    cy.get(`@${wrapAlias}`)
+      .find('.next')
+      .click();
+
+    cy.wait(alias)
+      .its('request.url')
+      .should('contain', 'page=2');
+
+    cy.get(`@${wrapAlias}`)
+      .find('.prev')
+      .click();
+
+    cy.wait(alias)
+      .its('request.url')
+      .should('contain', 'page=1');
+
+    cy.log('마지막/처음 버튼을 눌러 이동');
+    cy.get(`@${wrapAlias}`)
+      .find('.last')
+      .click();
+
+    const infoPerPage = 10;
+    cy.wait(alias)
+      .should(({ request, response }) => {
+        const lastPage = Math.ceil(response.body.totalCount / infoPerPage);
+        expect(request.url).to.contain(`page=${lastPage}`);
+      });
+
+    cy.get(`@${wrapAlias}`)
+      .find('.first')
+      .click();
+
+    cy.wait(alias)
+      .its('request.url')
+      .should('contain', 'page=1');
+
+    cy.log('페이지 숫자를 눌러 해당 페이지로 이동');
+    cy.get(`@${wrapAlias}`)
+      .within(() => {
+        cy.get('.num:not(.as_is)')
+          .concat('.num.as_is')
+          .each($el => {
+            const pageNumber = $el.text().trim();
+            cy.wrap($el).click();
+            cy.wait(alias)
+              .its('request.url')
+              .should('contain', `page=${pageNumber}`);
+          });
+      });
+  }
+);
+
+Cypress.Commands.add(
   'shouldRequestOnScroll',
   (
     alias,
