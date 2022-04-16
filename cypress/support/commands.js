@@ -431,15 +431,13 @@ Cypress.Commands.add(
  */
 Cypress.Commands.add(
   'triggerRouteAndVisit',
-  (path, options) => {
+  (pathOrCallback, options) => {
     const pathTable = {
       '/': '홈',
       '/global': '해외증시',
       '/domestic': '국내증시',
       '/investment': '투자노트',
     };
-    expect(pathTable[path], 'pathTable에 페이지가 존재하지 않음')
-      .to.be.string;
 
     // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나,
     // 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
@@ -449,6 +447,13 @@ Cypress.Commands.add(
       .as('apiDomesticRanking');
 
     cy.visit('/domestic/ranking', options);
+
+
+    if (typeof pathOrCallback === 'function') {
+      return pathOrCallback();
+    }
+    const path = pathOrCallback;
+    expect(pathTable[path], 'pathTable에 페이지가 존재하지 않음').to.be.string;
 
     return cy
       .get(`.gnb_finance a:contains("${pathTable[path]}")`)
