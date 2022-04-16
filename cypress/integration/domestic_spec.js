@@ -960,6 +960,46 @@ describe('국내증시 종목', () => {
   });
 });  // END: 국내증시 종목
 
+describe('국내증시 지수', () => {
+  const visit = () =>
+    cy.triggerRouteAndVisit(() => {
+      cy.get('.ticker_bar')
+        .contains('코스피')
+        .click();
+    });
+
+  it('일별시세 목록이 보여진다.', () => {
+    cy.intercept('/api/domestic/index/*/history*', {
+        fixture: 'api/domestic/index/history.json',
+      })
+      .as('apiDomesticIndexHistory');
+
+    visit();
+    cy.get('.stock_daily')
+      .within(() => {
+        cy.wait('@apiDomesticIndexHistory')
+          .its('response.body.items')
+          .each(item => {
+            const formatNumber = number =>
+              Math.abs(number).toLocaleString('en-US');
+
+            cy.root()
+              .should('contain', item.date.replace(/-/g, '.'))
+              .and('contain', formatNumber(item.closePrice))
+              .and('contain', formatNumber(item.priceChange))
+              .and('contain', `${Math.abs(item.rateOfChange).toFixed(2)}%`)
+              .and('contain', formatNumber(item.openPrice))
+              .and('contain', formatNumber(item.highPrice))
+              .and('contain', formatNumber(item.closePrice))
+              .and('contain', formatNumber(item.tradeVolume));
+          });
+
+        cy.get('.paging_wrap')
+          .shouldRequestOnPagination('@apiDomesticIndexHistory');
+      });
+  });
+});  // END: 국내증시 지수
+
 describe('카테고리별 랭킹', () => {
   beforeEach(() => {
     cy.stubDomesticApi();

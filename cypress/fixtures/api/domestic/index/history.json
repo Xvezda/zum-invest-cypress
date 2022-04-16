@@ -1,0 +1,105 @@
+{
+  "items": [
+      {
+          "date": "2022-04-01",
+          "closePrice": 2739.85,
+          "tradeVolume": 1305564000,
+          "priceChange": -17.8,
+          "rateOfChange": -0.65,
+          "highPrice": 2745.85,
+          "lowPrice": 2729.68,
+          "openPrice": 2745.85
+      },
+      {
+          "date": "2022-03-31",
+          "closePrice": 2757.65,
+          "tradeVolume": 1030288000,
+          "priceChange": 10.91,
+          "rateOfChange": 0.4,
+          "highPrice": 2765.2,
+          "lowPrice": 2743.2,
+          "openPrice": 2743.24
+      },
+      {
+          "date": "2022-03-30",
+          "closePrice": 2746.74,
+          "tradeVolume": 840134000,
+          "priceChange": 5.67,
+          "rateOfChange": 0.21,
+          "highPrice": 2760.6,
+          "lowPrice": 2740.02,
+          "openPrice": 2758.31
+      },
+      {
+          "date": "2022-03-29",
+          "closePrice": 2741.07,
+          "tradeVolume": 732159000,
+          "priceChange": 11.51,
+          "rateOfChange": 0.42,
+          "highPrice": 2754.18,
+          "lowPrice": 2733.22,
+          "openPrice": 2745.62
+      },
+      {
+          "date": "2022-03-28",
+          "closePrice": 2729.56,
+          "tradeVolume": 768042000,
+          "priceChange": -0.42,
+          "rateOfChange": -0.02,
+          "highPrice": 2737.46,
+          "lowPrice": 2707.74,
+          "openPrice": 2721.22
+      },
+      {
+          "date": "2022-03-25",
+          "closePrice": 2729.98,
+          "tradeVolume": 602771000,
+          "priceChange": 0.32,
+          "rateOfChange": 0.01,
+          "highPrice": 2740.95,
+          "lowPrice": 2722.36,
+          "openPrice": 2740.83
+      },
+      {
+          "date": "2022-03-24",
+          "closePrice": 2729.66,
+          "tradeVolume": 960897000,
+          "priceChange": -5.39,
+          "rateOfChange": -0.2,
+          "highPrice": 2729.66,
+          "lowPrice": 2705.14,
+          "openPrice": 2716.25
+      },
+      {
+          "date": "2022-03-23",
+          "closePrice": 2735.05,
+          "tradeVolume": 883375000,
+          "priceChange": 25.05,
+          "rateOfChange": 0.92,
+          "highPrice": 2742.27,
+          "lowPrice": 2720.83,
+          "openPrice": 2727.12
+      },
+      {
+          "date": "2022-03-22",
+          "closePrice": 2710,
+          "tradeVolume": 489441000,
+          "priceChange": 23.95,
+          "rateOfChange": 0.89,
+          "highPrice": 2712.14,
+          "lowPrice": 2686.58,
+          "openPrice": 2686.68
+      },
+      {
+          "date": "2022-03-21",
+          "closePrice": 2686.05,
+          "tradeVolume": 502401000,
+          "priceChange": -20.97,
+          "rateOfChange": -0.77,
+          "highPrice": 2717.81,
+          "lowPrice": 2683.69,
+          "openPrice": 2717.81
+      }
+  ],
+  "totalCount": 913
+}
