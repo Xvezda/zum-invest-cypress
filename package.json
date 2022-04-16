@@ -4,10 +4,10 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "run": "cypress run",
-    "open": "cypress open",
-    "run:docker": "./run.sh",
-    "open:docker": "./open.sh"
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
+    "docker:run": "./run.sh",
+    "docker:open": "./open.sh"
   },
   "devDependencies": {
     "@cypress/skip-test": "^2.6.1",
