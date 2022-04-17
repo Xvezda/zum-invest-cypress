@@ -812,36 +812,8 @@ describe('국내증시 종목', () => {
 
     cy.wait('@apiDomesticStockNews');
 
-    cy.log('홑화살표를 눌러 이전/다음페이지로 이동');
-    stubNewsApi(news => req => {
-      req.alias = `apiDomesticStockNewsPage${req.query.page}`;
-      req.reply(news);
-    });
-
-    cy.get('.paging_wrap .next')
-      .click();
-
-    cy.wait('@apiDomesticStockNewsPage2');
-
-    cy.get('.paging_wrap .prev')
-      .click();
-
-    cy.log('겹화살표를 눌러 마지막/처음페이지로 이동');
-    const newsPerPage = 10;
-    cy.wait('@apiDomesticStockNewsPage1');
-    cy.get('@domesticStockNews')
-      .then(news => {
-        const lastPage = Math.ceil(news.totalCount / newsPerPage);
-        cy.get('.paging_wrap .last')
-          .click();
-
-        cy.wait(`@apiDomesticStockNewsPage${lastPage}`);
-      });
-
-    cy.get('.paging_wrap .first')
-      .click();
-
-    cy.wait(`@apiDomesticStockNewsPage1`);
+    cy.get('.paging_wrap')
+      .shouldRequestOnPagination('@apiDomesticStockNews');
   });
 
   it('공시탭을 눌러 요약공시와 일반공시를 살펴볼 수 있다.', () => {
