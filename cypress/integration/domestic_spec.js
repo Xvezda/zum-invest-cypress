@@ -968,6 +968,139 @@ describe('국내증시 지수', () => {
   });
 });  // END: 국내증시 지수
 
+const optionTable = {
+  tradeVolume: {
+    optionName: "거래량(천주)",
+  },
+  tradeValue: {
+    optionName: "거래대금(백만)",
+  },
+  preTradeVolume: {
+    optionName: "전일거래량(천주)",
+  },
+  marketCap: {
+    optionName: "시가총액(억)",
+  },
+  per: {
+    optionName: "주가순이익비율(PER)",
+    tableHeaderName: "PER (배)"
+  },
+  operatingProfit: {
+    optionName: "영업이익(억)",
+  },
+  eps: {
+    optionName: "주당순이익(EPS)",
+    tableHeaderName: 'EPS',
+  },
+  openPrice: {
+    optionName: "시가",
+  },
+  highPrice: {
+    optionName: "고가",
+  },
+  lowPrice: {
+    optionName: "저가",
+  },
+  take: {
+    optionName: "매출액(억)",
+  },
+  netIncome: {
+    optionName: "당기순이익(억)",
+  },
+  totalAssets: {
+    optionName: "자산총계(억)",
+  },
+  totalDebt: {
+    optionName: "부채총계(억)",
+  },
+  newListedCount: {
+    optionName: "상장주식수(천주)",
+  },
+  foreignerShareRatio: {
+    optionName: "외국인 비율(%)",
+    tableHeaderName: '외국인 비율',
+  },
+  monthlyRateOfChange: {
+    optionName: "1개월 대비",
+  },
+  threeMonthlyRateOfChange: {
+    optionName: "3개월 대비",
+  },
+  yearlyRateOfChange: {
+    optionName: "1년 대비",
+  },
+  threeYearlyRateOfChange: {
+    optionName: "3년 대비",
+  },
+  bps: {
+    optionName: "주당순자산(BPS)",
+  },
+};
+
+function checkStockOptions() {
+  cy.get('.stock_option_wrap input[type="checkbox"]')
+    .as('stockOptionCheckBoxes');
+
+  const uncheckAllCheckBoxes = () => {
+    /*
+    아래 코드와 동일한 역할을 수행하지만 더 나은 성능을 보여줌
+    ```
+    cy.get('@stockOptionCheckBoxes')
+      .uncheck({force: true})
+    ```
+    */
+    executeScript(`
+      document
+        .querySelectorAll('.stock_option_wrap input[type="checkbox"]:checked')
+        .forEach(checkbox => checkbox.click());
+    `);
+  };
+
+  const checkAllCheckBoxes = () => {
+    executeScript(`
+      document
+        .querySelectorAll('.stock_option_wrap input[type="checkbox"]:not(:checked)')
+        .forEach(checkbox => checkbox.click());
+    `);
+  };
+
+  uncheckAllCheckBoxes();
+  cy.get('button:contains("적용하기")')
+    .as('stockOptionApplyButton')
+    .click();
+
+  cy.get('.tbl_scroll')
+    .as('scrollableTable');
+
+  cy.log('모든 항목이 해제 되어도 남아있는 정보를 확인');
+  cy.get('@scrollableTable')
+    .should('contain', '현재가')
+    .and('contain', '전일비')
+    .and('contain', '등락률')
+    .and('contain', '종토방');
+
+  checkAllCheckBoxes();
+  cy.get('@stockOptionApplyButton')
+    .click();
+
+  cy.log('테이블에 옵션에 해당하는 정보가 표시 됨');
+  cy.wrap(
+      Object
+        .values(optionTable)
+        .map(({ tableHeaderName, optionName }) => tableHeaderName || optionName)
+    )
+    .each(name => {
+      cy.get('@scrollableTable')
+        .contains(name);
+    });
+
+cy.log('스크롤하면 좌우로 스크롤되고 오른쪽 끝에 종토방이 위치한다');
+cy.get('@scrollableTable')
+  .scrollTo('right')
+  .contains('종토방')
+  .should('be.visible');
+}
+
 describe('카테고리별 랭킹', () => {
   beforeEach(() => {
     cy.stubDomesticApi();
@@ -981,75 +1114,6 @@ describe('카테고리별 랭킹', () => {
   it('카테고리별 체크된 기본항목이 다르며, 직접 항목을 체크하고 적용하기, 초기화하여 표시되는 정보를 다르게 할 수 있다.', () => {
     cy.request('/api/domestic/ranking?category=MARKET_CAP')
       .toMatchApiSnapshot();
-
-    const optionTable = {
-      tradeVolume: {
-        optionName: "거래량(천주)",
-      },
-      tradeValue: {
-        optionName: "거래대금(백만)",
-      },
-      preTradeVolume: {
-        optionName: "전일거래량(천주)",
-      },
-      marketCap: {
-        optionName: "시가총액(억)",
-      },
-      per: {
-        optionName: "주가순이익비율(PER)",
-        tableHeaderName: "PER (배)"
-      },
-      operatingProfit: {
-        optionName: "영업이익(억)",
-      },
-      eps: {
-        optionName: "주당순이익(EPS)",
-        tableHeaderName: 'EPS',
-      },
-      openPrice: {
-        optionName: "시가",
-      },
-      highPrice: {
-        optionName: "고가",
-      },
-      lowPrice: {
-        optionName: "저가",
-      },
-      take: {
-        optionName: "매출액(억)",
-      },
-      netIncome: {
-        optionName: "당기순이익(억)",
-      },
-      totalAssets: {
-        optionName: "자산총계(억)",
-      },
-      totalDebt: {
-        optionName: "부채총계(억)",
-      },
-      newListedCount: {
-        optionName: "상장주식수(천주)",
-      },
-      foreignerShareRatio: {
-        optionName: "외국인 비율(%)",
-        tableHeaderName: '외국인 비율',
-      },
-      monthlyRateOfChange: {
-        optionName: "1개월 대비",
-      },
-      threeMonthlyRateOfChange: {
-        optionName: "3개월 대비",
-      },
-      yearlyRateOfChange: {
-        optionName: "1년 대비",
-      },
-      threeYearlyRateOfChange: {
-        optionName: "3년 대비",
-      },
-      bps: {
-        optionName: "주당순자산(BPS)",
-      },
-    };
 
     const defaultOptions = {
       MARKET_CAP: ['tradeVolume', 'per', 'newListedCount', 'marketCap', 'foreignerShareRatio'],
@@ -1103,67 +1167,7 @@ describe('카테고리별 랭킹', () => {
         },
       );
 
-      cy.get('.stock_option_wrap input[type="checkbox"]')
-        .as('stockOptionCheckBoxes');
-
-      const uncheckAllCheckBoxes = () => {
-        /*
-        아래 코드와 동일한 역할을 수행하지만 더 나은 성능을 보여줌
-        ```
-        cy.get('@stockOptionCheckBoxes')
-          .uncheck({force: true})
-        ```
-        */
-        executeScript(`
-          document
-            .querySelectorAll('.stock_option_wrap input[type="checkbox"]:checked')
-            .forEach(checkbox => checkbox.click());
-        `);
-      };
-
-      const checkAllCheckBoxes = () => {
-        executeScript(`
-          document
-            .querySelectorAll('.stock_option_wrap input[type="checkbox"]:not(:checked)')
-            .forEach(checkbox => checkbox.click());
-        `);
-      };
-
-      uncheckAllCheckBoxes();
-      cy.get('button:contains("적용하기")')
-        .as('stockOptionApplyButton')
-        .click();
-
-      cy.get('.tbl_scroll')
-        .as('scrollableTable');
-
-      cy.log('모든 항목이 해제 되어도 남아있는 정보를 확인');
-      cy.get('@scrollableTable')
-        .should('contain', '현재가')
-        .and('contain', '전일비')
-        .and('contain', '등락률')
-        .and('contain', '종토방');
-
-      checkAllCheckBoxes();
-      cy.get('@stockOptionApplyButton')
-        .click();
-
-      cy.log('테이블에 옵션에 해당하는 정보가 표시 됨');
-      cy.wrap(
-          Object
-            .values(optionTable)
-            .map(({ tableHeaderName, optionName }) => tableHeaderName || optionName)
-        )
-        .each(name => {
-          cy.get('@scrollableTable')
-            .contains(name);
-        });
-
-    cy.log('스크롤하면 좌우로 스크롤되고 오른쪽 끝에 종토방이 위치한다');
-    cy.get('@scrollableTable')
-      .scrollTo('right')
-      .contains('종토방')
-      .should('be.visible');
+    checkStockOptions();
   });
 
   it('사이드바에서 각 카테고리별 상위 5종목을 간략하게 나타내고, 이동, 여닫기가 가능하다.', () => {
