@@ -1315,4 +1315,101 @@ describe('업종 상세페이지', () => {
   it('옵션을 선택하여 내용을 필터링할 수 있다.', () => {
     checkStockOptions();
   });
-})
+});  // END: 업종 상세페이지
+
+describe('Hot Pick', () => {
+  beforeEach(() => {
+    const toTitleCase = text => 
+      text.replace(
+        /^([a-z]).*/,
+        (p0, p1) => p1.toUpperCase() + p0.substring(1));
+
+    const stubPickApi = type =>
+      cy.intercept(`/api/domestic/pick/${type}*`, {
+          fixture: `api/domestic/pick/${type}.json`,
+        })
+        .as(`apiDomesticPick${toTitleCase(type)}`);
+
+    stubPickApi('soaring');
+    stubPickApi('report');
+
+    cy.clock(now, ['Date']);
+
+    cy.visit('/domestic/hot-pick');
+  });
+
+  it('달력과 화살표, 오늘버튼을 통해 페이지 이동이 가능하다.', () => {
+    cy.wait('@apiDomesticPickSoaring')
+      .its('request.url')
+      .should('contain', 'soaring');
+
+    cy.log('달력아이콘을 클릭하면 미니 달력이 보여진다');
+    cy.get('.mini-calendar')
+      .as('miniCalendar');
+
+    cy.get('.date_select .btn_calendar')
+      .as('miniCalendarButton');
+
+    cy.get('@miniCalendarButton')
+      .click()
+
+    cy.get('@miniCalendar')
+      .should('be.visible');
+
+    cy.log('다시 달력아이콘을 클릭하면 미니 달력이 숨겨진다');
+    cy.get('@miniCalendarButton')
+      .click();
+
+    cy.get('@miniCalendar')
+      .should('not.be.visible');
+
+    const getFormattedDate = date => [
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate()
+      ]
+      .map(t => String(t).padStart(2, '0'))
+      .join('-');
+
+    const date = new Date(now);
+    const firstDateOfThisMonth = getFormattedDate(new Date(date.setDate(1)));
+    cy.log('달력을 열고 현재달의 1일을 누른다');
+    cy.get('.date_select .btn_calendar').click();
+
+    const clickAndMatchDateToUrl = (subject, date) => {
+      return subject
+        .click({force: true})
+        .wait('@apiDomesticPickSoaring')
+        .its('request.url')
+        .should('contain', `date=${date}`);
+    };
+
+    clickAndMatchDateToUrl(
+      cy.get('.dates > .date-item')
+        .not('.empty')
+        .first(),  // 1일
+      firstDateOfThisMonth,
+    );
+
+    // dayValue에 0이 제공되면 날짜는 이전 달의 마지막 날로 설정됩니다.
+    // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate#description
+    const lastDateOfPrevMonth = getFormattedDate(new Date(date.setDate(0)));
+    cy.log('이전 버튼을 눌러 이전달의 마지막 날의 실시간 뉴스를 확인한다');
+    clickAndMatchDateToUrl(
+      cy.get('.date_nav .btn.pre'),
+      lastDateOfPrevMonth,
+    );
+
+    cy.log('다시 다음 버튼을 눌러 이번달의 1일로 이동');
+    clickAndMatchDateToUrl(
+      cy.get('.date_nav .btn.next'),
+      firstDateOfThisMonth,
+    );
+
+    cy.log('오늘 버튼을 눌러 오늘 날짜로 복귀');
+    clickAndMatchDateToUrl(
+      cy.get('.btn_today'),
+      getFormattedDate(new Date(now)),
+    );
+  });
+});   // END: Hot Pick
