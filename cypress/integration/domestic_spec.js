@@ -934,11 +934,7 @@ describe('국내증시 종목', () => {
 
 describe('국내증시 지수', () => {
   const visit = () =>
-    cy.triggerRouteAndVisit(() => {
-      cy.get('.ticker_bar')
-        .contains('코스피')
-        .click();
-    });
+    cy.triggerRouteAndVisit('/domestic/index/1', {method: 'bounce'});
 
   it('일별시세 목록이 보여진다.', () => {
     cy.intercept('/api/domestic/index/*/history*', {
