@@ -431,7 +431,28 @@ Cypress.Commands.add(
  */
 Cypress.Commands.add(
   'triggerRouteAndVisit',
-  (pathOrCallback, options) => {
+  (path, options) => {
+    const visitLitePage = opts => {
+      // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나,
+      // 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
+      cy.intercept('/api/domestic/common', {fixture: 'api/domestic/common.json'})
+        .as('apiDomesticCommon');
+      cy.intercept('/api/domestic/ranking*', {fixture: 'api/domestic/ranking.json'})
+        .as('apiDomesticRanking');
+
+      cy.visit('/domestic/ranking', opts);
+    };
+
+    if (typeof options === 'object' && options.method === 'bounce') {
+      delete options.method;
+      return cy
+        .visit(path, options)
+        .get('.ticker_bar')
+        .contains(path.endsWith('/domestic/index/1') ? '코스닥' : '코스피')
+        .click()
+        .go('back')
+        .end();
+    }
     const pathTable = {
       '/': '홈',
       '/global': '해외증시',
@@ -439,21 +460,8 @@ Cypress.Commands.add(
       '/investment': '투자노트',
     };
 
-    // 리소스가 많지 않은 가벼운 페이지라면 아무페이지나 가능하나,
-    // 반드시 투자 gnb 메뉴가 있는 페이지여야 한다.
-    cy.intercept('/api/domestic/common', {fixture: 'api/domestic/common.json'})
-      .as('apiDomesticCommon');
-    cy.intercept('/api/domestic/ranking*', {fixture: 'api/domestic/ranking.json'})
-      .as('apiDomesticRanking');
-
-    cy.visit('/domestic/ranking', options);
-
-
-    if (typeof pathOrCallback === 'function') {
-      return pathOrCallback();
-    }
-    const path = pathOrCallback;
     expect(pathTable[path], 'pathTable에 페이지가 존재하지 않음').to.be.string;
+    visitLitePage(options);
 
     return cy
       .get(`.gnb_finance a:contains("${pathTable[path]}")`)
