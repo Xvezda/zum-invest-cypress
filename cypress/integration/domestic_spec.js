@@ -1241,7 +1241,7 @@ describe('카테고리별 랭킹', () => {
 });  // END: 카테고리별 랭킹
 
 describe('전체 업종별 시세', () => {
-  it.only('업종 순위 목록이 보여진다.', () => {
+  it('업종 순위 목록이 보여진다.', () => {
     cy.fixture('api/domestic/industry.json')
       .then(industry => {
         cy.intercept('/api/domestic/industry', industry)
