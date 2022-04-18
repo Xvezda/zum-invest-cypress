@@ -1239,3 +1239,43 @@ describe('카테고리별 랭킹', () => {
     });
   });
 });  // END: 카테고리별 랭킹
+
+describe('업종 상세페이지', () => {
+  beforeEach(() => {
+    cy.fixture('api/domestic/industry.json')
+      .then(industry => {
+        cy.intercept('/api/domestic/industry/*', industry)
+          .as('apiDomesticIndustry');
+      });
+
+    cy.triggerRouteAndVisit('/domestic/industry/107', {method: 'bounce'});
+  });
+
+  it('상단 테이블에 업종 정보를 표시한다.', () => {
+    cy.wait('@apiDomesticIndustry')
+      .its('response.body')
+      .then(({ industry }) => {
+        cy.get('.tbl_stock_data')
+          .as('stockDataTable')
+          .should('contain', industry.name)
+          .and('contain', industry.rateOfChange)
+          .and('contain', industry.positiveCount)
+          .and('contain', industry.negativeCount);
+
+        cy.wrap([
+            ...industry.negativeStocks,
+            ...industry.positiveStocks,
+          ])
+          .each(({ code, name }) => {
+            cy.get('@stockDataTable')
+              .find(`a:contains("${name}")`)
+              .should('have.attr', 'href')
+              .and('contain', code);
+          });
+      });
+  });
+
+  it('옵션을 선택하여 내용을 필터링할 수 있다.', () => {
+    checkStockOptions();
+  });
+})
