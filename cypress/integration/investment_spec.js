@@ -153,7 +153,7 @@ describe('투자노트', () => {
         .should('contain', author.authorId);
     });
 
-    it('게시글은 SSR 적용으로 HTML 정보가 제공된다.', () => {
+    it.skip('게시글은 SSR 적용으로 HTML 정보가 제공된다.', () => {
       cy.intercept(/\.js$/, {statusCode: 503});
       cy.request('/investment/view/304')
         .its('body')

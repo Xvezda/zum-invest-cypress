@@ -1,5 +1,5 @@
 describe('줌 투자 뉴스', () => {
-  it('SSR로 스크립트 실행없이 데이터를 가져올 수 있다.', () => {
+  it.skip('SSR로 스크립트 실행없이 데이터를 가져올 수 있다.', () => {
     cy.request('/news/article/3333333')
       .its('body')
       .then(html => {
