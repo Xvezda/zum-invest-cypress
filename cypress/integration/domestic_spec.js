@@ -7,6 +7,9 @@ const executeScript = script =>
   cy.window()
     .then(win => win.eval(script));
 
+const formatNumber = number =>
+  Math.abs(number).toLocaleString('en-US');
+
 describe('국내증시', () => {
   beforeEach(() => {
     cy.stubDomesticApi();
@@ -948,9 +951,6 @@ describe('국내증시 지수', () => {
         cy.wait('@apiDomesticIndexHistory')
           .its('response.body.items')
           .each(item => {
-            const formatNumber = number =>
-              Math.abs(number).toLocaleString('en-US');
-
             cy.root()
               .should('contain', item.date.replace(/-/g, '.'))
               .and('contain', formatNumber(item.closePrice))
@@ -1240,19 +1240,56 @@ describe('카테고리별 랭킹', () => {
   });
 });  // END: 카테고리별 랭킹
 
-describe('업종 상세페이지', () => {
-  beforeEach(() => {
+describe('전체 업종별 시세', () => {
+  it.only('업종 순위 목록이 보여진다.', () => {
     cy.fixture('api/domestic/industry.json')
       .then(industry => {
+        cy.intercept('/api/domestic/industry', industry)
+          .as('apiDomesticIndustry')
+      });
+
+    cy.triggerRouteAndVisit('/domestic/industry', {method: 'bounce'});
+
+    cy.wait('@apiDomesticIndustry')
+      .its('response.body')
+      .spread((kospi, kosdaq) => {
+        const checkTable = datas => {
+          cy.wrap(datas)
+            .its('industryPriceItems')
+            .each((item, i) => {
+              cy.get('.tbl_stock_data')
+                .find(`tbody > tr:nth-child(${i+1})`)
+                .should('contain', item.name)
+                .and('contain', `${item.rateOfChange.toFixed(2)}%`)
+                .and('contain', item.positiveCount)
+                .and('contain', item.negativeCount);
+            });
+        };
+
+        checkTable(kospi);
+
+        cy.get('.stock_price .menu_tab')
+          .contains('코스닥')
+          .click();
+
+        checkTable(kosdaq);
+      });
+  });
+});  // END: 전체 업종별 시세
+
+describe('업종 상세페이지', () => {
+  beforeEach(() => {
+    cy.fixture('api/domestic/industry/detail.json')
+      .then(industry => {
         cy.intercept('/api/domestic/industry/*', industry)
-          .as('apiDomesticIndustry');
+          .as('apiDomesticIndustryDetail');
       });
 
     cy.triggerRouteAndVisit('/domestic/industry/107', {method: 'bounce'});
   });
 
   it('상단 테이블에 업종 정보를 표시한다.', () => {
-    cy.wait('@apiDomesticIndustry')
+    cy.wait('@apiDomesticIndustryDetail')
       .its('response.body')
       .then(({ industry }) => {
         cy.get('.tbl_stock_data')
