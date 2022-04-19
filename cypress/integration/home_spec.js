@@ -597,23 +597,25 @@ describe('zum 투자 홈', () => {
       visit();
       cy.contains('분야별 실시간 뉴스').scrollIntoView();
       cy.log('각 카테고리를 클릭하면 API 요청이 발생한다');
-      cy.get('.area_real_news ul.menu_tab > li > a')
-        // 활성화된 첫 번째 카테고리를 클릭하는것은 의미가 없기때문에 역순으로 클릭
-        .reverse()
-        .clickEachWithTable(
-          {
-            '전체': 'all',
-            '국내증시': 'domestic',
-            '해외증시': 'overseas',
-            '시장지표': 'market',
-            '가상화폐': 'coin',
-            'ESG': 'esg',
-          },
-          id => cy
-            .wait('@apiCategoryNews')
-            .its('request.url')
-            .should('contain', `category=${id}`),
-        );
+      cy.get('.area_real_news')
+        .within(() => {
+          cy.get('ul.menu_tab > li:not(.active) > a')
+            .concat('ul.menu_tab > li.active > a')
+            .clickEachWithTable(
+              {
+                '전체': 'all',
+                '국내증시': 'domestic',
+                '해외증시': 'overseas',
+                '시장지표': 'market',
+                '가상화폐': 'coin',
+                'ESG': 'esg',
+              },
+              id => cy
+                .wait('@apiCategoryNews')
+                .its('request.url')
+                .should('contain', `category=${id}`),
+            );
+        });
     });
 
     it('스크롤을 내리면 다음 페이지를 불러온다.', () => {
